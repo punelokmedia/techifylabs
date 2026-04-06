@@ -168,7 +168,7 @@ export default function GoogleAdsPage() {
           <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12" aria-label="Breadcrumb">
             <Link href="/" className="transition hover:text-white">Home</Link>
             <span className="text-white/25" aria-hidden>/</span>
-            <span className="text-white/25">Solutions</span>
+            <span className="text-white/25">Our Solutions</span>
             <span className="text-white/25" aria-hidden>/</span>
             <span className="font-medium text-white">Google Ads</span>
           </nav>
@@ -275,7 +275,7 @@ export default function GoogleAdsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[7rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
+      <section className="sticky top-[10rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a

@@ -295,7 +295,7 @@ export default function Navbar() {
 
   const triggerClass = (active: boolean) =>
     [
-      "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold tracking-tight transition-all duration-200 sm:text-sm",
+      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-2 md:px-4 md:py-2 md:text-[15px]",
       active
         ? "bg-gradient-to-r from-violet-600/12 to-fuchsia-600/10 text-violet-700 shadow-sm ring-1 ring-violet-200/70"
         : "text-slate-600 hover:bg-slate-100/90 hover:text-violet-700",
@@ -309,7 +309,7 @@ export default function Navbar() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-1.5 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:gap-4 sm:px-5 md:gap-6 md:px-6 lg:gap-8 lg:px-8 xl:px-10">
         {/* <Link
           href="/"
           className="group flex shrink-0 items-center gap-3 rounded-xl py-0.5 pr-2 transition hover:opacity-95"
@@ -329,15 +329,16 @@ export default function Navbar() {
         </Link> */}
 <Link
   href="/"
-  className="group flex shrink-0 items-center py-0.5 transition-opacity hover:opacity-95"
+  className="group relative flex shrink-0 items-center overflow-visible py-0.5 transition-opacity hover:opacity-95"
 >
   <Image
     src="/techify-logo.png"
     alt="Techify Labs"
-    width={220}
-    height={56}
-    className="h-11 w-auto object-contain sm:h-12 md:h-[3.25rem]"
+    width={720}
+    height={180}
+    className="h-[4.5rem] w-auto origin-left object-contain object-left sm:h-20 md:h-[5.5rem] lg:h-[6rem]"
     priority
+    sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 420px"
   />
 
   {/* <div className="leading-tight">
@@ -349,16 +350,16 @@ export default function Navbar() {
     </span>
   </div> */}
 </Link>
-        <nav className="hidden items-center gap-0.5 md:flex" aria-label="Main">
+        <nav className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5" aria-label="Main">
           <Link
             href="/"
-            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition-all duration-200 hover:bg-violet-50 hover:text-violet-700 sm:text-sm"
+            className="shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:bg-violet-50 hover:text-violet-700 md:px-4 md:py-2 md:text-[15px]"
           >
             Home
           </Link>
 
           <div
-            className="relative"
+            className="relative shrink-0"
             onMouseEnter={() => setOpenMenu("solutions")}
             onMouseLeave={() => setOpenMenu(null)}
           >
@@ -369,9 +370,9 @@ export default function Navbar() {
               className={triggerClass(openMenu === "solutions")}
               onClick={() => setOpenMenu(openMenu === "solutions" ? null : "solutions")}
             >
-              Solutions
+              Our Solutions
               <ChevronDown
-                className={`transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${openMenu === "solutions" ? "rotate-180" : ""}`}
+                className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "solutions" ? "rotate-180" : ""}`}
               />
             </button>
             <AnimatePresence>
@@ -379,7 +380,7 @@ export default function Navbar() {
                 <motion.div
                   key="solutions-mega"
                   role="menu"
-                  aria-label="Solutions"
+                  aria-label="Our Solutions"
                   variants={megaContainerVariants}
                   initial="hidden"
                   animate="visible"
@@ -438,7 +439,7 @@ export default function Navbar() {
           </div>
 
           <div
-            className="relative"
+            className="relative shrink-0"
             onMouseEnter={() => setOpenMenu("knowledge")}
             onMouseLeave={() => setOpenMenu(null)}
           >
@@ -451,7 +452,7 @@ export default function Navbar() {
             >
               Knowledge Hub
               <ChevronDown
-                className={`transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${openMenu === "knowledge" ? "rotate-180" : ""}`}
+                className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "knowledge" ? "rotate-180" : ""}`}
               />
             </button>
             <AnimatePresence>
@@ -517,24 +518,24 @@ export default function Navbar() {
 
           <Link
             href="/about"
-            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700 sm:text-sm"
+            className="shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100/90 hover:text-violet-700 md:px-4 md:py-2 md:text-[15px]"
           >
             About Us
           </Link>
           <Link
             href="/contact"
-            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700 sm:text-sm"
+            className="shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100/90 hover:text-violet-700 md:px-4 md:py-2 md:text-[15px]"
           >
             Contact Us
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2 pl-1 md:pl-2 lg:pl-4">
           <motion.button
             type="button"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden rounded-full bg-[#0f2744] px-4 py-2 text-xs font-bold text-white shadow-md ring-1 ring-slate-900/15 transition-shadow duration-300 hover:shadow-lg hover:shadow-slate-900/25 sm:inline-flex sm:px-5 sm:text-sm"
+            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-[#0f2744] px-3 py-2 text-[11px] font-bold text-white shadow-md ring-1 ring-slate-900/15 transition-shadow duration-300 hover:shadow-lg hover:shadow-slate-900/25 sm:inline-flex sm:px-4 sm:py-2.5 sm:text-xs md:px-5 md:text-sm"
           >
             <span
               className="absolute inset-0 bg-[#1a365d] opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
@@ -592,7 +593,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-[7rem] z-50 mx-3 max-h-[min(82vh,calc(100dvh-8rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl md:hidden"
+              className="fixed inset-x-0 top-[10rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-8rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl sm:mx-6 md:hidden"
             >
               <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                 <Link
@@ -607,7 +608,7 @@ export default function Navbar() {
                   className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-white transition hover:bg-white/[0.05]"
                   onClick={() => setMobileAccordion((a) => (a === "solutions" ? null : "solutions"))}
                 >
-                  Solutions
+                  Our Solutions
                   <ChevronDown
                     className={`shrink-0 opacity-80 transition-transform ${mobileAccordion === "solutions" ? "rotate-180" : ""}`}
                   />
