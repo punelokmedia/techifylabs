@@ -14,7 +14,7 @@ const solutionsSections = [
     links: [
       { label: "Meta Ads", href: "/services/meta-ads", Icon: IconMegaphone },
       { label: "Google Ads", href: "/services/google-ads", Icon: IconSearchChart },
-      { label: "Amazon Ads", href: "#", Icon: IconPackage },
+      { label: "Amazon Ads", href: "/services/amazon-ads", Icon: IconPackage },
     ],
   },
   {

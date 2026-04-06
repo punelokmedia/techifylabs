@@ -121,6 +121,14 @@ const whyClientsStay = [
   { title: "Simple decision reporting", desc: "No vanity dashboards — just what is working, what is not, and what ships next." },
 ];
 
+const quickNav = [
+  { label: "Why us", href: "#why-us" },
+  { label: "Process", href: "#process" },
+  { label: "Services", href: "#services" },
+  { label: "Case studies", href: "#case-studies" },
+  { label: "FAQ", href: "#faq" },
+];
+
 const faqs = [
   {
     q: "Why hire a Meta ads agency instead of doing it myself?",
@@ -215,6 +223,7 @@ export default function MetaAdsPage() {
                 {[
                   { label: "Meta Ads", href: "/services/meta-ads", active: true },
                   { label: "Google Ads", href: "/services/google-ads", active: false },
+                  { label: "Amazon Ads", href: "/services/amazon-ads", active: false },
                 ].map((s) => (
                   <Link
                     key={s.label}
@@ -263,6 +272,20 @@ export default function MetaAdsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="sticky top-[92px] z-30 border-y border-slate-200/70 bg-white/90 py-3 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
+          {quickNav.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-violet-300 hover:text-violet-700"
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       </section>
 
@@ -316,7 +339,7 @@ export default function MetaAdsPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
+      <section id="why-us" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Why choose us</p>
@@ -348,7 +371,7 @@ export default function MetaAdsPage() {
       </section>
 
       {/* Process */}
-      <section className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-violet-50/30 py-12 sm:py-20">
+      <section id="process" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-violet-50/30 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Our process</p>
@@ -425,7 +448,7 @@ export default function MetaAdsPage() {
       </section>
 
       {/* Case Studies */}
-      <section className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
+      <section id="case-studies" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Case studies</p>
@@ -451,7 +474,7 @@ export default function MetaAdsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
+      <section id="faq" className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">FAQ</p>
