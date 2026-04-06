@@ -108,6 +108,19 @@ const stats = [
   { num: "3.5×", label: "Average ROAS" },
 ];
 
+const first30Days = [
+  "Audience and creative audit to identify immediate wins",
+  "Campaign restructure for cold, warm, and retargeting funnels",
+  "Pixel + event health checks for reliable optimisation data",
+  "Weekly testing roadmap for creatives, hooks, and offers",
+];
+
+const whyClientsStay = [
+  { title: "Creative testing discipline", desc: "We test angles and formats consistently, so performance does not plateau." },
+  { title: "Retention + acquisition view", desc: "We balance new-customer growth with repeat purchase and LTV signals." },
+  { title: "Simple decision reporting", desc: "No vanity dashboards — just what is working, what is not, and what ships next." },
+];
+
 const faqs = [
   {
     q: "Why hire a Meta ads agency instead of doing it myself?",
@@ -225,6 +238,14 @@ export default function MetaAdsPage() {
                     info@techifylabs.in
                   </a>
                 </div>
+                <div className="mt-4 grid grid-cols-2 gap-2">
+                  <a href="tel:+918956776958" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">
+                    Call now
+                  </a>
+                  <a href="/contact" className="rounded-lg bg-violet-600/80 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-violet-500">
+                    Get proposal
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -240,6 +261,55 @@ export default function MetaAdsPage() {
                 <p className="text-2xl font-semibold text-white sm:text-3xl">{s.num}</p>
                 <p className="mt-1 text-[12px] text-white/50">{s.label}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* First 30 days */}
+      <section className="border-t border-slate-200/60 bg-white py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+            <FadeIn className="lg:col-span-5">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">First 30 days</p>
+              <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                What happens in month one
+              </h2>
+              <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
+                We fix tracking, sharpen messaging, and build predictable campaign structure before scaling spend.
+              </p>
+            </FadeIn>
+            <div className="space-y-3 lg:col-span-7">
+              {first30Days.map((item, i) => (
+                <FadeIn key={item} delay={0.05 * i}>
+                  <div className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 sm:p-5">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-100 text-xs font-bold text-violet-700">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm leading-relaxed text-slate-700">{item}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why clients stay */}
+      <section className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+          <FadeIn className="max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Partnership quality</p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Why brands continue with us</h2>
+          </FadeIn>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {whyClientsStay.map((item, i) => (
+              <FadeIn key={item.title} delay={0.06 * i}>
+                <div className="h-full rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm">
+                  <h3 className="text-base font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.desc}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
