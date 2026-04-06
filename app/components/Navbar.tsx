@@ -295,7 +295,7 @@ export default function Navbar() {
 
   const triggerClass = (active: boolean) =>
     [
-      "inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-all duration-200",
+      "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold tracking-tight transition-all duration-200 sm:text-sm",
       active
         ? "bg-gradient-to-r from-violet-600/12 to-fuchsia-600/10 text-violet-700 shadow-sm ring-1 ring-violet-200/70"
         : "text-slate-600 hover:bg-slate-100/90 hover:text-violet-700",
@@ -309,7 +309,7 @@ export default function Navbar() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-2.5 sm:px-8 lg:px-10">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-1.5 sm:px-6 lg:px-8">
         {/* <Link
           href="/"
           className="group flex shrink-0 items-center gap-3 rounded-xl py-0.5 pr-2 transition hover:opacity-95"
@@ -329,14 +329,15 @@ export default function Navbar() {
         </Link> */}
 <Link
   href="/"
-  className="group flex items-center gap-3"
+  className="group flex shrink-0 items-center py-0.5 transition-opacity hover:opacity-95"
 >
   <Image
     src="/techify-logo.png"
-    alt="Techify Logo"
-    width={60}
-    height={60}
-    className="object-fit"
+    alt="Techify Labs"
+    width={220}
+    height={56}
+    className="h-11 w-auto object-contain sm:h-12 md:h-[3.25rem]"
+    priority
   />
 
   {/* <div className="leading-tight">
@@ -351,7 +352,7 @@ export default function Navbar() {
         <nav className="hidden items-center gap-0.5 md:flex" aria-label="Main">
           <Link
             href="/"
-            className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-600 transition-all duration-200 hover:bg-violet-50 hover:text-violet-700"
+            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition-all duration-200 hover:bg-violet-50 hover:text-violet-700 sm:text-sm"
           >
             Home
           </Link>
@@ -516,13 +517,13 @@ export default function Navbar() {
 
           <Link
             href="/about"
-            className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700"
+            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700 sm:text-sm"
           >
             About Us
           </Link>
           <Link
             href="/contact"
-            className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700"
+            className="rounded-full px-3 py-1.5 text-[13px] font-semibold text-slate-600 transition hover:bg-slate-100/90 hover:text-violet-700 sm:text-sm"
           >
             Contact Us
           </Link>
@@ -533,7 +534,7 @@ export default function Navbar() {
             type="button"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden rounded-full bg-[#0f2744] px-5 py-2.5 text-sm font-bold text-white shadow-md ring-1 ring-slate-900/15 transition-shadow duration-300 hover:shadow-lg hover:shadow-slate-900/25 sm:inline-flex"
+            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden rounded-full bg-[#0f2744] px-4 py-2 text-xs font-bold text-white shadow-md ring-1 ring-slate-900/15 transition-shadow duration-300 hover:shadow-lg hover:shadow-slate-900/25 sm:inline-flex sm:px-5 sm:text-sm"
           >
             <span
               className="absolute inset-0 bg-[#1a365d] opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
@@ -556,7 +557,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200/80 bg-white/90 text-slate-700 shadow-sm transition hover:border-violet-200 hover:bg-violet-50/50 hover:text-violet-700 md:hidden"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200/80 bg-white/90 text-slate-700 shadow-sm transition hover:border-violet-200 hover:bg-violet-50/50 hover:text-violet-700 md:hidden"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((v) => !v)}
@@ -591,7 +592,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-[6.75rem] z-50 mx-3 max-h-[min(82vh,calc(100dvh-8rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl md:hidden"
+              className="fixed inset-x-0 top-[7rem] z-50 mx-3 max-h-[min(82vh,calc(100dvh-8rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl md:hidden"
             >
               <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                 <Link
