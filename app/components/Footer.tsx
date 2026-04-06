@@ -124,11 +124,11 @@ const SCROLL_EDGE_PX = 80;
 
 function FooterSectionTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="mb-6 md:mb-0">
-      <h3 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 leading-snug">
+    <div className="mb-0">
+      <h3 className="m-0 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 leading-tight">
         {children}
       </h3>
-      <div className="mt-2.5 h-px w-10 bg-[#ea580c] md:mt-2" aria-hidden />
+      <div className="mt-1 h-px w-10 bg-[#ea580c]" aria-hidden />
     </div>
   );
 }
@@ -185,36 +185,33 @@ export default function Footer() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-9 sm:px-8 lg:px-10 lg:pb-16 lg:pt-10">
+      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-9">
         {/*
-          md: row 1 = logo | "Our services" | "Contact" (same baseline row — matches logo with heading line)
-          md: row 2 = brand copy | service links | contact card
+          md:flex: har column apna stack — heading turant upar, list/card neeche (grid row height ≠ logo height).
         */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-8 md:gap-y-10 lg:gap-x-10 lg:gap-y-12 xl:gap-x-12">
-          {/* Row 1 — logo (same md row as “Our services” / “Contact” headings) */}
-          <motion.div
-            className="-translate-y-[18px] md:col-span-4 md:col-start-1 md:row-start-1 md:-translate-y-[22px] md:self-start lg:col-span-4 lg:-translate-y-[26px]"
-            whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-            transition={springSoft}
-          >
-            <Link
-              href="/"
-              className="block w-fit max-w-full leading-none transition hover:opacity-95"
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-6 lg:gap-8 xl:gap-10">
+          {/* Column — brand */}
+          <div className="flex min-w-0 flex-col gap-7 md:max-w-[34%] md:flex-[1.02] md:basis-0">
+            <motion.div
+              className="-translate-y-4 flex w-fit max-w-full flex-col md:-translate-y-5"
+              whileHover={reduceMotion ? undefined : { scale: 1.01 }}
+              transition={springSoft}
             >
-              <Image
-                src="/techify-logo.png"
-                alt="Techify Labs"
-                width={635}
-                height={331}
-                className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left object-top sm:max-w-[268px]"
-                sizes="(max-width: 640px) 85vw, 268px"
-              />
-            </Link>
-            <div className="mt-2.5 h-px w-10 bg-[#ea580c] md:mt-2" aria-hidden />
-          </motion.div>
-
-          {/* Row 2 — brand body (mobile: directly under logo) */}
-          <div className="flex flex-col gap-7 md:col-span-4 md:col-start-1 md:row-start-2 lg:col-span-4">
+              <Link
+                href="/"
+                className="block w-fit max-w-full leading-none transition hover:opacity-95"
+              >
+                <Image
+                  src="/techify-logo.png"
+                  alt="Techify Labs"
+                  width={635}
+                  height={331}
+                  className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left object-top sm:max-w-[268px]"
+                  sizes="(max-width: 640px) 85vw, 268px"
+                />
+              </Link>
+              <div className="mt-1 h-px w-10 shrink-0 self-center bg-[#ea580c]" aria-hidden />
+            </motion.div>
             <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/40">Digital growth partner</p>
             <p className="max-w-md text-[15px] leading-[1.65] text-white/80">
               Trusted marketing and development partner — practical strategies and execution that help your brand
@@ -244,38 +241,32 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Row 1 — services heading (md: aligns with logo top row) */}
-          <div className="min-w-0 md:col-span-5 md:col-start-5 md:row-start-1 md:self-start lg:col-span-5">
+          {/* Column — services (title + list tight stack) */}
+          <div className="flex min-w-0 flex-col gap-4 md:flex-[1.15] md:basis-0">
             <FooterSectionTitle>Our services</FooterSectionTitle>
+            <ul className="grid w-full min-w-0 grid-cols-1 gap-x-5 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-5 md:gap-x-4 lg:gap-x-6 sm:gap-y-px">
+              {services.map((item) => (
+                <li key={item} className="border-b border-white/[0.06] sm:border-0">
+                  <a
+                    href="#"
+                    className="group/footer-link flex items-baseline gap-2 py-2.5 text-white/75 transition-colors duration-200 hover:text-white sm:py-2"
+                  >
+                    <span
+                      className="mt-[0.35em] h-1 w-1 shrink-0 rounded-full bg-[#ea580c]/80 opacity-60 transition-opacity group-hover/footer-link:opacity-100"
+                      aria-hidden
+                    />
+                    <span className="min-w-0 flex-1 group-hover/footer-link:underline group-hover/footer-link:decoration-white/30 group-hover/footer-link:underline-offset-4">
+                      {item}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Row 2 — service links */}
-          <ul className="grid grid-cols-1 gap-x-12 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-12 md:col-span-5 md:col-start-5 md:row-start-2 md:gap-x-10 lg:col-span-5 lg:gap-x-14 sm:gap-y-px">
-            {services.map((item) => (
-              <li key={item} className="border-b border-white/[0.06] sm:border-0">
-                <a
-                  href="#"
-                  className="group/footer-link flex items-baseline gap-2 py-2.5 text-white/75 transition-colors duration-200 hover:text-white sm:py-2"
-                >
-                  <span
-                    className="mt-[0.35em] h-1 w-1 shrink-0 rounded-full bg-[#ea580c]/80 opacity-60 transition-opacity group-hover/footer-link:opacity-100"
-                    aria-hidden
-                  />
-                  <span className="min-w-0 flex-1 group-hover/footer-link:underline group-hover/footer-link:decoration-white/30 group-hover/footer-link:underline-offset-4">
-                    {item}
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Row 1 — contact heading */}
-          <div className="md:col-span-3 md:col-start-10 md:row-start-1 md:self-start lg:col-span-3">
+          {/* Column — contact */}
+          <div className="flex w-full min-w-0 flex-col gap-4 md:max-w-[min(100%,320px)] md:flex-[0.95] md:shrink-0">
             <FooterSectionTitle>Contact</FooterSectionTitle>
-          </div>
-
-          {/* Row 2 — contact card */}
-          <div className="w-full min-w-0 md:col-span-3 md:col-start-10 md:row-start-2 lg:col-span-3">
             <div className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-[2px]">
               <a
                 href="mailto:info@techifylabs.in"
