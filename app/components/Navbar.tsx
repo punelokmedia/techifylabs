@@ -304,9 +304,9 @@ export default function Navbar() {
   return (
     <header ref={navRef} className="sticky top-0 z-50">
       <TopBar />
-      <div className="relative border-b border-slate-200/70 bg-white/90 shadow-[0_1px_0_rgba(255,255,255,0.7)_inset] backdrop-blur-xl backdrop-saturate-150">
+      <div className="relative border-b border-slate-200/80 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.06)]">
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-200/50 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"
           aria-hidden
         />
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-4 py-1 sm:gap-3 sm:py-0.5 sm:px-5 md:gap-5 md:px-6 lg:gap-6 lg:px-8 xl:px-10">
