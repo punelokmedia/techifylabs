@@ -3,9 +3,9 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import TopBar from "./TopBar";
-import Image from "next/image";
 type MenuKey = "solutions" | "knowledge" | null;
 
 const solutionsSections = [
@@ -304,7 +304,7 @@ export default function Navbar() {
   return (
     <header ref={navRef} className="sticky top-0 z-50">
       <TopBar />
-      <div className="relative border-b border-slate-200/80 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.06)]">
+      <div className="relative border-b border-slate-200/80 bg-white">
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"
           aria-hidden
@@ -336,7 +336,8 @@ export default function Navbar() {
     alt="Techify Labs"
     width={720}
     height={180}
-    className="h-12 w-auto origin-left object-contain object-left sm:h-14 md:h-16 lg:h-[4.5rem]"
+    className="h-12 w-auto origin-left object-contain object-left shadow-none [box-shadow:none] sm:h-14 md:h-16 lg:h-[4.5rem]"
+    style={{ filter: "none" }}
     priority
     sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 300px"
   />
