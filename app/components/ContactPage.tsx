@@ -360,9 +360,11 @@ export default function ContactPage() {
   </span>
   <div className="min-w-0 flex-1">
     <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Location</p>
-    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">Gujarat, India</p>
-    <p className="mt-1 text-[13px] text-slate-500 leading-relaxed">
-      Ahmedabad · Remote-first delivery
+    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">Techifylavs Pvt. Ltd.</p>
+    <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
+      UG Floor, Office No. 67-68 Clover Hills Plaza
+      <br />
+      NIBM Road, Kondhwa, Pune - 411048
     </p>
     <p className="mt-2 text-xs font-medium text-violet-600 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
       In-person by appointment →
@@ -825,14 +827,16 @@ export default function ContactPage() {
       </section>
 
       {/* Footer strip */}
-      <section className="border-t border-slate-200/80 bg-[#0a0f1c] py-12 pb-[max(3rem,env(safe-area-inset-bottom))] text-white sm:py-16 sm:pb-16">
+      <section className="border-t border-slate-200/80 bg-[#2563eb] py-12 pb-[max(3rem,env(safe-area-inset-bottom))] text-white sm:py-16 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="flex flex-col items-stretch justify-between gap-8 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm sm:flex-row sm:items-center sm:p-10">
             <div className="min-w-0">
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Location</p>
-              <p className="mt-2 text-lg font-semibold sm:text-xl">Gujarat, India</p>
+              <p className="mt-2 text-lg font-semibold sm:text-xl">Techifylavs Pvt. Ltd.</p>
               <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/55 sm:text-sm">
-                Remote-first delivery · In-person by appointment.
+                UG Floor, Office No. 67-68 Clover Hills Plaza
+                <br />
+                NIBM Road, Kondhwa, Pune - 411048
               </p>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">

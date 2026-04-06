@@ -319,7 +319,7 @@ function ServiceCard({
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-slate-50 py-16 sm:py-20 lg:py-24" aria-labelledby="services-heading">
+    <section id="services" className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="services-heading">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -377,7 +377,7 @@ export default function ServicesSection() {
         >
           <motion.a
             href="#"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#0f2744] px-7 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2563eb] px-7 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
             whileHover={{
               scale: 1.03,
               y: -2,
@@ -387,7 +387,7 @@ export default function ServicesSection() {
             whileTap={{ scale: 0.98, transition: springTap }}
           >
             <span
-              className="absolute inset-0 bg-[#1a365d] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              className="absolute inset-0 bg-[#1d4ed8] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               aria-hidden
             />
             <span

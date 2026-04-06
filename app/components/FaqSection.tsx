@@ -40,7 +40,7 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(1);
 
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="faq-heading">
+    <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="faq-heading">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
@@ -77,7 +77,7 @@ export default function FaqSection() {
             </motion.div>
             <motion.div
               whileHover={{ y: -3 }}
-              className="rounded-xl bg-gradient-to-br from-[#1e3a5f] to-[#0f2744] p-5 text-white shadow-lg ring-1 ring-white/10"
+              className="rounded-xl bg-gradient-to-br from-[#1d4ed8] to-[#2563eb] p-5 text-white shadow-lg ring-1 ring-white/10"
             >
               <p className="text-2xl font-bold">250K+</p>
               <p className="text-xs text-white/75">Reach &amp; growth milestones</p>
@@ -97,7 +97,7 @@ export default function FaqSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, ease }}
-              className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3.5 py-1.5 text-sm font-semibold text-[#0f2744] ring-1 ring-sky-200/80"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3.5 py-1.5 text-sm font-semibold text-[#2563eb] ring-1 ring-sky-200/80"
             >
               FAQ
             </motion.span>

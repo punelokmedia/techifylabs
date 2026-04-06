@@ -71,7 +71,7 @@ const avatars = ["A", "B", "C", "D"];
 
 export default function AboutSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="about-heading">
+    <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="about-heading">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
           <motion.div
@@ -102,7 +102,7 @@ export default function AboutSection() {
               variants={fadeUp}
               custom={1}
               whileHover={{ y: -4, transition: springSoft }}
-              className="group/card relative mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-[#0f2744] via-[#152a4a] to-[#1a365d] p-6 shadow-xl ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-950/40 hover:ring-violet-400/25 sm:p-8"
+              className="group/card relative mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-[#2563eb] via-[#1d4ed8] to-[#1e40af] p-6 shadow-xl ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-950/40 hover:ring-violet-400/25 sm:p-8"
             >
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet-500/25 via-indigo-500/10 to-fuchsia-500/20 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
@@ -112,7 +112,7 @@ export default function AboutSection() {
                 {avatars.map((letter, i) => (
                   <motion.span
                     key={letter}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#152a4a] bg-white text-xs font-bold text-slate-600 shadow-md transition-colors duration-300 first:ml-0 -ml-3 group-hover/card:border-violet-200 group-hover/card:text-violet-700"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#1e40af] bg-white text-xs font-bold text-slate-600 shadow-md transition-colors duration-300 first:ml-0 -ml-3 group-hover/card:border-violet-200 group-hover/card:text-violet-700"
                     style={{ zIndex: avatars.length - i }}
                     whileHover={{ scale: 1.12, y: -3, transition: springTap }}
                   >
@@ -120,7 +120,7 @@ export default function AboutSection() {
                   </motion.span>
                 ))}
                 <motion.span
-                  className="-ml-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#152a4a] bg-gradient-to-br from-violet-500 to-fuchsia-500 text-lg font-light text-white shadow-md transition-[box-shadow,filter] duration-300 group-hover/card:shadow-lg group-hover/card:shadow-violet-500/40"
+                  className="-ml-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#1e40af] bg-gradient-to-br from-violet-500 to-fuchsia-500 text-lg font-light text-white shadow-md transition-[box-shadow,filter] duration-300 group-hover/card:shadow-lg group-hover/card:shadow-violet-500/40"
                   whileHover={{ scale: 1.1 }}
                   transition={springTap}
                 >
@@ -214,7 +214,7 @@ export default function AboutSection() {
         >
           <motion.a
             href="#"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#0f2744] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2563eb] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
             whileHover={{
               scale: 1.03,
               y: -2,
@@ -224,7 +224,7 @@ export default function AboutSection() {
             whileTap={{ scale: 0.98, transition: springTap }}
           >
             <span
-              className="absolute inset-0 bg-[#1a365d] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              className="absolute inset-0 bg-[#1d4ed8] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               aria-hidden
             />
             <span

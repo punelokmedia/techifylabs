@@ -295,21 +295,21 @@ export default function Navbar() {
 
   const triggerClass = (active: boolean) =>
     [
-      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-2 md:px-3.5 md:py-1.5 md:text-[15px]",
+      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-2 md:px-3.5 md:py-2 md:text-[15px]",
       active
-        ? "bg-gradient-to-r from-violet-600/12 to-fuchsia-600/10 text-violet-700 shadow-sm ring-1 ring-violet-200/70"
-        : "text-slate-600 hover:bg-slate-100/90 hover:text-violet-700",
+        ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
+        : "text-white/90 hover:bg-white/10 hover:text-white",
     ].join(" ");
 
   return (
     <header ref={navRef} className="sticky top-0 z-50">
       <TopBar />
-      <div className="relative border-b border-slate-200/80 bg-white">
+      <div className="relative border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-4 py-1 sm:gap-3 sm:py-0.5 sm:px-5 md:gap-5 md:px-6 lg:gap-6 lg:px-8 xl:px-10">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
         {/* <Link
           href="/"
           className="group flex shrink-0 items-center gap-3 rounded-xl py-0.5 pr-2 transition hover:opacity-95"
@@ -334,12 +334,12 @@ export default function Navbar() {
   <Image
     src="/techify-logo.png"
     alt="Techify Labs"
-    width={720}
-    height={180}
-    className="h-12 w-auto origin-left object-contain object-left shadow-none [box-shadow:none] sm:h-14 md:h-16 lg:h-[4.5rem]"
+    width={635}
+    height={331}
+    className="block h-auto w-auto max-w-[min(520px,92vw)] max-h-[4.75rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
     style={{ filter: "none" }}
     priority
-    sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 300px"
+    sizes="(max-width: 768px) 92vw, 520px"
   />
 
   {/* <div className="leading-tight">
@@ -354,7 +354,7 @@ export default function Navbar() {
         <nav className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5" aria-label="Main">
           <Link
             href="/"
-            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 text-sm font-semibold text-slate-700 transition-all duration-200 hover:bg-violet-50 hover:text-violet-700 md:px-3.5 md:py-1.5 md:text-[15px]"
+            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
           >
             Home
           </Link>
@@ -519,13 +519,13 @@ export default function Navbar() {
 
           <Link
             href="/about"
-            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 text-sm font-semibold text-slate-700 transition hover:bg-slate-100/90 hover:text-violet-700 md:px-3.5 md:py-1.5 md:text-[15px]"
+            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
           >
             About Us
           </Link>
           <Link
             href="/contact"
-            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1 text-sm font-semibold text-slate-700 transition hover:bg-slate-100/90 hover:text-violet-700 md:px-3.5 md:py-1.5 md:text-[15px]"
+            className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
           >
             Contact Us
           </Link>
@@ -536,14 +536,14 @@ export default function Navbar() {
             type="button"
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-[#0f2744] px-3 py-1.5 text-[11px] font-bold text-white shadow-md ring-1 ring-slate-900/15 transition-shadow duration-300 hover:shadow-lg hover:shadow-slate-900/25 sm:inline-flex sm:px-3.5 sm:py-2 sm:text-xs md:px-4 md:text-sm"
+            className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3 py-2 text-[11px] font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg sm:inline-flex sm:px-4 sm:py-2 sm:text-xs md:px-5 md:text-sm"
           >
             <span
-              className="absolute inset-0 bg-[#1a365d] opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
+              className="absolute inset-0 bg-[#3b31a1]/5 opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
               aria-hidden
             />
             <span
-              className="absolute inset-0 bg-gradient-to-r from-violet-600/30 via-indigo-500/25 to-fuchsia-500/25 opacity-0 transition-opacity duration-300 group-hover/navcta:opacity-100"
+              className="absolute inset-0 bg-gradient-to-r from-violet-400/15 via-indigo-400/10 to-fuchsia-400/10 opacity-0 transition-opacity duration-300 group-hover/navcta:opacity-100"
               aria-hidden
             />
             <span className="relative z-10 flex items-center gap-1">
@@ -559,7 +559,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-200/80 bg-white/90 text-slate-700 shadow-sm transition hover:border-violet-200 hover:bg-violet-50/50 hover:text-violet-700 md:hidden"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white shadow-sm transition hover:border-white/40 hover:bg-white/15 md:hidden"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             onClick={() => setMobileOpen((v) => !v)}
@@ -594,7 +594,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-[8rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-7rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl sm:mx-6 md:hidden"
+              className="fixed inset-x-0 top-[9rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-10rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl sm:mx-6 md:hidden"
             >
               <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                 <Link
@@ -710,7 +710,7 @@ export default function Navbar() {
                 <motion.button
                   type="button"
                   whileTap={{ scale: 0.98 }}
-                  className="mt-3 rounded-full bg-[#0f2744] py-3.5 text-sm font-bold text-white shadow-md ring-1 ring-white/15 transition-colors hover:bg-[#1a365d]"
+                  className="mt-3 rounded-full bg-white py-3.5 text-sm font-bold text-[#3b31a1] shadow-md ring-1 ring-white/30 transition-colors hover:bg-violet-50"
                   onClick={() => setMobileOpen(false)}
                 >
                   Get a free consultation →

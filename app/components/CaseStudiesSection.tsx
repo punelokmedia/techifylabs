@@ -174,7 +174,7 @@ export default function CaseStudiesSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-slate-100 bg-slate-50/90 py-16 sm:py-20 lg:py-24" aria-labelledby="case-studies-heading">
+    <section className="border-t border-slate-200/60 bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="case-studies-heading">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <motion.div
           variants={headerContainer}
@@ -210,7 +210,7 @@ export default function CaseStudiesSection() {
             href="#"
             whileHover={reduceMotion ? undefined : { scale: 1.04, y: -3, transition: spring }}
             whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-            className="group relative inline-flex items-center gap-2 self-start overflow-hidden rounded-xl bg-[#0f2744] px-5 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-slate-900/10 sm:self-auto"
+            className="group relative inline-flex items-center gap-2 self-start overflow-hidden rounded-xl bg-[#2563eb] px-5 py-3 text-sm font-semibold text-white shadow-md ring-1 ring-slate-900/10 sm:self-auto"
           >
             <span
               className="absolute inset-0 bg-gradient-to-r from-violet-600/0 via-violet-500/25 to-fuchsia-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

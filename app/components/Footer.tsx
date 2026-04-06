@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 
 const springSoft = { type: "spring" as const, stiffness: 380, damping: 28 };
 const springTap = { type: "spring" as const, stiffness: 520, damping: 32 };
@@ -120,6 +122,17 @@ function IconWhatsApp({ className }: { className?: string }) {
 
 const SCROLL_EDGE_PX = 80;
 
+function FooterSectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <div className="mb-6 md:mb-0">
+      <h3 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 leading-snug">
+        {children}
+      </h3>
+      <div className="mt-2.5 h-px w-10 bg-[#ea580c] md:mt-2" aria-hidden />
+    </div>
+  );
+}
+
 export default function Footer() {
   const reduceMotion = useReducedMotion();
   const [atTop, setAtTop] = useState(true);
@@ -153,141 +166,151 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative z-0 mt-auto overflow-hidden bg-gradient-to-b from-[#3f3d9e] via-[#36348e] to-[#2a2868] text-white">
+    <footer className="relative z-0 mt-auto overflow-hidden bg-[#3b31a1] text-white">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_-20%,rgba(167,139,250,0.18),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-18%,rgba(255,255,255,0.07),transparent_58%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.028)_1px,transparent_1px)] [background-size:48px_48px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/[0.06] via-transparent to-black/[0.18]"
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-[#ea580c]" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-[3px] h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 sm:px-8 lg:px-10 lg:pb-12 lg:pt-20">
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-10 lg:gap-12">
-          {/* Brand */}
-          <div className="space-y-6 md:justify-self-start">
-            <div className="flex items-center gap-4">
-              <motion.div
-                className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-400 via-indigo-500 to-fuchsia-600 text-base font-bold text-white shadow-lg shadow-violet-950/40 ring-2 ring-white/25"
-                whileHover={reduceMotion ? undefined : { scale: 1.05, rotate: -2 }}
-                transition={springSoft}
-              >
-                <span className="drop-shadow-sm">TE</span>
-              </motion.div>
-              <div>
-                <p className="text-xl font-semibold tracking-tight sm:text-2xl">Techify</p>
-                <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-200/80">
-                  Accelerating brands
-                </p>
-              </div>
-            </div>
-            <p className="max-w-sm text-sm leading-relaxed text-white/80">
-              Techify is a trusted digital partner delivering reliable, cost-effective marketing and
-              development services tailored to grow your brand online.
+      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-9 sm:px-8 lg:px-10 lg:pb-16 lg:pt-10">
+        {/*
+          md: row 1 = logo | "Our services" | "Contact" (same baseline row — matches logo with heading line)
+          md: row 2 = brand copy | service links | contact card
+        */}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-x-8 md:gap-y-10 lg:gap-x-10 lg:gap-y-12 xl:gap-x-12">
+          {/* Row 1 — logo (same md row as “Our services” / “Contact” headings) */}
+          <motion.div
+            className="-translate-y-[18px] md:col-span-4 md:col-start-1 md:row-start-1 md:-translate-y-[22px] md:self-start lg:col-span-4 lg:-translate-y-[26px]"
+            whileHover={reduceMotion ? undefined : { scale: 1.01 }}
+            transition={springSoft}
+          >
+            <Link
+              href="/"
+              className="block w-fit max-w-full leading-none transition hover:opacity-95"
+            >
+              <Image
+                src="/techify-logo.png"
+                alt="Techify Labs"
+                width={635}
+                height={331}
+                className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left object-top sm:max-w-[268px]"
+                sizes="(max-width: 640px) 85vw, 268px"
+              />
+            </Link>
+            <div className="mt-2.5 h-px w-10 bg-[#ea580c] md:mt-2" aria-hidden />
+          </motion.div>
+
+          {/* Row 2 — brand body (mobile: directly under logo) */}
+          <div className="flex flex-col gap-7 md:col-span-4 md:col-start-1 md:row-start-2 lg:col-span-4">
+            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/40">Digital growth partner</p>
+            <p className="max-w-md text-[15px] leading-[1.65] text-white/80">
+              Trusted marketing and development partner — practical strategies and execution that help your brand
+              compete and scale online.
             </p>
-            <div className="border-t border-white/10 pt-6">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">
-                Follow us
-              </p>
-              <div className="flex flex-wrap gap-3">
+            <div className="border-t border-white/[0.12] pt-7">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">Connect</p>
+              <div className="flex flex-wrap gap-2.5">
                 {[
-                  { Icon: IconFacebook, label: "Facebook", hover: "hover:bg-[#1877f2]/25 hover:ring-[#1877f2]/40" },
-                  { Icon: IconInstagram, label: "Instagram", hover: "hover:bg-fuchsia-500/20 hover:ring-fuchsia-400/35" },
-                  { Icon: IconLinkedIn, label: "LinkedIn", hover: "hover:bg-[#0a66c2]/25 hover:ring-[#0a66c2]/40" },
+                  { Icon: IconFacebook, label: "Facebook", hover: "hover:bg-[#1877f2]/20 hover:border-[#1877f2]/35" },
+                  { Icon: IconInstagram, label: "Instagram", hover: "hover:bg-fuchsia-500/15 hover:border-fuchsia-400/30" },
+                  { Icon: IconLinkedIn, label: "LinkedIn", hover: "hover:bg-[#0a66c2]/20 hover:border-[#0a66c2]/35" },
                 ].map(({ Icon, label, hover }) => (
                   <motion.a
                     key={label}
                     href="#"
                     aria-label={label}
-                    className={`flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.08] text-white shadow-sm ring-1 ring-white/5 backdrop-blur-sm transition-colors ${hover}`}
-                    whileHover={reduceMotion ? undefined : { y: -4, scale: 1.06 }}
-                    whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
+                    className={`flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.14] bg-white/[0.05] text-white/95 transition-colors ${hover}`}
+                    whileHover={reduceMotion ? undefined : { y: -2 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.96, transition: springTap }}
                     transition={springSoft}
                   >
-                    <Icon className="h-[18px] w-[18px]" />
+                    <Icon className="h-[17px] w-[17px]" />
                   </motion.a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Services */}
-          <div className="md:justify-self-center md:w-full md:max-w-md">
-            <h3 className="relative mb-6 text-center text-lg font-bold tracking-tight text-white md:text-left">
-              Our Services
-              <span className="absolute -bottom-2 left-1/2 h-0.5 w-10 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-400 md:left-0 md:translate-x-0" />
-            </h3>
-            <ul className="space-y-1 text-sm">
-              {services.map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="group/footer-link flex items-start gap-3 rounded-xl px-3 py-2.5 text-white/85 transition-colors duration-200 hover:bg-white/[0.07] hover:text-white"
-                  >
-                    <span
-                      className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-white/10 text-[10px] font-bold text-violet-200 transition-transform duration-200 group-hover/footer-link:translate-x-0.5 group-hover/footer-link:bg-violet-500/30"
-                      aria-hidden
-                    >
-                      →
-                    </span>
-                    <span className="leading-snug">{item}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Row 1 — services heading (md: aligns with logo top row) */}
+          <div className="min-w-0 md:col-span-5 md:col-start-5 md:row-start-1 md:self-start lg:col-span-5">
+            <FooterSectionTitle>Our services</FooterSectionTitle>
           </div>
 
-          {/* Contact */}
-          <div className="md:justify-self-end md:w-full md:max-w-sm">
-            <h3 className="relative mb-6 text-center text-lg font-bold tracking-tight text-white md:text-left">
-              Get In Touch
-              <span className="absolute -bottom-2 left-1/2 h-0.5 w-10 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-300 to-fuchsia-400 md:left-0 md:translate-x-0" />
-            </h3>
-            <div className="space-y-3 text-sm">
-              <motion.a
+          {/* Row 2 — service links */}
+          <ul className="grid grid-cols-1 gap-x-12 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-12 md:col-span-5 md:col-start-5 md:row-start-2 md:gap-x-10 lg:col-span-5 lg:gap-x-14 sm:gap-y-px">
+            {services.map((item) => (
+              <li key={item} className="border-b border-white/[0.06] sm:border-0">
+                <a
+                  href="#"
+                  className="group/footer-link flex items-baseline gap-2 py-2.5 text-white/75 transition-colors duration-200 hover:text-white sm:py-2"
+                >
+                  <span
+                    className="mt-[0.35em] h-1 w-1 shrink-0 rounded-full bg-[#ea580c]/80 opacity-60 transition-opacity group-hover/footer-link:opacity-100"
+                    aria-hidden
+                  />
+                  <span className="min-w-0 flex-1 group-hover/footer-link:underline group-hover/footer-link:decoration-white/30 group-hover/footer-link:underline-offset-4">
+                    {item}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Row 1 — contact heading */}
+          <div className="md:col-span-3 md:col-start-10 md:row-start-1 md:self-start lg:col-span-3">
+            <FooterSectionTitle>Contact</FooterSectionTitle>
+          </div>
+
+          {/* Row 2 — contact card */}
+          <div className="w-full min-w-0 md:col-span-3 md:col-start-10 md:row-start-2 lg:col-span-3">
+            <div className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-[2px]">
+              <a
                 href="mailto:info@techifylabs.in"
-                className="group flex gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 transition-colors hover:border-violet-300/25 hover:bg-white/[0.08]"
-                whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-                transition={springSoft}
+                className="group flex gap-4 border-b border-white/[0.08] px-5 py-4 transition-colors hover:bg-white/[0.05]"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500/30 to-indigo-600/20 ring-1 ring-white/10">
-                  <IconMail className="h-5 w-5 text-violet-100" />
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
+                  <IconMail className="h-[18px] w-[18px]" />
                 </span>
-                <div className="min-w-0 flex-1 text-left">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-white/45">Email</p>
-                  <p className="mt-1 font-medium text-white/95 underline-offset-2 transition group-hover:text-white group-hover:underline">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">Email</p>
+                  <p className="mt-1 break-all text-[14px] font-medium text-white/95 transition group-hover:underline group-hover:underline-offset-4">
                     info@techifylabs.in
                   </p>
                 </div>
-              </motion.a>
-              <motion.a
-                href={PHONE_TEL}
-                className="group flex gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 transition-colors hover:border-fuchsia-300/25 hover:bg-white/[0.08]"
-                whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-                transition={springSoft}
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-fuchsia-500/25 to-violet-600/20 ring-1 ring-white/10">
-                  <IconPhone className="h-5 w-5 text-fuchsia-100" />
+              </a>
+              <a href={PHONE_TEL} className="group flex gap-4 border-b border-white/[0.08] px-5 py-4 transition-colors hover:bg-white/[0.05]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
+                  <IconPhone className="h-[18px] w-[18px]" />
                 </span>
-                <div className="min-w-0 flex-1 text-left">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-white/45">Phone</p>
-                  <p className="mt-1 font-medium text-white/95 transition group-hover:text-white">
-                    {PHONE_DISPLAY}
-                  </p>
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">Phone</p>
+                  <p className="mt-1 text-[14px] font-medium tabular-nums text-white/95">{PHONE_DISPLAY}</p>
                 </div>
-              </motion.a>
-              <div className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/25 to-violet-600/20 ring-1 ring-white/10">
-                  <IconMapPin className="h-5 w-5 text-indigo-100" />
+              </a>
+              <div className="flex gap-4 px-5 py-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center self-start rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
+                  <IconMapPin className="h-[18px] w-[18px]" />
                 </span>
-                <div className="min-w-0 flex-1 text-left leading-relaxed text-white/90">
-                  <p className="text-[11px] font-semibold uppercase tracking-wider text-white/45">Location</p>
-                  <p className="mt-1 font-semibold text-white">Gujarat, India</p>
-                  <p className="mt-1 text-sm text-white/70">
-                    Your business address line
+                <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-white/78">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">Office</p>
+                  <p className="mt-1.5 font-semibold text-white">Techify Labs Pvt. Ltd.</p>
+                  <p className="mt-1.5">
+                    UG Floor, Office No. 67-68, Clover Hills Plaza
                     <br />
-                    City, State — PIN
+                    NIBM Road, Kondhwa, Pune — 411048
                   </p>
                 </div>
               </div>
@@ -296,26 +319,30 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative border-t border-white/[0.12] bg-black/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-9 sm:flex-row sm:justify-between sm:px-8 lg:px-10">
-          <p className="text-center text-xs text-white/60 sm:text-left sm:text-sm">
-            © {new Date().getFullYear()} Techify. All rights reserved.
+      <div className="relative border-t border-white/[0.1] bg-black/20">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10 lg:py-8">
+          <p className="text-center text-[13px] leading-relaxed text-white/55 sm:text-left">
+            © {new Date().getFullYear()} Techify Labs Pvt. Ltd. All rights reserved.
           </p>
           <nav
-            className="flex flex-wrap justify-center gap-x-1 gap-y-2 text-xs sm:gap-x-2 sm:text-sm"
-            aria-label="Footer"
+            className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2 text-[13px] sm:justify-end"
+            aria-label="Footer legal"
           >
-            {bottomLinks.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                className="relative rounded-lg px-3 py-1.5 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-                whileHover={reduceMotion ? undefined : { y: -1 }}
-                whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-                transition={springSoft}
-              >
-                {link.label}
-              </motion.a>
+            {bottomLinks.map((link, i) => (
+              <span key={link.label} className="inline-flex items-center">
+                {i > 0 ? (
+                  <span className="mx-2 hidden h-3 w-px bg-white/25 sm:inline" aria-hidden />
+                ) : null}
+                <motion.a
+                  href={link.href}
+                  className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
+                  whileHover={reduceMotion ? undefined : { y: -0.5 }}
+                  whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                  transition={springSoft}
+                >
+                  {link.label}
+                </motion.a>
+              </span>
             ))}
           </nav>
         </div>
@@ -323,7 +350,7 @@ export default function Footer() {
 
       {/* Side scroll: up / down — above Call + WhatsApp stack */}
       <motion.div
-        className="fixed bottom-40 right-6 z-40 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#1e1b4b]/95 text-white shadow-lg shadow-black/25 shadow-violet-900/20 backdrop-blur-md"
+        className="fixed bottom-40 right-6 z-40 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#3b31a1]/95 text-white shadow-lg shadow-black/25 backdrop-blur-md"
         role="group"
         aria-label="Page scroll"
         initial={false}
@@ -360,7 +387,7 @@ export default function Footer() {
       >
         <motion.a
           href={PHONE_TEL}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2563eb] text-white shadow-lg shadow-black/35 ring-2 ring-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2868]"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#3b31a1] text-white shadow-lg shadow-black/35 ring-2 ring-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1]"
           aria-label={`Call ${PHONE_DISPLAY}`}
           whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
           whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
@@ -372,7 +399,7 @@ export default function Footer() {
           href={`https://wa.me/${PHONE_E164.replace(/\D/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/35 ring-2 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2a2868]"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/35 ring-2 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1]"
           aria-label="Chat on WhatsApp"
           whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
           whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}

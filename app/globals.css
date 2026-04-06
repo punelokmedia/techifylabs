@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* Brand + page shell — keep light sections and header/footer navy in one family */
+@layer base {
+  :root {
+    --brand-primary: #2563eb;
+    --navbar-bg: #3b31a1;
+    --page-bg: #f4f6f9;
+  }
+}

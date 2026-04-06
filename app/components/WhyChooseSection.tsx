@@ -40,7 +40,7 @@ function GaugeIllustration() {
 
 export default function WhyChooseSection() {
   return (
-    <section className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="why-choose-heading">
+    <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="why-choose-heading">
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -78,7 +78,7 @@ export default function WhyChooseSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, ease }}
-              className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3.5 py-1.5 text-sm font-semibold text-[#0f2744] ring-1 ring-sky-200/80"
+              className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3.5 py-1.5 text-sm font-semibold text-[#2563eb] ring-1 ring-sky-200/80"
             >
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-500 text-xs text-white">
                 ✓
@@ -120,7 +120,7 @@ export default function WhyChooseSection() {
                     whileHover={{ x: 4, transition: spring }}
                     className="flex gap-3 text-sm font-medium text-slate-700 sm:text-base"
                   >
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0f2744] text-xs text-white">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#2563eb] text-xs text-white">
                       ✓
                     </span>
                     {item}
@@ -134,7 +134,7 @@ export default function WhyChooseSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2, ease }}
                 whileHover={{ y: -6, scale: 1.02, transition: spring }}
-                className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0f2744] to-[#1e3a5f] px-8 py-10 text-center text-white shadow-xl ring-1 ring-white/10 sm:min-w-[200px]"
+                className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#2563eb] to-[#1e40af] px-8 py-10 text-center text-white shadow-xl ring-1 ring-white/10 sm:min-w-[200px]"
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-20"
@@ -156,7 +156,7 @@ export default function WhyChooseSection() {
               transition={{ duration: 0.45, delay: 0.25, ease }}
               whileHover={{ scale: 1.03, y: -2, transition: spring }}
               whileTap={{ scale: 0.98 }}
-              className="group mt-10 inline-flex items-center gap-2 rounded-xl bg-[#0f2744] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-slate-900/10 transition-colors hover:bg-[#1a365d]"
+              className="group mt-10 inline-flex items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-slate-900/10 transition-colors hover:bg-[#1d4ed8]"
             >
               Get free consultation
               <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>

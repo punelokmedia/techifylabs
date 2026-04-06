@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "About | Techify — Digital growth studio",
   description:
-    "Techify is a performance-led studio in Gujarat, India: paid media, creative, SEO, and commerce under one retainer model — built for brands that need clarity between spend and revenue.",
+    "Techifylavs Pvt. Ltd., UG Floor, Office No. 67-68 Clover Hills Plaza, NIBM Road, Kondhwa, Pune - 411048. Performance-led studio for paid media, creative, SEO, and commerce.",
 };
 
 export default function About() {

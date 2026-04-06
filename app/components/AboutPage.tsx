@@ -259,7 +259,7 @@ at the heart of everything we do.
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/90 via-[#050816]/20 to-transparent" aria-hidden />
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-300/90">Pune Maharashtra</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-300/90">NIBM Road, Kondhwa, Pune</p>
                     <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85 sm:text-[25px]">
                       About Us
                     </p>
