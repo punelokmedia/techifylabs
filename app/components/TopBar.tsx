@@ -54,18 +54,18 @@ export default function TopBar() {
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-2.5 sm:px-8 sm:py-2.5 lg:px-10">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs sm:text-sm">
           <motion.a
-            href="mailto:info@techeasify.com"
+            href="mailto:info@techifylabs.in"
             className={linkBase}
             whileHover={socialHover}
             whileTap={{ scale: 0.98 }}
           >
             <IconMail className="h-3.5 w-3.5 shrink-0 opacity-90" />
-            <span className="hidden sm:inline">info@techeasify.com</span>
+            <span className="hidden sm:inline">info@techifylabs.in</span>
             <span className="sm:hidden">Email</span>
           </motion.a>
-          <motion.a href="tel:+919313961011" className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
+          <motion.a href="tel:+918956776958" className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
             <IconPhone className="h-3.5 w-3.5 shrink-0 opacity-90" />
-            +91 9313961011
+            +91 8956776958
           </motion.a>
         </div>
         <nav className="flex flex-wrap items-center gap-4 text-xs font-medium sm:gap-5 sm:text-sm" aria-label="Social">

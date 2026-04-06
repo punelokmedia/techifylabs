@@ -31,9 +31,9 @@ const bottomLinks = [
   { label: "Sitemap", href: "#" },
 ];
 
-const PHONE_E164 = "+919313961011";
+const PHONE_E164 = "+918956776958";
 const PHONE_TEL = `tel:${PHONE_E164}`;
-const PHONE_DISPLAY = "+91 9313961011";
+const PHONE_DISPLAY = "+91 8956776958";
 
 function IconFacebook({ className }: { className?: string }) {
   return (
@@ -246,7 +246,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 text-sm">
               <motion.a
-                href="mailto:info@techify.com"
+                href="mailto:info@techifylabs.in"
                 className="group flex gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 transition-colors hover:border-violet-300/25 hover:bg-white/[0.08]"
                 whileHover={reduceMotion ? undefined : { scale: 1.01 }}
                 transition={springSoft}
@@ -257,7 +257,7 @@ export default function Footer() {
                 <div className="min-w-0 flex-1 text-left">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-white/45">Email</p>
                   <p className="mt-1 font-medium text-white/95 underline-offset-2 transition group-hover:text-white group-hover:underline">
-                    info@techify.com
+                    info@techifylabs.in
                   </p>
                 </div>
               </motion.a>
