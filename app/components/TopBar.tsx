@@ -51,7 +51,7 @@ function IconLinkedIn({ className }: { className?: string }) {
 export default function TopBar() {
   return (
     <div className="border-b border-white/10 bg-[#0f2744] text-white">
-      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-4 gap-y-1.5 px-4 py-2 sm:px-5 md:px-6 lg:px-8 xl:px-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-1.5 sm:px-5 md:px-6 lg:px-8 xl:px-10">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs sm:text-sm">
           <motion.a
             href="mailto:info@techifylabs.in"

@@ -164,7 +164,7 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[10rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
+      <section className="sticky top-[8rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a key={item.href} href={item.href} className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-amber-300 hover:text-amber-700">
