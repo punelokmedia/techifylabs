@@ -100,7 +100,7 @@ function IconFlask({ className }: { className?: string }) {
 export default function HowItWorksSection() {
   return (
     <section className="border-t border-slate-200/60 bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="how-heading">
-      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <div className="mb-12 text-center lg:mb-14">
           <motion.span
             initial={{ opacity: 0, y: 10 }}

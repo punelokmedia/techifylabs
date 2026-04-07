@@ -175,7 +175,7 @@ export default function CaseStudiesSection() {
 
   return (
     <section className="border-t border-slate-200/60 bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="case-studies-heading">
-      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <motion.div
           variants={headerContainer}
           initial="hidden"

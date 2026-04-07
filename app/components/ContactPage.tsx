@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useId, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useCallback, useId, useState, type FormEvent, type ReactNode } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 380, damping: 28 };
@@ -87,7 +87,7 @@ const faqs = [
   },
   {
     q: "What does the form do when I submit?",
-    a: "It opens your email app with a pre-filled message to our team. You can edit before sending — nothing is transmitted until you hit send in your mail client.",
+    a: "Your message is sent securely to our team through Web3Forms. We reply from the same channel you used — usually within one business day.",
   },
 ] as const;
 
@@ -114,16 +114,21 @@ function FadeIn({
   );
 }
 
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "ff3fb5d5-cfc0-4631-9ecb-4bfa761cf8c4";
+
 export default function ContactPage() {
   const reduce = useReducedMotion();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
-  const [topic, setTopic] = useState<Topic | "">("");
+  const [topic, setTopic] = useState<Topic>(topics[0]);
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
+  /** idle → user is filling; success after Web3Forms POST */
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [submitError, setSubmitError] = useState("");
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const faqBaseId = useId();
@@ -138,22 +143,38 @@ export default function ContactPage() {
     return Object.keys(next).length === 0;
   }, [name, email, message]);
 
-  const mailtoHref = useMemo(() => {
-    const subject = encodeURIComponent(`Inquiry — ${topic || "General"} — ${company || name || "Techify"}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "—"}\nCompany: ${company || "—"}\nInterest: ${topic || "—"}\n\n${message}`,
-    );
-    return `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  }, [name, email, phone, company, topic, message]);
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setSubmitted(true);
-     // Auto-open mail app immediately
-  setTimeout(() => {
-    window.location.href = mailtoHref;
-  }, 400);
+    setSubmitError("");
+    setFormStatus("submitting");
+    try {
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `Techify inquiry — ${topic} — ${company || name || "Website"}`,
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim() || "—",
+        company: company.trim() || "—",
+        message: `Interest: ${topic}\n\n${message.trim()}`,
+        from_name: name.trim(),
+        replyto: email.trim(),
+        botcheck: false,
+      };
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = (await res.json()) as { success?: boolean; message?: string };
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Something went wrong. Please try again or email us directly.");
+      }
+      setFormStatus("success");
+    } catch (err) {
+      setFormStatus("error");
+      setSubmitError(err instanceof Error ? err.message : "Submission failed. Please try again.");
+    }
   };
 
   const copyEmail = async () => {
@@ -454,13 +475,13 @@ export default function ContactPage() {
                   <div className="border-b border-slate-100 px-4 py-5 sm:px-9 sm:py-7">
                     <h2 className="text-lg font-semibold text-slate-900 sm:text-2xl">Project inquiry</h2>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      <span className="text-red-500">*</span> Required. Submit builds a draft in your email app — you can edit
-                      before sending.
+                      <span className="text-red-500">*</span> Required fields. We receive this securely and reply by email,
+                      usually within one business day.
                     </p>
                   </div>
 
                   <AnimatePresence mode="wait">
-                    {submitted ? (
+                    {formStatus === "success" ? (
                       <motion.div
                         key="done"
                         initial={{ opacity: 0, y: 14 }}
@@ -478,25 +499,27 @@ export default function ContactPage() {
                             <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </motion.div>
-                        <h3 className="mt-8 text-xl font-semibold text-slate-900">Ready to send</h3>
+                        <h3 className="mt-8 text-xl font-semibold text-slate-900">Message sent</h3>
                         <p className="mx-auto mt-3 max-w-md text-[15px] text-slate-600">
-                          Your mail app opens with subject and body filled. Adjust anything, then hit send.
+                          Thanks — we have your details. A strategist will follow up at <span className="font-medium text-slate-800">{email}</span>.
                         </p>
-                        <motion.a
-                          href={mailtoHref}
-                          className="mt-10 inline-flex min-h-[48px] w-full max-w-sm items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 sm:h-12 sm:w-auto sm:max-w-none sm:px-10"
-                          whileHover={reduce ? undefined : { scale: 1.03, y: -2 }}
-                          whileTap={reduce ? undefined : { scale: 0.98 }}
-                        >
-                          Open in email app
-                        </motion.a>
                         <motion.button
                           type="button"
-                          onClick={() => setSubmitted(false)}
-                          className="mt-8 text-sm font-semibold text-slate-500 underline-offset-2 hover:text-slate-800 hover:underline"
-                          whileHover={reduce ? undefined : { x: -3 }}
+                          onClick={() => {
+                            setFormStatus("idle");
+                            setName("");
+                            setEmail("");
+                            setPhone("");
+                            setCompany("");
+                            setTopic(topics[0]);
+                            setMessage("");
+                            setErrors({});
+                          }}
+                          className="mt-10 inline-flex min-h-[48px] w-full max-w-sm items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-slate-50 sm:mx-auto"
+                          whileHover={reduce ? undefined : { scale: 1.02 }}
+                          whileTap={reduce ? undefined : { scale: 0.98 }}
                         >
-                          ← Edit form
+                          Send another message
                         </motion.button>
                       </motion.div>
                     ) : (
@@ -610,7 +633,7 @@ export default function ContactPage() {
     <select
       id="contact-topic"
       value={topic}
-      onChange={(e) => setTopic(e.target.value as Topic | "")}
+      onChange={(e) => setTopic(e.target.value as Topic)}
       className="w-full min-h-[48px] appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition cursor-pointer focus:border-violet-400 focus:ring-2 focus:ring-violet-200/80 sm:py-3.5"
     >
       {/* <option value="">Select a topic…</option> */}
@@ -645,14 +668,21 @@ export default function ContactPage() {
                           {errors.message && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.message}</p>}
                         </div>
 
+                        {formStatus === "error" && submitError && (
+                          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+                            {submitError}
+                          </p>
+                        )}
+
                         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
                           <motion.button
                             type="submit"
-                            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-500 hover:to-fuchsia-500 sm:h-12 sm:w-auto sm:px-12"
-                            whileHover={reduce ? undefined : { scale: 1.02, y: -2 }}
-                            whileTap={reduce ? undefined : { scale: 0.98 }}
+                            disabled={formStatus === "submitting"}
+                            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-500 hover:to-fuchsia-500 disabled:cursor-not-allowed disabled:opacity-60 sm:h-12 sm:w-auto sm:px-12"
+                            whileHover={reduce || formStatus === "submitting" ? undefined : { scale: 1.02, y: -2 }}
+                            whileTap={reduce || formStatus === "submitting" ? undefined : { scale: 0.98 }}
                           >
-                            Schedule Now
+                            {formStatus === "submitting" ? "Sending…" : "Schedule Now"}
                           </motion.button>
                           <p className="text-xs leading-relaxed text-slate-500">
                             We use your details only to respond. No resale, no spam lists.

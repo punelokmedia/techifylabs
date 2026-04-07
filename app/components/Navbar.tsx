@@ -196,20 +196,21 @@ function MenuPanel({
 }: {
   children: ReactNode;
   className?: string;
-  /** mega: solid navy corporate panel | compact: smaller hub menu */
+  /** mega: large flyout | compact: hub menu — light surface (matches indigo bar, not harsh black) */
   variant?: "mega" | "compact";
 }) {
   const base =
     variant === "mega"
-      ? "relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0a1428] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.04)_inset]"
-      : "relative overflow-hidden rounded-2xl border border-white/[0.1] bg-[#0a1428] shadow-[0_28px_56px_-14px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)_inset] backdrop-blur-xl";
+      ? "relative overflow-hidden rounded-3xl border border-slate-200/95 bg-white/98 shadow-[0_28px_56px_-16px_rgba(59,49,161,0.24),0_0_0_1px_rgba(15,23,42,0.04)_inset] backdrop-blur-xl"
+      : "relative overflow-hidden rounded-3xl border border-slate-200/95 bg-white/98 shadow-[0_20px_44px_-14px_rgba(59,49,161,0.22)] backdrop-blur-xl";
 
   return (
     <div className={[base, className].join(" ")}>
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-400/20 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#ea580c] via-[#3b31a1]/35 to-violet-500/30"
         aria-hidden
       />
+      <div className="pointer-events-none absolute inset-x-0 top-[3px] h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent" aria-hidden />
       <div className="relative z-10">{children}</div>
     </div>
   );
@@ -309,7 +310,7 @@ export default function Navbar() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
+        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
         {/* <Link
           href="/"
           className="group flex shrink-0 items-center gap-3 rounded-xl py-0.5 pr-2 transition hover:opacity-95"
@@ -387,7 +388,7 @@ export default function Navbar() {
                   animate="visible"
                   exit="exit"
                   style={{ transformOrigin: "top center" }}
-                  className="absolute left-1/2 top-full z-50 w-[min(94vw,820px)] -translate-x-1/2 pt-3"
+                  className="absolute left-1/2 top-full z-50 w-[min(94vw,880px)] -translate-x-1/2 pt-3.5"
                   onMouseEnter={() => setOpenMenu("solutions")}
                 >
                   <MenuPanel variant="mega" className="px-8 py-9 sm:px-10 sm:py-10">
@@ -404,23 +405,23 @@ export default function Navbar() {
                             <motion.div key={section.title} variants={megaSectionVariants}>
                               <div className="mb-4 flex items-center gap-2.5">
                                 <span
-                                  className="h-2 w-2 shrink-0 rounded-[2px] bg-violet-500 shadow-[0_0_14px_rgba(139,92,246,0.55)]"
+                                  className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_12px_rgba(234,88,12,0.4)]"
                                   aria-hidden
                                 />
-                                <h3 className="text-[11px] font-bold uppercase leading-tight tracking-[0.14em] text-white">
+                                <h3 className="text-[11px] font-bold uppercase leading-tight tracking-[0.14em] text-slate-800">
                                   {section.title}
                                 </h3>
                               </div>
-                              <ul className="space-y-0.5 border-l border-white/[0.06] pl-4">
+                              <ul className="space-y-0.5 border-l border-slate-200 pl-4">
                                 {section.links.map(({ label, href }) => (
                                   <li key={label}>
                                     <a
                                       href={href}
                                       role="menuitem"
-                                      className="group relative block py-2.5 pl-1 text-[15px] font-normal leading-snug text-slate-200/90 transition-colors duration-200 ease-out hover:text-violet-400 focus-visible:text-violet-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1428]"
+                                      className="group relative block rounded-lg px-2 py-2.5 text-[15px] font-medium leading-snug text-slate-600 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:bg-violet-50 focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                                     >
                                       <span
-                                        className="absolute -left-[17px] top-1/2 hidden h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-violet-400 opacity-0 shadow-[0_0_10px_rgba(167,139,250,0.7)] transition-opacity duration-200 group-hover:opacity-100 sm:block"
+                                        className="absolute -left-[17px] top-1/2 hidden h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#3b31a1] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:block"
                                         aria-hidden
                                       />
                                       {label}
@@ -467,16 +468,16 @@ export default function Navbar() {
                   animate="visible"
                   exit="exit"
                   style={{ transformOrigin: "top left" }}
-                  className="absolute left-0 top-full z-50 min-w-[min(92vw,320px)] pt-3"
+                  className="absolute left-0 top-full z-50 min-w-[min(92vw,360px)] pt-3.5"
                   onMouseEnter={() => setOpenMenu("knowledge")}
                 >
                   <MenuPanel variant="compact" className="p-4">
-                    <div className="border-b border-white/[0.08] pb-3 pl-1">
+                    <div className="border-b border-slate-200 pb-3 pl-1">
                       <div className="flex items-center gap-2">
-                        <span className="h-2 w-2 shrink-0 rounded-[2px] bg-violet-500 shadow-[0_0_12px_rgba(139,92,246,0.5)]" aria-hidden />
-                        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white">Knowledge Hub</p>
+                        <span className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.35)]" aria-hidden />
+                        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-800">Knowledge Hub</p>
                       </div>
-                      <p className="mt-1.5 pl-4 text-xs text-slate-400">Case studies, team, and insights</p>
+                      <p className="mt-1.5 pl-4 text-xs text-slate-500">Case studies, team, and insights</p>
                     </div>
                     <motion.ul
                       className="mt-3 space-y-0.5"
@@ -498,13 +499,13 @@ export default function Navbar() {
                           <a
                             href={href}
                             role="menuitem"
-                            className="group flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-slate-200/95 transition-colors duration-200 ease-out hover:bg-white/[0.06] hover:text-violet-300 focus-visible:text-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1428]"
+                            className="group flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-slate-700 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                           >
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] text-violet-300/90 ring-1 ring-white/[0.08] transition duration-200 group-hover:bg-violet-500/15 group-hover:text-violet-200">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#3b31a1] ring-1 ring-slate-200/80 transition duration-200 group-hover:bg-violet-100 group-hover:text-[#3b31a1]">
                               <Icon className="h-[17px] w-[17px]" />
                             </span>
                             <span className="flex-1">{label}</span>
-                            <span className="text-violet-400/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-violet-400/90" aria-hidden>
+                            <span className="text-[#ea580c]/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#ea580c]" aria-hidden>
                               →
                             </span>
                           </a>
@@ -586,7 +587,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-slate-900/25 backdrop-blur-sm md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -594,19 +595,19 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-[9rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-10rem))] overflow-y-auto rounded-2xl border border-white/[0.12] bg-slate-950/95 p-4 shadow-[0_24px_80px_-12px_rgba(15,23,42,0.85)] ring-1 ring-white/10 backdrop-blur-2xl sm:mx-6 md:hidden"
+              className="fixed inset-x-0 top-[9rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-10rem))] overflow-y-auto rounded-2xl border border-slate-200/90 bg-white/98 p-4 shadow-[0_24px_48px_-12px_rgba(59,49,161,0.18)] ring-1 ring-slate-200/50 backdrop-blur-xl sm:mx-6 md:hidden"
             >
               <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                 <Link
                   href="/"
-                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-white/90 transition-colors hover:bg-white/[0.08]"
+                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-slate-800 transition-colors hover:bg-slate-50"
                   onClick={() => setMobileOpen(false)}
                 >
                   Home
                 </Link>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-white transition hover:bg-white/[0.05]"
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-50"
                   onClick={() => setMobileAccordion((a) => (a === "solutions" ? null : "solutions"))}
                 >
                   Our Solutions
@@ -626,10 +627,10 @@ export default function Navbar() {
                       {solutionsSections.map((section) => (
                         <div
                           key={section.title}
-                          className="mb-3 rounded-xl bg-white/[0.04] p-3 ring-1 ring-white/[0.06]"
+                          className="mb-3 rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200/80"
                         >
-                          <p className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-violet-200">
-                            <span className="h-1.5 w-1.5 rounded-sm bg-gradient-to-br from-violet-400 to-fuchsia-500" />
+                          <p className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#3b31a1]">
+                            <span className="h-1.5 w-1.5 rounded-sm bg-[#ea580c]" />
                             {section.title}
                           </p>
                           <ul className="space-y-0.5">
@@ -637,10 +638,10 @@ export default function Navbar() {
                               <li key={label}>
                                 <a
                                   href={href}
-                                  className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-white/88 active:bg-white/10"
+                                  className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-slate-700 active:bg-violet-50"
                                   onClick={() => setMobileOpen(false)}
                                 >
-                                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/[0.06] text-violet-200 ring-1 ring-white/10">
+                                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-[#3b31a1] ring-1 ring-slate-200/80">
                                     <Icon className="h-4 w-4" />
                                   </span>
                                   {label}
@@ -656,7 +657,7 @@ export default function Navbar() {
 
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-white transition hover:bg-white/[0.05]"
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-50"
                   onClick={() => setMobileAccordion((a) => (a === "knowledge" ? null : "knowledge"))}
                 >
                   Knowledge Hub
@@ -673,15 +674,15 @@ export default function Navbar() {
                       transition={{ duration: 0.32, ease: dropdownEase }}
                       className="overflow-hidden pl-2"
                     >
-                      <ul className="space-y-1 rounded-xl bg-white/[0.04] p-2 pb-3 ring-1 ring-white/[0.06]">
+                      <ul className="space-y-1 rounded-xl bg-slate-50 p-2 pb-3 ring-1 ring-slate-200/80">
                         {knowledgeLinks.map(({ label, href, Icon }) => (
                           <li key={label}>
                             <a
                               href={href}
-                              className="flex items-center gap-3 rounded-lg px-2 py-3 text-sm font-semibold text-white/90 active:bg-white/10"
+                              className="flex items-center gap-3 rounded-lg px-2 py-3 text-sm font-semibold text-slate-800 active:bg-violet-50"
                               onClick={() => setMobileOpen(false)}
                             >
-                              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/[0.06] text-violet-200 ring-1 ring-white/10">
+                              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-[#3b31a1] ring-1 ring-slate-200/80">
                                 <Icon className="h-4 w-4" />
                               </span>
                               {label}
@@ -695,14 +696,14 @@ export default function Navbar() {
 
                 <Link
                   href="/about"
-                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-white/90 transition hover:bg-white/[0.05]"
+                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50"
                   onClick={() => setMobileOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link
                   href="/contact"
-                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-white/90 transition hover:bg-white/[0.05]"
+                  className="rounded-xl px-4 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50"
                   onClick={() => setMobileOpen(false)}
                 >
                   Contact Us
@@ -710,7 +711,7 @@ export default function Navbar() {
                 <motion.button
                   type="button"
                   whileTap={{ scale: 0.98 }}
-                  className="mt-3 rounded-full bg-white py-3.5 text-sm font-bold text-[#3b31a1] shadow-md ring-1 ring-white/30 transition-colors hover:bg-violet-50"
+                  className="mt-3 rounded-full bg-[#3b31a1] py-3.5 text-sm font-bold text-white shadow-md ring-1 ring-slate-200/60 transition-colors hover:bg-[#32297f]"
                   onClick={() => setMobileOpen(false)}
                 >
                   Get a free consultation →

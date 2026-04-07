@@ -98,7 +98,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative mx-auto mt-0 w-full max-w-7xl min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.5rem] rounded-t-none border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]"
+      className="relative mx-auto mt-0 w-full max-w-[1440px] min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.5rem] rounded-t-none border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]"
       aria-label="Hero"
     >
       {/* Background: YouTube (Google) or MP4 */}

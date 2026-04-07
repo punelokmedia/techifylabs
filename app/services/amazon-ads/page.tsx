@@ -1,8 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
+import ServiceAdsInsights from "../../components/ServiceAdsInsights";
+import ServiceIndustriesSection, { type IndustryCard } from "../../components/ServiceIndustriesSection";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -22,11 +25,25 @@ function FadeIn({ children, className = "", delay = 0 }: { children: ReactNode; 
 }
 
 const quickNav = [
+  { label: "Reporting", href: "#insights" },
+  { label: "Industries", href: "#industries" },
   { label: "Why us", href: "#why-us" },
   { label: "Process", href: "#process" },
   { label: "Services", href: "#services" },
   { label: "Case studies", href: "#case-studies" },
   { label: "FAQ", href: "#faq" },
+];
+
+const industries: IndustryCard[] = [
+  { title: "Beauty & personal care", tagline: "Sponsored Brands, defence keywords, and ACOS control for fast-moving SKUs.", icon: "sparkle" },
+  { title: "Home & kitchen", tagline: "Placement reviews, category growth, and basket economics that protect margin.", icon: "home" },
+  { title: "Fashion & accessories", tagline: "Variant-rich catalogues with clean SP structure and search-term harvesting.", icon: "fashion" },
+  { title: "Health & wellness", tagline: "Listing–ad alignment, compliant claims, and profitable new-to-brand mix.", icon: "health" },
+  { title: "Consumer electronics", tagline: "Conquesting and defence with bid rules that respect thin margins.", icon: "tech" },
+  { title: "Baby & family", tagline: "Lifecycle-led keywords, safe budgets, and repeat purchase signals.", icon: "family" },
+  { title: "Sports & outdoors", tagline: "Seasonal demand maps with fresh creative and keyword refreshes.", icon: "sport" },
+  { title: "Grocery & consumables", tagline: "Subscribe-aware pacing, TACoS visibility, and replenishment cohorts.", icon: "food" },
+  { title: "D2C & emerging brands", tagline: "Launch ladders for new ASINs — from discovery to disciplined scale.", icon: "rocket" },
 ];
 
 const stats = [
@@ -86,7 +103,7 @@ export default function AmazonAdsPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_25%_-25%,rgba(245,158,11,0.35),transparent_55%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_100%_40%,rgba(251,191,36,0.15),transparent_45%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
           <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12" aria-label="Breadcrumb">
             <Link href="/" className="transition hover:text-white">Home</Link>
             <span className="text-white/25" aria-hidden>/</span>
@@ -119,9 +136,41 @@ export default function AmazonAdsPage() {
                   See what's included
                 </Link>
               </div>
+              <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
+                {[
+                  { t: "Sponsored Products, Brands & Display as one system", c: "text-amber-300/90" },
+                  { t: "Weekly search-term mining & bid discipline", c: "text-yellow-200/85" },
+                  { t: "TACoS lens — not ads in a silo", c: "text-orange-200/85" },
+                ].map((x) => (
+                  <div key={x.t} className="flex items-start gap-2 text-[12px] leading-snug text-white/55">
+                    <svg className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${x.c}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                    </svg>
+                    <span>{x.t}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
-            <motion.div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8" initial={reduce ? false : { opacity: 0, x: 20 }} animate={reduce ? undefined : { opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1, ease }}>
+            <motion.div
+              className="rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)] backdrop-blur-md ring-1 ring-white/10 sm:p-8"
+              initial={reduce ? false : { opacity: 0, x: 20 }}
+              animate={reduce ? undefined : { opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease }}
+            >
+              <div className="relative -mx-1 mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 sm:aspect-[16/9]">
+                <Image
+                  src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=85"
+                  alt="E-commerce and online retail shopping"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208]/90 via-[#1a1208]/15 to-transparent" aria-hidden />
+                <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium text-white/90">
+                  ACOS, TACoS, and ASIN-level clarity — not spreadsheet chaos.
+                </span>
+              </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-200/90">Paid Advertising Services</p>
               <div className="mt-4 space-y-2">
                 {[
@@ -151,21 +200,64 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-[#1a1208] py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-3 gap-4 divide-x divide-white/10">
-            {stats.map((s) => (
-              <div key={s.label} className="px-4 text-center first:pl-0 last:pr-0">
-                <p className="text-2xl font-semibold text-white sm:text-3xl">{s.num}</p>
-                <p className="mt-1 text-[12px] text-white/50">{s.label}</p>
+      <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-white/[0.09] to-white/[0.03] px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:rounded-3xl sm:px-10 sm:py-9">
+            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 sm:text-left">Marketplace advertising footprint</p>
+            <div className="grid grid-cols-3 gap-2 divide-x divide-white/10 sm:gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
+                  <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
+                  <p className="mt-1 text-[11px] font-medium leading-snug text-white/50 sm:text-[12px]">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="h-6 bg-[#1a1208] sm:h-8" aria-hidden />
+
+      <section id="insights" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
+          <FadeIn className="mb-10 max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Marketplace metrics</p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              Growth and efficiency on one timeline
+            </h2>
+            <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
+              We connect ad sales to spend and organic movement so you know when to scale ASINs or tighten bids. Preview is illustrative; real dashboards use your Seller Central / Ads data.
+            </p>
+          </FadeIn>
+          <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+            <FadeIn delay={0.05}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
+                <Image
+                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=85"
+                  alt="Retail and marketplace operations"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" aria-hidden />
+                <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white sm:bottom-6 sm:left-6 sm:right-6">
+                  Weekly reviews on search terms, placements, and catalogue priorities.
+                </p>
               </div>
-            ))}
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <ServiceAdsInsights
+                theme="amazon"
+                eyebrow="Performance preview"
+                title="What good Amazon reporting looks like"
+                subtitle="Indexed orders trend with spend mix and a profitability lens (ROAS / ACOS). We tailor exports to how your finance team already thinks."
+              />
+            </FadeIn>
           </div>
         </div>
       </section>
 
       <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a key={item.href} href={item.href} className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-amber-300 hover:text-amber-700">
               {item.label}
@@ -175,7 +267,7 @@ export default function AmazonAdsPage() {
       </section>
 
       <section id="why-us" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Why choose us</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Amazon Ads built for profitable marketplace growth</h2>
@@ -194,7 +286,7 @@ export default function AmazonAdsPage() {
       </section>
 
       <section id="process" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-amber-50/30 py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Our process</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">A structured Amazon Ads workflow</h2>
@@ -214,7 +306,7 @@ export default function AmazonAdsPage() {
       </section>
 
       <section id="services" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">What's included</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Amazon Ads services we offer</h2>
@@ -237,8 +329,15 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
+      <ServiceIndustriesSection
+        theme="amazon"
+        items={industries}
+        headline="Categories we grow on Amazon"
+        subhead="Share of voice, catalog complexity, and margin profiles differ by aisle — we tune structure and bids for your reality."
+      />
+
       <section id="case-studies" className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Case studies</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Results from marketplace brands</h2>
@@ -246,7 +345,7 @@ export default function AmazonAdsPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((c, i) => (
               <FadeIn key={c.brand} delay={0.06 * i}>
-                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-amber-500 before:via-orange-500 before:to-yellow-500/50 sm:rounded-3xl sm:p-8">
                   <span className="inline-flex self-start rounded-full bg-amber-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-amber-700">{c.tag}</span>
                   <h3 className="mt-5 text-xl font-semibold text-slate-900">{c.brand}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{c.desc}</p>
@@ -294,7 +393,7 @@ export default function AmazonAdsPage() {
       </section>
 
       <section className="border-t border-slate-200/80 bg-[#1a1208] py-16 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-semibold sm:text-3xl">Ready to scale on Amazon?</h2>
             <p className="mt-4 text-[15px] text-white/65">Book a strategy call and get a practical plan for spend, structure, and profitable growth.</p>

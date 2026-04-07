@@ -72,7 +72,7 @@ const avatars = ["A", "B", "C", "D"];
 export default function AboutSection() {
   return (
     <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="about-heading">
-      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
           <motion.div
             initial="hidden"

@@ -1,8 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
+import ServiceAdsInsights from "../../components/ServiceAdsInsights";
+import ServiceIndustriesSection, { type IndustryCard } from "../../components/ServiceIndustriesSection";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -72,16 +75,16 @@ const adServices = [
   },
 ];
 
-const industries = [
-  { title: "Fashion & Apparel", icon: "👗" },
-  { title: "E-Commerce", icon: "🛒" },
-  { title: "Real Estate", icon: "🏠" },
-  { title: "Healthcare", icon: "🏥" },
-  { title: "Education", icon: "🎓" },
-  { title: "Technology", icon: "💻" },
-  { title: "Food & Beverage", icon: "🍽️" },
-  { title: "Professional Services", icon: "💼" },
-  { title: "SaaS & Tech", icon: "☁️" },
+const industries: IndustryCard[] = [
+  { title: "Fashion & apparel", tagline: "Seasonal pushes, UGC tests, and lookalikes tuned for repeat purchase.", icon: "fashion" },
+  { title: "E-commerce & D2C", tagline: "Catalog ads, DPAs, and retargeting structured for margin-safe scale.", icon: "cart" },
+  { title: "Real estate", tagline: "Lead-quality filters, location stacks, and creative that books calls.", icon: "building" },
+  { title: "Healthcare & wellness", tagline: "Trust-first messaging, compliant angles, and measure-ready funnels.", icon: "health" },
+  { title: "Education & coaching", tagline: "Lead forms, webinar funnels, and nurture creative that enrols.", icon: "education" },
+  { title: "Technology & hardware", tagline: "Demand gen with demo, trial, and retailer signals in one view.", icon: "tech" },
+  { title: "Food & beverage", tagline: "Local reach, offers, and creative that drives footfall and orders.", icon: "food" },
+  { title: "Professional services", tagline: "High-intent locals, appointment CTAs, and clear proof in ads.", icon: "briefcase" },
+  { title: "SaaS & B2B", tagline: "Pipeline narratives, trial cohorts, and expansion retargeting.", icon: "cloud" },
 ];
 
 const caseStudies = [
@@ -122,6 +125,8 @@ const whyClientsStay = [
 ];
 
 const quickNav = [
+  { label: "Reporting", href: "#insights" },
+  { label: "Industries", href: "#industries" },
   { label: "Why us", href: "#why-us" },
   { label: "Process", href: "#process" },
   { label: "Services", href: "#services" },
@@ -164,7 +169,7 @@ export default function MetaAdsPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(217,70,239,0.14),transparent_45%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
           <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12" aria-label="Breadcrumb">
             <Link href="/" className="transition hover:text-white">Home</Link>
             <span className="text-white/25" aria-hidden>/</span>
@@ -209,15 +214,42 @@ export default function MetaAdsPage() {
                   See what's included
                 </Link>
               </div>
+              <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
+                {[
+                  { t: "Event & Pixel QA on every launch", c: "text-emerald-300/90" },
+                  { t: "Creative testing roadmap, weekly", c: "text-violet-300/90" },
+                  { t: "Reporting tied to revenue & leads", c: "text-fuchsia-300/85" },
+                ].map((x) => (
+                  <div key={x.t} className="flex items-start gap-2 text-[12px] leading-snug text-white/55">
+                    <svg className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${x.c}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                    </svg>
+                    <span>{x.t}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             {/* Sidebar contact card */}
             <motion.div
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8"
+              className="rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md ring-1 ring-white/10 sm:p-8"
               initial={reduce ? false : { opacity: 0, x: 20 }}
               animate={reduce ? undefined : { opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease }}
             >
+              <div className="relative -mx-1 mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 sm:aspect-[16/9]">
+                <Image
+                  src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=900&q=85"
+                  alt="Social media marketing workspace"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/80 via-[#050816]/10 to-transparent" aria-hidden />
+                <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium text-white/90">
+                  Campaign dashboards, creative testing, clear next actions.
+                </span>
+              </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Paid Advertising Services</p>
               <div className="mt-4 space-y-2">
                 {[
@@ -261,22 +293,60 @@ export default function MetaAdsPage() {
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="border-t border-white/10 bg-[#0a0f1c] py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-3 gap-4 divide-x divide-white/10">
-            {stats.map((s) => (
-              <div key={s.label} className="px-4 text-center first:pl-0 last:pr-0">
-                <p className="text-2xl font-semibold text-white sm:text-3xl">{s.num}</p>
-                <p className="mt-1 text-[12px] text-white/50">{s.label}</p>
+      {/* Stats — floating panel */}
+      <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px]">
+          <div className="rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.11] to-white/[0.04] px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:rounded-3xl sm:px-10 sm:py-9">
+            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 sm:text-left">Performance marketing footprint</p>
+            <div className="grid grid-cols-3 gap-2 divide-x divide-white/10 sm:gap-4">
+              {stats.map((s) => (
+                <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
+                  <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
+                  <p className="mt-1 text-[11px] font-medium leading-snug text-white/50 sm:text-[12px]">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="h-6 bg-[#050816] sm:h-8" aria-hidden />
+
+      <section id="insights" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
+          <FadeIn className="mb-10 max-w-2xl">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Data-led delivery</p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              Reporting you can act on — not vanity screenshots
+            </h2>
+            <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
+              Weekly readouts connect creative tests, audience shifts, and spend to conversions and ROAS. Below is a stylised preview; your account gets live Meta data.
+            </p>
+          </FadeIn>
+          <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+            <FadeIn delay={0.05}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
+                <Image
+                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=85"
+                  alt="Team reviewing performance marketing analytics"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" aria-hidden />
+                <p className="absolute bottom-4 left-4 right-4 text-sm font-medium text-white sm:bottom-6 sm:left-6 sm:right-6">
+                  Structured reviews: what moved, what did not, and what we ship next week.
+                </p>
               </div>
-            ))}
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <ServiceAdsInsights theme="meta" />
+            </FadeIn>
           </div>
         </div>
       </section>
 
       <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a
               key={item.href}
@@ -291,7 +361,7 @@ export default function MetaAdsPage() {
 
       {/* First 30 days */}
       <section className="border-t border-slate-200/60 bg-white py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
             <FadeIn className="lg:col-span-5">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">First 30 days</p>
@@ -320,7 +390,7 @@ export default function MetaAdsPage() {
 
       {/* Why clients stay */}
       <section className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Partnership quality</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Why brands continue with us</h2>
@@ -340,7 +410,7 @@ export default function MetaAdsPage() {
 
       {/* Why Choose Us */}
       <section id="why-us" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Why choose us</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
@@ -372,7 +442,7 @@ export default function MetaAdsPage() {
 
       {/* Process */}
       <section id="process" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-violet-50/30 py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Our process</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Our Meta Ads Process</h2>
@@ -396,7 +466,7 @@ export default function MetaAdsPage() {
 
       {/* Ad Services */}
       <section id="services" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">What's included</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Facebook Advertising Services We Offer</h2>
@@ -424,32 +494,16 @@ export default function MetaAdsPage() {
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Industries</p>
-            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Industries We Serve</h2>
-            <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              Every industry has its quirks. We tailor campaigns to your audience, not someone else's.
-            </p>
-          </FadeIn>
-          <div className="mt-10 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-9 lg:gap-4">
-            {industries.map((ind, i) => (
-              <FadeIn key={ind.title} delay={0.04 * i}>
-                <div className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200/90 bg-white px-3 py-5 text-center shadow-sm transition hover:border-violet-200 hover:shadow-md">
-                  <span className="text-2xl">{ind.icon}</span>
-                  <p className="text-[11px] font-medium leading-snug text-slate-700">{ind.title}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ServiceIndustriesSection
+        theme="meta"
+        items={industries}
+        headline="Industries we scale on Meta"
+        subhead="Vertical-specific audiences, offer language, and measurement — engineered for your P&L, not a generic playbook."
+      />
 
       {/* Case Studies */}
       <section id="case-studies" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Case studies</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Real Results from Real Brands</h2>
@@ -457,7 +511,7 @@ export default function MetaAdsPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((c, i) => (
               <FadeIn key={c.brand} delay={0.06 * i}>
-                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm sm:rounded-3xl sm:p-8">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-violet-500 before:via-fuchsia-500 before:to-violet-400/40 sm:rounded-3xl sm:p-8">
                   <span className="inline-flex self-start rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-700">
                     {c.tag}
                   </span>
@@ -524,7 +578,7 @@ export default function MetaAdsPage() {
 
       {/* CTA */}
       <section className="border-t border-slate-200/80 bg-[#0a0f1c] py-16 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-semibold sm:text-3xl">Turn Scrolls Into Sales</h2>
             <p className="mt-4 text-[15px] text-white/55">

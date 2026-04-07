@@ -9,19 +9,20 @@ const springSoft = { type: "spring" as const, stiffness: 380, damping: 28 };
 const springTap = { type: "spring" as const, stiffness: 520, damping: 32 };
 
 
-const services = [
-  "Meta Ads Agency in India",
-  "Google Ads Agency in India",
-  "Amazon Ads Agency in India",
-  "Website Design (UI/UX)",
-  "Web Development",
-  "Shopify Development",
-  "Search Engine Optimization",
-  "Branding Agency in India",
-  "Email Marketing",
-  "E-Commerce Marketplace",
-  "Quick Commerce",
-  "Social Media Marketing",
+const serviceLinks: { label: string; href: string }[] = [
+  { label: "Meta Ads Agency in India", href: "/services/meta-ads" },
+  { label: "Google Ads Agency in India", href: "/services/google-ads" },
+  { label: "Amazon Ads Agency in India", href: "/services/amazon-ads" },
+  { label: "Website Design (UI/UX)", href: "/services/website-design" },
+  { label: "Web Development", href: "/services/website-development" },
+  { label: "App Development", href: "/services/app-development" },
+  { label: "Shopify Development", href: "/services/shopify-development" },
+  { label: "Search Engine Optimization", href: "/services/organic-growth-seo" },
+  { label: "Branding Agency in India", href: "/services/Branding-agency" },
+  { label: "Email Marketing", href: "/services/retention-marketing" },
+  { label: "E-Commerce Marketplace", href: "/services/ecommerce-marketplace" },
+  { label: "Quick Commerce", href: "/services/quick-commerce" },
+  { label: "Social Media Marketing", href: "/services/socialmedia-agency" },
 ];
 
 const bottomLinks = [
@@ -185,7 +186,7 @@ export default function Footer() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-9">
+      <div className="relative mx-auto max-w-[1440px] px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-9">
         {/*
           md:flex: har column apna stack — heading turant upar, list/card neeche (grid row height ≠ logo height).
         */}
@@ -245,10 +246,10 @@ export default function Footer() {
           <div className="flex min-w-0 flex-col gap-4 md:flex-[1.15] md:basis-0">
             <FooterSectionTitle>Our services</FooterSectionTitle>
             <ul className="grid w-full min-w-0 grid-cols-1 gap-x-5 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-5 md:gap-x-4 lg:gap-x-6 sm:gap-y-px">
-              {services.map((item) => (
-                <li key={item} className="border-b border-white/[0.06] sm:border-0">
-                  <a
-                    href="#"
+              {serviceLinks.map((item) => (
+                <li key={item.href} className="border-b border-white/[0.06] sm:border-0">
+                  <Link
+                    href={item.href}
                     className="group/footer-link flex items-baseline gap-2 py-2.5 text-white/75 transition-colors duration-200 hover:text-white sm:py-2"
                   >
                     <span
@@ -256,9 +257,9 @@ export default function Footer() {
                       aria-hidden
                     />
                     <span className="min-w-0 flex-1 group-hover/footer-link:underline group-hover/footer-link:decoration-white/30 group-hover/footer-link:underline-offset-4">
-                      {item}
+                      {item.label}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -311,7 +312,7 @@ export default function Footer() {
       </div>
 
       <div className="relative border-t border-white/[0.1] bg-black/20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10 lg:py-8">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 py-10 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10 lg:py-8">
           <p className="text-center text-[13px] leading-relaxed text-white/55 sm:text-left">
             © {new Date().getFullYear()} Techify Labs Pvt. Ltd. All rights reserved.
           </p>
@@ -324,15 +325,30 @@ export default function Footer() {
                 {i > 0 ? (
                   <span className="mx-2 hidden h-3 w-px bg-white/25 sm:inline" aria-hidden />
                 ) : null}
-                <motion.a
-                  href={link.href}
-                  className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
-                  whileHover={reduceMotion ? undefined : { y: -0.5 }}
-                  whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                  transition={springSoft}
-                >
-                  {link.label}
-                </motion.a>
+                {link.href === "#" ? (
+                  <motion.a
+                    href={link.href}
+                    className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
+                    whileHover={reduceMotion ? undefined : { y: -0.5 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                    transition={springSoft}
+                  >
+                    {link.label}
+                  </motion.a>
+                ) : (
+                  <motion.div
+                    whileHover={reduceMotion ? undefined : { y: -0.5 }}
+                    whileTap={reduceMotion ? undefined : { scale: 0.98 }}
+                    transition={springSoft}
+                  >
+                    <Link
+                      href={link.href}
+                      className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )}
               </span>
             ))}
           </nav>

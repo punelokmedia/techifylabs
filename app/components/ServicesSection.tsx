@@ -320,7 +320,7 @@ function ServiceCard({
 export default function ServicesSection() {
   return (
     <section id="services" className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="services-heading">
-      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
