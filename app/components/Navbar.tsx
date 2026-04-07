@@ -21,24 +21,25 @@ const solutionsSections = [
     title: "Design and development",
     links: [
       { label: "Website Design (UI/UX)", href: "/services/website-design", Icon: IconLayout },
-      { label: "Website Development", href: "#", Icon: IconCode },
-      { label: "Shopify Development", href: "#", Icon: IconShopping },
+      { label: "Website Development", href: "/services/website-development", Icon: IconCode },
+      { label: "Shopify Development", href: "/services/shopify-development", Icon: IconShopping },
+      { label: "App Development", href: "/services/app-development", Icon: IconApp },
     ],
   },
   {
     title: "Quick commerce & marketplace",
     links: [
-      { label: "E-Commerce Marketplace", href: "#", Icon: IconStore },
-      { label: "Quick Commerce", href: "#", Icon: IconZap },
+      { label: "E-Commerce Marketplace", href: "/services/ecommerce-marketplace", Icon: IconStore },
+      { label: "Quick Commerce", href: "/services/quick-commerce", Icon: IconZap },
     ],
   },
   {
     title: "Branding & growth marketing",
     links: [
-      { label: "Organic Growth (SEO)", href: "#", Icon: IconTrending },
-      { label: "Retention Marketing", href: "#", Icon: IconHeart },
-      { label: "Social Media Agency India", href: "#", Icon: IconShare },
-      { label: "Branding Agency India", href: "#", Icon: IconSparkle },
+      { label: "Organic Growth (SEO)", href: "/services/organic-growth-seo", Icon: IconTrending },
+      { label: "Retention Marketing", href: "/services/retention-marketing", Icon: IconHeart },
+      { label: "Social Media Agency India", href: "/services/socialmedia-agency", Icon: IconShare },
+      { label: "Branding Agency India", href: "/services/Branding-agency", Icon: IconSparkle },
     ],
   },
 ];
@@ -107,6 +108,25 @@ function IconShopping({ className }: { className?: string }) {
       <circle cx="9" cy="21" r="1" />
       <circle cx="20" cy="21" r="1" />
       <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+    </svg>
+  );
+}
+
+function IconApp({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      aria-hidden
+    >
+      {/* Phone outline */}
+      <path d="M7 2h10a2 2 0 012 2v16a2 2 0 01-2 2H7a2 2 0 01-2-2V4a2 2 0 012-2z" />
+      
+      {/* Code symbol inside */}
+      <path d="M10 10l-2 2 2 2M14 10l2 2-2 2" />
     </svg>
   );
 }

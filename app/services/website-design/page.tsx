@@ -1,95 +1,452 @@
-'use client';
-import { motion } from 'framer-motion';
-import { CheckCircle, ArrowRight, Layers, Layout, ShoppingBag } from 'lucide-react';
+"use client";
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+import { motion, useReducedMotion, Variants } from "framer-motion";
+import Link from "next/link";
+
+// ─────────────────────────────────────────────────────────────
+// FILE: app/services/website-design/page.tsx
+//
+// HOW THIS WORKS (beginner guide):
+//  - "use client" → tells Next.js this component runs in the browser
+//    (needed because we use framer-motion animations)
+//  - motion.div / motion.h1 → framer-motion wrappers that let us
+//    animate elements using "initial", "animate", "whileInView" props
+//  - useReducedMotion() → respects user's OS "reduce motion" setting
+//  - All colors/styles match your navbar (#3b31a1 purple) and footer
+// ─────────────────────────────────────────────────────────────
+
+// Reusable animation variants (same easing as your Hero component)
+const fadeUp:Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.52, delay, ease: [0.22, 1, 0.36, 1] },
+  }),
 };
 
-export default function ServicePage() {
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] } },
+};
+
+// ── DATA ─────────────────────────────────────────────────────
+
+const features = [
+  {
+    icon: "🖼️",
+    title: "Custom UI/UX Design",
+    description:
+      "Every pixel crafted to reflect your brand. We design intuitive interfaces your users will love to navigate.",
+  },
+  {
+    icon: "📱",
+    title: "Mobile-First Responsive",
+    description:
+      "Your site looks flawless on phones, tablets, and desktops. We start with mobile and scale up.",
+  },
+  {
+    icon: "🎨",
+    title: "Brand Identity Integration",
+    description:
+      "Your logo, colors, typography, and tone woven seamlessly into every component of the design.",
+  },
+  {
+    icon: "⚡",
+    title: "Performance-Optimised",
+    description:
+      "Fast load times, optimised assets, and Lighthouse-ready code that reduces bounce rates.",
+  },
+  {
+    icon: "♿",
+    title: "Accessibility (WCAG)",
+    description:
+      "Inclusive designs that meet WCAG standards — ensuring every visitor can use your site.",
+  },
+  {
+    icon: "🔄",
+    title: "Unlimited Revisions",
+    description:
+      "We iterate until you're 100% satisfied. Your vision drives every design decision we make.",
+  },
+];
+
+const process = [
+  { step: "01", title: "Discovery Call", desc: "30-min free session to understand your goals, audience, and brand." },
+  { step: "02", title: "Wireframing", desc: "Low-fidelity blueprints of every page layout and user flow." },
+  { step: "03", title: "Visual Design", desc: "Full-color, pixel-perfect mockups built in Figma for your approval." },
+  { step: "04", title: "Handoff / Build", desc: "Design files delivered — or we build it for you end-to-end." },
+];
+
+const plans = [
+  {
+    name: "Starter",
+    price: "₹15,000",
+    features: ["5-page design", "Mobile responsive", "2 revisions", "Figma file included"],
+    highlight: false,
+  },
+  {
+    name: "Business",
+    price: "₹35,000",
+    features: ["10-page design", "UI component library", "5 revisions", "Brand guidelines"],
+    highlight: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    features: ["Unlimited pages", "Full design system", "Unlimited revisions", "Dedicated designer"],
+    highlight: false,
+  },
+];
+
+// ── SMALL REUSABLE COMPONENTS ────────────────────────────────
+
+// SectionBadge — the small orange-accented label above headings
+// Matches the style used in your Footer's FooterSectionTitle
+function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6 lg:pt-32 lg:pb-24 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div {...fadeIn}>
-            <span className="text-blue-600 font-semibold tracking-wide uppercase text-sm">
-              Professional Solutions
-            </span>
-            <h1 className="mt-4 text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              Website Design <br />
-              <span className="text-blue-600">That Converts.</span>
-            </h1>
-            <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-              We build websites that work like a business tool, not just an online brochure. 
-              Focused on speed, SEO-ready foundation, and mobile-first design.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-2">
-                Get a Free Audit <ArrowRight size={18} />
-              </button>
-              <button className="px-8 py-4 border border-slate-200 text-slate-900 rounded-full font-bold hover:bg-slate-50 transition-all">
-                View Our Work
-              </button>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative h-[400px] bg-slate-100 rounded-2xl overflow-hidden shadow-2xl"
+    <div className="mb-4 inline-flex items-center gap-2">
+      <span className="h-2 w-2 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.5)]" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+// FeatureCard — individual service card
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    // motion.div with cardVariant → fades up when scrolled into view
+    <motion.div
+      variants={cardVariant}
+      whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+      className="group rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-sm
+                 transition-colors hover:border-violet-400/30 hover:bg-white/[0.07]"
+    >
+      {/* Icon wrapper — matches your navbar's icon box style */}
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
+                      bg-violet-500/15 text-2xl ring-1 ring-violet-400/20
+                      transition-colors group-hover:bg-violet-500/25">
+        {icon}
+      </div>
+      <h3 className="mb-2 text-[17px] font-semibold text-white">{title}</h3>
+      <p className="text-[14px] leading-relaxed text-white/65">{description}</p>
+    </motion.div>
+  );
+}
+
+// ── PAGE COMPONENT ───────────────────────────────────────────
+
+export default function WebsiteDesignPage() {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    // Main wrapper — dark purple background matching your site's bg
+    <main className="min-h-screen bg-[#0d0b1f] text-white">
+
+      {/* ══════════════════════════════════════════
+          HERO SECTION
+          Same radial-gradient + ring style as your Hero component
+      ══════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-b border-white/[0.08]
+                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+        {/* Background decorative gradients — copied from your Hero */}
+        <div
+          className="pointer-events-none absolute inset-0
+                     bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.18),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px
+                     bg-gradient-to-r from-transparent via-violet-400/30 to-transparent"
+          aria-hidden
+        />
+
+        <div className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={staggerContainer}
+            className="max-w-3xl"
           >
-            {/* Replace with your service-specific image/mockup */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-               <Layout size={120} className="text-blue-600/20" />
-            </div>
+            {/* Badge */}
+            <motion.div variants={fadeUp} custom={0}>
+              <SectionBadge>Website Design</SectionBadge>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              variants={fadeUp}
+              custom={0.06}
+              className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Beautiful Designs That{" "}
+              <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                               bg-clip-text text-transparent">
+                Convert Visitors
+              </span>
+            </motion.h1>
+
+            {/* Subtext */}
+            <motion.p
+              variants={fadeUp}
+              custom={0.14}
+              className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
+            >
+              We design stunning, user-friendly websites that make your brand unforgettable
+              and turn visitors into loyal customers — from wireframe to pixel-perfect Figma.
+            </motion.p>
+
+            {/* CTA Buttons — same style as your Navbar CTA */}
+            <motion.div
+              variants={fadeUp}
+              custom={0.22}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center gap-2 overflow-hidden
+                           rounded-full bg-white px-6 py-3 text-sm font-bold text-[#3b31a1]
+                           shadow-md ring-1 ring-white/40 transition hover:bg-violet-50
+                           hover:shadow-lg sm:px-8 sm:text-[15px]"
+              >
+                Get a Design Quote
+                <span
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </Link>
+              <Link
+                href="#process"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20
+                           bg-white/10 px-6 py-3 text-sm font-semibold text-white
+                           backdrop-blur-sm transition hover:bg-white/15 sm:px-8 sm:text-[15px]"
+              >
+                See Our Process
+              </Link>
+            </motion.div>
+
+            {/* Quick stats row */}
+            <motion.div
+              variants={fadeUp}
+              custom={0.3}
+              className="mt-14 flex flex-wrap gap-8 border-t border-white/[0.1] pt-10"
+            >
+              {[
+                { num: "120+", label: "Designs Delivered" },
+                { num: "98%", label: "Client Satisfaction" },
+                { num: "5★", label: "Average Rating" },
+                { num: "2 wks", label: "Avg. Turnaround" },
+              ].map(({ num, label }) => (
+                <div key={label}>
+                  <p className="text-2xl font-bold text-white sm:text-3xl">{num}</p>
+                  <p className="mt-0.5 text-[13px] text-white/50">{label}</p>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Grid (The Techeasify Style) */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900">Why Choose Our Service?</h2>
-          <p className="text-slate-600 mt-4">Everything you need to grow your digital presence.</p>
+      {/* ══════════════════════════════════════════
+          FEATURES GRID
+          6 cards, 3-col on desktop
+      ══════════════════════════════════════════ */}
+      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+        <div className="mb-12 text-center">
+          <SectionBadge>What's Included</SectionBadge>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            Our Design Services
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+            Everything you need to launch a website that looks great and performs even better.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { title: 'Mobile First', desc: 'Optimized for every device from day one.', icon: <Layers /> },
-            { title: 'SEO Ready', desc: 'Clean code that search engines love to rank.', icon: <CheckCircle /> },
-            { title: 'Fast Loading', desc: 'Built with Next.js for lightning-fast speeds.', icon: <ArrowRight /> },
-          ].map((feature, i) => (
-            <motion.div 
-              key={i}
-              whileHover={{ y: -10 }}
-              className="p-8 border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all"
+        {/* staggerContainer → children animate in one by one */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {features.map((f) => (
+            <FeatureCard key={f.title} {...f} />
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          PROCESS SECTION
+          id="process" so the hero CTA can scroll here
+      ══════════════════════════════════════════ */}
+      <section
+        id="process"
+        className="border-y border-white/[0.08] bg-white/[0.02]"
+      >
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+          <div className="mb-12 text-center">
+            <SectionBadge>Our Process</SectionBadge>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              How It Works
+            </h2>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {process.map((p, i) => (
+              <motion.div
+                key={p.step}
+                variants={cardVariant}
+                className="relative rounded-2xl border border-white/[0.1] bg-white/[0.04] p-7"
+              >
+                {/* Step number — large faded as bg decoration */}
+                <span className="pointer-events-none absolute right-5 top-4 select-none
+                                 text-6xl font-black text-white/[0.05]">
+                  {p.step}
+                </span>
+                {/* Orange dot connector line except on last */}
+                {i < process.length - 1 && (
+                  <div
+                    className="absolute -right-2.5 top-1/2 hidden h-px w-5 -translate-y-1/2
+                               bg-[#ea580c]/40 lg:block"
+                    aria-hidden
+                  />
+                )}
+                <div className="mb-4 flex items-center gap-2.5">
+                  <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" aria-hidden />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/50">
+                    Step {p.step}
+                  </span>
+                </div>
+                <h3 className="mb-2 text-[17px] font-semibold text-white">{p.title}</h3>
+                <p className="text-[14px] leading-relaxed text-white/60">{p.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          PRICING SECTION
+      ══════════════════════════════════════════ */}
+      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+        <div className="mb-12 text-center">
+          <SectionBadge>Pricing</SectionBadge>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            Transparent, Flat Pricing
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/60">
+            No hidden fees. Pick the plan that fits your business.
+          </p>
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={staggerContainer}
+          className="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-3"
+        >
+          {plans.map((plan) => (
+            <motion.div
+              key={plan.name}
+              variants={cardVariant}
+              whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+              className={`relative flex flex-col rounded-2xl border p-8 ${
+                plan.highlight
+                  ? "border-violet-400/40 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.04]"
+                  : "border-white/[0.1] bg-white/[0.03]"
+              }`}
             >
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-6">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+              {plan.highlight && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full
+                                 bg-[#3b31a1] px-3 py-1 text-[11px] font-bold
+                                 uppercase tracking-[0.12em] text-violet-200
+                                 ring-1 ring-violet-400/30">
+                  Most Popular
+                </span>
+              )}
+              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/45">
+                {plan.name}
+              </p>
+              <p className="mt-3 text-4xl font-bold text-white">{plan.price}</p>
+              <ul className="mt-7 flex-1 space-y-3">
+                {plan.features.map((f) => (
+                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-white/75">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]/90" aria-hidden />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contact"
+                className={`mt-8 block rounded-full py-3 text-center text-sm font-bold
+                            transition ${
+                              plan.highlight
+                                ? "bg-white text-[#3b31a1] hover:bg-violet-50"
+                                : "border border-white/20 bg-white/[0.06] text-white hover:bg-white/10"
+                            }`}
+              >
+                Get Started
+              </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
-      {/* Process Section */}
-      <section className="bg-slate-900 py-24 px-6 text-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Our 4-Step Process</h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {['Discovery', 'Design', 'Development', 'Launch'].map((step, i) => (
-              <div key={i} className="relative">
-                <div className="text-6xl font-black text-white/10 absolute -top-8 -left-4">0{i+1}</div>
-                <h4 className="text-xl font-bold mb-2 relative z-10">{step}</h4>
-                <p className="text-slate-400 text-sm">We map key pages and user flow to ensure perfect results.</p>
-              </div>
-            ))}
-          </div>
+      {/* ══════════════════════════════════════════
+          BOTTOM CTA BANNER
+      ══════════════════════════════════════════ */}
+      <section className="border-t border-white/[0.08] bg-gradient-to-b from-transparent to-[#0a0f2c]">
+        <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <SectionBadge>Ready to Start?</SectionBadge>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Let's Build Something Memorable
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+              Book a free consultation and let's design a website that grows your business.
+            </p>
+            <Link
+              href="/contact"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
+                         px-8 py-4 text-sm font-bold text-[#3b31a1] shadow-lg
+                         transition hover:bg-violet-50 hover:shadow-xl sm:text-[15px]"
+            >
+              Start Your Project Today
+              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </motion.div>
         </div>
       </section>
     </main>
