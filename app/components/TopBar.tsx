@@ -63,9 +63,9 @@ export default function TopBar() {
             <span className="hidden sm:inline">info@techifylabs.in</span>
             <span className="sm:hidden">Email</span>
           </motion.a>
-          <motion.a href="tel:+918956776958" className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
+          <motion.a href="tel:+918956776951" className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
             <IconPhone className="h-3.5 w-3.5 shrink-0 opacity-90" />
-            +91 8956776958
+            +91 8956776951
           </motion.a>
         </div>
         <nav className="flex flex-wrap items-center gap-4 text-xs font-medium sm:gap-5 sm:text-sm" aria-label="Social">

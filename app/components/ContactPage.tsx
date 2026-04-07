@@ -8,8 +8,8 @@ import { useCallback, useId, useMemo, useState, type FormEvent, type ReactNode }
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 380, damping: 28 };
 
-const PHONE_E164 = "+918956776958";
-const PHONE_DISPLAY = "+91 8956776958";
+const PHONE_E164 = "+918956776951";
+const PHONE_DISPLAY = "+91 8956776951";
 const PHONE_TEL = `tel:${PHONE_E164}`;
 const EMAIL = "info@techifylabs.in";
 const WA_LINK = `https://wa.me/${PHONE_E164.replace(/\D/g, "")}`;

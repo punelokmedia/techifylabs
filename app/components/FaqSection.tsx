@@ -72,7 +72,7 @@ export default function FaqSection() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-xl">🎧</span>
               <div>
                 <p className="text-sm font-semibold">Need any help?</p>
-                <p className="text-xs text-white/70">Contact us today · +91 8956776958</p>
+                <p className="text-xs text-white/70">Contact us today · +91 8956776951</p>
               </div>
             </motion.div>
             <motion.div

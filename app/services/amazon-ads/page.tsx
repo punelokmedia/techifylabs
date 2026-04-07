@@ -138,11 +138,11 @@ export default function AmazonAdsPage() {
               <div className="mt-6 border-t border-white/10 pt-6">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-white/40">Contact information</p>
                 <div className="mt-3 space-y-2 text-sm text-white/75">
-                  <a href="tel:+918956776958" className="block transition hover:text-white">+91 8956776958</a>
+                  <a href="tel:+918956776951" className="block transition hover:text-white">+91 8956776951</a>
                   <a href="mailto:info@techifylabs.in" className="block transition hover:text-white">info@techifylabs.in</a>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
-                  <a href="tel:+918956776958" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">Call now</a>
+                  <a href="tel:+918956776951" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">Call now</a>
                   <a href="/contact" className="rounded-lg bg-amber-500/90 px-3 py-2 text-center text-xs font-semibold text-[#1f1307] transition hover:bg-amber-400">Get proposal</a>
                 </div>
               </div>

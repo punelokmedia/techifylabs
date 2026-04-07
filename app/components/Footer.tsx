@@ -33,9 +33,9 @@ const bottomLinks = [
   { label: "Sitemap", href: "#" },
 ];
 
-const PHONE_E164 = "+918956776958";
+const PHONE_E164 = "+918956776951";
 const PHONE_TEL = `tel:${PHONE_E164}`;
-const PHONE_DISPLAY = "+91 8956776958";
+const PHONE_DISPLAY = "+91 8956776951";
 
 function IconFacebook({ className }: { className?: string }) {
   return (
