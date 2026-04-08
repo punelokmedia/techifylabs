@@ -21,32 +21,32 @@ const solutionsSections = [
     title: "Design and development",
     links: [
       { label: "Website Design (UI/UX)", href: "/services/website-design", Icon: IconLayout },
-      { label: "Website Development", href: "#", Icon: IconCode },
-      { label: "Shopify Development", href: "#", Icon: IconShopping },
+      { label: "Website Development", href: "/services/website-development", Icon: IconCode },
+      { label: "Shopify Development", href: "/services/shopify-development", Icon: IconShopping },
     ],
   },
   {
     title: "Quick commerce & marketplace",
     links: [
-      { label: "E-Commerce Marketplace", href: "#", Icon: IconStore },
-      { label: "Quick Commerce", href: "#", Icon: IconZap },
+      { label: "E-Commerce Marketplace", href: "/services/ecommerce-marketplace", Icon: IconStore },
+      { label: "Quick Commerce", href: "/services/quick-commerce", Icon: IconZap },
     ],
   },
   {
     title: "Branding & growth marketing",
     links: [
-      { label: "Organic Growth (SEO)", href: "#", Icon: IconTrending },
-      { label: "Retention Marketing", href: "#", Icon: IconHeart },
-      { label: "Social Media Agency India", href: "#", Icon: IconShare },
-      { label: "Branding Agency India", href: "#", Icon: IconSparkle },
+      { label: "Organic Growth (SEO)", href: "/services/organic-growth-seo", Icon: IconTrending },
+      { label: "Retention Marketing", href: "/services/retention-marketing", Icon: IconHeart },
+      { label: "Social Media Agency India", href: "/services/socialmedia-agency", Icon: IconShare },
+      { label: "Branding Agency India", href: "/services/Branding-agency", Icon: IconSparkle },
     ],
   },
 ];
 
 const knowledgeLinks = [
-  { label: "Case Studies", href: "#", Icon: IconFolder },
+  { label: "Case Studies", href: "/services/case-study", Icon: IconFolder },
   { label: "Our Team", href: "/about#team", Icon: IconUsers },
-  { label: "Blogs", href: "#", Icon: IconBook },
+  { label: "Blogs", href: "/services/blogs", Icon: IconBook },
 ];
 
 function ChevronDown({ className }: { className?: string }) {
