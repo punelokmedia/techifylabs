@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
-
+import ConsultationModal from "@/app/components/ConsultationModel";
 /**
  * Hero cycles these full-screen clips in order (no loop per clip — next plays when one ends).
  * Swap URLs for your own MP4s in /public or direct links.
@@ -73,6 +73,7 @@ function ArrowIcon({ className = "ml-2 inline-block h-4 w-4 shrink-0" }: { class
 }
 
 export default function Hero() {
+  const [openModal, setOpenModal] = useState(false);
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
@@ -98,7 +99,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative mx-auto mt-0 w-full max-w-[1440px] min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.5rem] rounded-t-none border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]"
+      className="relative mx-auto mt-0 w-full max-w-[1440px] min-h-[min(86vh,780px)] overflow-visible rounded-b-[1.5rem] rounded-t-none border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]"
       aria-label="Hero"
     >
       {/* Background: YouTube (Google) or MP4 */}
@@ -260,8 +261,8 @@ export default function Hero() {
                 )}
               </motion.div>
 
-              <motion.a
-                href="#"
+              <motion.button
+  onClick={() => setOpenModal(true)}
                 variants={{
                   rest: ctaBtnRest,
                   hover: reduceMotion ? ctaBtnRest : ctaBtnHover,
@@ -285,11 +286,15 @@ export default function Hero() {
                   Get Free Consultation
                   <ArrowIcon className="ml-2 inline-block h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover/cta:translate-x-1.5 sm:h-[1.05rem] sm:w-[1.05rem]" />
                 </span>
-              </motion.a>
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
       </div>
+      <ConsultationModal
+  isOpen={openModal}
+  onClose={() => setOpenModal(false)}
+/>
     </section>
   );
 }

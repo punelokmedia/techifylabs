@@ -293,22 +293,33 @@ export default function GoogleAdsPage() {
         </div>
       </section>
 
-      <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.11] to-white/[0.04] px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:rounded-3xl sm:px-10 sm:py-9">
-            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 sm:text-left">Search & growth footprint</p>
-            <div className="grid grid-cols-3 gap-2 divide-x divide-white/10 sm:gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
-                  <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
-                  <p className="mt-1 text-[11px] font-medium leading-snug text-white/50 sm:text-[12px]">{s.label}</p>
-                </div>
-              ))}
-            </div>
+     <div className="relative z-10 px-4 sm:px-8 lg:px-10 py-8 bg-white">
+  <div className="mx-auto max-w-[1440px]">
+    
+    <div className="rounded-2xl border border-slate-200 bg-white px-6 py-8 shadow-sm">
+      
+      <p className="mb-6 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500 sm:text-left">
+        Search & Growth Footprint
+      </p>
+
+      <div className="grid grid-cols-3 gap-4 divide-x divide-slate-200">
+        {stats.map((s) => (
+          <div key={s.label} className="px-4 text-center">
+            <p className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              {s.num}
+            </p>
+            <p className="mt-1 text-[12px] font-medium text-slate-500">
+              {s.label}
+            </p>
           </div>
-        </div>
+        ))}
       </div>
-      <div className="h-6 bg-[#050816] sm:h-8" aria-hidden />
+
+    </div>
+
+  </div>
+</div>
+      <div className="h-6 bg-white sm:h-8" aria-hidden />
 
       <section id="insights" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">

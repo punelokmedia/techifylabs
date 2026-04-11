@@ -57,7 +57,7 @@ const brandingPageData: ServicePageData = {
   heroSubtitle:
     "Techeasify is a branding agency that helps businesses look professional, sound clear, and stand out in crowded markets. From logo systems to brand strategy, we create identities that last.",
   heroCta: "Get Free Consultation",
-  accentColor: "amber",
+  accentColor: "violet",
   stats: [
     { value: "50+", label: "Brands built and refreshed across India" },
     { value: "4.9★", label: "Average client satisfaction rating" },

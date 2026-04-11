@@ -56,7 +56,7 @@ const socialPageData: ServicePageData = {
   heroSubtitle:
     "Techeasify is a social media agency India businesses trust for consistent content, scroll-stopping creatives, and community growth across Instagram, Facebook, LinkedIn, and YouTube.",
   heroCta: "Get Free Consultation",
-  accentColor: "sky",
+  accentColor: "violet",
   stats: [
     { value: "2.8X", label: "Avg. follower growth in 90 days" },
     { value: "47+", label: "Brands managed across India" },

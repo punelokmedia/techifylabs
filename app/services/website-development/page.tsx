@@ -1,11 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion ,Variants} from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import Link from "next/link";
-
-// ─────────────────────────────────────────────────────────────
-// FILE: app/services/website-development/page.tsx
-// ─────────────────────────────────────────────────────────────
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -62,32 +58,45 @@ const services = [
 ];
 
 const techStack = [
-  { name: "React", color: "bg-sky-500/15 text-sky-200 ring-sky-400/20" },
-  { name: "Next.js", color: "bg-white/10 text-white/80 ring-white/15" },
-  { name: "Node.js", color: "bg-green-500/15 text-green-200 ring-green-400/20" },
-  { name: "TypeScript", color: "bg-blue-500/15 text-blue-200 ring-blue-400/20" },
-  { name: "Laravel", color: "bg-red-500/15 text-red-200 ring-red-400/20" },
-  { name: "WordPress", color: "bg-sky-600/15 text-sky-200 ring-sky-400/20" },
-  { name: "MySQL", color: "bg-orange-500/15 text-orange-200 ring-orange-400/20" },
-  { name: "MongoDB", color: "bg-green-600/15 text-green-200 ring-green-400/20" },
-  { name: "AWS", color: "bg-yellow-500/15 text-yellow-200 ring-yellow-400/20" },
-  { name: "Tailwind CSS", color: "bg-cyan-500/15 text-cyan-200 ring-cyan-400/20" },
+  { name: "React",        color: "bg-sky-50 text-sky-700 ring-sky-200" },
+  { name: "Next.js",      color: "bg-gray-100 text-gray-700 ring-gray-200" },
+  { name: "Node.js",      color: "bg-green-50 text-green-700 ring-green-200" },
+  { name: "TypeScript",   color: "bg-blue-50 text-blue-700 ring-blue-200" },
+  { name: "Laravel",      color: "bg-red-50 text-red-700 ring-red-200" },
+  { name: "WordPress",    color: "bg-sky-50 text-sky-700 ring-sky-200" },
+  { name: "MySQL",        color: "bg-orange-50 text-orange-700 ring-orange-200" },
+  { name: "MongoDB",      color: "bg-green-50 text-green-700 ring-green-200" },
+  { name: "AWS",          color: "bg-yellow-50 text-yellow-700 ring-yellow-200" },
+  { name: "Tailwind CSS", color: "bg-cyan-50 text-cyan-700 ring-cyan-200" },
 ];
 
 const whyUs = [
-  { icon: "⚡", title: "Fast Delivery", desc: "Most projects shipped in 2–4 weeks without cutting corners." },
-  { icon: "🎯", title: "Result-Driven", desc: "Every decision is backed by business goals and real metrics." },
-  { icon: "🔒", title: "Transparent Process", desc: "Weekly updates, shared boards, and zero surprises." },
-  { icon: "🛠️", title: "Post-Launch Support", desc: "We stay with you even after your site goes live." },
+  { icon: "⚡", title: "Fast Delivery",        desc: "Most projects shipped in 2–4 weeks without cutting corners." },
+  { icon: "🎯", title: "Result-Driven",        desc: "Every decision is backed by business goals and real metrics." },
+  { icon: "🔒", title: "Transparent Process",  desc: "Weekly updates, shared boards, and zero surprises." },
+  { icon: "🛠️", title: "Post-Launch Support",  desc: "We stay with you even after your site goes live." },
 ];
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-function SectionBadge({ children }: { children: React.ReactNode }) {
+// Dark badge — hero only (unchanged)
+function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
       <span className="h-2 w-2 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.5)]" />
       <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+// Light badge — below hero
+function SectionBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 inline-flex items-center gap-2">
+      <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#3b31a1]">
         {children}
       </span>
     </div>
@@ -99,16 +108,16 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
     <motion.div
       variants={cardVariant}
       whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
-      className="group rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-sm
-                 transition-colors hover:border-violet-400/30 hover:bg-white/[0.07]"
+      className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm
+                 transition-all hover:border-violet-300 hover:shadow-md"
     >
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
-                      bg-violet-500/15 text-2xl ring-1 ring-violet-400/20
-                      transition-colors group-hover:bg-violet-500/25">
+                      bg-violet-100 text-2xl ring-1 ring-violet-200
+                      transition-colors group-hover:bg-violet-200">
         {icon}
       </div>
-      <h3 className="mb-2 text-[17px] font-semibold text-white">{title}</h3>
-      <p className="text-[14px] leading-relaxed text-white/65">{description}</p>
+      <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
+      <p className="text-[14px] leading-relaxed text-gray-500">{description}</p>
     </motion.div>
   );
 }
@@ -119,9 +128,9 @@ export default function WebDevelopmentPage() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <main className="min-h-screen bg-[#0d0b1f] text-white">
+    <main className="min-h-screen bg-white text-gray-100">
 
-      {/* ══ HERO ══ */}
+      {/* ══ HERO — UNCHANGED ══ */}
       <section className="relative overflow-hidden border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
         <div
@@ -143,7 +152,7 @@ export default function WebDevelopmentPage() {
             className="max-w-3xl"
           >
             <motion.div variants={fadeUp} custom={0}>
-              <SectionBadge>Website Development</SectionBadge>
+              <SectionBadgeDark>Website Development</SectionBadgeDark>
             </motion.div>
 
             <motion.h1
@@ -171,14 +180,12 @@ export default function WebDevelopmentPage() {
               <Link
                 href="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden
-                           rounded-full bg-white px-6 py-3 text-sm font-bold text-[#3b31a1]
-                           shadow-md ring-1 ring-white/40 transition hover:bg-violet-50
+                           rounded-full bg-fuchsia-500 px-6 py-3 text-sm font-bold text-white
+                           shadow-md ring-1 ring-white/40 transition hover:bg-violet-500
                            hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
                 Start Your Project
-                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </span>
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
               </Link>
               <Link
                 href="#services"
@@ -196,10 +203,10 @@ export default function WebDevelopmentPage() {
               className="mt-14 flex flex-wrap gap-8 border-t border-white/[0.1] pt-10"
             >
               {[
-                { num: "150+", label: "Websites Built" },
-                { num: "99.9%", label: "Uptime Guaranteed" },
+                { num: "150+",    label: "Websites Built" },
+                { num: "99.9%",   label: "Uptime Guaranteed" },
                 { num: "2–4 wks", label: "Avg. Delivery" },
-                { num: "24/7", label: "Support Available" },
+                { num: "24/7",    label: "Support Available" },
               ].map(({ num, label }) => (
                 <div key={label}>
                   <p className="text-2xl font-bold text-white sm:text-3xl">{num}</p>
@@ -211,11 +218,10 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ TECH STACK STRIP ══ */}
-      <section className="border-b border-white/[0.08] bg-white/[0.02] py-8">
+      {/* ══ TECH STACK STRIP — WHITE THEME ══ */}
+      <section className="border-b border-gray-100 bg-gray-50 py-8">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p className="mb-5 text-center text-[11px] font-bold uppercase
-                        tracking-[0.2em] text-white/35">
+          <p className="mb-5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
             Technologies We Use
           </p>
           <div className="flex flex-wrap justify-center gap-2.5">
@@ -231,14 +237,14 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ SERVICES GRID ══ */}
+      {/* ══ SERVICES GRID — WHITE THEME ══ */}
       <section id="services" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>What We Build</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Development Services
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
             From simple landing pages to complex web applications — we handle every layer of the stack.
           </p>
         </div>
@@ -256,20 +262,20 @@ export default function WebDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ WHY CHOOSE US ══ */}
-      <section className="border-y border-white/[0.08] bg-white/[0.02]">
+      {/* ══ WHY CHOOSE US — WHITE THEME ══ */}
+      <section className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
             <div>
               <SectionBadge>Why TechCraft</SectionBadge>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 We Don't Just Build.{" "}
-                <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                <span className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
                                  bg-clip-text text-transparent">
                   We Grow You.
                 </span>
               </h2>
-              <p className="mt-5 text-[15px] leading-relaxed text-white/65">
+              <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
                 Most agencies deliver a website and disappear. We stay invested in your success —
                 combining design thinking, engineering, and marketing to ensure your site works
                 hard for your business.
@@ -277,13 +283,11 @@ export default function WebDevelopmentPage() {
               <Link
                 href="/contact"
                 className="group mt-8 inline-flex items-center gap-2 rounded-full
-                           bg-white px-7 py-3.5 text-sm font-bold text-[#3b31a1]
-                           transition hover:bg-violet-50"
+                           bg-[#3b31a1] px-7 py-3.5 text-sm font-bold text-white
+                           transition hover:bg-[#2f278f]"
               >
                 Get Free Consultation
-                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </span>
+                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
               </Link>
             </div>
 
@@ -298,16 +302,15 @@ export default function WebDevelopmentPage() {
                 <motion.div
                   key={item.title}
                   variants={cardVariant}
-                  className="flex gap-4 rounded-2xl border border-white/[0.08]
-                             bg-white/[0.04] p-5"
+                  className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center
-                                   rounded-xl bg-violet-500/15 text-xl ring-1 ring-violet-400/20">
+                                   rounded-xl bg-violet-100 text-xl ring-1 ring-violet-200">
                     {item.icon}
                   </span>
                   <div>
-                    <p className="font-semibold text-white">{item.title}</p>
-                    <p className="mt-1 text-[14px] text-white/60">{item.desc}</p>
+                    <p className="font-semibold text-gray-900">{item.title}</p>
+                    <p className="mt-1 text-[14px] text-gray-500">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -316,8 +319,8 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ CTA BANNER ══ */}
-      <section className="border-t border-white/[0.08] bg-gradient-to-b from-transparent to-[#0a0f2c]">
+      {/* ══ CTA BANNER — WHITE THEME ══ */}
+      <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,22 +329,20 @@ export default function WebDevelopmentPage() {
             transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
           >
             <SectionBadge>Let's Build</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Ready to Build Something Great?
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
               Book a free consultation and let's figure out the best technical approach for your project.
             </p>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
-                         px-8 py-4 text-sm font-bold text-[#3b31a1] shadow-lg
-                         transition hover:bg-violet-50 sm:text-[15px]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#3b31a1]
+                         px-8 py-4 text-sm font-bold text-white shadow-lg
+                         transition hover:bg-[#2f278f] sm:text-[15px]"
             >
               Start Your Project Today
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
-                →
-              </span>
+              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </Link>
           </motion.div>
         </div>

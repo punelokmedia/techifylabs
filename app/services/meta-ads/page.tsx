@@ -294,11 +294,41 @@ export default function MetaAdsPage() {
       </section>
 
       {/* Stats — floating panel */}
-      <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
+      <div className="relative px-4 sm:px-8 lg:px-10">
+  <div className="mx-auto max-w-6xl">
+    
+    <div className="rounded-lg border border-gray-200 bg-white px-4 py-6 sm:px-8 sm:py-8">
+      
+      <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wide text-gray-500 sm:text-left">
+        Performance marketing footprint
+      </p>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:divide-x sm:divide-gray-200">
+        {stats.map((s) => (
+          <div key={s.label} className="text-center sm:px-4">
+            <p className="text-xl font-semibold text-gray-900 sm:text-2xl">
+              {s.num}
+            </p>
+            <p className="mt-1 text-xs text-gray-500">
+              {s.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div className="h-6 sm:h-8" aria-hidden />
+      {/* <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1440px]">
-          <div className="rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.11] to-white/[0.04] px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:rounded-3xl sm:px-10 sm:py-9">
-            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 sm:text-left">Performance marketing footprint</p>
-            <div className="grid grid-cols-3 gap-2 divide-x divide-white/10 sm:gap-4">
+          <div className="
+          rounded-2xl border border-white/12  px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.65)] backdrop-blur-xl 
+          sm:rounded-3xl sm:px-10 sm:py-9">
+            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-violet-300 sm:text-left">Performance marketing footprint</p>
+            <div className="grid grid-cols-3 gap-2 divide-x divide-white/40 sm:gap-4">
               {stats.map((s) => (
                 <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
                   <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
@@ -309,7 +339,7 @@ export default function MetaAdsPage() {
           </div>
         </div>
       </div>
-      <div className="h-6 bg-[#050816] sm:h-8" aria-hidden />
+      <div className="h-6 sm:h-8" aria-hidden /> */}
 
       <section id="insights" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
