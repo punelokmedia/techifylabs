@@ -99,10 +99,14 @@ export default function AmazonAdsPage() {
 
   return (
     <div className="min-h-full">
-      <section className="relative overflow-hidden bg-[#1a1208] text-white">
+      <section className="relative overflow-hidden bg-[#050816] text-white">
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]" aria-hidden />
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(217,70,239,0.14),transparent_45%)]" aria-hidden />
+  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
+      {/* <section className="relative overflow-hidden bg-[#1a1208] text-white">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_25%_-25%,rgba(245,158,11,0.35),transparent_55%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_100%_40%,rgba(251,191,36,0.15),transparent_45%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden /> */}
         <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
           <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12" aria-label="Breadcrumb">
             <Link href="/" className="transition hover:text-white">Home</Link>
@@ -114,22 +118,22 @@ export default function AmazonAdsPage() {
 
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <motion.div initial={reduce ? false : { opacity: 0, y: 22 }} animate={reduce ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[12px] font-medium tracking-wide text-amber-200/90 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[12px] font-medium tracking-wide text-violet-200/90 backdrop-blur-md">
                 <span className="relative flex h-2 w-2 shrink-0">
-                  {!reduce && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-40" />}
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
+                  {!reduce && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-voilet-400 opacity-40" />}
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
                 </span>
                 Marketplace Growth · Amazon Ads
               </div>
               <h1 className="mt-6 text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.15rem]">
                 Win More Visibility
-                <span className="bg-gradient-to-r from-white via-amber-200 to-yellow-100 bg-clip-text text-transparent"> on Amazon Search.</span>
+                <span className="bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-transparent"> on Amazon Search.</span>
               </h1>
               <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/70 sm:text-[17px]">
                 Sponsored Products, Brands, and Display managed as one system. Built to lower wasted spend and scale profitable ASINs.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/contact" className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 px-8 text-sm font-semibold text-[#1f1307] shadow-lg shadow-amber-500/30 transition hover:opacity-90 sm:w-auto">
+                <Link href="/contact" className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-[#1f1307] shadow-lg shadow-fuchsia-500/30 transition hover:opacity-90 sm:w-auto">
                   Book Free Strategy Call
                 </Link>
                 <Link href="#services" className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto">
@@ -138,7 +142,7 @@ export default function AmazonAdsPage() {
               </div>
               <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
                 {[
-                  { t: "Sponsored Products, Brands & Display as one system", c: "text-amber-300/90" },
+                  { t: "Sponsored Products, Brands & Display as one system", c: "text-violet-300/90" },
                   { t: "Weekly search-term mining & bid discipline", c: "text-yellow-200/85" },
                   { t: "TACoS lens — not ads in a silo", c: "text-orange-200/85" },
                 ].map((x) => (
@@ -171,15 +175,15 @@ export default function AmazonAdsPage() {
                   ACOS, TACoS, and ASIN-level clarity — not spreadsheet chaos.
                 </span>
               </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-200/90">Paid Advertising Services</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Paid Advertising Services</p>
               <div className="mt-4 space-y-2">
                 {[
                   { label: "Meta Ads", href: "/services/meta-ads", active: false },
                   { label: "Google Ads", href: "/services/google-ads", active: false },
                   { label: "Amazon Ads", href: "/services/amazon-ads", active: true },
                 ].map((s) => (
-                  <Link key={s.label} href={s.href} className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${s.active ? "bg-amber-500/25 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"}`}>
-                    <span className={`h-1.5 w-1.5 rounded-full ${s.active ? "bg-amber-300" : "bg-white/30"}`} />
+                  <Link key={s.label} href={s.href} className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${s.active ? "bg-violet-600/30 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"}`}>
+                    <span className={`h-1.5 w-1.5 rounded-full ${s.active ? "bg-violet-400" : "bg-white/30"}`} />
                     {s.label}
                   </Link>
                 ))}
@@ -192,7 +196,7 @@ export default function AmazonAdsPage() {
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <a href="tel:+918956776951" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">Call now</a>
-                  <a href="/contact" className="rounded-lg bg-amber-500/90 px-3 py-2 text-center text-xs font-semibold text-[#1f1307] transition hover:bg-amber-400">Get proposal</a>
+                  <a href="/contact" className="rounded-lg bg-violet-600/80 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-violet-500">Get proposal</a>
                 </div>
               </div>
             </motion.div>
@@ -200,27 +204,41 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-b from-white/[0.09] to-white/[0.03] px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:rounded-3xl sm:px-10 sm:py-9">
-            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/40 sm:text-left">Marketplace advertising footprint</p>
-            <div className="grid grid-cols-3 gap-2 divide-x divide-white/10 sm:gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
-                  <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
-                  <p className="mt-1 text-[11px] font-medium leading-snug text-white/50 sm:text-[12px]">{s.label}</p>
-                </div>
-              ))}
-            </div>
+     <div className="relative z-10 px-4 sm:px-8 lg:px-10 py-8 bg-white">
+  <div className="mx-auto max-w-[1440px]">
+    
+    <div className="rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm sm:rounded-3xl sm:px-10 sm:py-9">
+      
+      <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 sm:text-left">
+        Marketplace advertising footprint
+      </p>
+
+      <div className="grid grid-cols-3 gap-2 divide-x divide-slate-200 sm:gap-4">
+        {stats.map((s) => (
+          <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
+            
+            <p className="text-xl font-semibold tabular-nums tracking-tight text-slate-900 sm:text-3xl">
+              {s.num}
+            </p>
+
+            <p className="mt-1 text-[11px] font-medium leading-snug text-slate-500 sm:text-[12px]">
+              {s.label}
+            </p>
+
           </div>
-        </div>
+        ))}
       </div>
-      <div className="h-6 bg-[#1a1208] sm:h-8" aria-hidden />
+
+    </div>
+
+  </div>
+</div>
+      <div className="h-6 bg-white sm:h-8" aria-hidden />
 
       <section id="insights" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="mb-10 max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Marketplace metrics</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/80">Marketplace metrics</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
               Growth and efficiency on one timeline
             </h2>
@@ -259,7 +277,7 @@ export default function AmazonAdsPage() {
       <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
-            <a key={item.href} href={item.href} className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-amber-300 hover:text-amber-700">
+            <a key={item.href} href={item.href} className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-violet-300 hover:text-violet-700">
               {item.label}
             </a>
           ))}
@@ -269,13 +287,13 @@ export default function AmazonAdsPage() {
       <section id="why-us" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Why choose us</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Why choose us</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Amazon Ads built for profitable marketplace growth</h2>
           </FadeIn>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {whyUs.map((item, i) => (
               <FadeIn key={item.title} delay={0.05 * i}>
-                <div className="h-full rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-amber-50/40 p-6 shadow-sm transition hover:border-amber-200 hover:shadow-md">
+                <div className="h-full rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-violet-50/40 p-6 shadow-sm transition hover:border-violet-500 hover:shadow-md">
                   <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
                   <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{item.desc}</p>
                 </div>
@@ -285,17 +303,17 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <section id="process" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-amber-50/30 py-12 sm:py-20">
+      <section id="process" className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-violet-50/30 py-12 sm:py-20">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Our process</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Our process</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">A structured Amazon Ads workflow</h2>
           </FadeIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {processSteps.map((s, i) => (
               <FadeIn key={s.title} delay={0.05 * i}>
                 <div className="h-full rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm">
-                  <span className="text-4xl font-bold text-amber-100 sm:text-5xl">{s.step}</span>
+                  <span className="text-4xl font-bold text-violet-300 sm:text-5xl">{s.step}</span>
                   <h3 className="mt-3 text-base font-semibold text-slate-900">{s.title}</h3>
                   <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{s.desc}</p>
                 </div>
@@ -308,18 +326,18 @@ export default function AmazonAdsPage() {
       <section id="services" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">What's included</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">What's included</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Amazon Ads services we offer</h2>
           </FadeIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {adServices.map((s, i) => (
               <FadeIn key={s.title} delay={0.05 * i}>
-                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm transition hover:border-amber-200 hover:shadow-md">
+                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm transition hover:border-violet-400 hover:shadow-md">
                   <h3 className="text-base font-semibold text-slate-900">{s.title}</h3>
                   <p className="mt-2 flex-1 text-[13px] leading-relaxed text-slate-600">{s.desc}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {s.tags.map((tag) => (
-                      <span key={tag} className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-medium text-amber-700">{tag}</span>
+                      <span key={tag} className="rounded-full bg-violet-50 px-3 py-1 text-[11px] font-medium text-violet-600">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -339,17 +357,17 @@ export default function AmazonAdsPage() {
       <section id="case-studies" className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">Case studies</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-500/80">Case studies</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Results from marketplace brands</h2>
           </FadeIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {caseStudies.map((c, i) => (
               <FadeIn key={c.brand} delay={0.06 * i}>
-                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-amber-500 before:via-orange-500 before:to-yellow-500/50 sm:rounded-3xl sm:p-8">
-                  <span className="inline-flex self-start rounded-full bg-amber-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-amber-700">{c.tag}</span>
+                <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm before:absolute before:inset-x-0 before:top-0 before:h-[3px] before:bg-gradient-to-r before:from-violet-500 before:via-fuchsia-500 before:to-violet-400/40 sm:rounded-3xl sm:p-8">
+                  <span className="inline-flex self-start rounded-full bg-violet-300 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-700">{c.tag}</span>
                   <h3 className="mt-5 text-xl font-semibold text-slate-900">{c.brand}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{c.desc}</p>
-                  <Link href="/contact" className="mt-6 text-xs font-semibold text-amber-700 hover:text-amber-800">Get similar results →</Link>
+                  <Link href="/contact" className="mt-6 text-xs font-semibold text-violet-500 hover:text-violet-800">Get similar results →</Link>
                 </div>
               </FadeIn>
             ))}
@@ -360,7 +378,7 @@ export default function AmazonAdsPage() {
       <section id="faq" className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-600/90">FAQ</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">FAQ</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Frequently asked questions</h2>
           </FadeIn>
           <div className="mt-8 space-y-3 sm:mt-10">
@@ -371,7 +389,7 @@ export default function AmazonAdsPage() {
                   <div className="overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/40 shadow-sm sm:rounded-2xl">
                     <button type="button" onClick={() => setOpenFaq(open ? null : i)} className="flex min-h-[52px] w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-slate-50/80 sm:px-6 sm:py-5">
                       <span className="text-[14px] font-semibold text-slate-900 sm:text-[15px]">{item.q}</span>
-                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition ${open ? "rotate-180 border-amber-200 bg-amber-50 text-amber-700" : "border-slate-200 bg-white text-slate-500"}`}>
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition ${open ? "rotate-180 border-violet-400 bg-violet-50 text-violet-700" : "border-slate-200 bg-white text-slate-500"}`}>
                         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                           <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -398,7 +416,7 @@ export default function AmazonAdsPage() {
             <h2 className="text-2xl font-semibold sm:text-3xl">Ready to scale on Amazon?</h2>
             <p className="mt-4 text-[15px] text-white/65">Book a strategy call and get a practical plan for spend, structure, and profitable growth.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link href="/contact" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 px-10 text-sm font-semibold text-[#1f1307] shadow-lg shadow-amber-500/30">
+              <Link href="/contact" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-10 text-sm font-semibold text-[#1f1307] shadow-lg shadow-violet-500/30">
                 Book Free Strategy Call
               </Link>
               <Link href="/services/google-ads" className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-10 text-sm font-semibold text-white">

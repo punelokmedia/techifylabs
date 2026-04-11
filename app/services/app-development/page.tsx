@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Variants } from "framer-motion";
-// ─────────────────────────────────────────────────────────────
-// FILE: app/services/app-development/page.tsx
-// ─────────────────────────────────────────────────────────────
 
 const staggerContainer = {
   hidden: {},
@@ -17,10 +14,7 @@ const cardVariant: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.48,
-      ease: "easeInOut", 
-    },
+    transition: { duration: 0.48, ease: "easeInOut" },
   },
 };
 
@@ -29,10 +23,7 @@ const fadeUp: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.52,
-      ease: "easeInOut", 
-    },
+    transition: { duration: 0.52, ease: "easeInOut" },
   },
 };
 
@@ -91,23 +82,36 @@ const processSteps = [
 ];
 
 const techStack = [
-  { name: "React Native", color: "bg-sky-500/15 text-sky-200 ring-sky-400/20" },
-  { name: "Swift / SwiftUI", color: "bg-orange-500/15 text-orange-200 ring-orange-400/20" },
-  { name: "Kotlin", color: "bg-purple-500/15 text-purple-200 ring-purple-400/20" },
-  { name: "Expo", color: "bg-white/10 text-white/80 ring-white/15" },
-  { name: "Firebase", color: "bg-yellow-500/15 text-yellow-200 ring-yellow-400/20" },
-  { name: "Node.js", color: "bg-green-500/15 text-green-200 ring-green-400/20" },
-  { name: "GraphQL", color: "bg-pink-500/15 text-pink-200 ring-pink-400/20" },
-  { name: "AWS / GCP", color: "bg-blue-500/15 text-blue-200 ring-blue-400/20" },
+  { name: "React Native", color: "bg-sky-50 text-sky-700 ring-sky-200" },
+  { name: "Swift / SwiftUI", color: "bg-orange-50 text-orange-700 ring-orange-200" },
+  { name: "Kotlin", color: "bg-purple-50 text-purple-700 ring-purple-200" },
+  { name: "Expo", color: "bg-gray-100 text-gray-700 ring-gray-200" },
+  { name: "Firebase", color: "bg-yellow-50 text-yellow-700 ring-yellow-200" },
+  { name: "Node.js", color: "bg-green-50 text-green-700 ring-green-200" },
+  { name: "GraphQL", color: "bg-pink-50 text-pink-700 ring-pink-200" },
+  { name: "AWS / GCP", color: "bg-blue-50 text-blue-700 ring-blue-200" },
 ];
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-function SectionBadge({ children }: { children: React.ReactNode }) {
+// Hero badge — keeps dark styling (used only in hero)
+function HeroBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
       <span className="h-2 w-2 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.5)]" />
       <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+// Section badge — light styling for below-hero sections
+function SectionBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 inline-flex items-center gap-2">
+      <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-500">
         {children}
       </span>
     </div>
@@ -119,16 +123,16 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
     <motion.div
       variants={cardVariant}
       whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
-      className="group rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-sm
-                 transition-colors hover:border-violet-400/30 hover:bg-white/[0.07]"
+      className="group rounded-2xl border border-gray-200 bg-white p-6
+                 transition-all hover:border-violet-200 hover:shadow-md"
     >
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
-                      bg-violet-500/15 text-2xl ring-1 ring-violet-400/20
-                      transition-colors group-hover:bg-violet-500/25">
+                      bg-violet-50 text-2xl ring-1 ring-violet-200
+                      transition-colors group-hover:bg-violet-100">
         {icon}
       </div>
-      <h3 className="mb-2 text-[17px] font-semibold text-white">{title}</h3>
-      <p className="text-[14px] leading-relaxed text-white/65">{description}</p>
+      <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
+      <p className="text-[14px] leading-relaxed text-gray-500">{description}</p>
     </motion.div>
   );
 }
@@ -137,9 +141,9 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
 
 export default function AppDevelopmentPage() {
   return (
-    <main className="min-h-screen bg-[#0d0b1f] text-white">
+    <main className="min-h-screen text-white">
 
-      {/* ══ HERO ══ */}
+      {/* ══ HERO — UNCHANGED ══ */}
       <section className="relative overflow-hidden border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
         <div
@@ -161,12 +165,11 @@ export default function AppDevelopmentPage() {
             className="max-w-3xl"
           >
             <motion.div variants={cardVariant}>
-              <SectionBadge>App Development</SectionBadge>
+              <HeroBadge>App Development</HeroBadge>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-            //   custom={0.06}
               className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             >
               Mobile Apps That{" "}
@@ -188,9 +191,9 @@ export default function AppDevelopmentPage() {
             <motion.div variants={fadeUp} custom={0.22} className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3
-                           text-sm font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40
-                           transition hover:bg-violet-50 hover:shadow-lg sm:px-8 sm:text-[15px]"
+                className="group inline-flex items-center gap-2 rounded-full bg-fuchsia-500 px-6 py-3
+                           text-sm font-bold text-white shadow-md ring-1 ring-white/40
+                           transition hover:bg-violet-400 hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
                 Build Your App
                 <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -227,18 +230,17 @@ export default function AppDevelopmentPage() {
       </section>
 
       {/* ══ APP TYPES STRIP ══ */}
-      <section className="border-b border-white/[0.08] bg-white/[0.02] py-8">
+      <section className="border-b border-gray-200 bg-gray-50 py-8">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p className="mb-5 text-center text-[11px] font-bold uppercase
-                        tracking-[0.2em] text-white/35">
+          <p className="mb-5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
             Apps We Build
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {appTypes.map(({ icon, name }) => (
               <div
                 key={name}
-                className="flex items-center gap-2 rounded-full border border-white/[0.1]
-                           bg-white/[0.04] px-4 py-2 text-[13px] font-medium text-white/75"
+                className="flex items-center gap-2 rounded-full border border-gray-200
+                           bg-white px-4 py-2 text-[13px] font-medium text-gray-700"
               >
                 <span>{icon}</span>
                 <span>{name}</span>
@@ -249,10 +251,9 @@ export default function AppDevelopmentPage() {
       </section>
 
       {/* ══ TECH STACK ══ */}
-      <section className="border-b border-white/[0.08] py-6">
+      <section className="border-b border-gray-200 bg-white py-6">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <p className="mb-5 text-center text-[11px] font-bold uppercase
-                        tracking-[0.2em] text-white/35">
+          <p className="mb-5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
             Technologies We Use
           </p>
           <div className="flex flex-wrap justify-center gap-2.5">
@@ -269,13 +270,13 @@ export default function AppDevelopmentPage() {
       </section>
 
       {/* ══ SERVICES GRID ══ */}
-      <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <section className="bg-white mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>What We Offer</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             App Development Services
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
             Native, cross-platform, or web — we build the right app for your audience and budget.
           </p>
         </div>
@@ -294,14 +295,14 @@ export default function AppDevelopmentPage() {
       </section>
 
       {/* ══ PROCESS ══ */}
-      <section id="process" className="border-y border-white/[0.08] bg-white/[0.02]">
+      <section id="process" className="border-y border-gray-200 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="mb-12 text-center">
             <SectionBadge>Our Process</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               From Idea to App Store
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/60">
+            <p className="mx-auto mt-4 max-w-lg text-[15px] text-gray-500">
               A battle-tested 5-step process that delivers quality apps on time, every time.
             </p>
           </div>
@@ -317,27 +318,25 @@ export default function AppDevelopmentPage() {
               <motion.div
                 key={step.step}
                 variants={cardVariant}
-                className="relative rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 text-center"
+                className="relative rounded-2xl border border-gray-200 bg-white p-6 text-center"
               >
-                {/* Connector arrow between steps (desktop only) */}
                 {i < processSteps.length - 1 && (
                   <div
-                    className="absolute -right-2 top-1/2 hidden -translate-y-1/2
-                               text-white/20 lg:block"
+                    className="absolute -right-2 top-1/2 hidden -translate-y-1/2 text-gray-300 lg:block"
                     aria-hidden
                   >
                     →
                   </div>
                 )}
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center
-                                rounded-xl bg-violet-500/15 text-2xl ring-1 ring-violet-400/20">
+                                rounded-xl bg-violet-50 text-2xl ring-1 ring-violet-200">
                   {step.icon}
                 </div>
-                <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#ea580c]/80">
+                <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#ea580c]">
                   Step {step.step}
                 </div>
-                <h3 className="mb-2 text-[16px] font-semibold text-white">{step.title}</h3>
-                <p className="text-[13px] leading-relaxed text-white/55">{step.desc}</p>
+                <h3 className="mb-2 text-[16px] font-semibold text-gray-900">{step.title}</h3>
+                <p className="text-[13px] leading-relaxed text-gray-500">{step.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -345,7 +344,7 @@ export default function AppDevelopmentPage() {
       </section>
 
       {/* ══ STATS ══ */}
-      <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
+      <section className="bg-white mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-10">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -362,17 +361,17 @@ export default function AppDevelopmentPage() {
             <motion.div
               key={label}
               variants={cardVariant}
-              className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center"
+              className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center"
             >
-              <p className="text-3xl font-bold text-white sm:text-4xl">{num}</p>
-              <p className="mt-2 text-[13px] text-white/50">{label}</p>
+              <p className="text-3xl font-bold text-gray-900 sm:text-4xl">{num}</p>
+              <p className="mt-2 text-[13px] text-gray-500">{label}</p>
             </motion.div>
           ))}
         </motion.div>
       </section>
 
       {/* ══ CTA BANNER ══ */}
-      <section className="border-t border-white/[0.08] bg-gradient-to-b from-transparent to-[#0a0f2c]">
+      <section className="border-t border-gray-200 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -381,17 +380,17 @@ export default function AppDevelopmentPage() {
             transition={{ duration: 0.52, ease: "easeInOut" }}
           >
             <SectionBadge>Start Building</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Got an App Idea?
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
               Let's turn it into a product your users will love. Book a free strategy call — no obligation.
             </p>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
-                         px-8 py-4 text-sm font-bold text-[#3b31a1] shadow-lg
-                         transition hover:bg-violet-50 sm:text-[15px]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gray-900
+                         px-8 py-4 text-sm font-bold text-white shadow-lg
+                         transition hover:bg-gray-800 sm:text-[15px]"
             >
               Build My App
               <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -399,6 +398,7 @@ export default function AppDevelopmentPage() {
           </motion.div>
         </div>
       </section>
+
     </main>
   );
 }

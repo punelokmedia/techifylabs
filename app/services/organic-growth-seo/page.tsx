@@ -57,7 +57,7 @@ const seoPageData: ServicePageData = {
   heroSubtitle:
     "Techeasify helps businesses grow with steady, long-term search traffic that turns into calls, leads, and sales. White-hat methods. Clear deliverables. Measurable results.",
   heroCta: "Book Free Strategy Call",
-  accentColor: "emerald",
+  accentColor: "violet",
   stats: [
     { value: "3.5X", label: "Avg. organic traffic growth in 6 months" },
     { value: "47+", label: "Active SEO clients across India" },

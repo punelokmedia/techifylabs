@@ -3,20 +3,7 @@
 import { motion, useReducedMotion, Variants } from "framer-motion";
 import Link from "next/link";
 
-// ─────────────────────────────────────────────────────────────
-// FILE: app/services/website-design/page.tsx
-//
-// HOW THIS WORKS (beginner guide):
-//  - "use client" → tells Next.js this component runs in the browser
-//    (needed because we use framer-motion animations)
-//  - motion.div / motion.h1 → framer-motion wrappers that let us
-//    animate elements using "initial", "animate", "whileInView" props
-//  - useReducedMotion() → respects user's OS "reduce motion" setting
-//  - All colors/styles match your navbar (#3b31a1 purple) and footer
-// ─────────────────────────────────────────────────────────────
-
-// Reusable animation variants (same easing as your Hero component)
-const fadeUp:Variants = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: (delay = 0) => ({
     opacity: 1,
@@ -106,9 +93,8 @@ const plans = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-// SectionBadge — the small orange-accented label above headings
-// Matches the style used in your Footer's FooterSectionTitle
-function SectionBadge({ children }: { children: React.ReactNode }) {
+// Dark badge — used in hero (unchanged)
+function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
       <span className="h-2 w-2 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.5)]" />
@@ -119,7 +105,19 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-// FeatureCard — individual service card
+// Light badge — used below hero
+function SectionBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 inline-flex items-center gap-2">
+      <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#3b31a1]">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+// FeatureCard — light theme
 function FeatureCard({
   icon,
   title,
@@ -130,21 +128,19 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    // motion.div with cardVariant → fades up when scrolled into view
     <motion.div
       variants={cardVariant}
       whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
-      className="group rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-sm
-                 transition-colors hover:border-violet-400/30 hover:bg-white/[0.07]"
+      className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm
+                 transition-all hover:border-violet-300 hover:shadow-md"
     >
-      {/* Icon wrapper — matches your navbar's icon box style */}
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
-                      bg-violet-500/15 text-2xl ring-1 ring-violet-400/20
-                      transition-colors group-hover:bg-violet-500/25">
+                      bg-violet-100 text-2xl ring-1 ring-violet-200
+                      transition-colors group-hover:bg-violet-200">
         {icon}
       </div>
-      <h3 className="mb-2 text-[17px] font-semibold text-white">{title}</h3>
-      <p className="text-[14px] leading-relaxed text-white/65">{description}</p>
+      <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
+      <p className="text-[14px] leading-relaxed text-gray-500">{description}</p>
     </motion.div>
   );
 }
@@ -155,16 +151,13 @@ export default function WebsiteDesignPage() {
   const reduceMotion = useReducedMotion();
 
   return (
-    // Main wrapper — dark purple background matching your site's bg
-    <main className="min-h-screen bg-[#0d0b1f] text-white">
+    <main className="min-h-screen bg-white text-gray-900">
 
       {/* ══════════════════════════════════════════
-          HERO SECTION
-          Same radial-gradient + ring style as your Hero component
+          HERO SECTION — UNCHANGED
       ══════════════════════════════════════════ */}
       <section className="relative overflow-hidden border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
-        {/* Background decorative gradients — copied from your Hero */}
         <div
           className="pointer-events-none absolute inset-0
                      bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.18),transparent_55%)]"
@@ -183,16 +176,14 @@ export default function WebsiteDesignPage() {
             variants={staggerContainer}
             className="max-w-3xl"
           >
-            {/* Badge */}
             <motion.div variants={fadeUp} custom={0}>
-              <SectionBadge>Website Design</SectionBadge>
+              <SectionBadgeDark>Website Design</SectionBadgeDark>
             </motion.div>
 
-            {/* Headline */}
             <motion.h1
               variants={fadeUp}
               custom={0.06}
-              className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+              className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl text-white"
             >
               Beautiful Designs That{" "}
               <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
@@ -201,7 +192,6 @@ export default function WebsiteDesignPage() {
               </span>
             </motion.h1>
 
-            {/* Subtext */}
             <motion.p
               variants={fadeUp}
               custom={0.14}
@@ -211,7 +201,6 @@ export default function WebsiteDesignPage() {
               and turn visitors into loyal customers — from wireframe to pixel-perfect Figma.
             </motion.p>
 
-            {/* CTA Buttons — same style as your Navbar CTA */}
             <motion.div
               variants={fadeUp}
               custom={0.22}
@@ -220,7 +209,7 @@ export default function WebsiteDesignPage() {
               <Link
                 href="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden
-                           rounded-full bg-white px-6 py-3 text-sm font-bold text-[#3b31a1]
+                           rounded-full bg-violet-500 px-6 py-3 text-sm font-bold text-black
                            shadow-md ring-1 ring-white/40 transition hover:bg-violet-50
                            hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
@@ -242,7 +231,6 @@ export default function WebsiteDesignPage() {
               </Link>
             </motion.div>
 
-            {/* Quick stats row */}
             <motion.div
               variants={fadeUp}
               custom={0.3}
@@ -265,21 +253,19 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          FEATURES GRID
-          6 cards, 3-col on desktop
+          FEATURES GRID — WHITE THEME
       ══════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>What's Included</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Our Design Services
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
             Everything you need to launch a website that looks great and performs even better.
           </p>
         </div>
 
-        {/* staggerContainer → children animate in one by one */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -294,17 +280,16 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PROCESS SECTION
-          id="process" so the hero CTA can scroll here
+          PROCESS SECTION — WHITE THEME
       ══════════════════════════════════════════ */}
       <section
         id="process"
-        className="border-y border-white/[0.08] bg-white/[0.02]"
+        className="border-y border-gray-100 bg-gray-50"
       >
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="mb-12 text-center">
             <SectionBadge>Our Process</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               How It Works
             </h2>
           </div>
@@ -320,11 +305,11 @@ export default function WebsiteDesignPage() {
               <motion.div
                 key={p.step}
                 variants={cardVariant}
-                className="relative rounded-2xl border border-white/[0.1] bg-white/[0.04] p-7"
+                className="relative rounded-2xl border border-gray-200 bg-white p-7 shadow-sm"
               >
                 {/* Step number — large faded as bg decoration */}
                 <span className="pointer-events-none absolute right-5 top-4 select-none
-                                 text-6xl font-black text-white/[0.05]">
+                                 text-6xl font-black text-gray-100">
                   {p.step}
                 </span>
                 {/* Orange dot connector line except on last */}
@@ -337,12 +322,12 @@ export default function WebsiteDesignPage() {
                 )}
                 <div className="mb-4 flex items-center gap-2.5">
                   <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" aria-hidden />
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/50">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-400">
                     Step {p.step}
                   </span>
                 </div>
-                <h3 className="mb-2 text-[17px] font-semibold text-white">{p.title}</h3>
-                <p className="text-[14px] leading-relaxed text-white/60">{p.desc}</p>
+                <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{p.title}</h3>
+                <p className="text-[14px] leading-relaxed text-gray-500">{p.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -350,15 +335,15 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PRICING SECTION
+          PRICING SECTION — WHITE THEME
       ══════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>Pricing</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Transparent, Flat Pricing
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/60">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] text-gray-500">
             No hidden fees. Pick the plan that fits your business.
           </p>
         </div>
@@ -377,25 +362,25 @@ export default function WebsiteDesignPage() {
               whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
               className={`relative flex flex-col rounded-2xl border p-8 ${
                 plan.highlight
-                  ? "border-violet-400/40 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.04]"
-                  : "border-white/[0.1] bg-white/[0.03]"
+                  ? "border-violet-300 bg-gradient-to-b from-violet-50 to-white shadow-md"
+                  : "border-gray-200 bg-white shadow-sm"
               }`}
             >
               {plan.highlight && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full
                                  bg-[#3b31a1] px-3 py-1 text-[11px] font-bold
-                                 uppercase tracking-[0.12em] text-violet-200
-                                 ring-1 ring-violet-400/30">
+                                 uppercase tracking-[0.12em] text-white
+                                 ring-1 ring-violet-300">
                   Most Popular
                 </span>
               )}
-              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/45">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                 {plan.name}
               </p>
-              <p className="mt-3 text-4xl font-bold text-white">{plan.price}</p>
+              <p className="mt-3 text-4xl font-bold text-gray-900">{plan.price}</p>
               <ul className="mt-7 flex-1 space-y-3">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-white/75">
+                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-gray-600">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]/90" aria-hidden />
                     {f}
                   </li>
@@ -406,8 +391,8 @@ export default function WebsiteDesignPage() {
                 className={`mt-8 block rounded-full py-3 text-center text-sm font-bold
                             transition ${
                               plan.highlight
-                                ? "bg-white text-[#3b31a1] hover:bg-violet-50"
-                                : "border border-white/20 bg-white/[0.06] text-white hover:bg-white/10"
+                                ? "bg-[#3b31a1] text-white hover:bg-[#2f278f]"
+                                : "border border-gray-300 bg-white text-gray-800 hover:bg-gray-50"
                             }`}
               >
                 Get Started
@@ -418,9 +403,9 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          BOTTOM CTA BANNER
+          BOTTOM CTA BANNER — WHITE THEME
       ══════════════════════════════════════════ */}
-      <section className="border-t border-white/[0.08] bg-gradient-to-b from-transparent to-[#0a0f2c]">
+      <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -429,17 +414,17 @@ export default function WebsiteDesignPage() {
             transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
           >
             <SectionBadge>Ready to Start?</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Let's Build Something Memorable
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
               Book a free consultation and let's design a website that grows your business.
             </p>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
-                         px-8 py-4 text-sm font-bold text-[#3b31a1] shadow-lg
-                         transition hover:bg-violet-50 hover:shadow-xl sm:text-[15px]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#3b31a1]
+                         px-8 py-4 text-sm font-bold text-white shadow-lg
+                         transition hover:bg-[#2f278f] hover:shadow-xl sm:text-[15px]"
             >
               Start Your Project Today
               <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">

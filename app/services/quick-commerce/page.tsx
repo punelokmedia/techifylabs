@@ -40,13 +40,13 @@ function SectionHeading({
       </motion.span>
       <motion.h2
         variants={fadeUp}
-        className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight"
+        className="text-3xl md:text-4xl font-bold text-black mb-4 leading-tight"
       >
         {title}
       </motion.h2>
       <motion.p
         variants={fadeUp}
-        className="text-gray-400 max-w-2xl mx-auto text-base"
+        className="text-gray-500 max-w-2xl mx-auto text-base"
       >
         {sub}
       </motion.p>
@@ -54,7 +54,7 @@ function SectionHeading({
   );
 }
 
-const ACCENT = "#00E5A0";
+const ACCENT = "#00E5A0";//green
 
 const qcPlatforms = [
   { name: "Blinkit", icon: "⚡", color: "#FFD400" },
@@ -175,20 +175,20 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4 }}
-      className="border border-white/10 rounded-2xl p-6 bg-white/5 hover:bg-white/8 transition-colors"
+      className="border border-gray-200 rounded-2xl p-6 bg-white hover:bg-gray-50 transition-colors"
     >
-      <p className="font-semibold text-white mb-2">{q}</p>
-      <p className="text-gray-400 text-sm leading-relaxed">{a}</p>
+      <p className="font-semibold text-black mb-2">{q}</p>
+      <p className="text-gray-500 text-sm leading-relaxed">{a}</p>
     </motion.div>
   );
 }
 
 export default function QuickCommerce() {
   return (
-    <div className="bg-[#080C0A] min-h-screen text-white font-sans">
+    <div className="bg-white min-h-screen text-black font-sans">
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-24 px-6">
+      {/* Hero — unchanged */}
+      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b border-white/[0.08]  bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[600px] h-[500px] bg-[#00E5A0]/8 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-[#00E5A0]/5 rounded-full blur-[100px]" />
@@ -203,22 +203,22 @@ export default function QuickCommerce() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
-              style={{ color: ACCENT, background: `${ACCENT}15` }}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 bg-gray-700
+              text-gray-300"
             >
               <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: ACCENT }}
+                className="w-1.5 h-1.5 rounded-full animate-pulse
+               bg-gray-300"
               />
               Quick Commerce Ads Agency
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 text-white"
             >
               Win the{" "}
-              <span style={{ color: ACCENT }}>10-Minute</span>
+              <span className="text-violet-400">10-Minute</span>
               <br />
               Commerce Race
             </motion.h1>
@@ -235,14 +235,14 @@ export default function QuickCommerce() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
                 href="/contact-us"
-                className="inline-flex items-center gap-2 font-bold px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95 text-sm uppercase tracking-wide text-black"
-                style={{ background: ACCENT }}
+                className="inline-flex items-center gap-2 font-semibold px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95 text-sm uppercase tracking-wide text-white
+                bg-fuchsia-500 hover:bg-violet-500"
               >
                 Get Free Consultation →
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-full transition-all text-sm uppercase tracking-wide"
+                className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 hover:bg-gray-600 text-white px-8 py-4 rounded-full transition-all text-sm uppercase tracking-wide"
               >
                 Our Services
               </a>
@@ -252,7 +252,7 @@ export default function QuickCommerce() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-white/10 bg-white/[0.02]">
+      <section className="border-y border-gray-200 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
             <motion.div
@@ -265,11 +265,11 @@ export default function QuickCommerce() {
             >
               <p
                 className="text-3xl md:text-4xl font-black mb-1"
-                style={{ color: ACCENT }}
+                // style={{ color: ACCENT }}
               >
                 {s.value}
               </p>
-              <p className="text-gray-400 text-xs uppercase tracking-wider">
+              <p className="text-gray-500 text-xs uppercase tracking-wider">
                 {s.label}
               </p>
             </motion.div>
@@ -297,10 +297,10 @@ export default function QuickCommerce() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="flex flex-col items-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#00E5A0]/30 hover:bg-[#00E5A0]/5 transition-all cursor-default"
+                className="flex flex-col items-center gap-3 bg-gray-50 border border-gray-200 rounded-2xl p-5 hover:border-violet-400 hover:bg-violet-100 transition-all cursor-default"
               >
                 <span className="text-2xl">{p.icon}</span>
-                <span className="text-white font-semibold text-xs text-center">
+                <span className="text-black font-semibold text-xs text-center">
                   {p.name}
                 </span>
                 <span
@@ -314,7 +314,7 @@ export default function QuickCommerce() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-20 px-6 bg-white/[0.02]">
+      <section id="services" className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             tag="What We Do"
@@ -333,13 +333,13 @@ export default function QuickCommerce() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#00E5A0]/30 hover:bg-[#00E5A0]/5 transition-all duration-300"
+                className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#00E5A0]/40 hover:bg-[#00E5A0]/5 transition-all duration-300"
               >
                 <span className="text-3xl mb-4 block">{s.icon}</span>
-                <h3 className="font-bold text-white text-lg mb-2">
+                <h3 className="font-bold text-black text-lg mb-2">
                   {s.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   {s.desc}
                 </p>
               </motion.div>
@@ -365,7 +365,7 @@ export default function QuickCommerce() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex gap-5 bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#00E5A0]/30 transition-all"
+                className="flex gap-5 bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#00E5A0]/40 transition-all"
               >
                 <span
                   className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-black"
@@ -374,8 +374,8 @@ export default function QuickCommerce() {
                   {i + 1}
                 </span>
                 <div>
-                  <h4 className="font-bold text-white mb-1">{d.title}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h4 className="font-bold text-black mb-1">{d.title}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed">
                     {d.desc}
                   </p>
                 </div>
@@ -386,7 +386,7 @@ export default function QuickCommerce() {
       </section>
 
       {/* Process */}
-      <section className="py-20 px-6 bg-white/[0.02]">
+      <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             tag="Our Process"
@@ -402,13 +402,13 @@ export default function QuickCommerce() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12 }}
-                className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#00E5A0]/30 transition-all"
+                className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#00E5A0]/40 transition-all"
               >
-                <span className="text-5xl font-black text-white/10 block mb-3">
+                <span className="text-5xl font-black text-black/10 block mb-3">
                   {p.step}
                 </span>
-                <h4 className="font-bold text-white mb-2">{p.title}</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <h4 className="font-bold text-black mb-2">{p.title}</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">
                   {p.desc}
                 </p>
                 {i < process.length - 1 && (
@@ -442,12 +442,12 @@ export default function QuickCommerce() {
               />
             </div>
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
                 Your Buyers Are Ordering Right Now.
                 <br />
                 <span style={{ color: ACCENT }}>Are You There?</span>
               </h2>
-              <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
+              <p className="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
                 Book a free strategy call and we will show you exactly how your
                 brand can dominate quick commerce in your top cities and
                 categories.
@@ -465,7 +465,7 @@ export default function QuickCommerce() {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 px-6 bg-white/[0.02]">
+      <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-3xl mx-auto">
           <SectionHeading
             tag="FAQs"

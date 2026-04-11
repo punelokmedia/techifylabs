@@ -1,11 +1,7 @@
 "use client";
 
-import { easeInOut, motion ,Variants } from "framer-motion";
+import { easeInOut, motion, Variants } from "framer-motion";
 import Link from "next/link";
-
-// ─────────────────────────────────────────────────────────────
-// FILE: app/services/shopify-development/page.tsx
-// ─────────────────────────────────────────────────────────────
 
 const staggerContainer = {
   hidden: {},
@@ -14,7 +10,7 @@ const staggerContainer = {
 
 const cardVariant: Variants = {
   hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: easeInOut, } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: easeInOut } },
 };
 
 const fadeUp: Variants = {
@@ -94,11 +90,24 @@ const plans = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-function SectionBadge({ children }: { children: React.ReactNode }) {
+// Dark badge — hero only (unchanged)
+function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
       <span className="h-2 w-2 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.5)]" />
       <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white/60">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+// Light badge — below hero
+function SectionBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-4 inline-flex items-center gap-2">
+      <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" />
+      <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#3b31a1]">
         {children}
       </span>
     </div>
@@ -110,16 +119,16 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
     <motion.div
       variants={cardVariant}
       whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
-      className="group rounded-2xl border border-white/[0.1] bg-white/[0.04] p-6 backdrop-blur-sm
-                 transition-colors hover:border-violet-400/30 hover:bg-white/[0.07]"
+      className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm
+                 transition-all hover:border-violet-300 hover:shadow-md"
     >
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
-                      bg-violet-500/15 text-2xl ring-1 ring-violet-400/20
-                      transition-colors group-hover:bg-violet-500/25">
+                      bg-violet-100 text-2xl ring-1 ring-violet-200
+                      transition-colors group-hover:bg-violet-200">
         {icon}
       </div>
-      <h3 className="mb-2 text-[17px] font-semibold text-white">{title}</h3>
-      <p className="text-[14px] leading-relaxed text-white/65">{description}</p>
+      <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
+      <p className="text-[14px] leading-relaxed text-gray-500">{description}</p>
     </motion.div>
   );
 }
@@ -128,9 +137,9 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
 
 export default function ShopifyDevelopmentPage() {
   return (
-    <main className="min-h-screen bg-[#0d0b1f] text-white">
+    <main className="min-h-screen bg-white text-gray-100">
 
-      {/* ══ HERO ══ */}
+      {/* ══ HERO — UNCHANGED ══ */}
       <section className="relative overflow-hidden border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
         <div
@@ -152,12 +161,11 @@ export default function ShopifyDevelopmentPage() {
             className="max-w-3xl"
           >
             <motion.div variants={cardVariant}>
-              <SectionBadge>Shopify Development</SectionBadge>
+              <SectionBadgeDark>Shopify Development</SectionBadgeDark>
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-            //   custom={0.06}
               className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             >
               Shopify Stores Built{" "}
@@ -179,9 +187,9 @@ export default function ShopifyDevelopmentPage() {
             <motion.div variants={fadeUp} custom={0.22} className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3
-                           text-sm font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40
-                           transition hover:bg-violet-50 hover:shadow-lg sm:px-8 sm:text-[15px]"
+                className="group inline-flex items-center gap-2 rounded-full bg-fuchsia-500 px-6 py-3
+                           text-sm font-bold text-white shadow-md ring-1 ring-white/40
+                           transition hover:bg-violet-400 hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
                 Launch Your Store
                 <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -202,9 +210,9 @@ export default function ShopifyDevelopmentPage() {
               className="mt-14 flex flex-wrap gap-8 border-t border-white/[0.1] pt-10"
             >
               {[
-                { num: "5+ yrs", label: "Shopify Experience" },
-                { num: "80+", label: "Stores Launched" },
-                { num: "Official", label: "Shopify Partner" },
+                { num: "5+ yrs",    label: "Shopify Experience" },
+                { num: "80+",       label: "Stores Launched" },
+                { num: "Official",  label: "Shopify Partner" },
                 { num: "B2B + B2C", label: "Store Types Built" },
               ].map(({ num, label }) => (
                 <div key={label}>
@@ -217,27 +225,27 @@ export default function ShopifyDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ OFFICIAL PARTNER BADGE ══ */}
-      <section className="border-b border-white/[0.08] bg-white/[0.02] py-8">
+      {/* ══ OFFICIAL PARTNER BADGE — WHITE THEME ══ */}
+      <section className="border-b border-gray-100 bg-gray-50 py-8">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
-          <div className="inline-flex items-center gap-3 rounded-full border border-violet-400/25
-                          bg-violet-500/10 px-6 py-3 ring-1 ring-violet-400/10">
+          <div className="inline-flex items-center gap-3 rounded-full border border-violet-200
+                          bg-violet-50 px-6 py-3 ring-1 ring-violet-100">
             <span className="text-xl">🏆</span>
-            <span className="text-[14px] font-semibold text-white/90">
+            <span className="text-[14px] font-semibold text-[#3b31a1]">
               Official Shopify Partner & Certified Developers
             </span>
           </div>
         </div>
       </section>
 
-      {/* ══ SERVICES GRID ══ */}
+      {/* ══ SERVICES GRID — WHITE THEME ══ */}
       <section id="services" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>Shopify Services</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Everything for Your Store
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/60">
+          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
             From initial setup to ongoing growth — we cover every aspect of your Shopify journey.
           </p>
         </div>
@@ -255,27 +263,27 @@ export default function ShopifyDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ WHY SHOPIFY ══ */}
-      <section className="border-y border-white/[0.08] bg-white/[0.02]">
+      {/* ══ WHY SHOPIFY — WHITE THEME ══ */}
+      <section className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             <div>
               <SectionBadge>Why Shopify?</SectionBadge>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 The World's Best{" "}
-                <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                <span className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
                                  bg-clip-text text-transparent">
                   eCommerce Platform
                 </span>
               </h2>
-              <p className="mt-5 text-[15px] leading-relaxed text-white/65">
+              <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
                 Shopify powers over 4 million businesses worldwide. It's secure, fast, and comes
                 with everything you need to sell — online, in-person, and everywhere in between.
               </p>
               <Link
                 href="/contact"
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
-                           px-7 py-3.5 text-sm font-bold text-[#3b31a1] transition hover:bg-violet-50"
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#3b31a1]
+                           px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#2f278f]"
               >
                 Migrate to Shopify
                 <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -293,11 +301,11 @@ export default function ShopifyDevelopmentPage() {
                 <motion.li
                   key={point}
                   variants={cardVariant}
-                  className="flex items-start gap-3 rounded-xl border border-white/[0.07]
-                             bg-white/[0.03] px-4 py-3.5"
+                  className="flex items-start gap-3 rounded-xl border border-gray-200
+                             bg-white px-4 py-3.5 shadow-sm"
                 >
                   <span className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-[#ea580c]/90" aria-hidden />
-                  <span className="text-[14px] leading-snug text-white/75">{point}</span>
+                  <span className="text-[14px] leading-snug text-gray-600">{point}</span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -305,11 +313,11 @@ export default function ShopifyDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ PRICING ══ */}
+      {/* ══ PRICING — WHITE THEME ══ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>Pricing</SectionBadge>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Store Packages
           </h2>
         </div>
@@ -328,24 +336,24 @@ export default function ShopifyDevelopmentPage() {
               whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
               className={`relative flex flex-col rounded-2xl border p-8 ${
                 plan.highlight
-                  ? "border-violet-400/40 bg-gradient-to-b from-violet-500/[0.12] to-violet-500/[0.04]"
-                  : "border-white/[0.1] bg-white/[0.03]"
+                  ? "border-violet-300 bg-gradient-to-b from-violet-50 to-white shadow-md"
+                  : "border-gray-200 bg-white shadow-sm"
               }`}
             >
               {plan.highlight && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#3b31a1]
                                  px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em]
-                                 text-violet-200 ring-1 ring-violet-400/30">
+                                 text-white ring-1 ring-violet-300">
                   Most Popular
                 </span>
               )}
-              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-white/45">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                 {plan.name}
               </p>
-              <p className="mt-3 text-4xl font-bold text-white">{plan.price}</p>
+              <p className="mt-3 text-4xl font-bold text-gray-900">{plan.price}</p>
               <ul className="mt-7 flex-1 space-y-3">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-white/75">
+                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-gray-600">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]/90" aria-hidden />
                     {f}
                   </li>
@@ -355,8 +363,8 @@ export default function ShopifyDevelopmentPage() {
                 href="/contact"
                 className={`mt-8 block rounded-full py-3 text-center text-sm font-bold transition ${
                   plan.highlight
-                    ? "bg-white text-[#3b31a1] hover:bg-violet-50"
-                    : "border border-white/20 bg-white/[0.06] text-white hover:bg-white/10"
+                    ? "bg-[#3b31a1] text-white hover:bg-[#2f278f]"
+                    : "border border-gray-300 bg-white text-gray-800 hover:bg-gray-50"
                 }`}
               >
                 Get Started
@@ -366,8 +374,8 @@ export default function ShopifyDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ CTA BANNER ══ */}
-      <section className="border-t border-white/[0.08] bg-gradient-to-b from-transparent to-[#0a0f2c]">
+      {/* ══ CTA BANNER — WHITE THEME ══ */}
+      <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -376,17 +384,17 @@ export default function ShopifyDevelopmentPage() {
             transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
           >
             <SectionBadge>Ready to Launch?</SectionBadge>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Let's Build Your Shopify Store
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-white/65">
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
               Book a free consultation and let's design a store that turns visitors into customers.
             </p>
             <Link
               href="/contact"
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white
-                         px-8 py-4 text-sm font-bold text-[#3b31a1] shadow-lg
-                         transition hover:bg-violet-50 sm:text-[15px]"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#3b31a1]
+                         px-8 py-4 text-sm font-bold text-white shadow-lg
+                         transition hover:bg-[#2f278f] sm:text-[15px]"
             >
               Launch Your Store Today
               <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
