@@ -140,7 +140,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
     <div className="bg-white min-h-screen text-gray-900">
 
       {/* ── Hero — UNCHANGED ──────────────────────────────────────────────── */}
-      <section className="relative  bg-gradient-to-br from-black via-[#310f39] to-[#1a0b2e] border-b border-white/[0.06] overflow-hidden">
+      <section className="relative  bg-gradient-to-br from-black via-[#310f39] to-[#1a0b2e] border-b border-white/[0.06] overflow-hidden sm:rounded-b-[1.75rem]">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{

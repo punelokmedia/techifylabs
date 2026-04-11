@@ -166,7 +166,7 @@ export default function EcommerceMarketplace() {
     <div className="bg-white min-h-screen text-white font-sans">
 
       {/* Hero — unchanged */}
-      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b border-white/[0.08]  bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b sm:rounded-b-[1.75rem] border-white/[0.08]  bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
         {/* BG glow */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#F4A619]/10 rounded-full blur-[120px]" />
