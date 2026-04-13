@@ -80,12 +80,12 @@ export default function BlogPostPage() {
       {/* Hero / Cover */}
       <section className="relative h-[50vh] min-h-[360px] bg-[#0a0a0a] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        {/* <img
           src={post.coverImage}
           alt={post.title}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
+        /> */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#431247] via-[#0a0a0a]/60 to-transparent" />
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

@@ -159,16 +159,16 @@ export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] pt-28 pb-20 px-6">
+      <section className="relative overflow-hidden  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] pt-28 pb-20 px-6">
         {/* Subtle grid bg */}
-        <div
+        {/* <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
               "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
             backgroundSize: "60px 60px",
-          }}
-        />
+          }} */}
+        {/* /> */}
         <div className="relative max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
