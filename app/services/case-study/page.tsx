@@ -313,7 +313,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#0a0a0a] mx-6 mb-16 rounded-3xl px-8 py-16 text-center">
+      <section className="bg-[#30379e] mx-6 mb-16 rounded-3xl px-8 py-16 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -326,7 +326,7 @@ export default function CaseStudiesPage() {
           <p className="text-white/50 mb-8 max-w-lg mx-auto">
             Book a free strategy call. We'll study your brand and show you exactly where your growth is hiding.
           </p>
-          <button className="bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm">
+          <button className="bg-white hover:bg-gray-300 text-black font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm">
             Get a Free Consultation →
           </button>
         </motion.div>

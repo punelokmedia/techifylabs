@@ -85,7 +85,7 @@ export default function BlogPostPage() {
           alt={post.title}
           className="absolute inset-0 w-full h-full object-cover opacity-30"
         /> */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#431247] via-[#0a0a0a]/60 to-transparent" />
+        <div className="absolute inset-0  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] to-transparent" />
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -93,7 +93,7 @@ export default function BlogPostPage() {
           transition={{ duration: 0.7 }}
           className="relative h-full flex flex-col justify-end max-w-4xl mx-auto px-6 pb-12"
         >
-          <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
+          <span className="inline-block bg-gray-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
             {post.category}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl">
@@ -217,7 +217,7 @@ export default function BlogPostPage() {
             </div>
 
             {/* CTA card */}
-            <div className="bg-[#0a0a0a] rounded-2xl p-5 text-center">
+            <div className="bg-[#322eb4] rounded-2xl p-5 text-center">
               <p className="text-xs text-orange-400 font-semibold uppercase tracking-widest mb-2">
                 Free consultation
               </p>
@@ -227,7 +227,7 @@ export default function BlogPostPage() {
               <p className="text-white/50 text-xs mb-4">
                 We'll review your account and show you exactly where your budget is leaking.
               </p>
-              <button className="w-full bg-orange-500 hover:bg-orange-400 text-white text-xs font-semibold py-2.5 rounded-full transition-colors">
+              <button className="w-full bg-white hover:bg-gray-200 text-black text-xs font-semibold py-2.5 rounded-full transition-colors">
                 Book Free Call →
               </button>
             </div>
