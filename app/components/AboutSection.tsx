@@ -102,7 +102,7 @@ export default function AboutSection() {
               variants={fadeUp}
               custom={1}
               whileHover={{ y: -4, transition: springSoft }}
-              className="group/card relative mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-[#2563eb] via-[#1d4ed8] to-[#1e40af] p-6 shadow-xl ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-950/40 hover:ring-violet-400/25 sm:p-8"
+              className="group/card relative mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-[#1b3774] via-[#173073] to-[#273f8d] p-6 shadow-xl ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-950/40 hover:ring-violet-400/25 sm:p-8"
             >
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet-500/25 via-indigo-500/10 to-fuchsia-500/20 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
@@ -214,7 +214,7 @@ export default function AboutSection() {
         >
           <motion.a
             href="#"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2563eb] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2d4987] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
             whileHover={{
               scale: 1.03,
               y: -2,

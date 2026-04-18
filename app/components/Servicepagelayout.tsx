@@ -141,14 +141,14 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
 
       {/* ── Hero — UNCHANGED ──────────────────────────────────────────────── */}
       <section className="relative  bg-gradient-to-br from-black via-[#310f39] to-[#1a0b2e] border-b border-white/[0.06] overflow-hidden sm:rounded-b-[1.75rem]">
-        <div
+        {/* <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
-        />
+        /> */}
         <div
           className={`absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.06] blur-3xl
             ${data.accentColor === "emerald" ? "bg-violet-500" :

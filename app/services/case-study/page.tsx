@@ -2,8 +2,17 @@
 
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-const filters = ["All", "SEO", "Performance Marketing", "Web Development", "Branding", "E-Commerce"];
+const filters = [
+  "All",
+  "SEO",
+  "Performance Marketing",
+  "Web Development",
+  "Branding",
+  "E-Commerce",
+];
 
 const caseStudies = [
   {
@@ -11,7 +20,8 @@ const caseStudies = [
     client: "Ganga Fashions Pvt. Ltd.",
     category: "E-Commerce",
     tag: "E-Commerce",
-    headline: "320% revenue growth in 6 months through Shopify redesign & Meta Ads",
+    headline:
+      "320% revenue growth in 6 months through Shopify redesign & Meta Ads",
     description:
       "A legacy fashion brand struggling with outdated web presence and poor ad ROI. We rebuilt their entire digital ecosystem — from Shopify store to performance campaigns.",
     metrics: [
@@ -32,7 +42,8 @@ const caseStudies = [
     client: "Doeraa",
     category: "Branding",
     tag: "Branding",
-    headline: "Building a premium D2C identity that drove 2x repeat purchase rate",
+    headline:
+      "Building a premium D2C identity that drove 2x repeat purchase rate",
     description:
       "Doeraa needed a brand identity that matched its premium positioning. We crafted the visual language, tone of voice, and loyalty systems to drive long-term retention.",
     metrics: [
@@ -53,7 +64,8 @@ const caseStudies = [
     client: "UrbanKitchen Co.",
     category: "Performance Marketing",
     tag: "Performance Marketing",
-    headline: "₹18L ad spend turned into ₹1.2Cr revenue via Google & Meta campaigns",
+    headline:
+      "₹18L ad spend turned into ₹1.2Cr revenue via Google & Meta campaigns",
     description:
       "A D2C kitchenware startup burning budget on untargeted campaigns. We rebuilt their funnel from audience research to creative testing and scaled profitably.",
     metrics: [
@@ -95,7 +107,8 @@ const caseStudies = [
     client: "SwiftLogix",
     category: "Web Development",
     tag: "Web Development",
-    headline: "B2B SaaS website rebuild cut bounce rate by 61% and doubled demo bookings",
+    headline:
+      "B2B SaaS website rebuild cut bounce rate by 61% and doubled demo bookings",
     description:
       "SwiftLogix had a dated website confusing visitors about their product. We redesigned the entire information architecture, built in Next.js, and connected it to their CRM.",
     metrics: [
@@ -116,7 +129,8 @@ const caseStudies = [
     client: "NestHome Realty",
     category: "Performance Marketing",
     tag: "Performance Marketing",
-    headline: "Real estate developer closes 38 units in 90 days using hyper-local Meta funnels",
+    headline:
+      "Real estate developer closes 38 units in 90 days using hyper-local Meta funnels",
     description:
       "A Surat-based realty developer struggling to generate quality site visits. We built geo-targeted, offer-based funnels and optimised the lead nurturing journey.",
     metrics: [
@@ -143,9 +157,13 @@ const containerVariants = {
   },
 };
 
-const cardVariants:Variants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+  },
 };
 
 export default function CaseStudiesPage() {
@@ -159,23 +177,15 @@ export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] pt-28 pb-20 px-6">
-        {/* Subtle grid bg */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
+      {/* <section className="relative overflow-hidden  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] pt-28 pb-20 px-6">
+      
         <div className="relative max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-xs font-semibold tracking-widest text-orange-400 uppercase mb-4">
+            <span className="inline-block text-xs font-semibold tracking-widest text-violet-500 uppercase mb-4">
               Results that speak
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
@@ -185,10 +195,10 @@ export default function CaseStudiesPage() {
               Real brands. Real numbers. Every case study below represents a growth story driven by
               strategy, data, and relentless execution.
             </p>
-          </motion.div>
+          </motion.div> */}
 
-          {/* Stats row */}
-          <motion.div
+      {/* Stats row */}
+      {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -205,7 +215,108 @@ export default function CaseStudiesPage() {
                 <p className="text-sm text-white/40 mt-1">{stat.label}</p>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
+      {/* </div>
+      </section> */}
+      <section className="relative overflow-hidden bg-[#050816] text-white">
+        {/* Softer gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
+
+        {/* divider */}
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+          {/* breadcrumb (UNCHANGED) */}
+          <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span className="text-white/25">/</span>
+            <span className="text-white/25">Knowledge Hub</span>
+            <span className="text-white/25">/</span>
+            <span className="font-medium text-white">Case Studies</span>
+          </nav>
+
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            {/* LEFT (same content, smoother animation) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* badge */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+                </span>
+                Case Studies
+              </div>
+
+              {/* heading (same content, better gradient) */}
+              <h1 className="mt-6 text-[1.85rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
+                More Visibility,{" "}
+                <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  With our Case Study
+                </span>
+              </h1>
+
+              {/* desc */}
+              <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
+                Real brands. Real numbers. Every case study below represents a
+                growth story driven by strategy, data, and relentless execution.
+              </p>
+
+              {/* buttons */}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
+                >
+                  Book Free Strategy Call
+                </Link>
+
+                <Link
+                  href="#services"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
+                >
+                  See what's included
+                </Link>
+              </div>
+
+              {/* features */}
+            </motion.div>
+
+            {/* RIGHT CARD (same content, upgraded look) */}
+            {/* <motion.div
+  initial={{ opacity: 0, x: 30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+  className="relative"
+> */}
+            {/* ✨ Glow */}
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-violet-500/25 to-fuchsia-500/25 blur-2xl rounded-2xl"></div> */}
+
+            {/* Card (no border) */}
+            {/* <div className="relative rounded-2xl bg-white/5 shadow-xl"> */}
+
+            {/* <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
+      <Image
+        src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=85"
+        alt="dashboard"
+        fill
+        className="object-cover"
+      /> */}
+            {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
+            {/* </div> */}
+
+            {/* <p className="mt-4 text-xs text-white/70">
+      Search, PMax, and Shopping tracked against real conversion value.
+    </p> */}
+            {/* </div> */}
+            {/* </motion.div> */}
+          </div>
         </div>
       </section>
 
@@ -247,10 +358,14 @@ export default function CaseStudiesPage() {
               {/* Top row */}
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <span className={`text-xs font-semibold uppercase tracking-widest ${cs.textAccent}`}>
+                  <span
+                    className={`text-xs font-semibold uppercase tracking-widest ${cs.textAccent}`}
+                  >
                     {cs.industry}
                   </span>
-                  <h2 className="text-xl font-bold text-gray-900 mt-1">{cs.client}</h2>
+                  <h2 className="text-xl font-bold text-gray-900 mt-1">
+                    {cs.client}
+                  </h2>
                 </div>
                 <span
                   className={`${cs.accent} text-white text-xs font-semibold px-3 py-1 rounded-full`}
@@ -265,14 +380,23 @@ export default function CaseStudiesPage() {
               </p>
 
               {/* Description */}
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">{cs.description}</p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {cs.description}
+              </p>
 
               {/* Metrics */}
               <div className="grid grid-cols-3 gap-3 mb-6">
                 {cs.metrics.map((m) => (
-                  <div key={m.label} className="bg-white/60 backdrop-blur-sm rounded-xl p-3">
-                    <p className={`text-xl font-bold ${cs.textAccent}`}>{m.value}</p>
-                    <p className="text-xs text-gray-500 mt-0.5 leading-tight">{m.label}</p>
+                  <div
+                    key={m.label}
+                    className="bg-white/60 backdrop-blur-sm rounded-xl p-3"
+                  >
+                    <p className={`text-xl font-bold ${cs.textAccent}`}>
+                      {m.value}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-tight">
+                      {m.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -293,8 +417,18 @@ export default function CaseStudiesPage() {
                   className={`flex items-center gap-1 text-sm font-semibold ${cs.textAccent} opacity-0 group-hover:opacity-100 transition-opacity`}
                 >
                   Read case study
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </div>
               </div>
@@ -308,12 +442,14 @@ export default function CaseStudiesPage() {
         </motion.div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-24 text-gray-400">No case studies found for this category.</div>
+          <div className="text-center py-24 text-gray-400">
+            No case studies found for this category.
+          </div>
         )}
       </section>
 
       {/* CTA */}
-      <section className="bg-[#0a0a0a] mx-6 mb-16 rounded-3xl px-8 py-16 text-center">
+      <section className="bg-[#30379e] mx-6 mb-16 rounded-3xl px-8 py-16 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -324,9 +460,10 @@ export default function CaseStudiesPage() {
             Want results like these?
           </h2>
           <p className="text-white/50 mb-8 max-w-lg mx-auto">
-            Book a free strategy call. We'll study your brand and show you exactly where your growth is hiding.
+            Book a free strategy call. We'll study your brand and show you
+            exactly where your growth is hiding.
           </p>
-          <button className="bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm">
+          <button className="bg-white hover:bg-gray-300 text-black font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm">
             Get a Free Consultation →
           </button>
         </motion.div>
