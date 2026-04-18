@@ -165,7 +165,7 @@ export default function MetaAdsPage() {
     <div className="min-h-full">
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#050816] text-white">
+      {/* <section className="relative overflow-hidden bg-[#050816] text-white">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(217,70,239,0.14),transparent_45%)]" aria-hidden />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
@@ -231,7 +231,7 @@ export default function MetaAdsPage() {
             </motion.div>
 
             {/* Sidebar contact card */}
-            <motion.div
+            {/* <motion.div
               className="rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md ring-1 ring-white/10 sm:p-8"
               initial={reduce ? false : { opacity: 0, x: 20 }}
               animate={reduce ? undefined : { opacity: 1, x: 0 }}
@@ -291,7 +291,126 @@ export default function MetaAdsPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */} 
+      <section className="relative overflow-hidden border-b border-gray-200">
+
+  {/* 🌈 BACKGROUND LAYERS */}
+  <div className="absolute inset-0 bg-[#050816]"aria-hidden />
+  
+  {/* soft blobs */}
+  {/* <div className="absolute top-[-80px] left-[-80px] w-[300px] h-[300px] bg-violet-300 opacity-20 rounded-full blur-3xl"></div>
+  <div className="absolute bottom-[-80px] right-[-80px] w-[300px] h-[300px] bg-fuchsia-300 opacity-20 rounded-full blur-3xl"></div> */}
+
+  {/* subtle grid pattern */}
+  {/* <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" /> */}
+  
+
+  <div className="relative mx-auto max-w-6xl px-4 py-24 grid gap-12 lg:grid-cols-2 items-center">
+   
+    {/* LEFT CONTENT */}
+    
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+
+  {/* Breadcrumb + Badge */}
+  <div className="flex flex-col items-start ">
+
+    {/* Breadcrumb */}
+    <motion.nav
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1, duration: 0.4 }}
+      className="mb-6 flex items-center gap-2 text-xs text-white/50 "
+    >
+      <Link href="/" className="hover:text-white">Home</Link>
+      <span>/</span>
+      <span>Our Solutions</span>
+      <span>/</span>
+      <span className="text-white font-medium">Meta Ads</span>
+    </motion.nav>
+
+    {/* Badge */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.2, duration: 0.4 }}
+      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md mt-6"
+    >
+      <span className="relative flex h-2 w-2">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+      </span>
+      Performance Marketing · Meta & Instagram
+    </motion.div>
+
+  </div>
+
+  {/* Heading */}
+  <motion.h1
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3, duration: 0.5 }}
+    className="mt-6 text-3xl sm:text-5xl font-bold text-white leading-tight"
+  >
+    Turn Scrolls Into{" "}
+    <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
+      Real Sales
+    </span>
+  </motion.h1>
+
+  {/* Paragraph */}
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4, duration: 0.5 }}
+    className="mt-5 text-white text-[16px] leading-relaxed max-w-md"
+  >
+    We run high-performing Facebook & Instagram ads that actually bring leads, conversions, and revenue — not just impressions.
+  </motion.p>
+
+  {/* Buttons */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.5, duration: 0.5 }}
+    className="mt-8 flex gap-4"
+  >
+    <Link
+      href="/contact"
+      className="px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-sm font-medium shadow-md hover:opacity-80 transition"
+    >
+      Get Free Strategy
+    </Link>
+
+    <Link
+      href="#services"
+      className="px-6 py-3 rounded-full bg-white border border-gray-400 text-sm font-medium hover:bg-gray-300 transition"
+    >
+      View Services
+    </Link>
+  </motion.div>
+
+</motion.div>    {/* RIGHT IMAGE CARD */}
+    <div className="relative">
+      
+      {/* glow behind card */}
+      <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-violet-500/20 via-fuchsia-500/10 to-transparent blur-2xl lg:-inset-8" aria-hidden ></div>
+
+      <div className="relative shadow-lg p-3 ">
+        <img
+          src="https://media.istockphoto.com/id/2216173060/photo/seo-and-digital-marketing-trend-concept-depicting-user-researching-search-engine-strategies.webp?a=1&b=1&s=612x612&w=0&k=20&c=iF6oiQWroxUoURarMY_7NbcIMHNONbbAeuh5X8je6qU="
+          alt="marketing"
+          className="rounded-xl w-full h-80 object-cover"
+        />
+        
+      </div>
+    </div>
+
+  </div>
+</section>
 
       {/* Stats — floating panel */}
       <div className="relative px-4 sm:px-8 lg:px-10">
@@ -299,7 +418,7 @@ export default function MetaAdsPage() {
     
     <div className="rounded-lg border border-gray-200 bg-white px-4 py-6 sm:px-8 sm:py-8">
       
-      <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wide text-gray-500 sm:text-left">
+      <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wide text-violet-500 sm:text-left">
         Performance marketing footprint
       </p>
 
@@ -561,7 +680,7 @@ export default function MetaAdsPage() {
       <section id="faq" className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">FAQ</p>
+            <p className="text-[17px] font-bold uppercase tracking-[0.2em] text-violet-600/90">FAQ</p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mt-4 text-[14px] text-slate-600">Everything you need to know about working with us.</p>
           </FadeIn>
@@ -607,18 +726,18 @@ export default function MetaAdsPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-slate-200/80 bg-[#0a0f1c] py-16 text-white">
+      <section className="border-t border-slate-300/80 bg-gray-200 py-16 text-black">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-semibold sm:text-3xl">Turn Scrolls Into Sales</h2>
-            <p className="mt-4 text-[15px] text-white/55">
+            <p className="mt-4 text-[15px] text-black">
               Book a free strategy call — we'll come back with a clear plan, realistic scope, and how we'd measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link href="/contact" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-10 text-sm font-semibold text-white shadow-lg shadow-violet-500/30">
+              <Link href="/contact" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-10 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-80">
                 Book Free Strategy Call
               </Link>
-              <Link href="/services/google-ads" className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-10 text-sm font-semibold text-white">
+              <Link href="/services/google-ads" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-black px-10 text-sm font-semibold text-white hover:bg-gray-800">
                 See Google Ads →
               </Link>
             </div>

@@ -94,7 +94,7 @@ export default function ServiceAdsInsights({
     <div className="rounded-3xl border border-slate-200/90 bg-gradient-to-br from-white via-slate-50/40 to-white p-5 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.12)] ring-1 ring-slate-100/80 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">{eyebrow}</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-500">{eyebrow}</p>
           <h3 className="mt-2 text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">{title}</h3>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">{subtitle}</p>
         </div>

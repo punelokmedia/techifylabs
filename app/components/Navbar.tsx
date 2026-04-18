@@ -955,13 +955,16 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     Get a free consultation →
+                    
                   </motion.button>
                 </nav>
               </motion.div>
             </>
+            
           )}
         </AnimatePresence>
       </div>
     </header>
+    
   );
 }

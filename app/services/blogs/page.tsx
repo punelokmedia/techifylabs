@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-
+import Image from "next/image";
+import Link from "next/link";
 // Simulates a single blog post page — in production this would use dynamic [slug] routing
 // and fetch data server-side. This file shows the full layout/component pattern.
 
@@ -78,13 +79,8 @@ export default function BlogPostPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Hero / Cover */}
-      <section className="relative h-[50vh] min-h-[360px] bg-[#0a0a0a] overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        {/* <img
-          src={post.coverImage}
-          alt={post.title}
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        /> */}
+      {/* <section className="relative h-[50vh] min-h-[360px] bg-[#0a0a0a] overflow-hidden">
+       
         <div className="absolute inset-0  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] to-transparent" />
 
         <motion.div
@@ -100,7 +96,83 @@ export default function BlogPostPage() {
             {post.title}
           </h1>
         </motion.div>
-      </section>
+      </section> */}
+      <section className="relative overflow-hidden bg-[#050816] text-white">
+
+  {/* Softer gradient background */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
+
+  {/* divider */}
+  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+  <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+
+    {/* breadcrumb (UNCHANGED) */}
+    <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12">
+      <Link href="/" className="hover:text-white">Home</Link>
+      <span className="text-white/25">/</span>
+      <span className="text-white/25">Knowledge Hub</span>
+      <span className="text-white/25">/</span>
+      <span className="font-medium text-white">Blogs</span>
+    </nav>
+
+    <div className="grid items-center gap-10 lg:grid-cols-2">
+
+      {/* LEFT (same content, smoother animation) */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+
+        {/* badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+          </span>
+             Blogs Section .
+
+        </div>
+
+        {/* heading (same content, better gradient) */}
+        <h1 className="mt-6 text-[1.85rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
+         Vocab we all,{" "}
+          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+          Actually Need
+          </span>
+        </h1>
+
+        {/* desc */}
+        <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
+          Real brands. Real numbers. Every case study below represents a growth story driven by
+              strategy, data, and relentless execution.
+        </p>
+
+        {/* buttons */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
+          >
+            Book Free Strategy Call
+          </Link>
+
+          <Link
+            href="#services"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
+          >
+            See what's included
+          </Link>
+        </div>
+
+        {/* features */}
+       
+      </motion.div>
+ </div>
+  </div>
+</section>
 
       {/* Meta bar */}
       <section className="border-b border-gray-100 bg-white sticky top-0 z-20 shadow-sm">

@@ -2,6 +2,8 @@
 
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const filters = ["All", "SEO", "Performance Marketing", "Web Development", "Branding", "E-Commerce"];
 
@@ -159,23 +161,15 @@ export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-white font-sans">
       {/* Hero */}
-      <section className="relative overflow-hidden  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] pt-28 pb-20 px-6">
-        {/* Subtle grid bg */}
-        {/* <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }} */}
-        {/* /> */}
+      {/* <section className="relative overflow-hidden  bg-gradient-to-br from-[#060914] via-[#1e1b4b] to-[#37173e] pt-28 pb-20 px-6">
+      
         <div className="relative max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-xs font-semibold tracking-widest text-orange-400 uppercase mb-4">
+            <span className="inline-block text-xs font-semibold tracking-widest text-violet-500 uppercase mb-4">
               Results that speak
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
@@ -185,10 +179,10 @@ export default function CaseStudiesPage() {
               Real brands. Real numbers. Every case study below represents a growth story driven by
               strategy, data, and relentless execution.
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* Stats row */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -205,9 +199,116 @@ export default function CaseStudiesPage() {
                 <p className="text-sm text-white/40 mt-1">{stat.label}</p>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
+        {/* </div>
+      </section> */}
+       <section className="relative overflow-hidden bg-[#050816] text-white">
+
+  {/* Softer gradient background */}
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
+
+  {/* divider */}
+  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+  <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+
+    {/* breadcrumb (UNCHANGED) */}
+    <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12">
+      <Link href="/" className="hover:text-white">Home</Link>
+      <span className="text-white/25">/</span>
+      <span className="text-white/25">Knowledge Hub</span>
+      <span className="text-white/25">/</span>
+      <span className="font-medium text-white">Case Studies</span>
+    </nav>
+
+    <div className="grid items-center gap-10 lg:grid-cols-2">
+
+      {/* LEFT (same content, smoother animation) */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+
+        {/* badge */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+          </span>
+              Case Studies
+
         </div>
-      </section>
+
+        {/* heading (same content, better gradient) */}
+        <h1 className="mt-6 text-[1.85rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
+         More Visibility,{" "}
+          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+           With our Case Study
+          </span>
+        </h1>
+
+        {/* desc */}
+        <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
+          Real brands. Real numbers. Every case study below represents a growth story driven by
+              strategy, data, and relentless execution.
+        </p>
+
+        {/* buttons */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/contact"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
+          >
+            Book Free Strategy Call
+          </Link>
+
+          <Link
+            href="#services"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
+          >
+            See what's included
+          </Link>
+        </div>
+
+        {/* features */}
+       
+      </motion.div>
+
+      {/* RIGHT CARD (same content, upgraded look) */}
+      {/* <motion.div
+  initial={{ opacity: 0, x: 30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+  className="relative"
+> */}
+  {/* ✨ Glow */}
+  {/* <div className="absolute inset-0 bg-gradient-to-r from-violet-500/25 to-fuchsia-500/25 blur-2xl rounded-2xl"></div> */}
+
+  {/* Card (no border) */}
+  {/* <div className="relative rounded-2xl bg-white/5 shadow-xl"> */}
+
+    {/* <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
+      <Image
+        src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=85"
+        alt="dashboard"
+        fill
+        className="object-cover"
+      /> */}
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
+    {/* </div> */}
+
+    {/* <p className="mt-4 text-xs text-white/70">
+      Search, PMax, and Shopping tracked against real conversion value.
+    </p> */}
+  {/* </div> */}
+{/* </motion.div> */}
+
+    </div>
+  </div>
+</section>
+
 
       {/* Filter bar */}
       <section className="sticky top-0 z-30 bg-white border-b border-gray-100 shadow-sm">
