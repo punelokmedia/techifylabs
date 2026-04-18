@@ -8,7 +8,8 @@ import Link from "next/link";
 // and fetch data server-side. This file shows the full layout/component pattern.
 
 const post = {
-  title: "The Complete 2025 Guide to Meta Ads Scaling: From ₹500/day to ₹50,000/day",
+  title:
+    "The Complete 2025 Guide to Meta Ads Scaling: From ₹500/day to ₹50,000/day",
   category: "Performance Marketing",
   author: "Rahul Mehta",
   authorRole: "Sr. Creative Strategist & Client Partner",
@@ -16,8 +17,15 @@ const post = {
     "Rahul leads creative strategy and client growth at TechEasify. He has managed ₹10Cr+ in Meta & Google ad spend across e-commerce, real estate, and SaaS verticals.",
   date: "March 28, 2025",
   readTime: "12 min read",
-  coverImage: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&q=80",
-  tags: ["Meta Ads", "Performance Marketing", "Scaling", "ROAS", "Creative Strategy"],
+  coverImage:
+    "https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=1200&q=80",
+  tags: [
+    "Meta Ads",
+    "Performance Marketing",
+    "Scaling",
+    "ROAS",
+    "Creative Strategy",
+  ],
   sections: [
     {
       heading: "Why most brands plateau between ₹1,000–₹5,000/day",
@@ -98,81 +106,77 @@ export default function BlogPostPage() {
         </motion.div>
       </section> */}
       <section className="relative overflow-hidden bg-[#050816] text-white">
+        {/* Softer gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
 
-  {/* Softer gradient background */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
+        {/* divider */}
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-  {/* divider */}
-  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+          {/* breadcrumb (UNCHANGED) */}
+          <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12">
+            <Link href="/" className="hover:text-white">
+              Home
+            </Link>
+            <span className="text-white/25">/</span>
+            <span className="text-white/25">Knowledge Hub</span>
+            <span className="text-white/25">/</span>
+            <span className="font-medium text-white">Blogs</span>
+          </nav>
 
-  <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            {/* LEFT (same content, smoother animation) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* badge */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+                </span>
+                Blogs Section .
+              </div>
 
-    {/* breadcrumb (UNCHANGED) */}
-    <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12">
-      <Link href="/" className="hover:text-white">Home</Link>
-      <span className="text-white/25">/</span>
-      <span className="text-white/25">Knowledge Hub</span>
-      <span className="text-white/25">/</span>
-      <span className="font-medium text-white">Blogs</span>
-    </nav>
+              {/* heading (same content, better gradient) */}
+              <h1 className="mt-6 text-[1.85rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
+                Vocab we all,{" "}
+                <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                  Actually Need
+                </span>
+              </h1>
 
-    <div className="grid items-center gap-10 lg:grid-cols-2">
+              {/* desc */}
+              <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
+                Real brands. Real numbers. Every case study below represents a
+                growth story driven by strategy, data, and relentless execution.
+              </p>
 
-      {/* LEFT (same content, smoother animation) */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+              {/* buttons */}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
+                >
+                  Book Free Strategy Call
+                </Link>
 
-        {/* badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-          </span>
-             Blogs Section .
+                <Link
+                  href="#services"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
+                >
+                  See what's included
+                </Link>
+              </div>
 
+              {/* features */}
+            </motion.div>
+          </div>
         </div>
-
-        {/* heading (same content, better gradient) */}
-        <h1 className="mt-6 text-[1.85rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.25rem]">
-         Vocab we all,{" "}
-          <span className="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-          Actually Need
-          </span>
-        </h1>
-
-        {/* desc */}
-        <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
-          Real brands. Real numbers. Every case study below represents a growth story driven by
-              strategy, data, and relentless execution.
-        </p>
-
-        {/* buttons */}
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
-          >
-            Book Free Strategy Call
-          </Link>
-
-          <Link
-            href="#services"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
-          >
-            See what's included
-          </Link>
-        </div>
-
-        {/* features */}
-       
-      </motion.div>
- </div>
-  </div>
-</section>
+      </section>
 
       {/* Meta bar */}
       <section className="border-b border-gray-100 bg-white sticky top-0 z-20 shadow-sm">
@@ -194,8 +198,18 @@ export default function BlogPostPage() {
               onClick={handleCopy}
               className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-800 transition-colors px-3 py-1.5 rounded-full border border-gray-200 hover:border-gray-400"
             >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10" />
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10"
+                />
               </svg>
               {copied ? "Copied!" : "Copy link"}
             </button>
@@ -238,13 +252,19 @@ export default function BlogPostPage() {
                       if (para.trim() === "") return null;
                       if (para.startsWith("•") || para.match(/^\d+\./)) {
                         return (
-                          <p key={j} className="text-gray-600 leading-relaxed pl-4 text-[15px] mb-1">
+                          <p
+                            key={j}
+                            className="text-gray-600 leading-relaxed pl-4 text-[15px] mb-1"
+                          >
                             {para}
                           </p>
                         );
                       }
                       return (
-                        <p key={j} className="text-gray-600 leading-relaxed text-[15px] mb-3">
+                        <p
+                          key={j}
+                          className="text-gray-600 leading-relaxed text-[15px] mb-3"
+                        >
                           {para}
                         </p>
                       );
@@ -261,8 +281,12 @@ export default function BlogPostPage() {
               </div>
               <div>
                 <p className="font-bold text-gray-900">{post.author}</p>
-                <p className="text-xs text-orange-500 mb-2">{post.authorRole}</p>
-                <p className="text-sm text-gray-500 leading-relaxed">{post.authorBio}</p>
+                <p className="text-xs text-orange-500 mb-2">
+                  {post.authorRole}
+                </p>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {post.authorBio}
+                </p>
               </div>
             </div>
           </div>
@@ -297,7 +321,8 @@ export default function BlogPostPage() {
                 Get a custom Meta Ads audit for your brand
               </p>
               <p className="text-white/50 text-xs mb-4">
-                We'll review your account and show you exactly where your budget is leaking.
+                We'll review your account and show you exactly where your budget
+                is leaking.
               </p>
               <button className="w-full bg-white hover:bg-gray-200 text-black text-xs font-semibold py-2.5 rounded-full transition-colors">
                 Book Free Call →
@@ -310,7 +335,9 @@ export default function BlogPostPage() {
       {/* Related posts */}
       <section className="bg-[#f8f5f0] py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">More from TechEasify</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">
+            More from TechEasify
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {relatedPosts.map((rp, i) => (
               <motion.div
