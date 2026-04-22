@@ -99,31 +99,37 @@ const adServices = [
     title: "Facebook Lead Generation",
     desc: "Lead forms, messenger campaigns, and click-to-call ads that bring in people already interested in what you sell.",
     tags: ["Lead Forms", "Messenger Campaigns", "Click-to-Call Ads"],
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
   },
   {
     title: "eCommerce Facebook Ads",
     desc: "Catalog ads and retargeting that make abandoned carts disappear and products pop in front of ready-to-buy shoppers.",
     tags: ["Catalog Ads", "Dynamic Retargeting", "Shopping Campaigns"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
   },
   {
     title: "Facebook Retargeting",
     desc: "Smart creatives that bring back people who clicked, looked around, then left — at exactly the right moment.",
     tags: ["Website Visitors", "Lookalike Audiences", "Custom Audiences"],
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
   },
   {
     title: "Instagram Advertising",
     desc: "Ads that blend into feeds and stories but still nudge people to click — all managed from one Meta account.",
     tags: ["Story Ads", "Feed Posts", "Reels Advertising"],
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
   },
   {
     title: "Brand Awareness Campaigns",
     desc: "Keep your brand in the conversation so when the time comes to buy, you're the first they remember.",
     tags: ["Reach Campaigns", "Video Views", "Brand Recognition"],
+    image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
   },
   {
     title: "Meta Pixel Setup & Optimisation",
     desc: "Without the Pixel, you're flying blind. We handle setup so you can track who clicked, who converted, and where to improve.",
     tags: ["Pixel Installation", "Event Tracking", "Conversion Optimisation"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
   },
 ];
 
@@ -784,7 +790,7 @@ export default function MetaAdsPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {adServices.map((s, i) => (
               <FadeIn key={s.title} delay={0.05 * i}>
-                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm transition hover:border-violet-200/80 hover:shadow-md">
+                {/* <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-6 shadow-sm transition hover:border-violet-200/80 hover:shadow-md">
                   <h3 className="text-base font-semibold text-slate-900">
                     {s.title}
                   </h3>
@@ -796,6 +802,39 @@ export default function MetaAdsPage() {
                       <span
                         key={tag}
                         className="rounded-full bg-violet-50 px-3 py-1 text-[11px] font-medium text-violet-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div> */}
+                <div className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-slate-50/50 p-4 shadow-sm transition hover:border-violet-200/80 hover:shadow-md">
+                  {/* ✅ IMAGE TOP */}
+                  <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* ✅ TITLE */}
+                  <h3 className="text-base font-semibold text-slate-900">
+                    {s.title}
+                  </h3>
+
+                  {/* ✅ DESCRIPTION */}
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-slate-600">
+                    {s.desc}
+                  </p>
+
+                  {/* ✅ TAGS */}
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {s.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-violet-100 px-3 py-1 text-[11px] font-medium text-violet-700"
                       >
                         {tag}
                       </span>

@@ -3,7 +3,13 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useId, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useCallback,
+  useId,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 380, damping: 28 };
@@ -115,7 +121,8 @@ function FadeIn({
 }
 
 const WEB3FORMS_ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "ff3fb5d5-cfc0-4631-9ecb-4bfa761cf8c4";
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ??
+  "ff3fb5d5-cfc0-4631-9ecb-4bfa761cf8c4";
 
 export default function ContactPage() {
   const reduce = useReducedMotion();
@@ -127,7 +134,9 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   /** idle → user is filling; success after Web3Forms POST */
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
   const [submitError, setSubmitError] = useState("");
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -137,7 +146,8 @@ export default function ContactPage() {
     const next: Record<string, string> = {};
     if (!name.trim()) next.name = "Please add your name";
     if (!email.trim()) next.email = "Work email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) next.email = "Enter a valid email";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+      next.email = "Enter a valid email";
     if (!message.trim()) next.message = "A short brief helps us respond";
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -163,17 +173,30 @@ export default function ContactPage() {
       };
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(payload),
       });
-      const data = (await res.json()) as { success?: boolean; message?: string };
+      const data = (await res.json()) as {
+        success?: boolean;
+        message?: string;
+      };
       if (!res.ok || !data.success) {
-        throw new Error(data.message || "Something went wrong. Please try again or email us directly.");
+        throw new Error(
+          data.message ||
+            "Something went wrong. Please try again or email us directly.",
+        );
       }
       setFormStatus("success");
     } catch (err) {
       setFormStatus("error");
-      setSubmitError(err instanceof Error ? err.message : "Submission failed. Please try again.");
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Submission failed. Please try again.",
+      );
     }
   };
 
@@ -208,10 +231,16 @@ export default function ContactPage() {
           className="pointer-events-none absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.04\'/%3E%3C/svg%3E')]"
           aria-hidden
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          aria-hidden
+        />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-16 lg:px-10 lg:pb-24 lg:pt-20">
-          <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12 sm:gap-3 sm:text-[13px]" aria-label="Breadcrumb">
+          <nav
+            className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12 sm:gap-3 sm:text-[13px]"
+            aria-label="Breadcrumb"
+          >
             <Link href="/" className="transition hover:text-white">
               Home
             </Link>
@@ -241,7 +270,9 @@ export default function ContactPage() {
                     )}
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
                   </span>
-                  <span className="leading-snug">New projects &amp; partnerships</span>
+                  <span className="leading-snug">
+                    New projects &amp; partnerships
+                  </span>
                 </div>
                 <h1 className="mt-6 text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-tight sm:mt-8 sm:text-5xl lg:text-[3.25rem]">
                   Tell us what you&apos;re{" "}
@@ -250,8 +281,8 @@ export default function ContactPage() {
                   </span>
                 </h1>
                 <p className="mt-6 max-w-lg text-[15px] leading-[1.75] text-white/65 sm:mt-8 sm:text-[17px]">
-                  One message — we come back with fit, realistic scope, and how we&apos;d measure progress. No auto-responder
-                  essays.
+                  One message — we come back with fit, realistic scope, and how
+                  we&apos;d measure progress. No auto-responder essays.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
                   <motion.a
@@ -283,7 +314,10 @@ export default function ContactPage() {
                 animate={reduce ? undefined : { opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.08, ease }}
               >
-                <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-violet-500/25 via-fuchsia-500/10 to-transparent blur-2xl lg:-inset-6" aria-hidden />
+                <div
+                  className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-violet-500/25 via-fuchsia-500/10 to-transparent blur-2xl lg:-inset-6"
+                  aria-hidden
+                />
                 <div className="relative aspect-[16/11] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:aspect-[16/10]">
                   <Image
                     src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&q=85"
@@ -293,11 +327,16 @@ export default function ContactPage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/90 via-transparent to-[#050816]/30" aria-hidden />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-[#050816]/90 via-transparent to-[#050816]/30"
+                    aria-hidden
+                  />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-300/90 sm:text-[14px]">Studio hours</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-300/90 sm:text-[14px]">
+                      Studio hours
+                    </p>
                     <p className="mt-1.5 text-[33px] leading-relaxed text-white/85 sm:mt-2 sm:text-[35px]">
-                    Contact Us
+                      Contact Us
                       {/* Weekdays · Replies within a business day. Active retainers have a direct line to channel leads. */}
                     </p>
                   </div>
@@ -307,25 +346,29 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-{/* Stats bar */}
-<section className="border border-white/40 bg-white
- py-6 sm:py-8 ">
-  <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-4 ">
-      {[
-        { num: "48h", label: "Avg first proposal" },
-        { num: "3+", label: "Years running" },
-        { num: "IST", label: "Business hours" },
-        { num: "NDA", label: "Available on request" },
-      ].map((s) => (
-        <div key={s.label} className="text-center">
-          <p className="text-2xl font-semibold text-black sm:text-3xl">{s.num}</p>
-          <p className="mt-1 text-[12px] text-black">{s.label}</p>
+      {/* Stats bar */}
+      <section
+        className="border border-white/40 bg-white
+ py-6 sm:py-8 "
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 ">
+            {[
+              { num: "48h", label: "Avg first proposal" },
+              { num: "3+", label: "Years running" },
+              { num: "IST", label: "Business hours" },
+              { num: "NDA", label: "Available on request" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-2xl font-semibold text-black sm:text-3xl">
+                  {s.num}
+                </p>
+                <p className="mt-1 text-[12px] text-black">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
       {/* Main */}
       <section className="relative border-t border-violet-200/20 bg-gradient-to-b from-violet-50/40 via-slate-50 to-slate-100 py-12 sm:py-20 lg:py-24">
         <div
@@ -334,13 +377,19 @@ export default function ContactPage() {
         />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="mb-10 lg:hidden">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Get started</p>
-            <p className="mt-2 text-lg font-semibold text-slate-900">Send an inquiry — or reach us directly below.</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+              Get started
+            </p>
+            <p className="mt-2 text-lg font-semibold text-slate-900">
+              Send an inquiry — or reach us directly below.
+            </p>
           </FadeIn>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="order-2 min-w-0 space-y-7 lg:order-1 lg:col-span-4">
               <FadeIn>
-                <h2 className="text-lg font-semibold text-slate-900 sm:text-xl mt-5">Reach us directly</h2>
+                <h2 className="text-lg font-semibold text-slate-900 sm:text-xl mt-5">
+                  Reach us directly
+                </h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
                   Pick the channel you prefer — same team, same standards.
                 </p>
@@ -355,43 +404,73 @@ export default function ContactPage() {
                   transition={spring}
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-700 ring-1 ring-violet-200/80 transition group-hover:from-violet-200 group-hover:to-indigo-200 sm:h-12 sm:w-12">
-                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      aria-hidden
+                    >
                       <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                     </svg>
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Phone</p>
-                    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">{PHONE_DISPLAY}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Phone
+                    </p>
+                    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">
+                      {PHONE_DISPLAY}
+                    </p>
                     <p className="mt-2 text-xs font-medium text-violet-600 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
                       Tap to call →
                     </p>
                   </div>
                 </motion.a>
-<motion.div
-  className="group flex min-h-[56px] items-start gap-4 overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.2)] backdrop-blur-sm transition hover:border-violet-200 hover:shadow-[0_20px_50px_-20px_rgba(99,102,241,0.2)] sm:min-h-0 sm:p-5"
-  whileHover={reduce ? undefined : { y: -3 }}
-  whileTap={reduce ? undefined : { scale: 0.99 }}
-  transition={spring}
->
-  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-700 ring-1 ring-violet-200/80 transition group-hover:from-violet-200 group-hover:to-indigo-200 sm:h-12 sm:w-12">
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  </span>
-  <div className="min-w-0 flex-1">
-    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Location</p>
-    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">Techifylavs Pvt. Ltd.</p>
-    <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
-      UG Floor, Office No. 67-68 Clover Hills Plaza
-      <br />
-      NIBM Road, Kondhwa, Pune - 411048
-    </p>
-    <p className="mt-2 text-xs font-medium text-violet-600 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
-      In-person by appointment →
-    </p>
-  </div>
-</motion.div>
+                <motion.div
+                  className="group flex min-h-[56px] items-start gap-4 overflow-hidden rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.2)] backdrop-blur-sm transition hover:border-violet-200 hover:shadow-[0_20px_50px_-20px_rgba(99,102,241,0.2)] sm:min-h-0 sm:p-5"
+                  whileHover={reduce ? undefined : { y: -3 }}
+                  whileTap={reduce ? undefined : { scale: 0.99 }}
+                  transition={spring}
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-700 ring-1 ring-violet-200/80 transition group-hover:from-violet-200 group-hover:to-indigo-200 sm:h-12 sm:w-12">
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      aria-hidden
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                      Location
+                    </p>
+                    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">
+                      Techifylabs Pvt. Ltd.
+                    </p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
+                      UG Floor, Office No. 67-68 Clover Hills Plaza
+                      <br />
+                      NIBM Road, Kondhwa, Pune - 411048
+                    </p>
+                    <p className="mt-2 text-xs font-medium text-violet-600 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
+                      In-person by appointment →
+                    </p>
+                  </div>
+                </motion.div>
                 <motion.div
                   className="rounded-2xl border border-slate-200/90 bg-white/90 p-4 shadow-[0_16px_40px_-24px_rgba(15,23,42,0.15)] backdrop-blur-sm sm:p-5"
                   whileHover={reduce ? undefined : { y: -2 }}
@@ -399,12 +478,21 @@ export default function ContactPage() {
                 >
                   <div className="flex items-start gap-3 sm:gap-4">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700 ring-1 ring-slate-200 sm:h-12 sm:w-12">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden>
+                      <svg
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden
+                      >
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Email</p>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                        Email
+                      </p>
                       <a
                         href={`mailto:${EMAIL}`}
                         className="mt-1 block break-all text-base font-semibold text-slate-900 hover:text-violet-700 sm:truncate sm:text-lg"
@@ -419,11 +507,21 @@ export default function ContactPage() {
                       >
                         <AnimatePresence mode="wait">
                           {copied ? (
-                            <motion.span key="ok" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                            <motion.span
+                              key="ok"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                            >
                               Copied ✓
                             </motion.span>
                           ) : (
-                            <motion.span key="copy" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                            <motion.span
+                              key="copy"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                            >
                               Copy address
                             </motion.span>
                           )}
@@ -443,13 +541,22 @@ export default function ContactPage() {
                   transition={spring}
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-600/25 sm:h-12 sm:w-12">
-                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <svg
+                      className="h-6 w-6"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden
+                    >
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                   </span>
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700/80">WhatsApp</p>
-                    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">Message the studio</p>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-700/80">
+                      WhatsApp
+                    </p>
+                    <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">
+                      Message the studio
+                    </p>
                     <p className="mt-2 text-xs font-medium text-emerald-700 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
                       Opens in new tab →
                     </p>
@@ -459,10 +566,13 @@ export default function ContactPage() {
 
               <FadeIn delay={0.12}>
                 <div className="rounded-2xl border border-dashed border-violet-300/80 bg-violet-200/50 px-5 py-4 backdrop-blur-sm">
-                  <p className="text-[14px] font-bold uppercase tracking-wider text-violet-500/80">Response</p>
+                  <p className="text-[14px] font-bold uppercase tracking-wider text-violet-500/80">
+                    Response
+                  </p>
                   <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600">
-                    <span className="font-bold text-slate-800">~24h </span> acknowledgement on weekdays. For proposals we may
-                    suggest a short call to align on goals.
+                    <span className="font-bold text-slate-800">~24h </span>{" "}
+                    acknowledgement on weekdays. For proposals we may suggest a
+                    short call to align on goals.
                   </p>
                 </div>
               </FadeIn>
@@ -471,12 +581,18 @@ export default function ContactPage() {
             <div className="order-1 min-w-0 lg:order-2 lg:col-span-8">
               <FadeIn>
                 <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_32px_64px_-28px_rgba(15,23,42,0.25)] ring-1 ring-violet-100/60 sm:rounded-3xl">
-                  <div className="h-1.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-600" aria-hidden />
+                  <div
+                    className="h-1.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-600"
+                    aria-hidden
+                  />
                   <div className="border-b border-slate-100 px-4 py-5 sm:px-9 sm:py-7">
-                    <h2 className="text-lg font-semibold text-slate-900 sm:text-2xl">Project inquiry</h2>
+                    <h2 className="text-lg font-semibold text-slate-900 sm:text-2xl">
+                      Project inquiry
+                    </h2>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      <span className="text-red-500">*</span> Required fields. We receive this securely and reply by email,
-                      usually within one business day.
+                      <span className="text-red-500">*</span> Required fields.
+                      We receive this securely and reply by email, usually
+                      within one business day.
                     </p>
                   </div>
 
@@ -493,15 +609,37 @@ export default function ContactPage() {
                           className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-lg shadow-emerald-600/30"
                           initial={reduce ? false : { scale: 0.8 }}
                           animate={reduce ? undefined : { scale: 1 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 22,
+                          }}
                         >
-                          <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden>
-                            <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                          <svg
+                            className="h-8 w-8"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            aria-hidden
+                          >
+                            <path
+                              d="M5 13l4 4L19 7"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
                           </svg>
                         </motion.div>
-                        <h3 className="mt-8 text-xl font-semibold text-slate-900">Message sent</h3>
+                        <h3 className="mt-8 text-xl font-semibold text-slate-900">
+                          Message sent
+                        </h3>
                         <p className="mx-auto mt-3 max-w-md text-[15px] text-slate-600">
-                          Thanks — we have your details. A strategist will follow up at <span className="font-medium text-slate-800">{email}</span>.
+                          Thanks — we have your details. A strategist will
+                          follow up at{" "}
+                          <span className="font-medium text-slate-800">
+                            {email}
+                          </span>
+                          .
                         </p>
                         <motion.button
                           type="button"
@@ -533,7 +671,10 @@ export default function ContactPage() {
                       >
                         <div className="grid gap-5 sm:grid-cols-2 sm:gap-6">
                           <div className="sm:col-span-2">
-                            <label htmlFor="contact-name" className="text-sm font-medium text-slate-700">
+                            <label
+                              htmlFor="contact-name"
+                              className="text-sm font-medium text-slate-700"
+                            >
                               Full name <span className="text-red-500">*</span>
                             </label>
                             <input
@@ -541,20 +682,28 @@ export default function ContactPage() {
                               value={name}
                               onChange={(e) => {
                                 setName(e.target.value);
-                                if (errors.name) setErrors((o) => ({ ...o, name: "" }));
+                                if (errors.name)
+                                  setErrors((o) => ({ ...o, name: "" }));
                               }}
                               className={errors.name ? inputErr : inputOk}
                               placeholder="Your name"
                               autoComplete="name"
                             />
                             {errors.name && (
-                              <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="mt-1.5 text-xs font-medium text-red-600">
+                              <motion.p
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-1.5 text-xs font-medium text-red-600"
+                              >
                                 {errors.name}
                               </motion.p>
                             )}
                           </div>
                           <div>
-                            <label htmlFor="contact-email" className="text-sm font-medium text-slate-700">
+                            <label
+                              htmlFor="contact-email"
+                              className="text-sm font-medium text-slate-700"
+                            >
                               Work email <span className="text-red-500">*</span>
                             </label>
                             <input
@@ -563,17 +712,26 @@ export default function ContactPage() {
                               value={email}
                               onChange={(e) => {
                                 setEmail(e.target.value);
-                                if (errors.email) setErrors((o) => ({ ...o, email: "" }));
+                                if (errors.email)
+                                  setErrors((o) => ({ ...o, email: "" }));
                               }}
                               className={errors.email ? inputErr : inputOk}
                               placeholder="you@company.com"
                               autoComplete="email"
                             />
-                            {errors.email && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.email}</p>}
+                            {errors.email && (
+                              <p className="mt-1.5 text-xs font-medium text-red-600">
+                                {errors.email}
+                              </p>
+                            )}
                           </div>
                           <div>
-                            <label htmlFor="contact-phone" className="text-sm font-medium text-slate-700">
-                              Phone <span className="text-slate-400">(optional)</span>
+                            <label
+                              htmlFor="contact-phone"
+                              className="text-sm font-medium text-slate-700"
+                            >
+                              Phone{" "}
+                              <span className="text-slate-400">(optional)</span>
                             </label>
                             <input
                               id="contact-phone"
@@ -586,8 +744,12 @@ export default function ContactPage() {
                             />
                           </div>
                           <div className="sm:col-span-2">
-                            <label htmlFor="contact-company" className="text-sm font-medium text-slate-700">
-                              Company <span className="text-slate-400">(optional)</span>
+                            <label
+                              htmlFor="contact-company"
+                              className="text-sm font-medium text-slate-700"
+                            >
+                              Company{" "}
+                              <span className="text-slate-400">(optional)</span>
                             </label>
                             <input
                               id="contact-company"
@@ -625,51 +787,78 @@ export default function ContactPage() {
                             })}
                           </div>
                         </div> */}
-<div className="mt-8">
-  <label htmlFor="contact-topic" className="text-sm font-medium text-slate-700">
-    What are you exploring?
-  </label>
-  <div className="relative mt-2">
-    <select
-      id="contact-topic"
-      value={topic}
-      onChange={(e) => setTopic(e.target.value as Topic)}
-      className="w-full min-h-[48px] appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition cursor-pointer focus:border-violet-400 focus:ring-2 focus:ring-violet-200/80 sm:py-3.5"
-    >
-      {/* <option value="">Select a topic…</option> */}
-      {topics.map((t) => (
-        <option key={t} value={t}>
-          {t}
-        </option>
-      ))}
-    </select>
-    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
-      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  </div>
-</div>
                         <div className="mt-8">
-                          <label htmlFor="contact-message" className="text-sm font-medium text-slate-700">
-                            How can we help? <span className="text-red-500">*</span>
+                          <label
+                            htmlFor="contact-topic"
+                            className="text-sm font-medium text-slate-700"
+                          >
+                            What are you exploring?
+                          </label>
+                          <div className="relative mt-2">
+                            <select
+                              id="contact-topic"
+                              value={topic}
+                              onChange={(e) =>
+                                setTopic(e.target.value as Topic)
+                              }
+                              className="w-full min-h-[48px] appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition cursor-pointer focus:border-violet-400 focus:ring-2 focus:ring-violet-200/80 sm:py-3.5"
+                            >
+                              {/* <option value="">Select a topic…</option> */}
+                              {topics.map((t) => (
+                                <option key={t} value={t}>
+                                  {t}
+                                </option>
+                              ))}
+                            </select>
+                            <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">
+                              <svg
+                                className="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <path
+                                  d="M19 9l-7 7-7-7"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-8">
+                          <label
+                            htmlFor="contact-message"
+                            className="text-sm font-medium text-slate-700"
+                          >
+                            How can we help?{" "}
+                            <span className="text-red-500">*</span>
                           </label>
                           <textarea
                             id="contact-message"
                             value={message}
                             onChange={(e) => {
                               setMessage(e.target.value);
-                              if (errors.message) setErrors((o) => ({ ...o, message: "" }));
+                              if (errors.message)
+                                setErrors((o) => ({ ...o, message: "" }));
                             }}
                             rows={2}
                             className={`${errors.message ? inputErr : inputOk} min-h-[140px] resize-y sm:min-h-[120px]`}
                             placeholder="Category, channels, spend level, and what success looks like for you."
                           />
-                          {errors.message && <p className="mt-1.5 text-xs font-medium text-red-600">{errors.message}</p>}
+                          {errors.message && (
+                            <p className="mt-1.5 text-xs font-medium text-red-600">
+                              {errors.message}
+                            </p>
+                          )}
                         </div>
 
                         {formStatus === "error" && submitError && (
-                          <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+                          <p
+                            className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                            role="alert"
+                          >
                             {submitError}
                           </p>
                         )}
@@ -679,13 +868,24 @@ export default function ContactPage() {
                             type="submit"
                             disabled={formStatus === "submitting"}
                             className="inline-flex min-h-[48px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-500 hover:to-fuchsia-500 disabled:cursor-not-allowed disabled:opacity-60 sm:h-12 sm:w-auto sm:px-12"
-                            whileHover={reduce || formStatus === "submitting" ? undefined : { scale: 1.02, y: -2 }}
-                            whileTap={reduce || formStatus === "submitting" ? undefined : { scale: 0.98 }}
+                            whileHover={
+                              reduce || formStatus === "submitting"
+                                ? undefined
+                                : { scale: 1.02, y: -2 }
+                            }
+                            whileTap={
+                              reduce || formStatus === "submitting"
+                                ? undefined
+                                : { scale: 0.98 }
+                            }
                           >
-                            {formStatus === "submitting" ? "Sending…" : "Schedule Now"}
+                            {formStatus === "submitting"
+                              ? "Sending…"
+                              : "Schedule Now"}
                           </motion.button>
                           <p className="text-xs leading-relaxed text-slate-500">
-                            We use your details only to respond. No resale, no spam lists.
+                            We use your details only to respond. No resale, no
+                            spam lists.
                           </p>
                         </div>
                       </motion.form>
@@ -702,7 +902,9 @@ export default function ContactPage() {
       <section className="border-t border-slate-200/60 bg-white py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn>
-            <p className="text-center text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">How we work</p>
+            <p className="text-center text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+              How we work
+            </p>
             <p className="mx-auto mt-3 max-w-2xl text-balance text-center text-base font-semibold text-slate-900 sm:text-lg md:text-xl">
               Expectations, upfront
             </p>
@@ -711,8 +913,12 @@ export default function ContactPage() {
             {trustPoints.map((item, i) => (
               <FadeIn key={item.label} delay={0.04 * i}>
                 <div className="flex h-full min-h-[100px] flex-col justify-center rounded-2xl border border-slate-200/90 bg-gradient-to-b from-slate-50/80 to-white px-4 py-4 text-center shadow-sm ring-1 ring-slate-100/80 sm:px-5 sm:py-5">
-                  <p className="text-[14px] font-semibold leading-snug text-slate-900 sm:text-[15px]">{item.label}</p>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:mt-2 sm:text-sm">{item.sub}</p>
+                  <p className="text-[14px] font-semibold leading-snug text-slate-900 sm:text-[15px]">
+                    {item.label}
+                  </p>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:mt-2 sm:text-sm">
+                    {item.sub}
+                  </p>
                 </div>
               </FadeIn>
             ))}
@@ -724,10 +930,15 @@ export default function ContactPage() {
       <section className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-violet-50/30 py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">After you reach out</p>
-            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">What happens next</h2>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+              After you reach out
+            </p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              What happens next
+            </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              A predictable path from first message to a clear yes or no — no chasing, no ghosting.
+              A predictable path from first message to a clear yes or no — no
+              chasing, no ghosting.
             </p>
           </FadeIn>
 
@@ -742,7 +953,11 @@ export default function ContactPage() {
             />
             <div className="grid gap-0 lg:grid-cols-4 lg:gap-6">
               {processSteps.map((step, i) => (
-                <FadeIn key={step.title} delay={0.06 * i} className="relative lg:text-center">
+                <FadeIn
+                  key={step.title}
+                  delay={0.06 * i}
+                  className="relative lg:text-center"
+                >
                   <div
                     className={`flex gap-4 pl-0 lg:flex-col lg:items-center lg:gap-0 lg:pb-0 lg:pl-0 ${
                       i < processSteps.length - 1 ? "pb-10" : "pb-2"
@@ -754,9 +969,15 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div className="min-w-0 flex-1 pt-0.5 lg:pt-0">
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-fuchsia-600/90 sm:text-[11px]">{step.day}</p>
-                      <h3 className="mt-2 text-base font-semibold text-slate-900 sm:text-lg">{step.title}</h3>
-                      <p className="mt-2 text-[13px] leading-relaxed text-slate-600 sm:text-sm">{step.body}</p>
+                      <p className="text-[10px] font-bold uppercase tracking-wider text-fuchsia-600/90 sm:text-[11px]">
+                        {step.day}
+                      </p>
+                      <h3 className="mt-2 text-base font-semibold text-slate-900 sm:text-lg">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-[13px] leading-relaxed text-slate-600 sm:text-sm">
+                        {step.body}
+                      </p>
                     </div>
                   </div>
                 </FadeIn>
@@ -770,10 +991,15 @@ export default function ContactPage() {
       <section className="border-t border-slate-200/60 bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">Engagements</p>
-            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Ways we partner</h2>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+              Engagements
+            </p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              Ways we partner
+            </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              Pick the shape that fits — we’ll still align on outcomes before anything is signed.
+              Pick the shape that fits — we’ll still align on outcomes before
+              anything is signed.
             </p>
           </FadeIn>
           <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-3">
@@ -783,8 +1009,12 @@ export default function ContactPage() {
                   <span className="inline-flex rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-violet-700">
                     {eng.tag}
                   </span>
-                  <h3 className="mt-5 text-xl font-semibold text-slate-900">{eng.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{eng.desc}</p>
+                  <h3 className="mt-5 text-xl font-semibold text-slate-900">
+                    {eng.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {eng.desc}
+                  </p>
                 </div>
               </FadeIn>
             ))}
@@ -796,9 +1026,15 @@ export default function ContactPage() {
       <section className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">FAQ</p>
-            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Common questions</h2>
-            <p className="mt-4 text-[14px] text-slate-600 sm:text-[15px]">Straight answers before we ever get on a call.</p>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+              FAQ
+            </p>
+            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+              Common questions
+            </h2>
+            <p className="mt-4 text-[14px] text-slate-600 sm:text-[15px]">
+              Straight answers before we ever get on a call.
+            </p>
           </FadeIn>
           <div className="mt-8 space-y-2.5 sm:mt-10 sm:space-y-3">
             {faqs.map((item, i) => {
@@ -821,12 +1057,24 @@ export default function ContactPage() {
                       </span>
                       <span
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-slate-500 transition sm:h-8 sm:w-8 ${
-                          open ? "rotate-180 border-violet-200 bg-violet-50 text-violet-700" : "border-slate-200 bg-slate-50"
+                          open
+                            ? "rotate-180 border-violet-200 bg-violet-50 text-violet-700"
+                            : "border-slate-200 bg-slate-50"
                         }`}
                         aria-hidden
                       >
-                        <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg
+                          className="h-4 w-4 shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            d="M19 9l-7 7-7-7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
                       </span>
                     </button>
@@ -857,28 +1105,32 @@ export default function ContactPage() {
       </section>
 
       {/* Footer strip */}
-      <section className="border-t border-slate-200/80 bg-[#2563eb] py-12 pb-[max(3rem,env(safe-area-inset-bottom))] text-white sm:py-16 sm:pb-16">
+      <section className="border-t border-slate-200/80 bg-gray-100 py-12 pb-[max(3rem,env(safe-area-inset-bottom))] text-black sm:py-16 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
           <FadeIn className="flex flex-col items-stretch justify-between gap-8 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm sm:flex-row sm:items-center sm:p-10">
             <div className="min-w-0">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Location</p>
-              <p className="mt-2 text-lg font-semibold sm:text-xl">Techifylavs Pvt. Ltd.</p>
-              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-white/55 sm:text-sm">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-500">
+                Location
+              </p>
+              <p className="mt-2 text-lg font-semibold sm:text-xl">
+                Techifylabs Pvt. Ltd.
+              </p>
+              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-black sm:text-sm">
                 UG Floor, Office No. 67-68 Clover Hills Plaza
                 <br />
                 NIBM Road, Kondhwa, Pune - 411048
               </p>
             </div>
-            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3 ">
               <Link
                 href="/about"
-                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/20 px-6 text-sm font-semibold text-white transition hover:bg-white/10 sm:h-11 sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full  bg-white border border-white/10 px-6 text-sm font-semibold text-black transition hover:bg-white/10 sm:h-11 sm:w-auto"
               >
                 About the studio
               </Link>
               <Link
                 href="/#services"
-                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-slate-900 transition hover:bg-violet-50 sm:h-11 sm:w-auto"
+                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-slate-900 transition hover:bg-white/10 sm:h-11 sm:w-auto"
               >
                 Services
               </Link>
