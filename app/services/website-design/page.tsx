@@ -19,7 +19,11 @@ const staggerContainer = {
 
 const cardVariant: Variants = {
   hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 // ── DATA ─────────────────────────────────────────────────────
@@ -64,29 +68,60 @@ const features = [
 ];
 
 const process = [
-  { step: "01", title: "Discovery Call", desc: "30-min free session to understand your goals, audience, and brand." },
-  { step: "02", title: "Wireframing", desc: "Low-fidelity blueprints of every page layout and user flow." },
-  { step: "03", title: "Visual Design", desc: "Full-color, pixel-perfect mockups built in Figma for your approval." },
-  { step: "04", title: "Handoff / Build", desc: "Design files delivered — or we build it for you end-to-end." },
+  {
+    step: "01",
+    title: "Discovery Call",
+    desc: "30-min free session to understand your goals, audience, and brand.",
+  },
+  {
+    step: "02",
+    title: "Wireframing",
+    desc: "Low-fidelity blueprints of every page layout and user flow.",
+  },
+  {
+    step: "03",
+    title: "Visual Design",
+    desc: "Full-color, pixel-perfect mockups built in Figma for your approval.",
+  },
+  {
+    step: "04",
+    title: "Handoff / Build",
+    desc: "Design files delivered — or we build it for you end-to-end.",
+  },
 ];
 
 const plans = [
   {
     name: "Starter",
     price: "₹15,000",
-    features: ["5-page design", "Mobile responsive", "2 revisions", "Figma file included"],
+    features: [
+      "5-page design",
+      "Mobile responsive",
+      "2 revisions",
+      "Figma file included",
+    ],
     highlight: false,
   },
   {
     name: "Business",
     price: "₹35,000",
-    features: ["10-page design", "UI component library", "5 revisions", "Brand guidelines"],
+    features: [
+      "10-page design",
+      "UI component library",
+      "5 revisions",
+      "Brand guidelines",
+    ],
     highlight: true,
   },
   {
     name: "Enterprise",
     price: "Custom",
-    features: ["Unlimited pages", "Full design system", "Unlimited revisions", "Dedicated designer"],
+    features: [
+      "Unlimited pages",
+      "Full design system",
+      "Unlimited revisions",
+      "Dedicated designer",
+    ],
     highlight: false,
   },
 ];
@@ -130,13 +165,18 @@ function FeatureCard({
   return (
     <motion.div
       variants={cardVariant}
-      whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+      whileHover={{
+        y: -5,
+        transition: { type: "spring", stiffness: 380, damping: 24 },
+      }}
       className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm
                  transition-all hover:border-violet-300 hover:shadow-md"
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
+      <div
+        className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
                       bg-violet-100 text-2xl ring-1 ring-violet-200
-                      transition-colors group-hover:bg-violet-200">
+                      transition-colors group-hover:bg-violet-200"
+      >
         {icon}
       </div>
       <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
@@ -152,12 +192,13 @@ export default function WebsiteDesignPage() {
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
-
       {/* ══════════════════════════════════════════
           HERO SECTION — UNCHANGED
       ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-b border-white/[0.08]
-                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section
+        className="relative overflow-hidden rounded-b-[1.75rem] border-b border-white/[0.08]
+                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
+      >
         <div
           className="pointer-events-none absolute inset-0
                      bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.18),transparent_55%)]"
@@ -186,8 +227,10 @@ export default function WebsiteDesignPage() {
               className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl text-white"
             >
               Beautiful Designs That{" "}
-              <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
-                               bg-clip-text text-transparent">
+              <span
+                className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                               bg-clip-text text-transparent"
+              >
                 Convert Visitors
               </span>
             </motion.h1>
@@ -197,8 +240,9 @@ export default function WebsiteDesignPage() {
               custom={0.14}
               className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             >
-              We design stunning, user-friendly websites that make your brand unforgettable
-              and turn visitors into loyal customers — from wireframe to pixel-perfect Figma.
+              We design stunning, user-friendly websites that make your brand
+              unforgettable and turn visitors into loyal customers — from
+              wireframe to pixel-perfect Figma.
             </motion.p>
 
             <motion.div
@@ -243,7 +287,9 @@ export default function WebsiteDesignPage() {
                 { num: "2 wks", label: "Avg. Turnaround" },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <p className="text-2xl font-bold text-white sm:text-3xl">{num}</p>
+                  <p className="text-2xl font-bold text-white sm:text-3xl">
+                    {num}
+                  </p>
                   <p className="mt-0.5 text-[13px] text-white/50">{label}</p>
                 </div>
               ))}
@@ -262,7 +308,8 @@ export default function WebsiteDesignPage() {
             Our Design Services
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            Everything you need to launch a website that looks great and performs even better.
+            Everything you need to launch a website that looks great and
+            performs even better.
           </p>
         </div>
 
@@ -282,10 +329,7 @@ export default function WebsiteDesignPage() {
       {/* ══════════════════════════════════════════
           PROCESS SECTION — WHITE THEME
       ══════════════════════════════════════════ */}
-      <section
-        id="process"
-        className="border-y border-gray-100 bg-gray-50"
-      >
+      <section id="process" className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="mb-12 text-center">
             <SectionBadge>Our Process</SectionBadge>
@@ -308,8 +352,10 @@ export default function WebsiteDesignPage() {
                 className="relative rounded-2xl border border-gray-200 bg-white p-7 shadow-sm"
               >
                 {/* Step number — large faded as bg decoration */}
-                <span className="pointer-events-none absolute right-5 top-4 select-none
-                                 text-6xl font-black text-gray-100">
+                <span
+                  className="pointer-events-none absolute right-5 top-4 select-none
+                                 text-6xl font-black text-gray-100"
+                >
                   {p.step}
                 </span>
                 {/* Orange dot connector line except on last */}
@@ -321,13 +367,20 @@ export default function WebsiteDesignPage() {
                   />
                 )}
                 <div className="mb-4 flex items-center gap-2.5">
-                  <span className="h-2 w-2 rounded-[2px] bg-[#ea580c]" aria-hidden />
+                  <span
+                    className="h-2 w-2 rounded-[2px] bg-[#ea580c]"
+                    aria-hidden
+                  />
                   <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gray-400">
                     Step {p.step}
                   </span>
                 </div>
-                <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{p.title}</h3>
-                <p className="text-[14px] leading-relaxed text-gray-500">{p.desc}</p>
+                <h3 className="mb-2 text-[17px] font-semibold text-gray-900">
+                  {p.title}
+                </h3>
+                <p className="text-[14px] leading-relaxed text-gray-500">
+                  {p.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -359,7 +412,10 @@ export default function WebsiteDesignPage() {
             <motion.div
               key={plan.name}
               variants={cardVariant}
-              whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+              whileHover={{
+                y: -5,
+                transition: { type: "spring", stiffness: 380, damping: 24 },
+              }}
               className={`relative flex flex-col rounded-2xl border p-8 ${
                 plan.highlight
                   ? "border-violet-300 bg-gradient-to-b from-violet-50 to-white shadow-md"
@@ -367,21 +423,31 @@ export default function WebsiteDesignPage() {
               }`}
             >
               {plan.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full
+                <span
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full
                                  bg-[#3b31a1] px-3 py-1 text-[11px] font-bold
                                  uppercase tracking-[0.12em] text-white
-                                 ring-1 ring-violet-300">
+                                 ring-1 ring-violet-300"
+                >
                   Most Popular
                 </span>
               )}
               <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-gray-400">
                 {plan.name}
               </p>
-              <p className="mt-3 text-4xl font-bold text-gray-900">{plan.price}</p>
+              <p className="mt-3 text-4xl font-bold text-gray-900">
+                {plan.price}
+              </p>
               <ul className="mt-7 flex-1 space-y-3">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-[14px] text-gray-600">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]/90" aria-hidden />
+                  <li
+                    key={f}
+                    className="flex items-center gap-2.5 text-[14px] text-gray-600"
+                  >
+                    <span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]/90"
+                      aria-hidden
+                    />
                     {f}
                   </li>
                 ))}
@@ -418,7 +484,8 @@ export default function WebsiteDesignPage() {
               Let's Build Something Memorable
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Book a free consultation and let's design a website that grows your business.
+              Book a free consultation and let's design a website that grows
+              your business.
             </p>
             <Link
               href="/contact"
@@ -427,7 +494,10 @@ export default function WebsiteDesignPage() {
                          transition hover:bg-[#2f278f] hover:shadow-xl sm:text-[15px]"
             >
               Start Your Project Today
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">
+              <span
+                aria-hidden
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              >
                 →
               </span>
             </Link>

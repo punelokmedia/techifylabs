@@ -40,10 +40,13 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(1);
 
   return (
-    <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="faq-heading">
+    <section
+      className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24"
+      aria-labelledby="faq-heading"
+    >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div
+        <div className="max-w-3xl mx-auto">
+          {/* <motion.div
             initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -89,29 +92,30 @@ export default function FaqSection() {
                 <span>Secure</span>
               </div>
             </motion.div>
-          </motion.div>
+          </motion.div> */}
 
           <div>
-            <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, ease }}
-              className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3.5 py-1.5 text-sm font-semibold text-[#2563eb] ring-1 ring-sky-200/80"
-            >
-              FAQ
-            </motion.span>
-            <motion.h2
-              id="faq-heading"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.05, ease }}
-              className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#0c2d52] sm:text-3xl"
-            >
-              Frequently asked questions about digital marketing services
-            </motion.h2>
-
+            <div className="text-center mb-10">
+              <motion.span
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, ease }}
+                className="inline-flex items-center gap-2 rounded-full bg-violet-200 px-3.5 py-1.5 text-lg font-semibold text-[#1446b1] ring-2 ring-violet-400/80"
+              >
+                FAQ
+              </motion.span>
+              <motion.h2
+                id="faq-heading"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.05, ease }}
+                className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#0c2d52] sm:text-4xl"
+              >
+                Frequently asked questions about digital marketing services
+              </motion.h2>
+            </div>
             <ul className="mt-8 divide-y divide-slate-200">
               {faqs.map((item, i) => {
                 const isOpen = open === i;
@@ -124,11 +128,11 @@ export default function FaqSection() {
                       aria-expanded={isOpen}
                     >
                       <span className="flex gap-3">
-                        <span className="mt-0.5 text-sm font-bold text-slate-400 tabular-nums">
+                        <span className="mt-0.5 text-lg font-bold text-violet-400 tabular-nums">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <span
-                          className={`text-base font-semibold transition-colors duration-200 ${isOpen ? "text-violet-700" : "text-[#0c2d52] group-hover:text-violet-600"}`}
+                          className={`text-xl font-semibold transition-colors duration-200 ${isOpen ? "text-violet-700" : "text-[#0c2d52] group-hover:text-violet-600"}`}
                         >
                           {item.q}
                         </span>
@@ -149,7 +153,9 @@ export default function FaqSection() {
                           transition={{ duration: 0.32, ease }}
                           className="overflow-hidden"
                         >
-                          <p className="pb-4 pl-9 text-sm leading-relaxed text-slate-600 sm:pl-10">{item.a}</p>
+                          <p className="pb-4 pl-9 text-sm leading-relaxed text-slate-600 sm:pl-10">
+                            {item.a}
+                          </p>
                         </motion.div>
                       )}
                     </AnimatePresence>

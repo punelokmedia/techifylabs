@@ -33,32 +33,38 @@ const services = [
   {
     icon: "🍎",
     title: "iOS App Development",
-    description: "Native Swift/SwiftUI apps for iPhone and iPad — fast, polished, and App Store ready.",
+    description:
+      "Native Swift/SwiftUI apps for iPhone and iPad — fast, polished, and App Store ready.",
   },
   {
     icon: "🤖",
     title: "Android App Development",
-    description: "Kotlin-based Android apps designed for all screen sizes and Android versions from 8+.",
+    description:
+      "Kotlin-based Android apps designed for all screen sizes and Android versions from 8+.",
   },
   {
     icon: "⚛️",
     title: "React Native Apps",
-    description: "One codebase, two platforms. Cost-effective cross-platform apps without compromising quality.",
+    description:
+      "One codebase, two platforms. Cost-effective cross-platform apps without compromising quality.",
   },
   {
     icon: "🌐",
     title: "Progressive Web Apps",
-    description: "App-like experiences in the browser — installable, offline-capable, and blazing fast.",
+    description:
+      "App-like experiences in the browser — installable, offline-capable, and blazing fast.",
   },
   {
     icon: "🔔",
     title: "Push Notifications",
-    description: "Engage users with timely, personalised push notifications that drive retention and repeat visits.",
+    description:
+      "Engage users with timely, personalised push notifications that drive retention and repeat visits.",
   },
   {
     icon: "🔄",
     title: "App Maintenance & Updates",
-    description: "OS compatibility updates, bug fixes, and new feature releases — we keep your app running smoothly.",
+    description:
+      "OS compatibility updates, bug fixes, and new feature releases — we keep your app running smoothly.",
   },
 ];
 
@@ -74,16 +80,44 @@ const appTypes = [
 ];
 
 const processSteps = [
-  { step: "01", icon: "💡", title: "Ideation", desc: "Requirements gathering, feature scoping, and technical planning." },
-  { step: "02", icon: "🖼️", title: "UI/UX Design", desc: "Wireframes, user flows, and pixel-perfect interactive prototypes." },
-  { step: "03", icon: "⚙️", title: "Development", desc: "Agile sprints with weekly demo updates and transparent progress." },
-  { step: "04", icon: "🧪", title: "Testing & QA", desc: "Rigorous testing across real devices, OS versions, and edge cases." },
-  { step: "05", icon: "🚀", title: "Launch", desc: "App Store & Play Store submission, ASO, and go-live support." },
+  {
+    step: "01",
+    icon: "💡",
+    title: "Ideation",
+    desc: "Requirements gathering, feature scoping, and technical planning.",
+  },
+  {
+    step: "02",
+    icon: "🖼️",
+    title: "UI/UX Design",
+    desc: "Wireframes, user flows, and pixel-perfect interactive prototypes.",
+  },
+  {
+    step: "03",
+    icon: "⚙️",
+    title: "Development",
+    desc: "Agile sprints with weekly demo updates and transparent progress.",
+  },
+  {
+    step: "04",
+    icon: "🧪",
+    title: "Testing & QA",
+    desc: "Rigorous testing across real devices, OS versions, and edge cases.",
+  },
+  {
+    step: "05",
+    icon: "🚀",
+    title: "Launch",
+    desc: "App Store & Play Store submission, ASO, and go-live support.",
+  },
 ];
 
 const techStack = [
   { name: "React Native", color: "bg-sky-50 text-sky-700 ring-sky-200" },
-  { name: "Swift / SwiftUI", color: "bg-orange-50 text-orange-700 ring-orange-200" },
+  {
+    name: "Swift / SwiftUI",
+    color: "bg-orange-50 text-orange-700 ring-orange-200",
+  },
   { name: "Kotlin", color: "bg-purple-50 text-purple-700 ring-purple-200" },
   { name: "Expo", color: "bg-gray-100 text-gray-700 ring-gray-200" },
   { name: "Firebase", color: "bg-yellow-50 text-yellow-700 ring-yellow-200" },
@@ -118,17 +152,30 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ServiceCard({ icon, title, description }: { icon: string; title: string; description: string }) {
+function ServiceCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: string;
+  title: string;
+  description: string;
+}) {
   return (
     <motion.div
       variants={cardVariant}
-      whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+      whileHover={{
+        y: -5,
+        transition: { type: "spring", stiffness: 380, damping: 24 },
+      }}
       className="group rounded-2xl border border-gray-200 bg-white p-6
                  transition-all hover:border-violet-200 hover:shadow-md"
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
+      <div
+        className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
                       bg-violet-50 text-2xl ring-1 ring-violet-200
-                      transition-colors group-hover:bg-violet-100">
+                      transition-colors group-hover:bg-violet-100"
+      >
         {icon}
       </div>
       <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
@@ -142,10 +189,11 @@ function ServiceCard({ icon, title, description }: { icon: string; title: string
 export default function AppDevelopmentPage() {
   return (
     <main className="min-h-screen text-white">
-
       {/* ══ HERO — UNCHANGED ══ */}
-      <section className="relative overflow-hidden border-b border-white/[0.08]
-                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section
+        className="relative overflow-hidden border-b border-white/[0.08] rounded-b-[1.75rem]
+                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
+      >
         <div
           className="pointer-events-none absolute inset-0
                      bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.18),transparent_55%)]"
@@ -173,8 +221,10 @@ export default function AppDevelopmentPage() {
               className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             >
               Mobile Apps That{" "}
-              <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
-                               bg-clip-text text-transparent">
+              <span
+                className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                               bg-clip-text text-transparent"
+              >
                 Users Love to Open
               </span>
             </motion.h1>
@@ -184,11 +234,16 @@ export default function AppDevelopmentPage() {
               custom={0.14}
               className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             >
-              We build iOS, Android, and cross-platform mobile applications that are intuitive,
-              performant, and designed to keep users coming back every single day.
+              We build iOS, Android, and cross-platform mobile applications that
+              are intuitive, performant, and designed to keep users coming back
+              every single day.
             </motion.p>
 
-            <motion.div variants={fadeUp} custom={0.22} className="mt-10 flex flex-wrap gap-4">
+            <motion.div
+              variants={fadeUp}
+              custom={0.22}
+              className="mt-10 flex flex-wrap gap-4"
+            >
               <Link
                 href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-fuchsia-500 px-6 py-3
@@ -196,7 +251,12 @@ export default function AppDevelopmentPage() {
                            transition hover:bg-violet-400 hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
                 Build Your App
-                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                <span
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
               </Link>
               <Link
                 href="#process"
@@ -220,7 +280,9 @@ export default function AppDevelopmentPage() {
                 { num: "iOS + Android", label: "Both Platforms" },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <p className="text-2xl font-bold text-white sm:text-3xl">{num}</p>
+                  <p className="text-2xl font-bold text-white sm:text-3xl">
+                    {num}
+                  </p>
                   <p className="mt-0.5 text-[13px] text-white/50">{label}</p>
                 </div>
               ))}
@@ -277,7 +339,8 @@ export default function AppDevelopmentPage() {
             App Development Services
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            Native, cross-platform, or web — we build the right app for your audience and budget.
+            Native, cross-platform, or web — we build the right app for your
+            audience and budget.
           </p>
         </div>
 
@@ -303,7 +366,8 @@ export default function AppDevelopmentPage() {
               From Idea to App Store
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-[15px] text-gray-500">
-              A battle-tested 5-step process that delivers quality apps on time, every time.
+              A battle-tested 5-step process that delivers quality apps on time,
+              every time.
             </p>
           </div>
 
@@ -328,15 +392,21 @@ export default function AppDevelopmentPage() {
                     →
                   </div>
                 )}
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center
-                                rounded-xl bg-violet-50 text-2xl ring-1 ring-violet-200">
+                <div
+                  className="mx-auto mb-4 flex h-12 w-12 items-center justify-center
+                                rounded-xl bg-violet-50 text-2xl ring-1 ring-violet-200"
+                >
                   {step.icon}
                 </div>
                 <div className="mb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#ea580c]">
                   Step {step.step}
                 </div>
-                <h3 className="mb-2 text-[16px] font-semibold text-gray-900">{step.title}</h3>
-                <p className="text-[13px] leading-relaxed text-gray-500">{step.desc}</p>
+                <h3 className="mb-2 text-[16px] font-semibold text-gray-900">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] leading-relaxed text-gray-500">
+                  {step.desc}
+                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -363,7 +433,9 @@ export default function AppDevelopmentPage() {
               variants={cardVariant}
               className="rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center"
             >
-              <p className="text-3xl font-bold text-gray-900 sm:text-4xl">{num}</p>
+              <p className="text-3xl font-bold text-gray-900 sm:text-4xl">
+                {num}
+              </p>
               <p className="mt-2 text-[13px] text-gray-500">{label}</p>
             </motion.div>
           ))}
@@ -384,7 +456,8 @@ export default function AppDevelopmentPage() {
               Got an App Idea?
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Let's turn it into a product your users will love. Book a free strategy call — no obligation.
+              Let's turn it into a product your users will love. Book a free
+              strategy call — no obligation.
             </p>
             <Link
               href="/contact"
@@ -393,12 +466,16 @@ export default function AppDevelopmentPage() {
                          transition hover:bg-gray-800 sm:text-[15px]"
             >
               Build My App
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              <span
+                aria-hidden
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              >
+                →
+              </span>
             </Link>
           </motion.div>
         </div>
       </section>
-
     </main>
   );
 }

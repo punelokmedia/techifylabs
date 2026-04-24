@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const springSoft = { type: "spring" as const, stiffness: 400, damping: 30, mass: 0.8 };
+const springSoft = {
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 30,
+  mass: 0.8,
+};
 const springTap = { type: "spring" as const, stiffness: 520, damping: 35 };
 
 const fadeUp = {
@@ -37,8 +42,19 @@ const stats = [
 function IconChart({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden>
-      <path d="M8 38V10M8 38h32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M16 30l8-10 6 6 10-14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M8 38V10M8 38h32"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M16 30l8-10 6 6 10-14"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -71,14 +87,20 @@ const avatars = ["A", "B", "C", "D"];
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="about-heading">
+    <section
+      className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24"
+      aria-labelledby="about-heading"
+    >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
-          <motion.div
+          {/* <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.08 } }, hidden: {} }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.08 } },
+              hidden: {},
+            }}
           >
             <motion.div
               variants={fadeUp}
@@ -131,13 +153,55 @@ export default function AboutSection() {
                 Results driven web design agency
               </p>
             </motion.div>
+          </motion.div> */}
+          <motion.div
+            variants={fadeUp}
+            custom={1}
+            whileHover={{ y: -4 }}
+            transition={springSoft}
+            className="group relative mt-8 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-lg transition-all duration-300 sm:p-8"
+          >
+            {/* LEFT BAR ACCENT */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-600 to-violet-600 rounded-l-2xl opacity-70" />
+
+            {/* CONTENT */}
+            <div className="ml-3">
+              <h3 className="text-2xl font-bold text-slate-900">
+                Performance-first approach
+              </h3>
+
+              <p className="mt-2 text-xl text-slate-600 leading-relaxed">
+                Every campaign, funnel, and landing experience is designed to
+                drive measurable results — not just impressions.
+              </p>
+
+              {/* FEATURES */}
+              <div className="mt-5 space-y-3">
+                {[
+                  "Conversion-focused design",
+                  "Data-backed marketing strategy",
+                  "Scalable growth systems",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-lg text-slate-700"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-indigo-600" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.08 } }, hidden: {} }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.08 } },
+              hidden: {},
+            }}
           >
             <motion.h2
               id="about-heading"
@@ -145,16 +209,18 @@ export default function AboutSection() {
               custom={0}
               className="text-3xl font-bold leading-[1.15] tracking-tight text-[#0c2d52] sm:text-4xl lg:text-[2.35rem] lg:leading-tight"
             >
-              Result-driven digital marketing &amp; web development agency in India
+              Result-driven digital marketing &amp; web development agency in
+              India
             </motion.h2>
             <motion.p
               variants={fadeUp}
               custom={1}
               className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg"
             >
-              We combine strategy, creative, and performance media to help brands scale with clarity.
-              Our team blends technical depth with marketing instincts—so every launch, funnel, and
-              campaign is built to convert, not just look good.
+              We combine strategy, creative, and performance media to help
+              brands scale with clarity. Our team blends technical depth with
+              marketing instincts—so every launch, funnel, and campaign is built
+              to convert, not just look good.
             </motion.p>
           </motion.div>
         </div>
@@ -163,7 +229,12 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.12 } }, hidden: {} }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1, delayChildren: 0.12 },
+            },
+            hidden: {},
+          }}
           className="mt-14 grid gap-5 sm:grid-cols-3 lg:mt-16"
         >
           {stats.map((s) => (
@@ -171,7 +242,11 @@ export default function AboutSection() {
               key={s.metric}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: sectionEase } },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.45, ease: sectionEase },
+                },
               }}
               whileHover={{ y: -8, scale: 1.02, transition: springSoft }}
               whileTap={{ scale: 0.99, transition: springTap }}
@@ -179,7 +254,7 @@ export default function AboutSection() {
             >
               {/* Default: white card. Hover: purple → violet → blue gradient (matches reference). */}
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-fuchsia-500 via-violet-600 to-blue-700 opacity-0 transition-opacity duration-500 ease-out group-hover/stat:opacity-100"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-fuchsia-900 to-violet-900 opacity-0 transition-opacity duration-500 ease-out group-hover/stat:opacity-100"
                 aria-hidden
               />
               <div

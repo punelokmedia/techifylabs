@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import TopBar from "./TopBar";
+import ConsultationModal from "./ConsultationModel";
 type MenuKey = "solutions" | "knowledge" | null;
 
 const solutionsSections = [
@@ -444,6 +445,7 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<MenuKey>(null);
+  const [openModal, setOpenModal] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
   const closeMenus = useCallback(() => {
@@ -755,6 +757,7 @@ export default function Navbar() {
               type="button"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setOpenModal(true)}
               className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3 py-2 text-[11px] font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg sm:inline-flex sm:px-4 sm:py-2 sm:text-xs md:px-5 md:text-sm"
             >
               <span
@@ -955,16 +958,17 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     Get a free consultation →
-                    
                   </motion.button>
                 </nav>
               </motion.div>
             </>
-            
           )}
         </AnimatePresence>
       </div>
+      <ConsultationModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      />
     </header>
-    
   );
 }

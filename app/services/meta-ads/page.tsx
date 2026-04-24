@@ -399,7 +399,7 @@ export default function MetaAdsPage() {
           </div>
         </div>
       </section> */}
-      <section className="relative overflow-hidden border-b border-gray-200">
+      <section className="relative overflow-hidden rounded-b-[1.75rem] border-b border-gray-200 ">
         {/* 🌈 BACKGROUND LAYERS */}
         <div className="absolute inset-0 bg-[#050816]" aria-hidden />
 
@@ -410,7 +410,7 @@ export default function MetaAdsPage() {
         {/* subtle grid pattern */}
         {/* <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" /> */}
 
-        <div className="relative mx-auto max-w-6xl px-4 py-24 grid gap-12 lg:grid-cols-2 items-center">
+        <div className="relative w-full pl-15 pr-2 py-24 grid gap-12 lg:grid-cols-2 items-center">
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -508,7 +508,7 @@ export default function MetaAdsPage() {
               <img
                 src="https://media.istockphoto.com/id/2216173060/photo/seo-and-digital-marketing-trend-concept-depicting-user-researching-search-engine-strategies.webp?a=1&b=1&s=612x612&w=0&k=20&c=iF6oiQWroxUoURarMY_7NbcIMHNONbbAeuh5X8je6qU="
                 alt="marketing"
-                className="rounded-xl w-full h-80 object-cover"
+                className="rounded-xl w-[600px] h-80 object-cover"
               />
             </div>
           </div>

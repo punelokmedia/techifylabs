@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import ServicesSection from "./ServicesSection";
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 360, damping: 28 };
 
@@ -94,6 +96,39 @@ const stackLabels = [
 //   { label: "Review cadence", value: "Weekly" },
 //   { label: "Delivery", value: "India-wide" },
 // ];
+
+const teamMembers = [
+  {
+    name: "Thomas Stevens",
+    role: "Manager",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+  },
+  {
+    name: "Sarah Johnson",
+    role: "Sales Director",
+    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+  },
+  {
+    name: "Michael Chen",
+    role: "Marketing Lead",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+  },
+  {
+    name: "David Miller",
+    role: "Operations Head",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+  },
+  {
+    name: "Emily Davis",
+    role: "HR Manager",
+    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+  },
+  {
+    name: "Alex Carter",
+    role: "Tech Lead",
+    img: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+  },
+];
 
 function IconChart({ className }: { className?: string }) {
   return (
@@ -190,7 +225,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero — immersive */}
-      <section className="relative overflow-hidden bg-[#050816] text-white">
+      <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem]">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(99,102,241,0.45),transparent_55%)]"
           aria-hidden
@@ -208,7 +243,7 @@ export default function AboutPage() {
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-12 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
+        <div className="relative w-full px-6 pb-20 pt-12 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
           <nav
             className="mb-14 flex items-center gap-3 text-[13px] text-white/45"
             aria-label="Breadcrumb"
@@ -301,13 +336,13 @@ export default function AboutPage() {
                   className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-violet-500/20 via-fuchsia-500/10 to-transparent blur-2xl lg:-inset-8"
                   aria-hidden
                 />
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10 sm:aspect-[5/4] lg:aspect-[4/3]">
+                <div className="relative w-[600px] h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
                   <Image
                     src="https://images.unsplash.com/photo-1729714055320-4d1c5d5e213d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Modern workspace with natural light"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    sizes="(max-width: 900px) 90vw, 55vw"
                     priority
                   />
                   <div
@@ -552,17 +587,17 @@ export default function AboutPage() {
       </section>
 
       {/* Stack */}
-      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gray-100 py-16 text-white sm:py-20">
+      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gray-50 py-16 text-white sm:py-20">
         {/* <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(99,102,241,0.15),transparent_50%)]"
           aria-hidden
         /> */}
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-500">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-violet-500">
               Stack
             </p>
-            <p className="mx-auto mt-4 max-w-lg text-[15px] text-black">
+            <p className="mx-auto mt-4 max-w-lg text-2xl font-semibold text-black">
               Platforms we configure daily for measurement, governance, and
               scale — not shelf-ware.
             </p>
@@ -588,6 +623,62 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-t from-gray-100 to-white py-16 text-black sm:py-20">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
+          {/* HEADER */}
+          <FadeIn className="text-center max-w-2xl mx-auto">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-600">
+              Our Team
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
+              Meet Our Experts
+            </h2>
+          </FadeIn>
+
+          {/* TEAM GRID */}
+          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, i) => (
+              <FadeIn key={member.name} delay={0.05 * i}>
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl shadow-lg"
+                  whileHover={{ y: -6 }}
+                >
+                  {/* IMAGE */}
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-[420px] object-cover grayscale group-hover:grayscale-0 transition duration-500"
+                  />
+
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+                  {/* CONTENT */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white translate-y-10 group-hover:translate-y-0 transition duration-500">
+                    <h3 className="text-xl font-semibold">{member.name}</h3>
+                    <p className="text-sm text-gray-300 mb-4">{member.role}</p>
+
+                    {/* SOCIAL */}
+                    <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition delay-200">
+                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
+                        <FaInstagram />
+                      </div>
+                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
+                        <FaLinkedin />
+                      </div>
+                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
+                        <FaFacebook />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* Services Section */}
+      <ServicesSection />
       {/* Timeline */}
       <section
         className="border-b border-slate-200/80 bg-slate-50 py-20 sm:py-28"
