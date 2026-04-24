@@ -54,7 +54,7 @@ function SectionHeading({
   );
 }
 
-const ACCENT = "#00E5A0";//green
+const ACCENT = "#00E5A0"; //green
 
 const qcPlatforms = [
   { name: "Blinkit", icon: "⚡", color: "#FFD400" },
@@ -186,12 +186,11 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function QuickCommerce() {
   return (
     <div className="bg-white min-h-screen text-black font-sans">
-
       {/* Hero — unchanged */}
-      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b border-white/[0.08]  bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b border-white/[0.08] rounded-b-[1.75rem] bg-gradient-to-br from-[#0a0f2c] via-[#110f32] to-[#070612]">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/3 w-[600px] h-[500px] bg-[#00E5A0]/8 rounded-full blur-[140px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] bg-[#00E5A0]/5 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-1/3 w-[600px] h-[500px] rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full blur-[100px]" />
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -217,8 +216,7 @@ export default function QuickCommerce() {
               variants={fadeUp}
               className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 text-white"
             >
-              Win the{" "}
-              <span className="text-violet-400">10-Minute</span>
+              Win the <span className="text-violet-400">10-Minute</span>
               <br />
               Commerce Race
             </motion.h1>
@@ -336,9 +334,7 @@ export default function QuickCommerce() {
                 className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#00E5A0]/40 hover:bg-[#00E5A0]/5 transition-all duration-300"
               >
                 <span className="text-3xl mb-4 block">{s.icon}</span>
-                <h3 className="font-bold text-black text-lg mb-2">
-                  {s.title}
-                </h3>
+                <h3 className="font-bold text-black text-lg mb-2">{s.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {s.desc}
                 </p>
@@ -480,7 +476,6 @@ export default function QuickCommerce() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

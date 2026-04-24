@@ -218,7 +218,7 @@ export default function CaseStudiesPage() {
           </motion.div> */}
       {/* </div>
       </section> */}
-      <section className="relative overflow-hidden bg-[#050816] text-white">
+      <section className="relative overflow-hidden rounded-b-[1.75rem] bg-[#050816] text-white">
         {/* Softer gradient background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />

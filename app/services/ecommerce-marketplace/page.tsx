@@ -164,12 +164,11 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function EcommerceMarketplace() {
   return (
     <div className="bg-white min-h-screen text-white font-sans">
-
       {/* Hero — unchanged */}
-      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b sm:rounded-b-[1.75rem] border-white/[0.08]  bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b sm:rounded-b-[1.75rem] border-white/[0.08] bg-gradient-to-br from-[#0a0f2c] via-[#110f32] to-[#070612]">
         {/* BG glow */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#F4A619]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-[120px]" />
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -192,8 +191,7 @@ export default function EcommerceMarketplace() {
               className="text-5xl md:text-6xl lg:text-5xl font-black leading-[1.05] mb-6 "
             >
               Dominate Every{" "}
-              <span className="text-fuchsia-600 ">Marketplace</span>{" "}
-              <br />
+              <span className="text-fuchsia-600 ">Marketplace</span> <br />
               Your Buyers Shop On
             </motion.h1>
 
@@ -206,10 +204,7 @@ export default function EcommerceMarketplace() {
               conversion, and a ROAS that justifies every rupee spent.
             </motion.p>
 
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap gap-4"
-            >
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <a
                 href="/contact-us"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-fuchsia-600  text-white font-bold px-8 py-4 rounded-full transition-all hover:scale-105 active:scale-95 text-sm uppercase tracking-wide"
@@ -307,9 +302,7 @@ export default function EcommerceMarketplace() {
                 className="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#F4A619]/60 hover:bg-[#F4A619]/5 transition-all duration-300"
               >
                 <span className="text-3xl mb-4 block">{s.icon}</span>
-                <h3 className="font-bold text-black text-lg mb-2">
-                  {s.title}
-                </h3>
+                <h3 className="font-bold text-black text-lg mb-2">{s.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {s.desc}
                 </p>
@@ -400,7 +393,6 @@ export default function EcommerceMarketplace() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

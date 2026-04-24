@@ -19,7 +19,11 @@ const staggerContainer = {
 
 const cardVariant: Variants = {
   hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 // ── DATA ─────────────────────────────────────────────────────
@@ -28,53 +32,75 @@ const services = [
   {
     icon: "🌐",
     title: "Full-Stack Development",
-    description: "End-to-end web apps built with React, Next.js, and Node.js — from database schema to polished UI.",
+    description:
+      "End-to-end web apps built with React, Next.js, and Node.js — from database schema to polished UI.",
   },
   {
     icon: "🛒",
     title: "E-Commerce Websites",
-    description: "WooCommerce, Magento, or custom-built stores — designed to maximise your online revenue.",
+    description:
+      "WooCommerce, Magento, or custom-built stores — designed to maximise your online revenue.",
   },
   {
     icon: "⚙️",
     title: "CMS Development",
-    description: "WordPress, Strapi, or headless CMS so you can update content without touching any code.",
+    description:
+      "WordPress, Strapi, or headless CMS so you can update content without touching any code.",
   },
   {
     icon: "🔌",
     title: "API Integration",
-    description: "Connect to payment gateways, CRMs, analytics tools, and any third-party service you need.",
+    description:
+      "Connect to payment gateways, CRMs, analytics tools, and any third-party service you need.",
   },
   {
     icon: "🚀",
     title: "Performance Optimisation",
-    description: "Lighthouse audits, lazy loading, image optimisation, and caching for blazing-fast load times.",
+    description:
+      "Lighthouse audits, lazy loading, image optimisation, and caching for blazing-fast load times.",
   },
   {
     icon: "🔐",
     title: "Security & Maintenance",
-    description: "SSL, firewall setup, dependency updates, and uptime monitoring to keep your site safe 24/7.",
+    description:
+      "SSL, firewall setup, dependency updates, and uptime monitoring to keep your site safe 24/7.",
   },
 ];
 
 const techStack = [
-  { name: "React",        color: "bg-sky-50 text-sky-700 ring-sky-200" },
-  { name: "Next.js",      color: "bg-gray-100 text-gray-700 ring-gray-200" },
-  { name: "Node.js",      color: "bg-green-50 text-green-700 ring-green-200" },
-  { name: "TypeScript",   color: "bg-blue-50 text-blue-700 ring-blue-200" },
-  { name: "Laravel",      color: "bg-red-50 text-red-700 ring-red-200" },
-  { name: "WordPress",    color: "bg-sky-50 text-sky-700 ring-sky-200" },
-  { name: "MySQL",        color: "bg-orange-50 text-orange-700 ring-orange-200" },
-  { name: "MongoDB",      color: "bg-green-50 text-green-700 ring-green-200" },
-  { name: "AWS",          color: "bg-yellow-50 text-yellow-700 ring-yellow-200" },
+  { name: "React", color: "bg-sky-50 text-sky-700 ring-sky-200" },
+  { name: "Next.js", color: "bg-gray-100 text-gray-700 ring-gray-200" },
+  { name: "Node.js", color: "bg-green-50 text-green-700 ring-green-200" },
+  { name: "TypeScript", color: "bg-blue-50 text-blue-700 ring-blue-200" },
+  { name: "Laravel", color: "bg-red-50 text-red-700 ring-red-200" },
+  { name: "WordPress", color: "bg-sky-50 text-sky-700 ring-sky-200" },
+  { name: "MySQL", color: "bg-orange-50 text-orange-700 ring-orange-200" },
+  { name: "MongoDB", color: "bg-green-50 text-green-700 ring-green-200" },
+  { name: "AWS", color: "bg-yellow-50 text-yellow-700 ring-yellow-200" },
   { name: "Tailwind CSS", color: "bg-cyan-50 text-cyan-700 ring-cyan-200" },
 ];
 
 const whyUs = [
-  { icon: "⚡", title: "Fast Delivery",        desc: "Most projects shipped in 2–4 weeks without cutting corners." },
-  { icon: "🎯", title: "Result-Driven",        desc: "Every decision is backed by business goals and real metrics." },
-  { icon: "🔒", title: "Transparent Process",  desc: "Weekly updates, shared boards, and zero surprises." },
-  { icon: "🛠️", title: "Post-Launch Support",  desc: "We stay with you even after your site goes live." },
+  {
+    icon: "⚡",
+    title: "Fast Delivery",
+    desc: "Most projects shipped in 2–4 weeks without cutting corners.",
+  },
+  {
+    icon: "🎯",
+    title: "Result-Driven",
+    desc: "Every decision is backed by business goals and real metrics.",
+  },
+  {
+    icon: "🔒",
+    title: "Transparent Process",
+    desc: "Weekly updates, shared boards, and zero surprises.",
+  },
+  {
+    icon: "🛠️",
+    title: "Post-Launch Support",
+    desc: "We stay with you even after your site goes live.",
+  },
 ];
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
@@ -103,17 +129,30 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ServiceCard({ icon, title, description }: { icon: string; title: string; description: string }) {
+function ServiceCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: string;
+  title: string;
+  description: string;
+}) {
   return (
     <motion.div
       variants={cardVariant}
-      whileHover={{ y: -5, transition: { type: "spring", stiffness: 380, damping: 24 } }}
+      whileHover={{
+        y: -5,
+        transition: { type: "spring", stiffness: 380, damping: 24 },
+      }}
       className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm
                  transition-all hover:border-violet-300 hover:shadow-md"
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
+      <div
+        className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl
                       bg-violet-100 text-2xl ring-1 ring-violet-200
-                      transition-colors group-hover:bg-violet-200">
+                      transition-colors group-hover:bg-violet-200"
+      >
         {icon}
       </div>
       <h3 className="mb-2 text-[17px] font-semibold text-gray-900">{title}</h3>
@@ -129,10 +168,11 @@ export default function WebDevelopmentPage() {
 
   return (
     <main className="min-h-screen bg-white text-gray-100">
-
       {/* ══ HERO — UNCHANGED ══ */}
-      <section className="relative overflow-hidden border-b border-white/[0.08]
-                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]">
+      <section
+        className="relative overflow-hidden rounded-b-[1.7rem] border-b border-white/[0.08]
+                          bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
+      >
         <div
           className="pointer-events-none absolute inset-0
                      bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.18),transparent_55%)]"
@@ -161,8 +201,10 @@ export default function WebDevelopmentPage() {
               className="mt-3 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             >
               Websites That Work{" "}
-              <span className="bg-gradient-to-r from-white via-violet-100 to-violet-300
-                               bg-clip-text text-transparent">
+              <span
+                className="bg-gradient-to-r from-white via-violet-100 to-violet-300
+                               bg-clip-text text-transparent"
+              >
                 As Hard As You Do
               </span>
             </motion.h1>
@@ -172,11 +214,16 @@ export default function WebDevelopmentPage() {
               custom={0.14}
               className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             >
-              We build fast, secure, and scalable websites and web applications using modern
-              technologies — engineered for performance and built to grow with your business.
+              We build fast, secure, and scalable websites and web applications
+              using modern technologies — engineered for performance and built
+              to grow with your business.
             </motion.p>
 
-            <motion.div variants={fadeUp} custom={0.22} className="mt-10 flex flex-wrap gap-4">
+            <motion.div
+              variants={fadeUp}
+              custom={0.22}
+              className="mt-10 flex flex-wrap gap-4"
+            >
               <Link
                 href="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden
@@ -185,7 +232,12 @@ export default function WebDevelopmentPage() {
                            hover:shadow-lg sm:px-8 sm:text-[15px]"
               >
                 Start Your Project
-                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                <span
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
               </Link>
               <Link
                 href="#services"
@@ -203,13 +255,15 @@ export default function WebDevelopmentPage() {
               className="mt-14 flex flex-wrap gap-8 border-t border-white/[0.1] pt-10"
             >
               {[
-                { num: "150+",    label: "Websites Built" },
-                { num: "99.9%",   label: "Uptime Guaranteed" },
+                { num: "150+", label: "Websites Built" },
+                { num: "99.9%", label: "Uptime Guaranteed" },
                 { num: "2–4 wks", label: "Avg. Delivery" },
-                { num: "24/7",    label: "Support Available" },
+                { num: "24/7", label: "Support Available" },
               ].map(({ num, label }) => (
                 <div key={label}>
-                  <p className="text-2xl font-bold text-white sm:text-3xl">{num}</p>
+                  <p className="text-2xl font-bold text-white sm:text-3xl">
+                    {num}
+                  </p>
                   <p className="mt-0.5 text-[13px] text-white/50">{label}</p>
                 </div>
               ))}
@@ -238,14 +292,18 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* ══ SERVICES GRID — WHITE THEME ══ */}
-      <section id="services" className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+      <section
+        id="services"
+        className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24"
+      >
         <div className="mb-12 text-center">
           <SectionBadge>What We Build</SectionBadge>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Development Services
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            From simple landing pages to complex web applications — we handle every layer of the stack.
+            From simple landing pages to complex web applications — we handle
+            every layer of the stack.
           </p>
         </div>
 
@@ -270,15 +328,17 @@ export default function WebDevelopmentPage() {
               <SectionBadge>Why TechCraft</SectionBadge>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 We Don't Just Build.{" "}
-                <span className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
-                                 bg-clip-text text-transparent">
+                <span
+                  className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
+                                 bg-clip-text text-transparent"
+                >
                   We Grow You.
                 </span>
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
-                Most agencies deliver a website and disappear. We stay invested in your success —
-                combining design thinking, engineering, and marketing to ensure your site works
-                hard for your business.
+                Most agencies deliver a website and disappear. We stay invested
+                in your success — combining design thinking, engineering, and
+                marketing to ensure your site works hard for your business.
               </p>
               <Link
                 href="/contact"
@@ -287,7 +347,12 @@ export default function WebDevelopmentPage() {
                            transition hover:bg-[#2f278f]"
               >
                 Get Free Consultation
-                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+                <span
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
               </Link>
             </div>
 
@@ -304,13 +369,17 @@ export default function WebDevelopmentPage() {
                   variants={cardVariant}
                   className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center
-                                   rounded-xl bg-violet-100 text-xl ring-1 ring-violet-200">
+                  <span
+                    className="flex h-11 w-11 shrink-0 items-center justify-center
+                                   rounded-xl bg-violet-100 text-xl ring-1 ring-violet-200"
+                  >
                     {item.icon}
                   </span>
                   <div>
                     <p className="font-semibold text-gray-900">{item.title}</p>
-                    <p className="mt-1 text-[14px] text-gray-500">{item.desc}</p>
+                    <p className="mt-1 text-[14px] text-gray-500">
+                      {item.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -333,7 +402,8 @@ export default function WebDevelopmentPage() {
               Ready to Build Something Great?
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Book a free consultation and let's figure out the best technical approach for your project.
+              Book a free consultation and let's figure out the best technical
+              approach for your project.
             </p>
             <Link
               href="/contact"
@@ -342,7 +412,12 @@ export default function WebDevelopmentPage() {
                          transition hover:bg-[#2f278f] sm:text-[15px]"
             >
               Start Your Project Today
-              <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              <span
+                aria-hidden
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              >
+                →
+              </span>
             </Link>
           </motion.div>
         </div>

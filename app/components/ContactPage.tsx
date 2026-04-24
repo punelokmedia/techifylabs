@@ -218,7 +218,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-full">
       {/* Hero — aligned with About */}
-      <section className="relative overflow-hidden bg-[#050816] text-white">
+      <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem] border-b border-gray-200">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]"
           aria-hidden
@@ -236,7 +236,7 @@ export default function ContactPage() {
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-16 lg:px-10 lg:pb-24 lg:pt-20">
+        <div className="relative w-full pb-14 pt-10 lg:pt-20 px-15">
           <nav
             className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12 sm:gap-3 sm:text-[13px]"
             aria-label="Breadcrumb"

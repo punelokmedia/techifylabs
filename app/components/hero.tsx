@@ -31,9 +31,19 @@ const HERO_VIDEOS = [
  */
 const youtubeBackgroundId = process.env.NEXT_PUBLIC_HERO_YOUTUBE_ID?.trim();
 
-const springHero = { type: "spring" as const, stiffness: 400, damping: 28, mass: 0.85 };
+const springHero = {
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 28,
+  mass: 0.85,
+};
 const springTap = { type: "spring" as const, stiffness: 520, damping: 34 };
-const springStack = { type: "spring" as const, stiffness: 380, damping: 26, mass: 0.9 };
+const springStack = {
+  type: "spring" as const,
+  stiffness: 380,
+  damping: 26,
+  mass: 0.9,
+};
 
 const ctaStackRest = { scale: 1, y: 0 };
 const ctaStackHover = {
@@ -57,7 +67,11 @@ const ctaBtnHover = {
   transition: springStack,
 };
 
-function ArrowIcon({ className = "ml-2 inline-block h-4 w-4 shrink-0" }: { className?: string }) {
+function ArrowIcon({
+  className = "ml-2 inline-block h-4 w-4 shrink-0",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       className={className}
@@ -67,7 +81,11 @@ function ArrowIcon({ className = "ml-2 inline-block h-4 w-4 shrink-0" }: { class
       strokeWidth="2"
       aria-hidden
     >
-      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M5 12h14M13 6l6 6-6 6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -98,10 +116,7 @@ export default function Hero() {
   }, [useMp4Bg, activeVideoIndex]);
 
   return (
-    <section
-      className="relative mx-auto mt-0 w-full max-w-[1440px] min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.5rem] rounded-t-none border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]"
-      aria-label="Hero"
-    >
+    <section className="relative w-full min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.75rem] border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]">
       {/* Background: YouTube (Google) or MP4 */}
       <div className="absolute inset-0">
         {useYoutubeBg ? (
@@ -131,7 +146,10 @@ export default function Hero() {
                 aria-hidden
                 onEnded={advanceVideo}
               >
-                <source src={HERO_VIDEOS[activeVideoIndex].src} type="video/mp4" />
+                <source
+                  src={HERO_VIDEOS[activeVideoIndex].src}
+                  type="video/mp4"
+                />
               </video>
             </motion.div>
           </AnimatePresence>
@@ -166,7 +184,11 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.5,
+              delay: 0.06,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-white shadow-sm backdrop-blur-md"
           >
             <span
@@ -181,7 +203,11 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.55,
+              delay: 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
           >
             Your Revenue,{" "}
@@ -193,18 +219,26 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.55,
+              delay: 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
           >
-            Propel your vision with data-driven marketing. Our team turns clicks into
-            sales—we deliver campaigns, growth, and profit. Let&apos;s make your brand
-            unforgettable on the global stage.
+            Propel your vision with data-driven marketing. Our team turns clicks
+            into sales—we deliver campaigns, growth, and profit. Let&apos;s make
+            your brand unforgettable on the global stage.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.5,
+              delay: 0.28,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="mt-10 flex flex-wrap items-center gap-4 pb-2"
           >
             <motion.div
@@ -218,7 +252,7 @@ export default function Hero() {
               }}
             >
               {/* Single support card: sits behind the button, full width aligned */}
-              <motion.div
+              {/* <motion.div
                 variants={{
                   rest: ctaPlateRest,
                   hover: reduceMotion ? ctaPlateRest : ctaPlateHover,
@@ -242,12 +276,17 @@ export default function Hero() {
                       <p className="text-center text-sm font-medium leading-snug text-white/90 sm:text-[15px]">
                         {HERO_VIDEOS[activeVideoIndex].hint}
                       </p>
-                      <div className="flex justify-center gap-1.5 pt-1" aria-hidden>
+                      <div
+                        className="flex justify-center gap-1.5 pt-1"
+                        aria-hidden
+                      >
                         {HERO_VIDEOS.map((_, i) => (
                           <span
                             key={i}
                             className={`h-1 rounded-full transition-all duration-300 ${
-                              i === activeVideoIndex ? "w-7 bg-violet-300" : "w-1.5 bg-white/35"
+                              i === activeVideoIndex
+                                ? "w-7 bg-violet-300"
+                                : "w-1.5 bg-white/35"
                             }`}
                           />
                         ))}
@@ -256,13 +295,14 @@ export default function Hero() {
                   </AnimatePresence>
                 ) : (
                   <p className="text-center text-sm font-medium leading-snug text-white/90 sm:text-[15px]">
-                    Scale revenue faster with a free strategy call — no obligation.
+                    Scale revenue faster with a free strategy call — no
+                    obligation.
                   </p>
                 )}
-              </motion.div>
+              </motion.div> */}
 
               <motion.button
-  onClick={() => setOpenModal(true)}
+                onClick={() => setOpenModal(true)}
                 variants={{
                   rest: ctaBtnRest,
                   hover: reduceMotion ? ctaBtnRest : ctaBtnHover,
@@ -292,9 +332,9 @@ export default function Hero() {
         </div>
       </div>
       <ConsultationModal
-  isOpen={openModal}
-  onClose={() => setOpenModal(false)}
-/>
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      />
     </section>
   );
 }
