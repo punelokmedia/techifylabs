@@ -514,7 +514,7 @@ export default function GoogleAdsPage() {
       <div className="relative z-10 px-4 sm:px-8 lg:px-10 py-8 bg-white">
         <div className="mx-auto max-w-[1440px]">
           <div className="rounded-2xl border border-slate-200 bg-white px-6 py-8 shadow-sm">
-            <p className="mb-6 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500 sm:text-left">
+            <p className="mb-6 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-blue-600/90 sm:text-left">
               Search & Growth Footprint
             </p>
 

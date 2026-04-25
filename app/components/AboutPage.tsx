@@ -245,7 +245,7 @@ export default function AboutPage() {
 
         <div className="relative w-full px-6 pb-20 pt-12 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
           <nav
-            className="mb-14 flex items-center gap-3 text-[13px] text-white/45"
+            className="mb-14 flex items-center pl-15 gap-3 text-[13px] text-white/45"
             aria-label="Breadcrumb"
           >
             <Link href="/" className="transition hover:text-white">
@@ -258,7 +258,8 @@ export default function AboutPage() {
           </nav>
 
           <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10 lg:gap-y-0">
-            <div className="lg:col-span-6 xl:col-span-5">
+            <div className="lg:col-span-6 xl:col-span-5 pl-4 lg:pl-10 xl:pl-16">
+              {" "}
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 24 }}
                 animate={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -302,7 +303,6 @@ export default function AboutPage() {
                   </Link>
                 </div>
               </motion.div>
-
               {/* <motion.div
                 className="mt-14 grid grid-cols-3 gap-3 sm:gap-4"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -336,7 +336,7 @@ export default function AboutPage() {
                   className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-violet-500/20 via-fuchsia-500/10 to-transparent blur-2xl lg:-inset-8"
                   aria-hidden
                 />
-                <div className="relative w-[600px] h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
+                <div className="relative w-[700px] h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
                   <Image
                     src="https://images.unsplash.com/photo-1729714055320-4d1c5d5e213d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Modern workspace with natural light"

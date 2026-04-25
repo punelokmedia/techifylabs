@@ -5,7 +5,12 @@ import { motion } from "framer-motion";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const springSoft = { type: "spring" as const, stiffness: 380, damping: 32, mass: 0.85 };
+const springSoft = {
+  type: "spring" as const,
+  stiffness: 380,
+  damping: 32,
+  mass: 0.85,
+};
 const springTap = { type: "spring" as const, stiffness: 500, damping: 35 };
 
 function serviceCardVariants(featured: boolean, delay: number) {
@@ -52,7 +57,14 @@ const bulletRowVariants = {
 
 function ExternalLinkIcon({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <svg
+      className={className}
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+    >
       <path
         d="M7 17L17 7M17 7H9M17 7v8"
         stroke="currentColor"
@@ -68,21 +80,30 @@ const featuredRow = [
   {
     featured: true,
     title: "Facebook Ads",
-    description: "Full-funnel Meta campaigns with creative testing and scaling playbooks.",
+    description:
+      "Full-funnel Meta campaigns with creative testing and scaling playbooks.",
     bullets: ["Smart targeting", "High-intent clicks"],
     Icon: IconMeta,
   },
   {
     featured: false,
     title: "Google Ads",
-    description: "Search, Performance Max, and intent-led structures that protect margin.",
+    image:
+      "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1200",
+
+    description:
+      "Search, Performance Max, and intent-led structures that protect margin.",
     bullets: ["Search & PMax", "Clear attribution"],
     Icon: IconGoogle,
   },
   {
     featured: false,
     title: "Amazon Ads",
-    description: "Sponsored products and brand placements tuned for ACOS and rank.",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200",
+
+    description:
+      "Sponsored products and brand placements tuned for ACOS and rank.",
     bullets: ["Retail readiness", "Catalog scale"],
     Icon: IconAmazon,
   },
@@ -91,25 +112,40 @@ const featuredRow = [
 const gridRow = [
   {
     title: "Search engine optimization",
-    description: "Technical SEO, content, and authority building for sustainable organic demand.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
+    description:
+      "Technical SEO, content, and authority building for sustainable organic demand.",
     bullets: ["Organic growth", "Quality traffic"],
     Icon: IconSeo,
   },
   {
     title: "Website development",
-    description: "Fast, accessible sites and landing experiences engineered for conversion.",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
+
+    description:
+      "Fast, accessible sites and landing experiences engineered for conversion.",
     bullets: ["Zero friction", "Mobile first"],
     Icon: IconCode,
   },
   {
     title: "Email marketing",
-    description: "Lifecycle flows and campaigns that turn subscribers into repeat buyers.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200",
+
+    description:
+      "Lifecycle flows and campaigns that turn subscribers into repeat buyers.",
     bullets: ["Automated flows", "Repeat revenue"],
     Icon: IconMail,
   },
   {
     title: "Shopify development",
-    description: "Store builds, CRO, and checkout optimization on Shopify and headless stacks.",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200",
+
+    description:
+      "Store builds, CRO, and checkout optimization on Shopify and headless stacks.",
     bullets: ["Easy checkout", "Conversion ready"],
     Icon: IconShopify,
   },
@@ -131,7 +167,10 @@ function IconMeta({ className }: { className?: string }) {
 function IconGoogle({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none" aria-hidden>
-      <path d="M20 12v8h7.2c-.3 2-2.4 5.8-7.2 5.8-4.3 0-7.8-3.6-7.8-8s3.5-8 7.8-8c2.5 0 4.1 1 5 1.9l3.4-3.3C26.9 8.4 23.7 7 20 7c-6.6 0-12 5.4-12 12s5.4 12 12 12c7.7 0 12.8-5.4 12.8-13 0-.9-.1-1.5-.2-2.2H20z" fill="currentColor" />
+      <path
+        d="M20 12v8h7.2c-.3 2-2.4 5.8-7.2 5.8-4.3 0-7.8-3.6-7.8-8s3.5-8 7.8-8c2.5 0 4.1 1 5 1.9l3.4-3.3C26.9 8.4 23.7 7 20 7c-6.6 0-12 5.4-12 12s5.4 12 12 12c7.7 0 12.8-5.4 12.8-13 0-.9-.1-1.5-.2-2.2H20z"
+        fill="currentColor"
+      />
     </svg>
   );
 }
@@ -152,9 +191,27 @@ function IconAmazon({ className }: { className?: string }) {
 function IconSeo({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none" aria-hidden>
-      <rect x="8" y="10" width="24" height="18" rx="2" stroke="currentColor" strokeWidth="1.75" />
-      <path d="M12 26h6M12 22h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M26 14l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <rect
+        x="8"
+        y="10"
+        width="24"
+        height="18"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M12 26h6M12 22h16"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M26 14l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -162,8 +219,21 @@ function IconSeo({ className }: { className?: string }) {
 function IconCode({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none" aria-hidden>
-      <rect x="8" y="8" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="1.75" />
-      <path d="M14 16l-3 4 3 4M22 24l3-4-3-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <rect
+        x="8"
+        y="8"
+        width="24"
+        height="24"
+        rx="3"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M14 16l-3 4 3 4M22 24l3-4-3-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -171,8 +241,21 @@ function IconCode({ className }: { className?: string }) {
 function IconMail({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none" aria-hidden>
-      <rect x="8" y="12" width="24" height="16" rx="2" stroke="currentColor" strokeWidth="1.75" />
-      <path d="M8 14l12 9 12-9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <rect
+        x="8"
+        y="12"
+        width="24"
+        height="16"
+        rx="2"
+        stroke="currentColor"
+        strokeWidth="1.75"
+      />
+      <path
+        d="M8 14l12 9 12-9"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -197,6 +280,7 @@ function ServiceCard({
   Icon,
   featured,
   delay,
+  image,
 }: {
   title: string;
   description: string;
@@ -204,6 +288,7 @@ function ServiceCard({
   Icon: ComponentType<{ className?: string }>;
   featured?: boolean;
   delay: number;
+  image?: string;
 }) {
   const v = serviceCardVariants(Boolean(featured), delay);
 
@@ -233,39 +318,78 @@ function ServiceCard({
     >
       {featured && (
         <>
-          <motion.div
+          {/* <motion.div
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-900/90 via-slate-900/95 to-violet-950/90"
             aria-hidden
             variants={{
               initial: { opacity: 1 },
               inView: { opacity: 1 },
-              hover: { opacity: 0.82, transition: { duration: 0.35, ease: sectionEase } },
+              hover: {
+                opacity: 0.82,
+                transition: { duration: 0.35, ease: sectionEase },
+              },
             }}
-          />
-          <div
+          /> */}
+          <motion.div
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+            aria-hidden
+            variants={{
+              initial: { opacity: 1 },
+              inView: { opacity: 1 },
+              hover: {
+                opacity: 0.9,
+                transition: { duration: 0.35, ease: sectionEase },
+              },
+            }}
+          >
+            {/* Background Image */}
+            <img
+              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop"
+              alt="Meta ads marketing"
+              className="w-full h-full object-cover transition-transform duration-700"
+            />
+
+            {/* Dark Overlay (IMPORTANT for text readability) */}
+            {/* <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-slate-900/85 to-violet-950/80" /> */}
+          </motion.div>
+          {/* <div
             className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-violet-500/35 blur-3xl transition-all duration-500 ease-out group-hover/card:scale-[1.35] group-hover/card:bg-fuchsia-400/45"
             aria-hidden
-          />
-          <div
+          /> */}
+          {/* <div
             className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-500 group-hover/card:opacity-[0.62]"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
             aria-hidden
-          />
-          <div
+          /> */}
+          {/* <div
             className="pointer-events-none absolute inset-0 bg-gradient-to-t from-fuchsia-500/30 via-violet-600/15 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
             aria-hidden
-          />
+          /> */}
           <div
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
             aria-hidden
           />
         </>
       )}
+      {/* Top Image for non-featured cards */}
+      {image && (
+        <div className="relative -m-6 mb-5 overflow-hidden rounded-t-2xl">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-40 object-cover transition-transform duration-500 group-hover/card:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        </div>
+      )}
       <div className="relative z-10 flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-3">
-          <motion.div className="inline-flex rounded-xl p-1" variants={iconVariants(Boolean(featured))}>
+          <motion.div
+            className="inline-flex rounded-xl p-1"
+            variants={iconVariants(Boolean(featured))}
+          >
             <Icon
               className={`h-9 w-9 shrink-0 transition-colors duration-300 ${featured ? "text-violet-200 group-hover/card:text-white" : "text-[#0a192f] group-hover/card:text-violet-700"}`}
             />
@@ -298,7 +422,11 @@ function ServiceCard({
         >
           <ul className="space-y-2 text-sm">
             {bullets.map((b) => (
-              <motion.li key={b} className="flex items-center gap-2" variants={bulletRowVariants}>
+              <motion.li
+                key={b}
+                className="flex items-center gap-2"
+                variants={bulletRowVariants}
+              >
                 <span
                   className={`h-1.5 w-1.5 shrink-0 rounded-full transition-all duration-300 ${featured ? "bg-violet-300 group-hover/card:scale-125 group-hover/card:bg-fuchsia-300 group-hover/card:shadow-[0_0_10px_rgba(216,180,254,0.75)]" : "bg-violet-500 group-hover/card:scale-125 group-hover/card:bg-violet-600 group-hover/card:shadow-sm group-hover/card:shadow-violet-400/55"}`}
                   aria-hidden
@@ -319,7 +447,11 @@ function ServiceCard({
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="services-heading">
+    <section
+      id="services"
+      className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24"
+      aria-labelledby="services-heading"
+    >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -338,7 +470,11 @@ export default function ServicesSection() {
               className="h-2 w-2 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500"
               aria-hidden
               animate={{ scale: [1, 1.15, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
             Our services
           </motion.span>
@@ -364,7 +500,12 @@ export default function ServicesSection() {
 
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
           {gridRow.map((item, i) => (
-            <ServiceCard key={item.title} {...item} delay={0.12 + i * 0.06} />
+            <ServiceCard
+              key={item.title}
+              {...item}
+              image={item.image}
+              delay={0.12 + i * 0.06}
+            />
           ))}
         </div>
 
