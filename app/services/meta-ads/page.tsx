@@ -99,37 +99,37 @@ const adServices = [
     title: "Facebook Lead Generation",
     desc: "Lead forms, messenger campaigns, and click-to-call ads that bring in people already interested in what you sell.",
     tags: ["Lead Forms", "Messenger Campaigns", "Click-to-Call Ads"],
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+    image: "/images/screen.png",
   },
   {
     title: "eCommerce Facebook Ads",
     desc: "Catalog ads and retargeting that make abandoned carts disappear and products pop in front of ready-to-buy shoppers.",
     tags: ["Catalog Ads", "Dynamic Retargeting", "Shopping Campaigns"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
+    image: "/images/screen-mike.png",
   },
   {
     title: "Facebook Retargeting",
     desc: "Smart creatives that bring back people who clicked, looked around, then left — at exactly the right moment.",
     tags: ["Website Visitors", "Lookalike Audiences", "Custom Audiences"],
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    image: "/images/seo-email.png",
   },
   {
     title: "Instagram Advertising",
     desc: "Ads that blend into feeds and stories but still nudge people to click — all managed from one Meta account.",
     tags: ["Story Ads", "Feed Posts", "Reels Advertising"],
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    image: "/images/marketing.png",
   },
   {
     title: "Brand Awareness Campaigns",
     desc: "Keep your brand in the conversation so when the time comes to buy, you're the first they remember.",
     tags: ["Reach Campaigns", "Video Views", "Brand Recognition"],
-    image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+    image: "/images/social-media.png",
   },
   {
     title: "Meta Pixel Setup & Optimisation",
     desc: "Without the Pixel, you're flying blind. We handle setup so you can track who clicked, who converted, and where to improve.",
     tags: ["Pixel Installation", "Event Tracking", "Conversion Optimisation"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    image: "/images/phone-mirror.png",
   },
 ];
 
@@ -506,9 +506,9 @@ export default function MetaAdsPage() {
 
             <div className="relative shadow-lg p-3 ">
               <img
-                src="https://media.istockphoto.com/id/2216173060/photo/seo-and-digital-marketing-trend-concept-depicting-user-researching-search-engine-strategies.webp?a=1&b=1&s=612x612&w=0&k=20&c=iF6oiQWroxUoURarMY_7NbcIMHNONbbAeuh5X8je6qU="
+                src="/images/screen-copy.png"
                 alt="marketing"
-                className="rounded-xl w-[600px] h-80 object-cover"
+                className="rounded-xl w-[600px] h-80 object-contain"
               />
             </div>
           </div>
@@ -579,11 +579,11 @@ export default function MetaAdsPage() {
             <FadeIn delay={0.05}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
                 <Image
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=85"
+                  src="/images/seo-email.png"
                   alt="Team reviewing performance marketing analytics"
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-contain"
+                  sizes="(max-width: 1000px) 100vw, 50vw"
                 />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent"
@@ -815,7 +815,7 @@ export default function MetaAdsPage() {
                       src={s.image}
                       alt={s.title}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                     />
                   </div>
 

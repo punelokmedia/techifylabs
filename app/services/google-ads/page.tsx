@@ -494,10 +494,10 @@ export default function GoogleAdsPage() {
               <div className="relative rounded-2xl bg-white/5 shadow-xl">
                 <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
                   <Image
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=85"
+                    src="/images/tree.png"
                     alt="dashboard"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
                 </div>
@@ -557,10 +557,10 @@ export default function GoogleAdsPage() {
             <FadeIn delay={0.05}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
                 <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85"
+                  src="/images/social-media.png"
                   alt="Business analytics and growth charts"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div

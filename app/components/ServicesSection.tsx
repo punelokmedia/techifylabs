@@ -88,8 +88,7 @@ const featuredRow = [
   {
     featured: false,
     title: "Google Ads",
-    image:
-      "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1200",
+    image: "/images/arrow-upmarketing.png",
 
     description:
       "Search, Performance Max, and intent-led structures that protect margin.",
@@ -99,8 +98,7 @@ const featuredRow = [
   {
     featured: false,
     title: "Amazon Ads",
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200",
+    image: "/images/lamp-digital.png",
 
     description:
       "Sponsored products and brand placements tuned for ACOS and rank.",
@@ -112,8 +110,7 @@ const featuredRow = [
 const gridRow = [
   {
     title: "Search engine optimization",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
+    image: "/images/phone-mirror.png",
     description:
       "Technical SEO, content, and authority building for sustainable organic demand.",
     bullets: ["Organic growth", "Quality traffic"],
@@ -121,8 +118,7 @@ const gridRow = [
   },
   {
     title: "Website development",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200",
+    image: "/images/laptop-marketing.png",
 
     description:
       "Fast, accessible sites and landing experiences engineered for conversion.",
@@ -131,9 +127,7 @@ const gridRow = [
   },
   {
     title: "Email marketing",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200",
-
+    image: "/images/seo-email.png",
     description:
       "Lifecycle flows and campaigns that turn subscribers into repeat buyers.",
     bullets: ["Automated flows", "Repeat revenue"],
@@ -141,9 +135,7 @@ const gridRow = [
   },
   {
     title: "Shopify development",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200",
-
+    image: "/images/social-media.png",
     description:
       "Store builds, CRO, and checkout optimization on Shopify and headless stacks.",
     bullets: ["Easy checkout", "Conversion ready"],
@@ -344,7 +336,7 @@ function ServiceCard({
           >
             {/* Background Image */}
             <img
-              src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop"
+              src="/images/facebook-ads.png"
               alt="Meta ads marketing"
               className="w-full h-full object-cover transition-transform duration-700"
             />
@@ -379,7 +371,7 @@ function ServiceCard({
           <img
             src={image}
             alt={title}
-            className="w-full h-40 object-cover transition-transform duration-500 group-hover/card:scale-105"
+            className="w-full h-40 object-contain transition-transform duration-500 group-hover/card:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         </div>

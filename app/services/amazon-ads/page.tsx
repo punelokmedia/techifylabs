@@ -450,10 +450,10 @@ export default function AmazonAdsPage() {
               <div className="relative rounded-2xl bg-white/5 shadow-xl">
                 <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
                   <Image
-                    src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=85"
+                    src="/images/tweeter-facebook.png"
                     alt="dashboard"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
                 </div>
@@ -517,10 +517,10 @@ export default function AmazonAdsPage() {
             <FadeIn delay={0.05}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
                 <Image
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=85"
+                  src="/images/phone-mirror.png"
                   alt="Retail and marketplace operations"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div

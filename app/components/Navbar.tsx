@@ -90,9 +90,8 @@ const solutionsSections = [
 ];
 
 const knowledgeLinks = [
-  { label: "Case Studies", href: "/services/case-study", Icon: IconFolder },
   { label: "Our Team", href: "/about#team", Icon: IconUsers },
-  { label: "Blogs", href: "/services/blogs", Icon: IconBook },
+  { label: " Our Blogs", href: "/services/blogs", Icon: IconBook },
 ];
 
 function ChevronDown({ className }: { className?: string }) {
@@ -681,7 +680,7 @@ export default function Navbar() {
                           </p>
                         </div>
                         <p className="mt-1.5 pl-4 text-xs text-slate-500">
-                          Case studies, team, and insights
+                          Our Team, and Our Blogs
                         </p>
                       </div>
                       <motion.ul

@@ -338,11 +338,11 @@ export default function AboutPage() {
                 />
                 <div className="relative w-[700px] h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
                   <Image
-                    src="https://images.unsplash.com/photo-1729714055320-4d1c5d5e213d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="/images/person-laptop.png"
                     alt="Modern workspace with natural light"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 900px) 90vw, 55vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
                   <div
@@ -520,10 +520,10 @@ export default function AboutPage() {
           >
             <div className="aspect-[21/9] min-h-[220px] sm:min-h-[280px]">
               <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=85"
+                src="/images/pngtree-digital-marketing.png"
                 alt="Team collaborating in a meeting"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="100vw"
               />
               <div
