@@ -19,6 +19,7 @@ const PHONE_DISPLAY = "+91 8956776951";
 const PHONE_TEL = `tel:${PHONE_E164}`;
 const EMAIL = "info@techifylabs.in";
 const WA_LINK = `https://wa.me/${PHONE_E164.replace(/\D/g, "")}`;
+const DEFAULT_PHONE_PREFIX = "+91 ";
 
 const topics = [
   "Paid media (Meta / Google)",
@@ -128,7 +129,7 @@ export default function ContactPage() {
   const reduce = useReducedMotion();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(DEFAULT_PHONE_PREFIX);
   const [company, setCompany] = useState("");
   const [topic, setTopic] = useState<Topic>(topics[0]);
   const [message, setMessage] = useState("");
@@ -164,7 +165,8 @@ export default function ContactPage() {
         subject: `Techify inquiry — ${topic} — ${company || name || "Website"}`,
         name: name.trim(),
         email: email.trim(),
-        phone: phone.trim() || "—",
+        phone:
+          phone.trim() === DEFAULT_PHONE_PREFIX.trim() ? "—" : phone.trim(),
         company: company.trim() || "—",
         message: `Interest: ${topic}\n\n${message.trim()}`,
         from_name: name.trim(),
@@ -211,9 +213,9 @@ export default function ContactPage() {
   };
 
   const inputOk =
-    "mt-2 w-full min-h-[48px] rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-violet-400 focus:ring-2 focus:ring-violet-200/80 focus:ring-offset-0 sm:py-3.5";
+    "mt-2 w-full min-h-[52px] rounded-xl border border-slate-200 bg-gray-100 px-4 py-3 text-[15px] text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-blue-800 focus:bg-white focus:ring-4 focus:ring-blue-100 shadow-sm hover:border-slate-300";
   const inputErr =
-    "mt-2 w-full min-h-[48px] rounded-xl border border-red-300 bg-white px-4 py-3 text-base text-slate-900 outline-none focus:border-red-400 focus:ring-2 focus:ring-red-100 focus:ring-offset-0 sm:py-3.5";
+    "mt-2 w-full min-h-[52px] rounded-xl border border-red-300 bg-gray-100 px-4 py-3 text-[15px] text-slate-900 outline-none focus:border-red-500 focus:bg-white focus:ring-4 focus:ring-red-100 shadow-sm";
 
   return (
     <div className="min-h-full">
@@ -320,7 +322,7 @@ export default function ContactPage() {
                 />
                 <div className="relative aspect-[16/11] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:aspect-[16/10]">
                   <Image
-                    src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&q=85"
+                    src="/images/phone-using.png"
                     alt="Communication and workspace"
                     fill
                     className="object-cover"
@@ -580,12 +582,9 @@ export default function ContactPage() {
 
             <div className="order-1 min-w-0 lg:order-2 lg:col-span-8">
               <FadeIn>
-                <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_32px_64px_-28px_rgba(15,23,42,0.25)] ring-1 ring-violet-100/60 sm:rounded-3xl">
-                  <div
-                    className="h-1.5 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-600"
-                    aria-hidden
-                  />
-                  <div className="border-b border-slate-100 px-4 py-5 sm:px-9 sm:py-7">
+                <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_34px_80px_-32px_rgba(15,23,42,0.35)]">
+                  <div className="h-1.5 bg-blue-900" aria-hidden />
+                  <div className="border-b border-slate-200 bg-slate-50/70 px-4 py-5 sm:px-9 sm:py-7">
                     <h2 className="text-lg font-semibold text-slate-900 sm:text-2xl">
                       Project inquiry
                     </h2>
@@ -647,7 +646,7 @@ export default function ContactPage() {
                             setFormStatus("idle");
                             setName("");
                             setEmail("");
-                            setPhone("");
+                            setPhone(DEFAULT_PHONE_PREFIX);
                             setCompany("");
                             setTopic(topics[0]);
                             setMessage("");
@@ -739,7 +738,6 @@ export default function ContactPage() {
                               value={phone}
                               onChange={(e) => setPhone(e.target.value)}
                               className={inputOk}
-                              placeholder="+91 …"
                               autoComplete="tel"
                             />
                           </div>
@@ -801,7 +799,7 @@ export default function ContactPage() {
                               onChange={(e) =>
                                 setTopic(e.target.value as Topic)
                               }
-                              className="w-full min-h-[48px] appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 outline-none transition cursor-pointer focus:border-violet-400 focus:ring-2 focus:ring-violet-200/80 sm:py-3.5"
+                              className="w-full min-h-[48px] appearance-none rounded-xl border border-slate-200 bg-gray-100 px-4 py-3 text-base text-slate-900 outline-none transition cursor-pointer shadow-sm focus:border-blue-700 focus:bg-white focus:ring-4 focus:ring-blue-100 sm:py-3.5"
                             >
                               {/* <option value="">Select a topic…</option> */}
                               {topics.map((t) => (
@@ -867,7 +865,7 @@ export default function ContactPage() {
                           <motion.button
                             type="submit"
                             disabled={formStatus === "submitting"}
-                            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-500 hover:to-fuchsia-500 disabled:cursor-not-allowed disabled:opacity-60 sm:h-12 sm:w-auto sm:px-12"
+                            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-blue-900 px-8 text-sm font-semibold text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-60 sm:h-12 sm:w-auto sm:px-12"
                             whileHover={
                               reduce || formStatus === "submitting"
                                 ? undefined

@@ -9,17 +9,17 @@ import ConsultationModal from "@/app/components/ConsultationModel";
  */
 const HERO_VIDEOS = [
   {
-    src: "https://videos.pexels.com/video-files/3209828/3209828-hd_1280_720_25fps.mp4",
+    src: "/videos/meta-ads.mp4",
     label: "Meta Ads",
     hint: "Facebook & Instagram performance",
   },
   {
-    src: "https://videos.pexels.com/video-files/3129957/3129957-hd_1280_720_25fps.mp4",
+    src: "/videos/seo-search.mp4",
     label: "SEO & search",
     hint: "Visibility that compounds",
   },
   {
-    src: "https://videos.pexels.com/video-files/3195392/3195392-hd_1280_720_25fps.mp4",
+    src: "/videos/business-growth.mp4",
     label: "Business growth",
     hint: "Scale revenue faster",
   },
@@ -127,7 +127,7 @@ export default function Hero() {
             allow="autoplay; encrypted-media; picture-in-picture"
           />
         ) : useMp4Bg ? (
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <motion.div
               key={activeVideoIndex}
               className="absolute inset-0"
@@ -157,11 +157,11 @@ export default function Hero() {
 
         {/* Readability: gradient + vignette */}
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[#0a0f2c]/95 via-[#1e1b4b]/88 to-[#4c1d95]/75"
+          className="absolute inset-0 bg-gradient-to-br from-black/72 via-slate-950/80 to-black/65"
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(139,92,246,0.22),transparent_55%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(15,23,42,0.24),transparent_58%)]"
           aria-hidden
         />
         <div

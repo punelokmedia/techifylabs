@@ -37,7 +37,7 @@ const faqs = [
 ];
 
 export default function FaqSection() {
-  const [open, setOpen] = useState<number | null>(1);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section
