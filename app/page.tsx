@@ -5,10 +5,8 @@ import ServicesSection from "./components/ServicesSection";
 import WhyChooseSection from "./components/WhyChooseSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import FaqSection from "./components/FaqSection";
-import CaseStudiesSection from "./components/CaseStudiesSection";
 import Footer from "./components/Footer";
 import BlogSection from "./components/BlogSection";
-import TechifyBlog from "./services/blogs/techifyblogs";
 
 export default function Home() {
   return (
@@ -21,8 +19,6 @@ export default function Home() {
         <ServicesSection />
         <WhyChooseSection />
         <HowItWorksSection />
-        {/* <CaseStudiesSection /> */}
-        {/* <TechifyBlog /> */}
         <BlogSection />
         <FaqSection />
       </main>

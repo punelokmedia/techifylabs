@@ -93,67 +93,7 @@ export default function AboutSection() {
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
-          {/* <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.08 } },
-              hidden: {},
-            }}
-          >
-            <motion.div
-              variants={fadeUp}
-              custom={0}
-              whileHover={{ scale: 1.02, y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              transition={springSoft}
-              className="inline-flex cursor-default items-center gap-2 rounded-full border border-slate-200/90 bg-white px-3.5 py-1.5 text-sm font-medium text-[#1e3a5f] shadow-sm transition-colors duration-300 hover:border-violet-300/70 hover:text-violet-800 hover:shadow-md hover:shadow-violet-500/10"
-            >
-              <motion.span
-                className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-[10px] font-bold text-white shadow-inner"
-                whileHover={{ scale: 1.08, rotate: 12 }}
-                transition={springTap}
-              >
-                ✦
-              </motion.span>
-              Propel your business vision
-            </motion.div>
-
-            <motion.div
-              variants={fadeUp}
-              custom={1}
-              whileHover={{ y: -4, transition: springSoft }}
-              className="group/card relative mt-8 overflow-hidden rounded-2xl bg-gradient-to-br from-[#1b3774] via-[#173073] to-[#273f8d] p-6 shadow-xl ring-1 ring-white/10 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-950/40 hover:ring-violet-400/25 sm:p-8"
-            >
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet-500/25 via-indigo-500/10 to-fuchsia-500/20 opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
-                aria-hidden
-              />
-              <div className="relative flex items-center gap-0">
-                {avatars.map((letter, i) => (
-                  <motion.span
-                    key={letter}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#1e40af] bg-white text-xs font-bold text-slate-600 shadow-md transition-colors duration-300 first:ml-0 -ml-3 group-hover/card:border-violet-200 group-hover/card:text-violet-700"
-                    style={{ zIndex: avatars.length - i }}
-                    whileHover={{ scale: 1.12, y: -3, transition: springTap }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-                <motion.span
-                  className="-ml-3 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-[#1e40af] bg-gradient-to-br from-violet-500 to-fuchsia-500 text-lg font-light text-white shadow-md transition-[box-shadow,filter] duration-300 group-hover/card:shadow-lg group-hover/card:shadow-violet-500/40"
-                  whileHover={{ scale: 1.1 }}
-                  transition={springTap}
-                >
-                  +
-                </motion.span>
-              </div>
-              <p className="relative mt-6 text-base font-medium leading-snug text-white/95 transition-colors duration-300 group-hover/card:text-white sm:text-lg">
-                Results driven web design agency
-              </p>
-            </motion.div>
-          </motion.div> */}
+         
           <motion.div
             variants={fadeUp}
             custom={1}

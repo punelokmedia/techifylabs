@@ -272,143 +272,10 @@ export default function MetaAdsPage() {
   return (
     <div className="min-h-full">
       {/* Hero */}
-      {/* <section className="relative overflow-hidden bg-[#050816] text-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(217,70,239,0.14),transparent_45%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden />
-        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
-          <nav className="mb-8 flex flex-wrap items-center gap-2.5 text-[12px] text-white/45 sm:mb-12" aria-label="Breadcrumb">
-            <Link href="/" className="transition hover:text-white">Home</Link>
-            <span className="text-white/25" aria-hidden>/</span>
-            <span className="text-white/25" aria-hidden>Our Solutions</span>
-            <span className="text-white/25" aria-hidden>/</span>
-            <span className="font-medium text-white">Meta Ads</span>
-          </nav>
-
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 22 }}
-              animate={reduce ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease }}
-            >
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[12px] font-medium tracking-wide text-violet-200/90 backdrop-blur-md">
-                <span className="relative flex h-2 w-2 shrink-0">
-                  {!reduce && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />}
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-                </span>
-                Performance Marketing · Meta & Instagram
-              </div>
-              <h1 className="mt-6 text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.25rem]">
-                367 Million Indians Are On Facebook.{" "}
-                <span className="bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-transparent">
-                  Are They Seeing Your Brand?
-                </span>
-              </h1>
-              <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
-                We plan, run, and improve Meta ads for brands across India — Facebook, Instagram, Messenger, and Meta's full ad network. Results, not vanity metrics.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-500 hover:to-fuchsia-500 sm:w-auto"
-                >
-                  Book Free Strategy Call
-                </Link>
-                <Link
-                  href="#services"
-                  className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
-                >
-                  See what's included
-                </Link>
-              </div>
-              <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
-                {[
-                  { t: "Event & Pixel QA on every launch", c: "text-emerald-300/90" },
-                  { t: "Creative testing roadmap, weekly", c: "text-violet-300/90" },
-                  { t: "Reporting tied to revenue & leads", c: "text-fuchsia-300/85" },
-                ].map((x) => (
-                  <div key={x.t} className="flex items-start gap-2 text-[12px] leading-snug text-white/55">
-                    <svg className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${x.c}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                    <span>{x.t}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Sidebar contact card */}
-      {/* <motion.div
-              className="rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] backdrop-blur-md ring-1 ring-white/10 sm:p-8"
-              initial={reduce ? false : { opacity: 0, x: 20 }}
-              animate={reduce ? undefined : { opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease }}
-            >
-              <div className="relative -mx-1 mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 sm:aspect-[16/9]">
-                <Image
-                  src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=900&q=85"
-                  alt="Social media marketing workspace"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/80 via-[#050816]/10 to-transparent" aria-hidden />
-                <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium text-white/90">
-                  Campaign dashboards, creative testing, clear next actions.
-                </span>
-              </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Paid Advertising Services</p>
-              <div className="mt-4 space-y-2">
-                {[
-                  { label: "Meta Ads", href: "/services/meta-ads", active: true },
-                  { label: "Google Ads", href: "/services/google-ads", active: false },
-                  { label: "Amazon Ads", href: "/services/amazon-ads", active: false },
-                ].map((s) => (
-                  <Link
-                    key={s.label}
-                    href={s.href}
-                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${s.active ? "bg-violet-600/30 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"}`}
-                  >
-                    <span className={`h-1.5 w-1.5 rounded-full ${s.active ? "bg-violet-400" : "bg-white/30"}`} />
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-6 border-t border-white/10 pt-6">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-white/40">Contact information</p>
-                <div className="mt-3 space-y-2">
-                  <a href="tel:+918956776951" className="flex items-center gap-2 text-sm text-white/70 transition hover:text-white">
-                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg>
-                    +91 8956776951
-                  </a>
-                  <a href="mailto:info@techifylabs.in" className="flex items-center gap-2 text-sm text-white/70 transition hover:text-white">
-                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                    info@techifylabs.in
-                  </a>
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <a href="tel:+918956776951" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">
-                    Call now
-                  </a>
-                  <a href="/contact" className="rounded-lg bg-violet-600/80 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-violet-500">
-                    Get proposal
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
+      
       <section className="relative overflow-hidden rounded-b-[1.75rem] border-b border-gray-200 ">
         {/* 🌈 BACKGROUND LAYERS */}
         <div className="absolute inset-0 bg-[#050816]" aria-hidden />
-
-        {/* soft blobs */}
-        {/* <div className="absolute top-[-80px] left-[-80px] w-[300px] h-[300px] bg-violet-300 opacity-20 rounded-full blur-3xl"></div>
-  <div className="absolute bottom-[-80px] right-[-80px] w-[300px] h-[300px] bg-fuchsia-300 opacity-20 rounded-full blur-3xl"></div> */}
-
-        {/* subtle grid pattern */}
-        {/* <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" /> */}
 
         <div className="relative w-full pl-15 pr-2 py-24 grid gap-12 lg:grid-cols-2 items-center">
           {/* LEFT CONTENT */}
@@ -538,25 +405,6 @@ export default function MetaAdsPage() {
       </div>
 
       <div className="h-6 sm:h-8" aria-hidden />
-      {/* <div className="relative z-20 -mt-10 px-4 sm:-mt-14 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1440px]">
-          <div className="
-          rounded-2xl border border-white/12  px-4 py-7 shadow-[0_28px_64px_-28px_rgba(0,0,0,0.65)] backdrop-blur-xl 
-          sm:rounded-3xl sm:px-10 sm:py-9">
-            <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-violet-300 sm:text-left">Performance marketing footprint</p>
-            <div className="grid grid-cols-3 gap-2 divide-x divide-white/40 sm:gap-4">
-              {stats.map((s) => (
-                <div key={s.label} className="px-2 text-center first:pl-0 last:pr-0 sm:px-4">
-                  <p className="text-xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">{s.num}</p>
-                  <p className="mt-1 text-[11px] font-medium leading-snug text-white/50 sm:text-[12px]">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="h-6 sm:h-8" aria-hidden /> */}
-
       <section
         id="insights"
         className="border-t border-slate-200/60 bg-gradient-to-b from-slate-50 to-white py-12 sm:py-16"

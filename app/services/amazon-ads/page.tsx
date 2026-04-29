@@ -246,111 +246,6 @@ export default function AmazonAdsPage() {
 
   return (
     <div className="min-h-full">
-      {/* <section className="relative overflow-hidden bg-[#050816] text-white">
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]" aria-hidden />
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(217,70,239,0.14),transparent_45%)]" aria-hidden />
-  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden /> */}
-      {/* <section className="relative overflow-hidden bg-[#1a1208] text-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_25%_-25%,rgba(245,158,11,0.35),transparent_55%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_100%_40%,rgba(251,191,36,0.15),transparent_45%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden /> */}
-      {/* <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
-          <nav className="mb-2 flex items-center gap-2 text-xs text-white/50" aria-label="Breadcrumb">
-            <Link href="/" className="transition hover:text-white">Home</Link>
-            <span className="text-white/25" aria-hidden>/</span>
-            <span className="text-white/25">Our Solutions</span>
-            <span className="text-white/25" aria-hidden>/</span>
-            <span className="font-medium text-white">Amazon Ads</span>
-          </nav>
-
-          <div className="grid items-center gap-1 lg:grid-cols-2">
-            <motion.div initial={reduce ? false : { opacity: 0, y: 22 }} animate={reduce ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.6, ease }}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[12px] font-medium tracking-wide text-violet-200/90 backdrop-blur-md">
-                <span className="relative flex h-2 w-2 shrink-0">
-                  {!reduce && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-voilet-400 opacity-40" />}
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-                </span>
-                Marketplace Growth · Amazon Ads
-              </div>
-              <h1 className="mt-6 text-balance text-[1.85rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-[3.15rem]">
-                Win More Visibility
-                <span className="bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 bg-clip-text text-transparent"> on Amazon Search.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/70 sm:text-[17px]">
-                Sponsored Products, Brands, and Display managed as one system. Built to lower wasted spend and scale profitable ASINs.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/contact" className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-8 text-sm font-semibold text-[#1f1307] shadow-lg shadow-fuchsia-500/30 transition hover:opacity-90 sm:w-auto">
-                  Book Free Strategy Call
-                </Link>
-                <Link href="#services" className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto">
-                  See what's included
-                </Link>
-              </div>
-              <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-3">
-                {[
-                  { t: "Sponsored Products, Brands & Display as one system", c: "text-violet-300/90" },
-                  { t: "Weekly search-term mining & bid discipline", c: "text-yellow-200/85" },
-                  { t: "TACoS lens — not ads in a silo", c: "text-orange-200/85" },
-                ].map((x) => (
-                  <div key={x.t} className="flex items-start gap-2 text-[12px] leading-snug text-white/55">
-                    <svg className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${x.c}`} fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                    <span>{x.t}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="rounded-3xl border border-white/15 bg-white/[0.07] p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.5)] backdrop-blur-md ring-1 ring-white/10 sm:p-8"
-              initial={reduce ? false : { opacity: 0, x: 20 }}
-              animate={reduce ? undefined : { opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease }}
-            >
-              <div className="relative -mx-1 mb-6 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 sm:aspect-[16/9]">
-                <Image
-                  src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=85"
-                  alt="E-commerce and online retail shopping"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208]/90 via-[#1a1208]/15 to-transparent" aria-hidden />
-                <span className="absolute bottom-3 left-3 right-3 text-[11px] font-medium text-white/90">
-                  ACOS, TACoS, and ASIN-level clarity — not spreadsheet chaos.
-                </span>
-              </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-300/90">Paid Advertising Services</p>
-              <div className="mt-4 space-y-2">
-                {[
-                  { label: "Meta Ads", href: "/services/meta-ads", active: false },
-                  { label: "Google Ads", href: "/services/google-ads", active: false },
-                  { label: "Amazon Ads", href: "/services/amazon-ads", active: true },
-                ].map((s) => (
-                  <Link key={s.label} href={s.href} className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${s.active ? "bg-violet-600/30 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"}`}>
-                    <span className={`h-1.5 w-1.5 rounded-full ${s.active ? "bg-violet-400" : "bg-white/30"}`} />
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-6 border-t border-white/10 pt-6">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-white/40">Contact information</p>
-                <div className="mt-3 space-y-2 text-sm text-white/75">
-                  <a href="tel:+918956776951" className="block transition hover:text-white">+91 8956776951</a>
-                  <a href="mailto:info@techifylabs.in" className="block transition hover:text-white">info@techifylabs.in</a>
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-2">
-                  <a href="tel:+918956776951" className="rounded-lg bg-white/10 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-white/15">Call now</a>
-                  <a href="/contact" className="rounded-lg bg-violet-600/80 px-3 py-2 text-center text-xs font-semibold text-white transition hover:bg-violet-500">Get proposal</a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
-
       <section className="relative overflow-hidden bg-[#050816] text-white">
         {/* Softer gradient background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
@@ -457,10 +352,6 @@ export default function AmazonAdsPage() {
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
                 </div>
-
-                {/* <p className="mt-4 text-xs text-white/70">
-      Search, PMax, and Shopping tracked against real conversion value.
-    </p> */}
               </div>
             </motion.div>
           </div>
@@ -776,22 +667,6 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      {/* <section className="border-t border-slate-200/80 bg-[#1a1208] py-16 text-white">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
-          <FadeIn className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-semibold sm:text-3xl">Ready to scale on Amazon?</h2>
-            <p className="mt-4 text-[15px] text-white/65">Book a strategy call and get a practical plan for spend, structure, and profitable growth.</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link href="/contact" className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-400 px-10 text-sm font-semibold text-[#1f1307] shadow-lg shadow-violet-500/30">
-                Book Free Strategy Call
-              </Link>
-              <Link href="/services/google-ads" className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-10 text-sm font-semibold text-white">
-                See Google Ads →
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section> */}
       <section className="border-t border-slate-300/80 bg-gray-200 py-16 text-black">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="mx-auto max-w-2xl text-center">

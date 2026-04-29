@@ -251,55 +251,7 @@ export default function Hero() {
                 hover: reduceMotion ? ctaStackRest : ctaStackHover,
               }}
             >
-              {/* Single support card: sits behind the button, full width aligned */}
-              {/* <motion.div
-                variants={{
-                  rest: ctaPlateRest,
-                  hover: reduceMotion ? ctaPlateRest : ctaPlateHover,
-                }}
-                className="order-2 relative z-[1] -mt-7 rounded-2xl border border-white/20 bg-[#0c1228]/95 px-5 pb-4 pt-10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-md sm:min-w-[min(100%,22rem)]"
-                aria-live={useMp4Bg ? "polite" : undefined}
-              >
-                {useMp4Bg ? (
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={activeVideoIndex}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                      className="space-y-2.5"
-                    >
-                      <p className="text-center text-[11px] font-bold uppercase tracking-[0.2em] text-violet-200 sm:text-xs">
-                        {HERO_VIDEOS[activeVideoIndex].label}
-                      </p>
-                      <p className="text-center text-sm font-medium leading-snug text-white/90 sm:text-[15px]">
-                        {HERO_VIDEOS[activeVideoIndex].hint}
-                      </p>
-                      <div
-                        className="flex justify-center gap-1.5 pt-1"
-                        aria-hidden
-                      >
-                        {HERO_VIDEOS.map((_, i) => (
-                          <span
-                            key={i}
-                            className={`h-1 rounded-full transition-all duration-300 ${
-                              i === activeVideoIndex
-                                ? "w-7 bg-violet-300"
-                                : "w-1.5 bg-white/35"
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                ) : (
-                  <p className="text-center text-sm font-medium leading-snug text-white/90 sm:text-[15px]">
-                    Scale revenue faster with a free strategy call — no
-                    obligation.
-                  </p>
-                )}
-              </motion.div> */}
+             
 
               <motion.button
                 onClick={() => setOpenModal(true)}
