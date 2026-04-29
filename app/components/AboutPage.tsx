@@ -91,11 +91,6 @@ const stackLabels = [
   "Tag Manager",
 ];
 
-// const heroTrust = [
-//   { label: "Operating model", value: "Retainer + pods" },
-//   { label: "Review cadence", value: "Weekly" },
-//   { label: "Delivery", value: "India-wide" },
-// ];
 
 const teamMembers = [
   {
@@ -303,26 +298,7 @@ export default function AboutPage() {
                   </Link>
                 </div>
               </motion.div>
-              {/* <motion.div
-                className="mt-14 grid grid-cols-3 gap-3 sm:gap-4"
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={reduce ? undefined : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2, ease }}
-              >
-                {heroTrust.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-4 backdrop-blur-md sm:px-5 sm:py-5"
-                  >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">
-                      {item.label}
-                    </p>
-                    <p className="mt-2 text-sm font-semibold text-white sm:text-[15px]">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
-              </motion.div> */}
+             
             </div>
 
             <div className="relative lg:col-span-6 xl:col-span-7">
@@ -358,16 +334,6 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-                {/* <motion.div
-                  className="absolute -bottom-6 -left-4 hidden max-w-[200px] rounded-2xl border border-white/10 bg-[#0c1228]/90 p-4 shadow-xl backdrop-blur-xl sm:block lg:-left-8 lg:max-w-[220px]"
-                  initial={reduce ? false : { opacity: 0, x: -12 }}
-                  animate={reduce ? undefined : { opacity: 1, x: 0 }}
-                  transition={{ delay: 0.45, duration: 0.5, ease }}
-                  whileHover={reduce ? undefined : { y: -4, transition: spring }}
-                >
-                  <p className="text-xs font-semibold text-white">One roadmap</p>
-                  <p className="mt-1 text-[11px] leading-snug text-white/55">Paid, organic, and build work share the same weekly priorities.</p>
-                </motion.div> */}
               </motion.div>
             </div>
           </div>
@@ -442,18 +408,7 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-                {/* <div className="relative mt-12 overflow-hidden rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-900 via-slate-800 to-violet-950 p-8 sm:p-10">
-                  {/* <div */}
-                {/* className="absolute right-0 top-0 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl"
-                    aria-hidden
-                  /> */}
-                {/* <blockquote className="relative text-xl font-light italic leading-snug text-white sm:text-2xl">
-                    Outcomes first.{" "} */}
-                {/* <span className="font-semibold not-italic text-violet-200">
-                      Channels follow.
-                    </span> */}
-                {/* </blockquote> */}
-                {/* </div> */}
+              
               </FadeIn>
             </div>
           </div>
@@ -588,10 +543,6 @@ export default function AboutPage() {
 
       {/* Stack */}
       <section className="relative overflow-hidden border-b border-slate-200/80 bg-gray-50 py-16 text-white sm:py-20">
-        {/* <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(99,102,241,0.15),transparent_50%)]"
-          aria-hidden
-        /> */}
         <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
           <FadeIn className="text-center">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-violet-500">

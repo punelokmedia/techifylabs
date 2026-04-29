@@ -495,23 +495,7 @@ export default function Navbar() {
           aria-hidden
         />
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
-          {/* <Link
-          href="/"
-          className="group flex shrink-0 items-center gap-3 rounded-xl py-0.5 pr-2 transition hover:opacity-95"
-        >
-          <div className="relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-700 text-sm font-bold text-white shadow-lg shadow-indigo-500/30 ring-2 ring-white transition group-hover:shadow-indigo-500/45 group-hover:ring-violet-200/50">
-            <span className="relative z-10">TE</span>
-            <span className="absolute inset-0 rounded-full bg-white/15 opacity-0 transition group-hover:opacity-100" />
-          </div>
-          <div className="leading-tight">
-            <span className="block bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-lg font-bold tracking-tight text-transparent">
-              Techify
-            </span>
-            <span className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
-              Accelerating brands
-            </span>
-          </div>
-        </Link> */}
+         
           <Link
             href="/"
             className="group relative flex shrink-0 items-center overflow-visible py-0 transition-opacity hover:opacity-95"
@@ -527,14 +511,7 @@ export default function Navbar() {
               sizes="(max-width: 768px) 92vw, 520px"
             />
 
-            {/* <div className="leading-tight">
-    <span className="block text-lg font-bold text-slate-900">
-      Techify
-    </span>
-    <span className="block text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
-      Accelerating brands
-    </span>
-  </div> */}
+            
           </Link>
           <nav
             className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5"

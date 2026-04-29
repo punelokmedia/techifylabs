@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Blog } from "../data/blogData";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import router from "next/router";
 export default function BlogCard({ post }: { post: Blog }) {
   const postHref = `/services/blogs/${post.slug}`;
 

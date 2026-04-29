@@ -341,24 +341,8 @@ function ServiceCard({
               className="w-full h-full object-cover transition-transform duration-700"
             />
 
-            {/* Dark Overlay (IMPORTANT for text readability) */}
-            {/* <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-slate-900/85 to-violet-950/80" /> */}
           </motion.div>
-          {/* <div
-            className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-violet-500/35 blur-3xl transition-all duration-500 ease-out group-hover/card:scale-[1.35] group-hover/card:bg-fuchsia-400/45"
-            aria-hidden
-          /> */}
-          {/* <div
-            className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-500 group-hover/card:opacity-[0.62]"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-            aria-hidden
-          /> */}
-          {/* <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-fuchsia-500/30 via-violet-600/15 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
-            aria-hidden
-          /> */}
+         
           <div
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100"
             aria-hidden

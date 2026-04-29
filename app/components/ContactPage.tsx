@@ -760,31 +760,7 @@ export default function ContactPage() {
                           </div>
                         </div>
 
-                        {/* <div className="mt-8">
-                          <p className="text-sm font-medium text-slate-700">What are you exploring?</p>
-                          <div className="mt-3 flex flex-wrap gap-2 sm:gap-2.5">
-                            {topics.map((t) => {
-                              const active = topic === t;
-                              return (
-                                <motion.button
-                                  key={t}
-                                  type="button"
-                                  onClick={() => setTopic(active ? "" : t)}
-                                  className={`min-h-[44px] rounded-full border px-3.5 py-2 text-[13px] font-medium transition-shadow sm:min-h-0 sm:px-4 sm:py-2.5 sm:text-sm ${
-                                    active
-                                      ? "border-transparent bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md shadow-violet-500/30"
-                                      : "border-slate-200 bg-slate-50 text-slate-700 hover:border-violet-200 hover:bg-white"
-                                  }`}
-                                  whileHover={reduce ? undefined : { scale: 1.04 }}
-                                  whileTap={reduce ? undefined : { scale: 0.96 }}
-                                  layout
-                                >
-                                  {t}
-                                </motion.button>
-                              );
-                            })}
-                          </div>
-                        </div> */}
+                       
                         <div className="mt-8">
                           <label
                             htmlFor="contact-topic"
