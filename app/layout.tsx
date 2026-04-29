@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description:
     "Performance marketing, web, and growth strategy — Meta, Google, Amazon, SEO, and more.",
   icons: {
-    icon: "/techify-logo.png",
-    apple: "/techify-logo.png",
+    icon: "/favicon.png",
+    apple: "/icons/apple-icon.png",
   },
 };
 
@@ -32,7 +32,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden bg-[#f4f6f9] text-slate-900">{children}</body>
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-[#f4f6f9] text-slate-900">
+        {children}
+      </body>
     </html>
   );
 }
