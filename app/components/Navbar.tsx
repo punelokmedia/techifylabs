@@ -498,23 +498,20 @@ export default function Navbar() {
           aria-hidden
         />
         <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
-         
           <Link
             href="/"
             className="group relative flex shrink-0 items-center overflow-visible py-0 transition-opacity hover:opacity-95"
           >
             <Image
-              src="/techify-logo.png"
+              src="/techify-labs-logo.jpeg"
               alt="Techify Labs"
-              width={635}
-              height={331}
-              className="block h-auto w-auto max-w-[min(520px,92vw)] max-h-[4.75rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
+              width={700}
+              height={400}
+              className="block h-auto w-auto max-w-[min(650px,95vw)] max-h-[4.75rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
               style={{ filter: "none" }}
               priority
               sizes="(max-width: 768px) 92vw, 520px"
             />
-
-            
           </Link>
           <nav
             className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5"
@@ -626,7 +623,9 @@ export default function Navbar() {
                 aria-haspopup="true"
                 className={triggerClass(openMenu === "leadGeneration")}
                 onClick={() =>
-                  setOpenMenu(openMenu === "leadGeneration" ? null : "leadGeneration")
+                  setOpenMenu(
+                    openMenu === "leadGeneration" ? null : "leadGeneration",
+                  )
                 }
               >
                 Lead Generation
