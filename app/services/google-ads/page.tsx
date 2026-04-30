@@ -262,7 +262,6 @@ const faqs = [
 ];
 
 export default function GoogleAdsPage() {
-  const reduce = useReducedMotion();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -331,7 +330,7 @@ export default function GoogleAdsPage() {
                   href="#services"
                   className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
                 >
-                  See what's included
+                  See what&apos;s included
                 </Link>
               </div>
 
@@ -631,7 +630,7 @@ export default function GoogleAdsPage() {
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600/90">
-              What's included
+              What&apos;s included
             </p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
               Google Ads Services We Offer
@@ -794,8 +793,8 @@ export default function GoogleAdsPage() {
               Ready to Capture More Intent?
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we'll come back with a clear plan,
-              realistic scope, and how we'd measure success.
+              Book a free strategy call — we&apos;ll come back with a clear plan,
+              realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link

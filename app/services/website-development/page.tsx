@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
 const fadeUp: Variants = {
@@ -164,8 +164,6 @@ function ServiceCard({
 // ── PAGE COMPONENT ───────────────────────────────────────────
 
 export default function WebDevelopmentPage() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <main className="min-h-screen bg-white text-gray-100">
       {/* ══ HERO — UNCHANGED ══ */}
@@ -327,7 +325,7 @@ export default function WebDevelopmentPage() {
             <div>
               <SectionBadge>Why TechCraft</SectionBadge>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                We Don't Just Build.{" "}
+                We Don&apos;t Just Build.{" "}
                 <span
                   className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
                                  bg-clip-text text-transparent"
@@ -397,12 +395,12 @@ export default function WebDevelopmentPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
           >
-            <SectionBadge>Let's Build</SectionBadge>
+            <SectionBadge>Let&apos;s Build</SectionBadge>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Ready to Build Something Great?
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Book a free consultation and let's figure out the best technical
+              Book a free consultation and let&apos;s figure out the best technical
               approach for your project.
             </p>
             <Link

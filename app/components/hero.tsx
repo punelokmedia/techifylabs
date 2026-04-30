@@ -31,12 +31,6 @@ const HERO_VIDEOS = [
  */
 const youtubeBackgroundId = process.env.NEXT_PUBLIC_HERO_YOUTUBE_ID?.trim();
 
-const springHero = {
-  type: "spring" as const,
-  stiffness: 400,
-  damping: 28,
-  mass: 0.85,
-};
 const springTap = { type: "spring" as const, stiffness: 520, damping: 34 };
 const springStack = {
   type: "spring" as const,
@@ -49,13 +43,6 @@ const ctaStackRest = { scale: 1, y: 0 };
 const ctaStackHover = {
   scale: 1.02,
   y: -2,
-  transition: springStack,
-};
-
-const ctaPlateRest = { y: 0, opacity: 1 };
-const ctaPlateHover = {
-  y: 2,
-  opacity: 1,
   transition: springStack,
 };
 

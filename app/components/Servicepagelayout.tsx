@@ -392,7 +392,7 @@ hover:gap-3"
                   Contact Information
                 </h3>
                 <p className="text-gray-500 text-xs leading-relaxed mb-4">
-                  Reach out to our team for fast support or any inquiries — we're just a call away.
+                  Reach out to our team for fast support or any inquiries — we&apos;re just a call away.
                 </p>
                 <div className="space-y-3">
                   <a

@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 
-export default function ConsultationModal({ isOpen, onClose }: any) {
+type ConsultationModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+export default function ConsultationModal({
+  isOpen,
+  onClose,
+}: ConsultationModalProps) {
   if (!isOpen) return null;
 
   return (

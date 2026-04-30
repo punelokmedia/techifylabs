@@ -456,7 +456,7 @@ export default function AppDevelopmentPage() {
               Got an App Idea?
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Let's turn it into a product your users will love. Book a free
+              Let&apos;s turn it into a product your users will love. Book a free
               strategy call — no obligation.
             </p>
             <Link

@@ -595,11 +595,15 @@ export default function AboutPage() {
                   whileHover={{ y: -6 }}
                 >
                   {/* IMAGE */}
-                  <img
+                  <div className="relative h-[420px] w-full">
+                    <Image
                     src={member.img}
                     alt={member.name}
-                    className="w-full h-[420px] object-cover grayscale group-hover:grayscale-0 transition duration-500"
-                  />
+                      fill
+                      className="object-cover grayscale transition duration-500 group-hover:grayscale-0"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
 
                   {/* OVERLAY */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500" />
