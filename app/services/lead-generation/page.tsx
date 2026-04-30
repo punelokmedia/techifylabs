@@ -1,26 +1,31 @@
 "use client";
 import { motion } from "framer-motion";
-const PhoneIcon = ({ color = "currentColor" }) => (
+import { useEffect, useState } from "react";
+const PhoneIcon = ({ color = "currentColor", size = 20 }) => (
   <svg
-    width="22"
-    height="22"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
     strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 16.92z" />
   </svg>
 );
 
-const HairIcon = ({ color = "currentColor" }) => (
+const HairIcon = ({ color = "currentColor", size = 20 }) => (
   <svg
-    width="22"
-    height="22"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
     strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <circle cx="6" cy="6" r="3" />
     <circle cx="6" cy="18" r="3" />
@@ -28,49 +33,104 @@ const HairIcon = ({ color = "currentColor" }) => (
   </svg>
 );
 
-const WAIcon = ({ color = "currentColor" }) => (
+const WAIcon = ({ color = "currentColor", size = 20 }) => (
   <svg
-    width="22"
-    height="22"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
-    strokeWidth="2"
+    strokeWidth="1.9"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
-    <path d="M21 12a9 9 0 01-13.9 7.6L3 21l1.4-4.1A9 9 0 1112 21z" />
-    <path d="M8.5 9.5c.2-.4.5-.4.7-.4h.5c.2 0 .5.1.6.4l.5 1.3c.1.3.1.5-.1.8l-.4.6c-.1.1-.1.3 0 .4.3.5 1 1.4 2.1 1.9.2.1.3.1.4 0l.6-.5c.2-.2.5-.3.8-.2l1.2.5c.3.1.4.4.4.6v.6c0 .2-.1.5-.4.7-.4.2-1 .3-1.6.2-2-.4-4.2-2.4-4.8-4.7-.2-.7-.1-1.3.1-1.7z" />
+    <path d="M20 11.5a8.5 8.5 0 01-12.9 7.2L4 20l1.3-3a8.5 8.5 0 1114.7-5.5z" />
+    <path d="M9.2 9.8c.2-.4.5-.4.8-.4.2 0 .6.1.7.4l.4 1.1c.1.2.1.5 0 .7l-.4.6c.4.9 1.1 1.6 2 2l.5-.3c.2-.2.5-.2.7-.1l1.2.5c.2.1.4.4.4.7 0 .3 0 .7-.4.9-.4.2-1 .3-1.4.2-2-.4-4.2-2.5-4.8-4.5-.2-.6-.1-1.2.3-1.8z" />
   </svg>
 );
 
-const MsgIcon = ({ color = "currentColor" }) => (
+const MsgIcon = ({ color = "currentColor", size = 20 }) => (
   <svg
-    width="22"
-    height="22"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
     strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
     <path d="M8 9h8M8 13h5" />
   </svg>
 );
 
-const UserIcon = ({ color = "currentColor" }) => (
+const UserIcon = ({ color = "currentColor", size = 20 }) => (
   <svg
-    width="22"
-    height="22"
+    width={size}
+    height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke={color}
     strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <circle cx="12" cy="8" r="4" />
     <path d="M4 20c1.8-3.3 5-5 8-5s6.2 1.7 8 5" />
   </svg>
 );
 
+const ShieldIcon = ({ color = "currentColor", size = 18 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 3l7 3v6c0 5-3.4 7.9-7 9-3.6-1.1-7-4-7-9V6l7-3z" />
+  </svg>
+);
+
+const LockIcon = ({ color = "currentColor", size = 16 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="4" y="11" width="16" height="10" rx="2" />
+    <path d="M8 11V8a4 4 0 118 0v3" />
+  </svg>
+);
+
 export default function LeadGenerationPage() {
+  const [viewportWidth, setViewportWidth] = useState(1280);
+
+  useEffect(() => {
+    const onResize = () => setViewportWidth(window.innerWidth);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const isMobile = viewportWidth < 768;
+  const isTablet = viewportWidth < 1024;
+  const phoneE164 = "+918956776951";
+  const phoneTel = `tel:${phoneE164}`;
+  const goTo = (href?: string) => {
+    if (!href) return;
+    window.location.href = href;
+  };
+
   return (
     <div
       style={{
@@ -94,10 +154,10 @@ export default function LeadGenerationPage() {
             maxWidth: 1400,
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "1fr 1.1fr 0.75fr",
-            gap: 0,
-            padding: "0 32px 0",
-            minHeight: 610,
+            gridTemplateColumns: isTablet ? "1fr" : "1fr 1.1fr 0.75fr",
+            gap: isTablet ? 14 : 0,
+            padding: isMobile ? "12px 14px 20px" : "0 32px 0",
+            minHeight: isTablet ? "auto" : 610,
             alignItems: "stretch",
           }}
         >
@@ -107,7 +167,7 @@ export default function LeadGenerationPage() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              paddingRight: 32,
+              paddingRight: isTablet ? 0 : 32,
             }}
           >
             {/* Badge */}
@@ -128,12 +188,13 @@ export default function LeadGenerationPage() {
                 marginBottom: 12,
               }}
             >
-              👤 For Clinics & Healthcare Providers
+              <UserIcon color="#ddd6fe" size={14} />
+              For Clinics & Healthcare Providers
             </span>
 
             <h1
               style={{
-                fontSize: 34,
+                fontSize: isMobile ? 28 : 34,
                 fontWeight: 900,
                 lineHeight: 1.08,
                 margin: 0,
@@ -150,7 +211,7 @@ export default function LeadGenerationPage() {
                 fontSize: 14,
                 color: "rgba(255,255,255,0.82)",
                 lineHeight: 1.6,
-                maxWidth: 400,
+                maxWidth: isTablet ? "100%" : 400,
               }}
             >
               We help IVF and hair transplant clinics get verified, high-intent
@@ -162,9 +223,9 @@ export default function LeadGenerationPage() {
               style={{
                 marginTop: 18,
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
                 gap: 8,
-                maxWidth: 420,
+                maxWidth: isTablet ? "100%" : 420,
               }}
             >
               <button
@@ -195,7 +256,10 @@ export default function LeadGenerationPage() {
                   cursor: "pointer",
                 }}
               >
-                👤 Expert in Leads Generation
+                <span style={{ display: "inline-flex", marginRight: 6 }}>
+                  <UserIcon color="#ddd6fe" size={14} />
+                </span>
+                Expert in Leads Generation
               </button>
             </div>
 
@@ -204,9 +268,9 @@ export default function LeadGenerationPage() {
               style={{
                 marginTop: 14,
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr 1fr",
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
                 gap: 6,
-                maxWidth: 420,
+                maxWidth: isTablet ? "100%" : 420,
               }}
             >
               {[
@@ -242,7 +306,8 @@ export default function LeadGenerationPage() {
                 gap: 5,
               }}
             >
-              🛡 We work with clinics, we are not a treatment provider.
+              <ShieldIcon color="rgba(255,255,255,0.82)" size={14} />
+              We work with clinics, we are not a treatment provider.
             </p>
           </div>
 
@@ -253,12 +318,12 @@ export default function LeadGenerationPage() {
               color: "#1e293b",
               borderRadius: 16,
               border: "1px solid #e5e7eb",
-              padding: "16px 18px 12px",
+              padding: isMobile ? "12px 12px 10px" : isTablet ? "14px 14px 10px" : "16px 18px 12px",
               boxShadow: "0 20px 48px -24px rgba(2,6,23,0.5)",
-              margin: "12px 10px 0",
+              margin: isTablet ? "8px 0 0" : "12px 10px 0",
               display: "flex",
               flexDirection: "column",
-              maxWidth: 620,
+              maxWidth: isTablet ? "100%" : 620,
               alignSelf: "end",
               position: "relative",
               zIndex: 3,
@@ -276,7 +341,7 @@ export default function LeadGenerationPage() {
                 <h2
                   style={{
                     textAlign: "center",
-                    fontSize: 28,
+                    fontSize: isMobile ? 18 : isTablet ? 22 : 28,
                     fontWeight: 800,
                     margin: 0,
                     lineHeight: 1.15,
@@ -288,8 +353,8 @@ export default function LeadGenerationPage() {
                   style={{
                     textAlign: "center",
                     color: "#94a3b8",
-                    fontSize: 13,
-                    marginTop: 6,
+                    fontSize: isMobile ? 11 : isTablet ? 12 : 13,
+                    marginTop: isMobile ? 4 : 6,
                   }}
                 >
                   Choose your service to get qualified patient leads
@@ -297,7 +362,7 @@ export default function LeadGenerationPage() {
               </div>
               <span
                 style={{
-                  fontSize: 20,
+                  fontSize: isMobile ? 16 : 20,
                   color: "#94a3b8",
                   marginLeft: -10,
                   cursor: "pointer",
@@ -309,10 +374,10 @@ export default function LeadGenerationPage() {
 
             <div
               style={{
-                marginTop: 12,
+                marginTop: isMobile ? 10 : 12,
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 12,
+                gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                gap: isMobile ? 10 : isTablet ? 10 : 12,
               }}
             >
               {/* IVF Card */}
@@ -321,16 +386,16 @@ export default function LeadGenerationPage() {
                   background: "#f5f3ff",
                   border: "1px solid #ddd6fe",
                   borderRadius: 14,
-                  padding: 14,
-                  minHeight: 290,
+                  padding: isMobile ? 11 : isTablet ? 12 : 14,
+                  minHeight: isMobile ? "auto" : 290,
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
                 <div
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: isMobile ? 36 : isTablet ? 40 : 44,
+                    height: isMobile ? 36 : isTablet ? 40 : 44,
                     borderRadius: "50%",
                     background: "#7c3aed",
                     display: "flex",
@@ -339,11 +404,11 @@ export default function LeadGenerationPage() {
                     marginBottom: 10,
                   }}
                 >
-                  <PhoneIcon color="#fff" />
+                  <PhoneIcon color="#fff" size={isMobile ? 16 : 18} />
                 </div>
                 <h3
                   style={{
-                    fontSize: 24,
+                    fontSize: isMobile ? 18 : isTablet ? 20 : 24,
                     fontWeight: 800,
                     color: "#6d28d9",
                     margin: 0,
@@ -356,10 +421,10 @@ export default function LeadGenerationPage() {
                   style={{
                     listStyle: "none",
                     padding: 0,
-                    margin: "8px 0 0",
+                    margin: "6px 0 0",
                     display: "flex",
                     flexDirection: "column",
-                    gap: 6,
+                    gap: isMobile ? 4 : 6,
                   }}
                 >
                   {[
@@ -373,7 +438,7 @@ export default function LeadGenerationPage() {
                         display: "flex",
                         alignItems: "center",
                         gap: 7,
-                        fontSize: 12,
+                        fontSize: isMobile ? 11 : isTablet ? 11.5 : 12,
                         color: "#475569",
                       }}
                     >
@@ -391,15 +456,19 @@ export default function LeadGenerationPage() {
                   ))}
                 </ul>
                 <button
+                  onClick={() =>
+                    (window.location.href =
+                      "/services/lead-generation-ivf-center")
+                  }
                   style={{
-                    marginTop: "auto",
+                    marginTop: isMobile ? 12 : "auto",
                     width: "100%",
                     background: "#7c3aed",
                     color: "#fff",
                     border: "none",
                     borderRadius: 10,
-                    padding: "9px 0",
-                    fontSize: 16,
+                    padding: isMobile ? "8px 0" : "9px 0",
+                    fontSize: isMobile ? 13 : isTablet ? 14 : 16,
                     fontWeight: 700,
                     cursor: "pointer",
                   }}
@@ -414,16 +483,16 @@ export default function LeadGenerationPage() {
                   background: "#fff7ed",
                   border: "1px solid #fed7aa",
                   borderRadius: 14,
-                  padding: 14,
-                  minHeight: 290,
+                  padding: isMobile ? 11 : isTablet ? 12 : 14,
+                  minHeight: isMobile ? "auto" : 290,
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
                 <div
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: isMobile ? 36 : isTablet ? 40 : 44,
+                    height: isMobile ? 36 : isTablet ? 40 : 44,
                     borderRadius: "50%",
                     background: "#f97316",
                     display: "flex",
@@ -432,11 +501,11 @@ export default function LeadGenerationPage() {
                     marginBottom: 10,
                   }}
                 >
-                  <HairIcon color="#fff" />
+                  <HairIcon color="#fff" size={isMobile ? 16 : 18} />
                 </div>
                 <h3
                   style={{
-                    fontSize: 24,
+                    fontSize: isMobile ? 18 : isTablet ? 20 : 24,
                     fontWeight: 800,
                     color: "#ea580c",
                     margin: 0,
@@ -449,10 +518,10 @@ export default function LeadGenerationPage() {
                   style={{
                     listStyle: "none",
                     padding: 0,
-                    margin: "8px 0 0",
+                    margin: "6px 0 0",
                     display: "flex",
                     flexDirection: "column",
-                    gap: 6,
+                    gap: isMobile ? 4 : 6,
                   }}
                 >
                   {[
@@ -466,7 +535,7 @@ export default function LeadGenerationPage() {
                         display: "flex",
                         alignItems: "center",
                         gap: 7,
-                        fontSize: 12,
+                        fontSize: isMobile ? 11 : isTablet ? 11.5 : 12,
                         color: "#475569",
                       }}
                     >
@@ -484,15 +553,19 @@ export default function LeadGenerationPage() {
                   ))}
                 </ul>
                 <button
+                  onClick={() =>
+                    (window.location.href =
+                      "/services/lead-generation-hair-transplant-clinic")
+                  }
                   style={{
-                    marginTop: "auto",
+                    marginTop: isMobile ? 12 : "auto",
                     width: "100%",
                     background: "#f97316",
                     color: "#fff",
                     border: "none",
                     borderRadius: 10,
-                    padding: "9px 0",
-                    fontSize: 16,
+                    padding: isMobile ? "8px 0" : "9px 0",
+                    fontSize: isMobile ? 13 : isTablet ? 14 : 16,
                     fontWeight: 700,
                     cursor: "pointer",
                   }}
@@ -505,12 +578,21 @@ export default function LeadGenerationPage() {
             <p
               style={{
                 textAlign: "center",
-                fontSize: 11,
+                fontSize: isMobile ? 10 : 11,
                 color: "#94a3b8",
-                marginTop: 12,
+                marginTop: isMobile ? 10 : 12,
               }}
             >
-              🔒 For Clinics Only. We do not provide medical treatment.
+              <span
+                style={{
+                  display: "inline-flex",
+                  verticalAlign: "middle",
+                  marginRight: 5,
+                }}
+              >
+                <LockIcon color="#94a3b8" />
+              </span>
+              For Clinics Only. We do not provide medical treatment.
             </p>
           </div>
 
@@ -518,12 +600,15 @@ export default function LeadGenerationPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "0.92fr 1.08fr",
+              gridTemplateColumns: isMobile ? "1fr" : "0.92fr 1.08fr",
               gap: 12,
-              marginRight: 4,
-              marginLeft: -4,
+              marginRight: isTablet ? 0 : 4,
+              marginLeft: isTablet ? 0 : -4,
               zIndex: 1,
-              minHeight: 360,
+              minHeight: isMobile ? 560 : 360,
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: isMobile ? 16 : 0,
             }}
           >
             {/* LEFT CARDS */}
@@ -533,6 +618,11 @@ export default function LeadGenerationPage() {
                 flexDirection: "column",
                 justifyContent: "flex-start",
                 gap: 10,
+                position: "relative",
+                zIndex: 2,
+                width: isMobile ? "58%" : "auto",
+                minWidth: isMobile ? 220 : "auto",
+                padding: isMobile ? "12px 0 12px 12px" : 0,
               }}
             >
               {/* Monthly Leads */}
@@ -722,9 +812,13 @@ export default function LeadGenerationPage() {
               transition={{ duration: 0.6 }}
               style={{
                 overflow: "hidden",
-                borderRadius: "0 12px 12px 0",
-                aspectRatio: "1 / 1",
-                width: "100%",
+                borderRadius: isMobile ? 0 : "0 12px 12px 0",
+                aspectRatio: isMobile ? "auto" : "1 / 1",
+                width: isMobile ? "100%" : "100%",
+                height: isMobile ? "100%" : "auto",
+                position: isMobile ? "absolute" : "relative",
+                inset: isMobile ? "130px 0 0 0" : "auto",
+                zIndex: isMobile ? 1 : "auto",
               }}
             >
               <img
@@ -734,6 +828,8 @@ export default function LeadGenerationPage() {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
+                  objectPosition: isMobile ? "82% top" : "center",
+                  transform: isMobile ? "scale(1.16)" : "none",
                 }}
               />
             </motion.div>
@@ -746,7 +842,7 @@ export default function LeadGenerationPage() {
         style={{
           maxWidth: 1400,
           margin: "-2px auto 0",
-          padding: "40px 32px",
+          padding: isMobile ? "26px 14px" : "40px 32px",
           position: "relative",
           zIndex: 6,
         }}
@@ -771,11 +867,12 @@ export default function LeadGenerationPage() {
           />
           <h2
             style={{
-              fontSize: 36,
+              fontSize: isMobile ? 28 : 36,
               fontWeight: 800,
               color: "#1e1b4b",
               margin: 0,
-              whiteSpace: "nowrap",
+              whiteSpace: isMobile ? "normal" : "nowrap",
+              textAlign: "center",
             }}
           >
             What Happens Next?
@@ -795,14 +892,14 @@ export default function LeadGenerationPage() {
             background: "#fff",
             borderRadius: 24,
             border: "1px solid #e2e8f0",
-            padding: "24px 28px",
+              padding: isMobile ? "16px 14px" : "24px 28px",
             boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
           }}
         >
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr auto 1fr",
+              gridTemplateColumns: isTablet ? "1fr" : "1fr auto 1fr",
               gap: 16,
               alignItems: "center",
             }}
@@ -811,7 +908,7 @@ export default function LeadGenerationPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
+                gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
                 gap: 8,
               }}
             >
@@ -820,6 +917,7 @@ export default function LeadGenerationPage() {
                   label: "You Select",
                   sub: "IVF Leads",
                   icon: <PhoneIcon color="#7c3aed" />,
+                  href: "/services/lead-generation-ivf-center",
                   bg: "#f5f3ff",
                   border: "#ddd6fe",
                   iconBg: "#ede9fe",
@@ -830,6 +928,7 @@ export default function LeadGenerationPage() {
                   label: "We Open",
                   sub: "WhatsApp",
                   icon: <WAIcon color="#16a34a" />,
+                  href: `https://wa.me/${phoneE164.replace(/\D/g, "")}`,
                   bg: "#f0fdf4",
                   border: "#bbf7d0",
                   iconBg: "#dcfce7",
@@ -840,6 +939,7 @@ export default function LeadGenerationPage() {
                   label: "Pre-filled Message",
                   sub: "for IVF Leads",
                   icon: <MsgIcon color="#7c3aed" />,
+                  href: `https://wa.me/${phoneE164.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I run a clinic. I need IVF patient leads.")}`,
                   bg: "#f5f3ff",
                   border: "#ddd6fe",
                   iconBg: "#ede9fe",
@@ -850,21 +950,28 @@ export default function LeadGenerationPage() {
                   label: "Chat With Our Team",
                   sub: "Get Started",
                   icon: <UserIcon color="#7c3aed" />,
+                  href: phoneTel,
                   bg: "#f5f3ff",
                   border: "#ddd6fe",
                   iconBg: "#ede9fe",
                   iconBorder: "#c4b5fd",
                   textColor: "#7c3aed",
                 },
-              ].map((step, i) => (
+              ].map((step, i, steps) => (
                 <div key={i} style={{ position: "relative" }}>
-                  <div
+                  <button
+                    type="button"
+                    onClick={() => goTo(step.href)}
                     style={{
+                      display: "block",
+                      width: "100%",
                       background: step.bg,
                       border: `1px solid ${step.border}`,
                       borderRadius: 12,
                       padding: "12px 8px",
                       textAlign: "center",
+                      textDecoration: "none",
+                      cursor: "pointer",
                     }}
                   >
                     <div
@@ -903,43 +1010,52 @@ export default function LeadGenerationPage() {
                     >
                       {step.sub}
                     </p>
-                  </div>
-                  {i < 3 && (
+                  </button>
+                  {i < 3 && !isMobile && (
                     <div
                       style={{
                         position: "absolute",
-                        right: -14,
+                        right: -20,
                         top: "50%",
                         transform: "translateY(-50%)",
                         display: "flex",
-                        flexDirection: "column",
                         alignItems: "center",
                         gap: 2,
                         zIndex: 2,
                       }}
                     >
-                      {[0, 1, 2].map((d) => (
-                        <span
-                          key={d}
-                          style={{
-                            width: 3,
-                            height: 3,
-                            borderRadius: "50%",
-                            background: "#94a3b8",
-                            display: "block",
-                          }}
-                        />
-                      ))}
-                      <svg
-                        width="10"
-                        height="10"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#94a3b8"
-                        strokeWidth="2.5"
+                      <span
+                        style={{
+                          width: 10,
+                          height: 1,
+                          background: "#94a3b8",
+                          opacity: 0.75,
+                          display: "block",
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => goTo(steps[i + 1]?.href)}
+                        style={{
+                          display: "inline-flex",
+                          textDecoration: "none",
+                          background: "transparent",
+                          border: "none",
+                          padding: 0,
+                          cursor: "pointer",
+                        }}
                       >
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#94a3b8"
+                          strokeWidth="2.5"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -953,6 +1069,7 @@ export default function LeadGenerationPage() {
                 alignItems: "center",
                 justifyContent: "center",
                 padding: "0 8px",
+                minHeight: isTablet ? "auto" : 140,
               }}
             >
               <div
@@ -978,7 +1095,7 @@ export default function LeadGenerationPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
+                gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
                 gap: 8,
               }}
             >
@@ -987,6 +1104,7 @@ export default function LeadGenerationPage() {
                   label: "You Select",
                   sub: "Hair Transplant Leads",
                   icon: <HairIcon color="#f97316" />,
+                  href: "/services/lead-generation-hair-transplant-clinic",
                   bg: "#fff7ed",
                   border: "#fed7aa",
                   iconBg: "#ffedd5",
@@ -997,6 +1115,7 @@ export default function LeadGenerationPage() {
                   label: "We Open",
                   sub: "WhatsApp",
                   icon: <WAIcon color="#16a34a" />,
+                  href: `https://wa.me/${phoneE164.replace(/\D/g, "")}`,
                   bg: "#f0fdf4",
                   border: "#bbf7d0",
                   iconBg: "#dcfce7",
@@ -1007,6 +1126,7 @@ export default function LeadGenerationPage() {
                   label: "Pre-filled Message",
                   sub: "for Hair Leads",
                   icon: <MsgIcon color="#f97316" />,
+                  href: `https://wa.me/${phoneE164.replace(/\D/g, "")}?text=${encodeURIComponent("Hi, I run a clinic. I need Hair Transplant leads.")}`,
                   bg: "#fff7ed",
                   border: "#fed7aa",
                   iconBg: "#ffedd5",
@@ -1017,21 +1137,28 @@ export default function LeadGenerationPage() {
                   label: "Chat With Our Team",
                   sub: "Get Started",
                   icon: <UserIcon color="#f97316" />,
+                  href: phoneTel,
                   bg: "#fff7ed",
                   border: "#fed7aa",
                   iconBg: "#ffedd5",
                   iconBorder: "#fdba74",
                   textColor: "#ea580c",
                 },
-              ].map((step, i) => (
+              ].map((step, i, steps) => (
                 <div key={i} style={{ position: "relative" }}>
-                  <div
+                  <button
+                    type="button"
+                    onClick={() => goTo(step.href)}
                     style={{
+                      display: "block",
+                      width: "100%",
                       background: step.bg,
                       border: `1px solid ${step.border}`,
                       borderRadius: 12,
                       padding: "12px 8px",
                       textAlign: "center",
+                      textDecoration: "none",
+                      cursor: "pointer",
                     }}
                   >
                     <div
@@ -1070,43 +1197,52 @@ export default function LeadGenerationPage() {
                     >
                       {step.sub}
                     </p>
-                  </div>
-                  {i < 3 && (
+                  </button>
+                  {i < 3 && !isMobile && (
                     <div
                       style={{
                         position: "absolute",
-                        right: -14,
+                        right: -20,
                         top: "50%",
                         transform: "translateY(-50%)",
                         display: "flex",
-                        flexDirection: "column",
                         alignItems: "center",
                         gap: 2,
                         zIndex: 2,
                       }}
                     >
-                      {[0, 1, 2].map((d) => (
-                        <span
-                          key={d}
-                          style={{
-                            width: 3,
-                            height: 3,
-                            borderRadius: "50%",
-                            background: "#94a3b8",
-                            display: "block",
-                          }}
-                        />
-                      ))}
-                      <svg
-                        width="10"
-                        height="10"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#94a3b8"
-                        strokeWidth="2.5"
+                      <span
+                        style={{
+                          width: 10,
+                          height: 1,
+                          background: "#94a3b8",
+                          opacity: 0.75,
+                          display: "block",
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => goTo(steps[i + 1]?.href)}
+                        style={{
+                          display: "inline-flex",
+                          textDecoration: "none",
+                          background: "transparent",
+                          border: "none",
+                          padding: 0,
+                          cursor: "pointer",
+                        }}
                       >
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#94a3b8"
+                          strokeWidth="2.5"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -1119,7 +1255,7 @@ export default function LeadGenerationPage() {
             style={{
               marginTop: 16,
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
               gap: 12,
             }}
           >

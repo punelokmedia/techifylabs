@@ -507,7 +507,7 @@ export default function Navbar() {
               alt="Techify Labs"
               width={800}
               height={500}
-              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[7rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
+              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[8rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[6.25rem] md:max-h-[6.75rem] lg:max-h-[7.25rem]"
               style={{ filter: "none" }}
               priority
               sizes="(max-width: 768px) 92vw, 520px"
@@ -554,7 +554,7 @@ export default function Navbar() {
                     animate="visible"
                     exit="exit"
                     style={{ transformOrigin: "top center" }}
-                    className="absolute left-1/2 top-full z-50 w-[min(94vw,880px)] -translate-x-1/2 pt-3.5"
+                    className="fixed left-1/2 top-[6.15rem] z-50 w-[min(94vw,880px)] -translate-x-1/2 pt-3.5 md:top-[6.6rem] lg:top-[7rem]"
                     onMouseEnter={() => setOpenMenu("solutions")}
                   >
                     <MenuPanel

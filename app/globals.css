@@ -7,4 +7,8 @@
     --navbar-bg: #3b31a1;
     --page-bg: #f4f6f9;
   }
+
+  body {
+    overflow-x: hidden;
+  }
 }
