@@ -2,6 +2,7 @@
 
 import type { ComponentType } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -335,10 +336,12 @@ function ServiceCard({
             }}
           >
             {/* Background Image */}
-            <img
+            <Image
               src="/images/facebook-ads.png"
               alt="Meta ads marketing"
-              className="w-full h-full object-cover transition-transform duration-700"
+              fill
+              className="object-cover transition-transform duration-700"
+              sizes="(max-width: 1024px) 100vw, 42vw"
             />
 
           </motion.div>
@@ -351,11 +354,13 @@ function ServiceCard({
       )}
       {/* Top Image for non-featured cards */}
       {image && (
-        <div className="relative -m-6 mb-5 overflow-hidden rounded-t-2xl">
-          <img
+        <div className="relative -m-6 mb-5 h-40 overflow-hidden rounded-t-2xl">
+          <Image
             src={image}
             alt={title}
-            className="w-full h-40 object-contain transition-transform duration-500 group-hover/card:scale-105"
+            fill
+            className="object-contain transition-transform duration-500 group-hover/card:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         </div>

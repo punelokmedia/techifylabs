@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 
 const fadeUp: Variants = {
@@ -188,8 +188,6 @@ function FeatureCard({
 // ── PAGE COMPONENT ───────────────────────────────────────────
 
 export default function WebsiteDesignPage() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* ══════════════════════════════════════════
@@ -303,7 +301,7 @@ export default function WebsiteDesignPage() {
       ══════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
-          <SectionBadge>What's Included</SectionBadge>
+          <SectionBadge>What&apos;s Included</SectionBadge>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Our Design Services
           </h2>
@@ -481,10 +479,10 @@ export default function WebsiteDesignPage() {
           >
             <SectionBadge>Ready to Start?</SectionBadge>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Let's Build Something Memorable
+              Let&apos;s Build Something Memorable
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Book a free consultation and let's design a website that grows
+              Book a free consultation and let&apos;s design a website that grows
               your business.
             </p>
             <Link

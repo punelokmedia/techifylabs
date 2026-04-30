@@ -266,7 +266,6 @@ const faqs = [
 ];
 
 export default function MetaAdsPage() {
-  const reduce = useReducedMotion();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -372,10 +371,13 @@ export default function MetaAdsPage() {
             ></div>
 
             <div className="relative shadow-lg p-3 ">
-              <img
+              <Image
                 src="/images/screen-copy.png"
                 alt="marketing"
-                className="rounded-xl w-[600px] h-80 object-contain"
+                width={600}
+                height={320}
+                priority
+                className="h-80 w-[600px] rounded-xl object-contain"
               />
             </div>
           </div>
@@ -625,7 +627,7 @@ export default function MetaAdsPage() {
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-10">
           <FadeIn className="max-w-2xl">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
-              What's included
+              What&apos;s included
             </p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
               Facebook Advertising Services We Offer
@@ -822,8 +824,8 @@ export default function MetaAdsPage() {
               Turn Scrolls Into Sales
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we'll come back with a clear plan,
-              realistic scope, and how we'd measure success.
+              Book a free strategy call — we&apos;ll come back with a clear plan,
+              realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link

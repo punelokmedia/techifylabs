@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
 const tags = [
   { name: "Meta Ads", color: "bg-blue-100 text-blue-600" },
@@ -12,11 +11,10 @@ const tags = [
 ];
 
 export default function BlogContentLayout() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [, setMobileOpen] = useState(false);
   //   function setMobileOpen(arg0: boolean): void {
   //     throw new Error("Function not implemented.");
   //   }
-  const router = useRouter();
 
   return (
     <div className="bg-gray-50 py-16">
@@ -46,7 +44,7 @@ export default function BlogContentLayout() {
 
           {/* INTRO */}
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Scaling Meta ads isn't just about increasing budget. Most brands hit
+            Scaling Meta ads isn&apos;t just about increasing budget. Most brands hit
             a ceiling not because of budget constraints — but because their
             creative, audience segmentation, and campaign structure aren’t built
             for scale.
@@ -58,7 +56,7 @@ export default function BlogContentLayout() {
           </p>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            The good news: it's a solvable problem. Here's the exact framework
+            The good news: it&apos;s a solvable problem. Here&apos;s the exact framework
             we use.
           </p>
 

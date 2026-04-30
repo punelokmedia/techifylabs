@@ -327,7 +327,7 @@ export default function ShopifyDevelopmentPage() {
             <div>
               <SectionBadge>Why Shopify?</SectionBadge>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                The World's Best{" "}
+                The World&apos;s Best{" "}
                 <span
                   className="bg-gradient-to-r from-[#3b31a1] via-violet-500 to-violet-400
                                  bg-clip-text text-transparent"
@@ -336,7 +336,7 @@ export default function ShopifyDevelopmentPage() {
                 </span>
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
-                Shopify powers over 4 million businesses worldwide. It's secure,
+                Shopify powers over 4 million businesses worldwide. It&apos;s secure,
                 fast, and comes with everything you need to sell — online,
                 in-person, and everywhere in between.
               </p>
@@ -468,10 +468,10 @@ export default function ShopifyDevelopmentPage() {
           >
             <SectionBadge>Ready to Launch?</SectionBadge>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Let's Build Your Shopify Store
+              Let&apos;s Build Your Shopify Store
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
-              Book a free consultation and let's design a store that turns
+              Book a free consultation and let&apos;s design a store that turns
               visitors into customers.
             </p>
             <Link

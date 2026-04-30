@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { blogPosts } from "../../../data/blogData";
 
@@ -25,10 +26,13 @@ export default async function BlogDetail({ params }: BlogDetailProps) {
   return (
     <main className="bg-[#f4f6f9]">
       <div className="relative min-h-[60vh]">
-        <img
+        <Image
           src={post.coverImage}
           alt={post.title}
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/55" />
 

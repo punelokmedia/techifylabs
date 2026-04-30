@@ -83,8 +83,6 @@ function IconTarget({ className }: { className?: string }) {
   );
 }
 
-const avatars = ["A", "B", "C", "D"];
-
 export default function AboutSection() {
   return (
     <section
