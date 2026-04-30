@@ -507,7 +507,7 @@ export default function Navbar() {
               alt="Techify Labs"
               width={800}
               height={500}
-              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[8rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[6.25rem] md:max-h-[6.75rem] lg:max-h-[7.25rem]"
+              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[8rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[6.25rem] md:max-h-[6.75rem] lg:max-h-[7.28rem]"
               style={{ filter: "none" }}
               priority
               sizes="(max-width: 768px) 92vw, 520px"
@@ -538,6 +538,7 @@ export default function Navbar() {
                   setOpenMenu(openMenu === "solutions" ? null : "solutions")
                 }
               >
+
                 Our Solutions
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "solutions" ? "rotate-180" : ""}`}
