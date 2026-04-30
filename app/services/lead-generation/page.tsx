@@ -124,6 +124,7 @@ export default function LeadGenerationPage() {
 
   const isMobile = viewportWidth < 768;
   const isTablet = viewportWidth < 1024;
+  const flowColumns = isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)";
   const phoneE164 = "+918956776951";
   const phoneTel = `tel:${phoneE164}`;
   const goTo = (href?: string) => {
@@ -137,6 +138,8 @@ export default function LeadGenerationPage() {
         fontFamily: "'Segoe UI', system-ui, sans-serif",
         background: "#f1f2f7",
         minHeight: "100vh",
+        width: "100%",
+        overflowX: "hidden",
       }}
     >
       {/* HERO SECTION */}
@@ -620,8 +623,7 @@ export default function LeadGenerationPage() {
                 gap: 10,
                 position: "relative",
                 zIndex: 2,
-                width: isMobile ? "58%" : "auto",
-                minWidth: isMobile ? 220 : "auto",
+                width: isMobile ? "min(58%, 220px)" : "auto",
                 padding: isMobile ? "12px 0 12px 12px" : 0,
               }}
             >
@@ -908,7 +910,7 @@ export default function LeadGenerationPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
+                gridTemplateColumns: flowColumns,
                 gap: 8,
               }}
             >
@@ -1011,7 +1013,7 @@ export default function LeadGenerationPage() {
                       {step.sub}
                     </p>
                   </button>
-                  {i < 3 && !isMobile && (
+                  {i < 3 && !isTablet && (
                     <div
                       style={{
                         position: "absolute",
@@ -1095,7 +1097,7 @@ export default function LeadGenerationPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)",
+                gridTemplateColumns: flowColumns,
                 gap: 8,
               }}
             >
@@ -1198,7 +1200,7 @@ export default function LeadGenerationPage() {
                       {step.sub}
                     </p>
                   </button>
-                  {i < 3 && !isMobile && (
+                  {i < 3 && !isTablet && (
                     <div
                       style={{
                         position: "absolute",
