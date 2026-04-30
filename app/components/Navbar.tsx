@@ -503,11 +503,11 @@ export default function Navbar() {
             className="group relative flex shrink-0 items-center overflow-visible py-0 transition-opacity hover:opacity-95"
           >
             <Image
-              src="/techify-labs-logo.jpeg"
+              src="/techify-labs-logo.png"
               alt="Techify Labs"
-              width={700}
-              height={400}
-              className="block h-auto w-auto max-w-[min(650px,95vw)] max-h-[4.75rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
+              width={800}
+              height={500}
+              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[7rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[5rem] md:max-h-[5.25rem] lg:max-h-[5.5rem]"
               style={{ filter: "none" }}
               priority
               sizes="(max-width: 768px) 92vw, 520px"
