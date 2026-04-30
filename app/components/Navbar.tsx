@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TopBar from "./TopBar";
 import ConsultationModal from "./ConsultationModel";
-type MenuKey = "solutions" | "knowledge" | null;
+type MenuKey = "solutions" | "leadGeneration" | "knowledge" | null;
 
 const solutionsSections = [
   {
@@ -92,6 +92,24 @@ const solutionsSections = [
 const knowledgeLinks = [
   { label: "Our Team", href: "/about#team", Icon: IconUsers },
   { label: " Our Blogs", href: "/services/blogs", Icon: IconBook },
+];
+
+const leadGenerationLinks = [
+  {
+    label: "Lead Generation Overview",
+    href: "/services/lead-generation",
+    Icon: IconMegaphone,
+  },
+  {
+    label: "Lead Generation for IVF Center",
+    href: "/services/lead-generation-ivf-center",
+    Icon: IconHeart,
+  },
+  {
+    label: "Lead Generation for Hair Transplant Clinic",
+    href: "/services/lead-generation-hair-transplant-clinic",
+    Icon: IconSparkle,
+  },
 ];
 
 function ChevronDown({ className }: { className?: string }) {
@@ -599,6 +617,108 @@ export default function Navbar() {
 
             <div
               className="relative shrink-0"
+              onMouseEnter={() => setOpenMenu("leadGeneration")}
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              <button
+                type="button"
+                aria-expanded={openMenu === "leadGeneration"}
+                aria-haspopup="true"
+                className={triggerClass(openMenu === "leadGeneration")}
+                onClick={() =>
+                  setOpenMenu(openMenu === "leadGeneration" ? null : "leadGeneration")
+                }
+              >
+                Lead Generation
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "leadGeneration" ? "rotate-180" : ""}`}
+                />
+              </button>
+              <AnimatePresence>
+                {openMenu === "leadGeneration" && (
+                  <motion.div
+                    key="lead-generation"
+                    role="menu"
+                    aria-label="Lead Generation"
+                    variants={megaContainerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    style={{ transformOrigin: "top left" }}
+                    className="absolute left-0 top-full z-50 min-w-[min(92vw,420px)] pt-3.5"
+                    onMouseEnter={() => setOpenMenu("leadGeneration")}
+                  >
+                    <MenuPanel variant="compact" className="p-4">
+                      <div className="border-b border-slate-200 pb-3 pl-1">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.35)]"
+                            aria-hidden
+                          />
+                          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-800">
+                            Lead Generation
+                          </p>
+                        </div>
+                        <p className="mt-1.5 pl-4 text-xs text-slate-500">
+                          IVF and hair transplant focused campaigns
+                        </p>
+                      </div>
+                      <motion.ul
+                        className="mt-3 space-y-0.5"
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                          visible: {
+                            transition: {
+                              staggerChildren: 0.06,
+                              delayChildren: 0.1,
+                            },
+                          },
+                          hidden: {},
+                        }}
+                      >
+                        {leadGenerationLinks.map(({ label, href, Icon }) => (
+                          <motion.li
+                            key={label}
+                            variants={{
+                              hidden: { opacity: 0, x: -8 },
+                              visible: {
+                                opacity: 1,
+                                x: 0,
+                                transition: {
+                                  duration: 0.26,
+                                  ease: dropdownEase,
+                                },
+                              },
+                            }}
+                          >
+                            <a
+                              href={href}
+                              role="menuitem"
+                              className="group flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-slate-700 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                            >
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#3b31a1] ring-1 ring-slate-200/80 transition duration-200 group-hover:bg-violet-100 group-hover:text-[#3b31a1]">
+                                <Icon className="h-[17px] w-[17px]" />
+                              </span>
+                              <span className="flex-1">{label}</span>
+                              <span
+                                className="text-[#ea580c]/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#ea580c]"
+                                aria-hidden
+                              >
+                                →
+                              </span>
+                            </a>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </MenuPanel>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div
+              className="relative shrink-0"
               onMouseEnter={() => setOpenMenu("knowledge")}
               onMouseLeave={() => setOpenMenu(null)}
             >
@@ -851,6 +971,49 @@ export default function Navbar() {
                             </ul>
                           </div>
                         ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-50"
+                    onClick={() =>
+                      setMobileAccordion((a) =>
+                        a === "leadGeneration" ? null : "leadGeneration",
+                      )
+                    }
+                  >
+                    Lead Generation
+                    <ChevronDown
+                      className={`shrink-0 opacity-80 transition-transform ${mobileAccordion === "leadGeneration" ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {mobileAccordion === "leadGeneration" && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.32, ease: dropdownEase }}
+                        className="overflow-hidden pl-2"
+                      >
+                        <ul className="space-y-1 rounded-xl bg-slate-50 p-2 pb-3 ring-1 ring-slate-200/80">
+                          {leadGenerationLinks.map(({ label, href, Icon }) => (
+                            <li key={label}>
+                              <a
+                                href={href}
+                                className="flex items-center gap-3 rounded-lg px-2 py-3 text-sm font-semibold text-slate-800 active:bg-violet-50"
+                                onClick={() => setMobileOpen(false)}
+                              >
+                                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-[#3b31a1] ring-1 ring-slate-200/80">
+                                  <Icon className="h-4 w-4" />
+                                </span>
+                                {label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
                       </motion.div>
                     )}
                   </AnimatePresence>

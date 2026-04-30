@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
@@ -136,8 +137,10 @@ function FooterSectionTitle({ children }: { children: ReactNode }) {
 
 export default function Footer() {
   const reduceMotion = useReducedMotion();
+  const pathname = usePathname();
   const [atTop, setAtTop] = useState(true);
   const [atBottom, setAtBottom] = useState(false);
+  const hideFloatingControls = pathname?.startsWith("/services/lead-generation");
 
   useEffect(() => {
     const update = () => {
@@ -355,66 +358,70 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Side scroll: up / down — above Call + WhatsApp stack */}
-      <motion.div
-        className="fixed bottom-40 right-6 z-40 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#3b31a1]/95 text-white shadow-lg shadow-black/25 backdrop-blur-md"
-        role="group"
-        aria-label="Page scroll"
-        initial={false}
-        whileHover={reduceMotion ? undefined : { scale: 1.02 }}
-        transition={springSoft}
-      >
-        <motion.button
-          type="button"
-          onClick={scrollToTop}
-          disabled={atTop}
-          className="flex h-11 w-11 items-center justify-center transition-colors hover:bg-white/10 disabled:pointer-events-none disabled:opacity-35 focus:outline-none focus-visible:bg-white/15"
-          aria-label="Scroll to top"
-          whileTap={reduceMotion ? undefined : { scale: 0.92 }}
-        >
-          <IconChevronUp className="h-5 w-5" />
-        </motion.button>
-        <span className="mx-2 h-px shrink-0 bg-white/15" aria-hidden />
-        <motion.button
-          type="button"
-          onClick={scrollToBottom}
-          disabled={atBottom}
-          className="flex h-11 w-11 items-center justify-center transition-colors hover:bg-white/10 disabled:pointer-events-none disabled:opacity-35 focus:outline-none focus-visible:bg-white/15"
-          aria-label="Scroll to bottom"
-          whileTap={reduceMotion ? undefined : { scale: 0.92 }}
-        >
-          <IconChevronDown className="h-5 w-5" />
-        </motion.button>
-      </motion.div>
+      {!hideFloatingControls && (
+        <>
+          {/* Side scroll: up / down — above Call + WhatsApp stack */}
+          <motion.div
+            className="fixed bottom-56 right-2 z-40 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#3b31a1]/95 text-white shadow-lg shadow-black/25 backdrop-blur-md md:bottom-40 md:right-3 lg:right-2"
+            role="group"
+            aria-label="Page scroll"
+            initial={false}
+            whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+            transition={springSoft}
+          >
+            <motion.button
+              type="button"
+              onClick={scrollToTop}
+              disabled={atTop}
+              className="flex h-11 w-11 items-center justify-center transition-colors hover:bg-white/10 disabled:pointer-events-none disabled:opacity-35 focus:outline-none focus-visible:bg-white/15"
+              aria-label="Scroll to top"
+              whileTap={reduceMotion ? undefined : { scale: 0.92 }}
+            >
+              <IconChevronUp className="h-5 w-5" />
+            </motion.button>
+            <span className="mx-2 h-px shrink-0 bg-white/15" aria-hidden />
+            <motion.button
+              type="button"
+              onClick={scrollToBottom}
+              disabled={atBottom}
+              className="flex h-11 w-11 items-center justify-center transition-colors hover:bg-white/10 disabled:pointer-events-none disabled:opacity-35 focus:outline-none focus-visible:bg-white/15"
+              aria-label="Scroll to bottom"
+              whileTap={reduceMotion ? undefined : { scale: 0.92 }}
+            >
+              <IconChevronDown className="h-5 w-5" />
+            </motion.button>
+          </motion.div>
 
-      <div
-        className="fixed bottom-6 right-6 z-50 flex flex-col gap-3"
-        role="group"
-        aria-label="Quick contact"
-      >
-        <motion.a
-          href={PHONE_TEL}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#3b31a1] text-white shadow-lg shadow-black/35 ring-2 ring-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1]"
-          aria-label={`Call ${PHONE_DISPLAY}`}
-          whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
-          whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
-          transition={springSoft}
-        >
-          <IconPhoneCall className="h-7 w-7" />
-        </motion.a>
-        <motion.a
-          href={`https://wa.me/${PHONE_E164.replace(/\D/g, "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/35 ring-2 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1]"
-          aria-label="Chat on WhatsApp"
-          whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
-          whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
-          transition={springSoft}
-        >
-          <IconWhatsApp className="h-7 w-7" />
-        </motion.a>
-      </div>
+          <div
+            className="fixed bottom-24 right-2 z-50 flex flex-col gap-3 md:bottom-6 md:right-3 lg:right-2"
+            role="group"
+            aria-label="Quick contact"
+          >
+            <motion.a
+              href={PHONE_TEL}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#3b31a1] text-white shadow-lg shadow-black/35 ring-2 ring-white/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1] md:h-14 md:w-14"
+              aria-label={`Call ${PHONE_DISPLAY}`}
+              whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
+              transition={springSoft}
+            >
+              <IconPhoneCall className="h-7 w-7" />
+            </motion.a>
+            <motion.a
+              href={`https://wa.me/${PHONE_E164.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/35 ring-2 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1] md:h-14 md:w-14"
+              aria-label="Chat on WhatsApp"
+              whileHover={reduceMotion ? undefined : { scale: 1.08, y: -2 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.94, transition: springTap }}
+              transition={springSoft}
+            >
+              <IconWhatsApp className="h-7 w-7" />
+            </motion.a>
+          </div>
+        </>
+      )}
     </footer>
   );
 }

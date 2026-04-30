@@ -103,7 +103,7 @@ export default function Hero() {
   }, [useMp4Bg, activeVideoIndex]);
 
   return (
-    <section className="relative w-full min-h-[min(86vh,780px)] overflow-hidden rounded-b-[1.75rem] border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)] sm:rounded-b-[1.75rem]">
+    <section className="relative w-full min-h-[min(86vh,780px)] overflow-hidden border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)]">
       {/* Background: YouTube (Google) or MP4 */}
       <div className="absolute inset-0">
         {useYoutubeBg ? (
@@ -267,6 +267,13 @@ export default function Hero() {
                 </span>
               </motion.button>
             </motion.div>
+            <motion.a
+              href="/services/lead-generation"
+              whileTap={{ scale: 0.97, transition: springTap }}
+              className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15 sm:text-[15px]"
+            >
+              Open Lead Generation Page
+            </motion.a>
           </motion.div>
         </div>
       </div>

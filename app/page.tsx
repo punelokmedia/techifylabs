@@ -7,6 +7,7 @@ import HowItWorksSection from "./components/HowItWorksSection";
 import FaqSection from "./components/FaqSection";
 import Footer from "./components/Footer";
 import BlogSection from "./components/BlogSection";
+import LeadGenerationPage from "./services/lead-generation/page";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 
       <main className="flex-1 pt-0">
         <Hero />
+        <LeadGenerationPage />
         <AboutSection />
         <ServicesSection />
         <WhyChooseSection />
