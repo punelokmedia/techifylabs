@@ -357,7 +357,7 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <div className="relative z-10 px-4 sm:px-8 lg:px-10 py-8 bg-white">
+      <div className="relative px-4 sm:px-8 lg:px-10 py-8 bg-white">
         <div className="mx-auto max-w-[1440px]">
           <div className="rounded-2xl border border-slate-200 bg-white px-4 py-7 shadow-sm sm:rounded-3xl sm:px-10 sm:py-9">
             <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 sm:text-left">
@@ -673,8 +673,8 @@ export default function AmazonAdsPage() {
               Ready to scale on Amazon?
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we&apos;ll come back with a clear plan,
-              realistic scope, and how we&apos;d measure success.
+              Book a free strategy call — we&apos;ll come back with a clear
+              plan, realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link

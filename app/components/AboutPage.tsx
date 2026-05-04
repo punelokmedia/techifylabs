@@ -91,7 +91,6 @@ const stackLabels = [
   "Tag Manager",
 ];
 
-
 const teamMembers = [
   {
     name: "Thomas Stevens",
@@ -220,7 +219,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero — immersive */}
-      <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem]">
+      <section className="relative pt-28 md:pt-32 lg:pt-36 overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem]">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(99,102,241,0.45),transparent_55%)]"
           aria-hidden
@@ -298,7 +297,6 @@ export default function AboutPage() {
                   </Link>
                 </div>
               </motion.div>
-             
             </div>
 
             <div className="relative lg:col-span-6 xl:col-span-7">
@@ -408,7 +406,6 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-              
               </FadeIn>
             </div>
           </div>
@@ -597,8 +594,8 @@ export default function AboutPage() {
                   {/* IMAGE */}
                   <div className="relative h-[420px] w-full">
                     <Image
-                    src={member.img}
-                    alt={member.name}
+                      src={member.img}
+                      alt={member.name}
                       fill
                       className="object-cover grayscale transition duration-500 group-hover:grayscale-0"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

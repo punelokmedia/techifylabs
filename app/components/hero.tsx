@@ -103,7 +103,7 @@ export default function Hero() {
   }, [useMp4Bg, activeVideoIndex]);
 
   return (
-    <section className="relative w-full min-h-[min(86vh,780px)] overflow-hidden border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)]">
+    <section className="relative w-full pt-28 md:pt-32 lg:pt-36 min-h-[min(86vh,780px)] overflow-hidden border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)]">
       {/* Background: YouTube (Google) or MP4 */}
       <div className="absolute inset-0">
         {useYoutubeBg ? (
@@ -238,8 +238,6 @@ export default function Hero() {
                 hover: reduceMotion ? ctaStackRest : ctaStackHover,
               }}
             >
-             
-
               <motion.button
                 onClick={() => setOpenModal(true)}
                 variants={{

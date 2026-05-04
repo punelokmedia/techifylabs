@@ -14,7 +14,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
 
-      <main className="flex-1 pt-0">
+      <main className="flex-1 pt-[your-navbar-height]">
         <Hero />
         <LeadGenerationPage />
         <AboutSection />

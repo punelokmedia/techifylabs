@@ -220,7 +220,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-full">
       {/* Hero — aligned with About */}
-      <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem] border-b border-gray-200">
+      <section className="relative pt-28 md:pt-32 lg:pt-36 overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem] border-b border-gray-200">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]"
           aria-hidden
@@ -760,7 +760,6 @@ export default function ContactPage() {
                           </div>
                         </div>
 
-                       
                         <div className="mt-8">
                           <label
                             htmlFor="contact-topic"
