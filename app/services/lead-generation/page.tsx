@@ -338,7 +338,7 @@ export default function LeadGenerationPage() {
               maxWidth: isTablet ? "100%" : 620,
               alignSelf: "flex-start",
               position: "relative",
-              zIndex: 3,
+              // zIndex: 3,
               overflow: "hidden",
             }}
           >
@@ -616,7 +616,7 @@ export default function LeadGenerationPage() {
               justifyContent: "center",
               marginRight: isTablet ? 0 : 4,
               marginLeft: isTablet ? 0 : -4,
-              zIndex: 1,
+              // zIndex: 1,
               // minHeight: isMobile ? 560 : 360,
               height: "100%",
               minHeight: isTablet ? 300 : 610,
@@ -636,7 +636,7 @@ export default function LeadGenerationPage() {
                 height: "100%",
                 objectFit: "cover",
                 objectPosition: "right center",
-                zIndex: 0,
+                // zIndex: 0,
               }}
             />
 
@@ -646,7 +646,7 @@ export default function LeadGenerationPage() {
                 position: "absolute",
                 inset: 0,
                 background: "rgba(0,0,0,0.7)",
-                zIndex: 1,
+                // zIndex: 1,
               }}
             />
             {/* LEFT CARDS */}
@@ -662,7 +662,7 @@ export default function LeadGenerationPage() {
                 marginLeft: 20,
                 marginRight: 0,
                 // margin: "0 auto",
-                zIndex: 2,
+                // zIndex: 2,
                 gap: 10,
                 position: "relative",
 
@@ -890,7 +890,7 @@ export default function LeadGenerationPage() {
           margin: "-2px auto 0",
           padding: isMobile ? "26px 14px" : "40px 32px",
           position: "relative",
-          zIndex: 6,
+          // zIndex: 6,
         }}
       >
         {/* Section title with decorative lines */}

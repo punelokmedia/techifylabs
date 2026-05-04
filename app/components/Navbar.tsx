@@ -490,7 +490,7 @@ export default function Navbar() {
     ].join(" ");
 
   return (
-    <header ref={navRef} className="sticky top-0 z-50">
+    <header ref={navRef} className="fixed top-0 left-0 right-0 z-[9999] w-full">
       <TopBar />
       <div className="relative border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
         <div
@@ -538,7 +538,6 @@ export default function Navbar() {
                   setOpenMenu(openMenu === "solutions" ? null : "solutions")
                 }
               >
-
                 Our Solutions
                 <ChevronDown
                   className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "solutions" ? "rotate-180" : ""}`}
