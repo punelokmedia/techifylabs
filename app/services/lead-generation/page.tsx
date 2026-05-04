@@ -154,12 +154,15 @@ export default function LeadGenerationPage() {
       >
         <div
           style={{
-            maxWidth: 1400,
-            margin: "0 auto",
+            width: "100%",
+            maxWidth: "100%",
+            // maxWidth: 1400,
+            // margin: "0 auto",
             display: "grid",
             gridTemplateColumns: isTablet ? "1fr" : "1fr 1.1fr 0.75fr",
-            gap: isTablet ? 14 : 0,
-            padding: isMobile ? "12px 14px 20px" : "0 32px 0",
+            gap: isTablet ? 14 : 6,
+            padding: isMobile ? "12px 14px 20px" : "0 0 0 32px",
+
             minHeight: isTablet ? "auto" : 610,
             alignItems: "stretch",
           }}
@@ -169,7 +172,8 @@ export default function LeadGenerationPage() {
             style={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-start",
+              paddingTop: 60,
               paddingRight: isTablet ? 0 : 32,
             }}
           >
@@ -321,13 +325,18 @@ export default function LeadGenerationPage() {
               color: "#1e293b",
               borderRadius: 16,
               border: "1px solid #e5e7eb",
-              padding: isMobile ? "12px 12px 10px" : isTablet ? "14px 14px 10px" : "16px 18px 12px",
+
+              padding: isMobile
+                ? "12px 12px 10px"
+                : isTablet
+                  ? "14px 14px 10px"
+                  : "16px 18px 12px",
               boxShadow: "0 20px 48px -24px rgba(2,6,23,0.5)",
-              margin: isTablet ? "8px 0 0" : "12px 10px 0",
+              margin: "80px auto ",
               display: "flex",
               flexDirection: "column",
               maxWidth: isTablet ? "100%" : 620,
-              alignSelf: "end",
+              alignSelf: "flex-start",
               position: "relative",
               zIndex: 3,
               overflow: "hidden",
@@ -602,28 +611,61 @@ export default function LeadGenerationPage() {
           {/* RIGHT: Cards left + image right */}
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: isMobile ? "1fr" : "0.92fr 1.08fr",
-              gap: 12,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               marginRight: isTablet ? 0 : 4,
               marginLeft: isTablet ? 0 : -4,
               zIndex: 1,
-              minHeight: isMobile ? 560 : 360,
+              // minHeight: isMobile ? 560 : 360,
+              height: "100%",
+              minHeight: isTablet ? 300 : 610,
               position: "relative",
               overflow: "hidden",
-              borderRadius: isMobile ? 16 : 0,
+              // borderRadius: isMobile ? 16 : 0,
             }}
           >
+            {/* BACKGROUND IMAGE */}
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80"
+              alt="bg"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "right center",
+                zIndex: 0,
+              }}
+            />
+
+            {/* OVERLAY */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "rgba(0,0,0,0.7)",
+                zIndex: 1,
+              }}
+            />
             {/* LEFT CARDS */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "flex-start",
+                justifyContent: "center",
+                // alignItems: "start",
+                width: "100%",
+                maxWidth: 280,
+                alignItems: "flex-start",
+                marginLeft: 20,
+                marginRight: 0,
+                // margin: "0 auto",
+                zIndex: 2,
                 gap: 10,
                 position: "relative",
-                zIndex: 2,
-                width: isMobile ? "min(58%, 220px)" : "auto",
+
                 padding: isMobile ? "12px 0 12px 12px" : 0,
               }}
             >
@@ -638,6 +680,7 @@ export default function LeadGenerationPage() {
                   padding: "12px 14px",
                   boxShadow: "0 10px 22px rgba(15,23,42,0.2)",
                   color: "#1e293b",
+                  width: "70%",
                 }}
               >
                 <p
@@ -705,6 +748,7 @@ export default function LeadGenerationPage() {
                   padding: "12px 14px",
                   boxShadow: "0 10px 22px rgba(15,23,42,0.2)",
                   color: "#1e293b",
+                  width: "70%",
                 }}
               >
                 <p
@@ -808,7 +852,7 @@ export default function LeadGenerationPage() {
             </div>
 
             {/* RIGHT IMAGE */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -834,7 +878,7 @@ export default function LeadGenerationPage() {
                   transform: isMobile ? "scale(1.16)" : "none",
                 }}
               />
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
@@ -894,7 +938,7 @@ export default function LeadGenerationPage() {
             background: "#fff",
             borderRadius: 24,
             border: "1px solid #e2e8f0",
-              padding: isMobile ? "16px 14px" : "24px 28px",
+            padding: isMobile ? "16px 14px" : "24px 28px",
             boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
           }}
         >
