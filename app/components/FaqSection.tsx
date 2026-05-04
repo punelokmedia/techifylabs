@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import ConsultationModal from "./ConsultationModel";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -22,22 +23,11 @@ const faqs = [
     q: "How long before we see results?",
     a: "Some channels move in weeks; SEO and brand builds take longer. You’ll get a realistic timeline in the first sprint.",
   },
-  {
-    q: "Can you manage our existing ad accounts?",
-    a: "Yes. We audit structure, creatives, and tracking, then optimize or rebuild where needed—without losing historical data.",
-  },
-  {
-    q: "What does onboarding look like?",
-    a: "Kickoff, access checklist, audience and offer review, then a 30–60–90 plan so everyone knows what ships when.",
-  },
-  {
-    q: "How do we get started?",
-    a: "Book a free consultation. We’ll align on goals and share a proposal with scope, timelines, and investment.",
-  },
 ];
 
 export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <section
@@ -45,55 +35,8 @@ export default function FaqSection() {
       aria-labelledby="faq-heading"
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
-        <div className="max-w-3xl mx-auto">
-          {/* <motion.div
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, ease }}
-            className="relative mx-auto w-full max-w-md space-y-4 lg:mx-0"
-          >
-            <motion.div
-              whileHover={{ y: -4, transition: { type: "spring", stiffness: 380, damping: 28 } }}
-              className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#151a3d] to-[#0f1430] p-8 shadow-xl ring-1 ring-white/10"
-            >
-              <div className="absolute inset-0 opacity-30" aria-hidden>
-                <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-violet-400/40" />
-                <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-              </div>
-              <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-2xl font-bold text-white shadow-lg">
-                T
-              </div>
-              <p className="relative mt-6 text-center text-sm text-white/70">
-                Strategy · Meta · Google · SEO · Analytics
-              </p>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="flex items-center gap-3 rounded-xl bg-[#151a3d] p-4 text-white shadow-lg ring-1 ring-white/10"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-xl">🎧</span>
-              <div>
-                <p className="text-sm font-semibold">Need any help?</p>
-                <p className="text-xs text-white/70">Contact us today · +91 8956776951</p>
-              </div>
-            </motion.div>
-            <motion.div
-              whileHover={{ y: -3 }}
-              className="rounded-xl bg-gradient-to-br from-[#1d4ed8] to-[#2563eb] p-5 text-white shadow-lg ring-1 ring-white/10"
-            >
-              <p className="text-2xl font-bold">250K+</p>
-              <p className="text-xs text-white/75">Reach &amp; growth milestones</p>
-              <div className="mt-3 flex gap-2 text-[10px] font-medium uppercase tracking-wide text-white/60">
-                <span>Analytics</span>
-                <span>·</span>
-                <span>Growth</span>
-                <span>·</span>
-                <span>Secure</span>
-              </div>
-            </motion.div>
-          </motion.div> */}
-
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {" "}
           <div>
             <div className="text-center mb-10">
               <motion.span
@@ -105,7 +48,7 @@ export default function FaqSection() {
               >
                 FAQ
               </motion.span>
-              <motion.h2
+              {/* <motion.h2
                 id="faq-heading"
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -114,7 +57,7 @@ export default function FaqSection() {
                 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-[#0c2d52] sm:text-4xl"
               >
                 Frequently asked questions about digital marketing services
-              </motion.h2>
+              </motion.h2> */}
             </div>
             <ul className="mt-8 divide-y divide-slate-200">
               {faqs.map((item, i) => {
@@ -164,8 +107,54 @@ export default function FaqSection() {
               })}
             </ul>
           </div>
+          {/* <div className="flex justify-center items-center mt-60">
+            <img
+              src="/gallery/faq4.jpg"
+              alt="FAQ"
+              className="w-full h-full object-cover rounded-2xl shadow-lg"
+            /> */}
+          <div className="flex justify-center items-center">
+            <div className="bg-white border border-slate-200 rounded-2xl shadow-xl p-8 max-w-md w-full">
+              {/* ICON */}
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-violet-100 text-violet-600 mb-4 text-xl">
+                ❓
+              </div>
+
+              {/* TITLE */}
+              <h3 className="text-xl font-semibold text-slate-900">
+                Have more questions?
+              </h3>
+
+              {/* DESCRIPTION */}
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                Our team is here to help you understand how digital marketing
+                can grow your business. Get clarity before you invest.
+              </p>
+
+              {/* POINTS */}
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li>✔ Free consultation</li>
+                <li>✔ Clear strategy roadmap</li>
+                <li>✔ No hidden costs</li>
+              </ul>
+
+              {/* CTA */}
+              <button
+                type="button"
+                onClick={() => setOpenModal(true)}
+                className="mt-6 w-full bg-violet-600 hover:bg-violet-700 text-white py-2.5 rounded-lg font-medium transition"
+              >
+                Get Free Consultation
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+      <ConsultationModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      />
+      {/* </div> */}
     </section>
   );
 }
