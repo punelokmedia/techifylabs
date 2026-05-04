@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import ConsultationModal from "@/app/components/ConsultationModel";
 
 function FadeIn({
   children,
@@ -83,20 +84,8 @@ const faqs = [
     a: "We implement strict qualification criteria and use data-driven insights to identify high-intent prospects.",
   },
   {
-    q: "What sets you apart from other lead generation agencies?",
-    a: "Our specialized approach focuses on the unique needs of hair transplant clinics, ensuring leads are highly qualified and conversion-ready.",
-  },
-  {
-    q: "How do you measure campaign success?",
-    a: "We track key metrics like CPL, booked consult rate, and source-level ROI to ensure optimal performance.",
-  },
-  {
-    q: "Do you offer reporting and analytics?",
-    a: "Yes. We provide comprehensive reporting and analytics to keep you informed about campaign performance and ROI.",
-  },
-  {
-    q: "What is your approach to lead qualification?",
-    a: "We use a multi-layered approach to qualify leads, including form filters, audience exclusions, and creative testing to prioritize consultation-ready prospects.",
+    q: "What kind of reporting do you provide?",
+    a: "We provide comprehensive weekly dashboards showing CPL, booked consult rate, and source-level ROI.",
   },
 ];
 const img = [
@@ -145,6 +134,7 @@ function IconSpark() {
 
 export default function LeadGenerationHairTransplantClinicPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
@@ -687,7 +677,7 @@ export default function LeadGenerationHairTransplantClinicPage() {
           </div>
         </div>
       </section> */}
-      <section
+      {/* <section
         id="faq"
         className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20"
       >
@@ -756,8 +746,123 @@ export default function LeadGenerationHairTransplantClinicPage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
+      <section
+        id="faq"
+        className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20"
+      >
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-8 lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* 🔥 LEFT SIDE - CARD */}
+            <div className="flex justify-center items-start">
+              <div className="bg-white border border-slate-200 rounded-2xl shadow-xl p-8 max-w-md w-full">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-violet-100 text-violet-600 mb-4 text-xl">
+                  ❓
+                </div>
 
+                <h3 className="text-xl font-semibold text-slate-900">
+                  Have more questions?
+                </h3>
+
+                <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                  Our team is here to help you understand how digital marketing
+                  can grow your business. Get clarity before you invest.
+                </p>
+
+                <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                  <li>✔ Free consultation</li>
+                  <li>✔ Clear strategy roadmap</li>
+                  <li>✔ No hidden costs</li>
+                </ul>
+
+                <button
+                  type="button"
+                  onClick={() => setOpenModal(true)}
+                  className="mt-6 w-full bg-violet-600 hover:bg-violet-700 text-white py-2.5 rounded-lg font-medium transition"
+                >
+                  Get Free Consultation
+                </button>
+              </div>
+            </div>
+
+            {/* 🔥 RIGHT SIDE - FAQ */}
+            <div>
+              <FadeIn className="text-center">
+                <p className="text-[17px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
+                  FAQ
+                </p>
+
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+
+                <p className="mt-4 text-[14px] text-slate-600">
+                  Everything you need to know about working with us.
+                </p>
+              </FadeIn>
+
+              <div className="mt-8 space-y-3 sm:mt-10">
+                {faqs.map((item, i) => {
+                  const open = openFaq === i;
+                  return (
+                    <FadeIn key={item.q} delay={0.04 * i}>
+                      <div className="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm sm:rounded-2xl">
+                        <button
+                          type="button"
+                          onClick={() => setOpenFaq(open ? null : i)}
+                          className="flex min-h-[52px] w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-slate-50/80 sm:px-6 sm:py-5"
+                        >
+                          <span className="text-[14px] font-semibold text-slate-900 sm:text-[15px]">
+                            {item.q}
+                          </span>
+
+                          <span
+                            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition ${
+                              open
+                                ? "rotate-180 border-violet-200 bg-violet-50 text-violet-700"
+                                : "border-slate-200 bg-slate-50 text-slate-500"
+                            }`}
+                          >
+                            <svg
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            >
+                              <path
+                                d="M19 9l-7 7-7-7"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
+                        </button>
+
+                        <AnimatePresence initial={false}>
+                          {open && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.28, ease: "easeInOut" }}
+                              className="overflow-hidden"
+                            >
+                              <p className="border-t border-slate-100 px-4 pb-5 pt-4 text-sm leading-relaxed text-slate-600 sm:px-6">
+                                {item.a}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </FadeIn>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-violet-200 bg-white/95 p-3 backdrop-blur md:hidden">
         <div className="mx-auto flex max-w-md gap-2">
           <Link
@@ -774,6 +879,10 @@ export default function LeadGenerationHairTransplantClinicPage() {
           </Link>
         </div>
       </div>
+      <ConsultationModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+      />
     </main>
   );
 }
