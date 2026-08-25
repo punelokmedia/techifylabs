@@ -27,6 +27,45 @@
   }
 }
 
+/* Keep logo size identical in local and production (beats Next Image + Tailwind img preflight). */
+.nav-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: 13.5rem;
+  height: 3.75rem;
+}
+
+@media (min-width: 640px) {
+  .nav-logo {
+    width: 15rem;
+    height: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-logo {
+    width: 16.5rem;
+    height: 4.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-logo {
+    width: 18rem;
+    height: 4.5rem;
+  }
+}
+
+.nav-logo img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
 @layer base {
   html,
   body {

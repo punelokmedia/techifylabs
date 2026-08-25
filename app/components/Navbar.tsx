@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import TopBar from "./TopBar";
@@ -545,17 +544,12 @@ export default function Navbar() {
           aria-hidden
         />
         <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-5 md:h-[4.25rem] md:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
-          <Link
-            href="/"
-            className="relative z-10 block h-full w-[12.5rem] shrink-0 sm:w-[14rem] md:w-[15.25rem] lg:w-[16.5rem] xl:w-[18rem]"
-          >
-            <Image
+          <Link href="/" className="nav-logo relative z-10">
+            <img
               src="/techify-labs-logo.png"
               alt="Techify Labs"
-              fill
-              className="object-contain object-left"
-              sizes="288px"
-              priority
+              width={435}
+              height={188}
             />
           </Link>
           <nav
