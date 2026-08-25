@@ -547,16 +547,15 @@ export default function Navbar() {
         <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-5 md:h-[4.25rem] md:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
           <Link
             href="/"
-            className="relative z-10 flex h-full shrink-0 items-center overflow-visible"
+            className="relative z-10 block h-full w-[12.5rem] shrink-0 sm:w-[14rem] md:w-[15.25rem] lg:w-[16.5rem] xl:w-[18rem]"
           >
             <Image
               src="/techify-labs-logo.png"
               alt="Techify Labs"
-              width={435}
-              height={188}
-              className="block h-full w-auto max-w-[min(280px,58vw)] object-contain object-left sm:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px]"
+              fill
+              className="object-contain object-left"
+              sizes="288px"
               priority
-              sizes="400px"
             />
           </Link>
           <nav
