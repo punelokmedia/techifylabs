@@ -13,7 +13,7 @@ type MenuKey = "solutions" | "leadGeneration" | "knowledge" | null;
 
 const solutionsSections = [
   {
-    title: "Performance marketing (paid)",
+    title: "Paid marketing",
     links: [
       { label: "Meta Ads", href: "/services/meta-ads", Icon: IconMegaphone },
       {
@@ -25,7 +25,7 @@ const solutionsSections = [
     ],
   },
   {
-    title: "Design and development",
+    title: "Design & development",
     links: [
       {
         label: "Website Design (UI/UX)",
@@ -50,7 +50,7 @@ const solutionsSections = [
     ],
   },
   {
-    title: "Quick commerce & marketplace",
+    title: "Commerce",
     links: [
       {
         label: "E-Commerce Marketplace",
@@ -65,7 +65,7 @@ const solutionsSections = [
     ],
   },
   {
-    title: "Branding & growth marketing",
+    title: "Growth & branding",
     links: [
       {
         label: "Organic Growth (SEO)",
@@ -412,12 +412,6 @@ function MenuPanel({
   );
 }
 
-/** Two columns: left = paid + design, right = commerce + branding (matches mega-menu layout). */
-const solutionsColumns: (typeof solutionsSections)[] = [
-  solutionsSections.slice(0, 2),
-  solutionsSections.slice(2, 4),
-];
-
 const dropdownEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const dropdownEaseOut: [number, number, number, number] = [0.4, 0, 1, 1];
 
@@ -432,13 +426,6 @@ const megaContainerVariants = {
     opacity: 0,
     y: 6,
     transition: { duration: 0.14, ease: dropdownEaseOut },
-  },
-};
-
-const megaColumnVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.08 },
   },
 };
 
@@ -458,9 +445,27 @@ export default function Navbar() {
   const [mobileAccordion, setMobileAccordion] = useState<MenuKey>(null);
   const [openModal, setOpenModal] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const closeMenus = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(null);
+  }, []);
+
+  const openDropdown = useCallback((key: Exclude<MenuKey, null>) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(key);
+  }, []);
+
+  const scheduleClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -485,6 +490,7 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (mobileOpen) setOpenMenu(null);
     return () => {
       document.body.style.overflow = "";
     };
@@ -507,7 +513,7 @@ export default function Navbar() {
 
   const triggerClass = (active: boolean) =>
     [
-      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-1.5 md:px-3 md:py-1.5 md:text-[15px]",
+      "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full px-2 py-1 text-[13px] font-semibold tracking-tight transition-all duration-200 xl:gap-1.5 xl:px-3 xl:py-1.5 xl:text-[14.5px]",
       active
         ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
         : "text-white/90 hover:bg-white/10 hover:text-white",
@@ -519,7 +525,7 @@ export default function Navbar() {
         ? pathname === "/"
         : pathname === href || pathname.startsWith(`${href}/`);
     return [
-      "shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold transition-all duration-200 md:px-3 md:py-1.5 md:text-[15px]",
+      "shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-[13px] font-semibold transition-all duration-200 xl:px-3 xl:py-1.5 xl:text-[14.5px]",
       active
         ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
         : "text-white/90 hover:bg-white/10 hover:text-white",
@@ -530,42 +536,37 @@ export default function Navbar() {
     <>
     <header
       ref={navRef}
-      className="fixed inset-x-0 top-0 z-[200] w-full"
+      className="fixed inset-x-0 top-0 z-[200] w-full overflow-visible"
     >
       <TopBar />
-      <div className="relative border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
+      <div className="relative overflow-visible border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-5 md:h-[4.25rem] md:gap-5 md:px-6 lg:h-[4.5rem] lg:gap-6 lg:px-8 xl:px-10">
+        <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-5 md:h-[4.25rem] md:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
           <Link
             href="/"
-            className="group relative flex shrink-0 items-center overflow-visible transition-opacity hover:opacity-95"
+            className="relative z-10 flex shrink-0 items-center"
           >
             <Image
               src="/techify-labs-logo.png"
               alt="Techify Labs"
               width={435}
               height={188}
-              className="block h-[3.35rem] w-auto origin-left object-contain object-left sm:h-[3.6rem] md:h-[3.9rem] lg:h-[4.2rem]"
-              style={{ filter: "none" }}
+              className="block h-8 w-auto max-w-[140px] object-contain object-left sm:h-9 sm:max-w-[158px] lg:h-10 lg:max-w-[172px] xl:h-11 xl:max-w-[196px]"
               priority
-              sizes="(max-width: 768px) 180px, 260px"
+              sizes="196px"
             />
           </Link>
           <nav
-            className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5"
+            className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-1.5"
             aria-label="Main"
           >
-            <Link href="/" className={navLinkClass("/")}>
-              Home
-            </Link>
-
             <div
               className="relative shrink-0"
-              onMouseEnter={() => setOpenMenu("solutions")}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => openDropdown("solutions")}
+              onMouseLeave={scheduleClose}
             >
               <button
                 type="button"
@@ -576,102 +577,17 @@ export default function Navbar() {
                   setOpenMenu(openMenu === "solutions" ? null : "solutions")
                 }
               >
-
                 Our Solutions
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "solutions" ? "rotate-180" : ""}`}
+                  className={`h-3.5 w-3.5 transition-transform duration-300 xl:h-4 xl:w-4 ${openMenu === "solutions" ? "rotate-180" : ""}`}
                 />
               </button>
-              <AnimatePresence>
-                {openMenu === "solutions" && (
-                  <motion.div
-                    key="solutions-mega"
-                    role="menu"
-                    aria-label="Our Solutions"
-                    variants={megaContainerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="nav-flyout fixed left-1/2 top-[var(--site-header-height)] z-[210] w-[min(94vw,920px)] -translate-x-1/2"
-                    onMouseEnter={() => setOpenMenu("solutions")}
-                  >
-                    <MenuPanel variant="mega" className="px-5 py-5 sm:px-6 sm:py-6">
-                      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                        {solutionsColumns.map((column, colIdx) => (
-                          <motion.div
-                            key={colIdx}
-                            className="space-y-6"
-                            variants={megaColumnVariants}
-                            initial="hidden"
-                            animate="visible"
-                          >
-                            {column.map((section) => (
-                              <motion.div
-                                key={section.title}
-                                variants={megaSectionVariants}
-                              >
-                                <h3 className="nav-dropdown-section-title">
-                                  {section.title}
-                                </h3>
-                                <ul className="grid gap-0.5">
-                                  {section.links.map(({ label, href, Icon }) => (
-                                    <li key={label}>
-                                      <Link
-                                        href={href}
-                                        role="menuitem"
-                                        className="nav-link-card group"
-                                      >
-                                        <span className="nav-link-icon">
-                                          <Icon className="h-4 w-4" />
-                                        </span>
-                                        <span className="min-w-0 flex-1 text-[13.5px] font-medium leading-snug text-slate-700 group-hover:text-[#3b31a1]">
-                                          {label}
-                                        </span>
-                                        <span className="nav-link-arrow" aria-hidden>
-                                          →
-                                        </span>
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </motion.div>
-                            ))}
-                          </motion.div>
-                        ))}
-                      </div>
-                      <div className="nav-dropdown-foot">
-                        <div>
-                          <p className="text-[13px] font-semibold text-slate-800">
-                            Need a custom growth stack?
-                          </p>
-                          <p className="mt-0.5 text-[12px] text-slate-500">
-                            Call or WhatsApp {PHONE_DISPLAY}
-                          </p>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          <a href={PHONE_TEL} className="nav-dropdown-cta">
-                            Call
-                          </a>
-                          <a
-                            href={WHATSAPP_LINK}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="nav-dropdown-cta nav-dropdown-cta-wa"
-                          >
-                            WhatsApp
-                          </a>
-                        </div>
-                      </div>
-                    </MenuPanel>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             <div
               className="relative shrink-0"
-              onMouseEnter={() => setOpenMenu("leadGeneration")}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => openDropdown("leadGeneration")}
+              onMouseLeave={scheduleClose}
             >
               <button
                 type="button"
@@ -686,7 +602,7 @@ export default function Navbar() {
               >
                 Lead Generation
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "leadGeneration" ? "rotate-180" : ""}`}
+                  className={`h-3.5 w-3.5 transition-transform duration-300 xl:h-4 xl:w-4 ${openMenu === "leadGeneration" ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -699,8 +615,8 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="nav-flyout absolute left-0 top-full z-[210] min-w-[min(92vw,400px)]"
-                    onMouseEnter={() => setOpenMenu("leadGeneration")}
+                    className="nav-flyout absolute left-0 top-full z-[220] w-[min(calc(100vw-2rem),22rem)] pt-2"
+                    onMouseEnter={() => openDropdown("leadGeneration")}
                   >
                     <MenuPanel variant="compact" className="p-3.5">
                       <p className="nav-dropdown-section-title px-1">
@@ -764,8 +680,8 @@ export default function Navbar() {
 
             <div
               className="relative shrink-0"
-              onMouseEnter={() => setOpenMenu("knowledge")}
-              onMouseLeave={() => setOpenMenu(null)}
+              onMouseEnter={() => openDropdown("knowledge")}
+              onMouseLeave={scheduleClose}
             >
               <button
                 type="button"
@@ -778,7 +694,7 @@ export default function Navbar() {
               >
                 Knowledge Hub
                 <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:h-[1.125rem] md:w-[1.125rem] ${openMenu === "knowledge" ? "rotate-180" : ""}`}
+                  className={`h-3.5 w-3.5 transition-transform duration-300 xl:h-4 xl:w-4 ${openMenu === "knowledge" ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -791,15 +707,15 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="nav-flyout absolute left-0 top-full z-[210] min-w-[min(92vw,340px)]"
-                    onMouseEnter={() => setOpenMenu("knowledge")}
+                    className="nav-flyout absolute right-0 top-full z-[220] w-[min(calc(100vw-2rem),20rem)] pt-2"
+                    onMouseEnter={() => openDropdown("knowledge")}
                   >
                     <MenuPanel variant="compact" className="p-3.5">
                       <p className="nav-dropdown-section-title px-1">
                         Knowledge Hub
                       </p>
                       <p className="mb-2.5 px-1 text-xs text-slate-500">
-                        Team and blogs
+                        Team, blogs, and careers
                       </p>
                       <motion.ul
                         className="grid gap-1"
@@ -855,23 +771,20 @@ export default function Navbar() {
             </div>
 
             <Link href="/about" className={navLinkClass("/about")}>
-              About Us
-            </Link>
-            <Link href="/careers" className={navLinkClass("/careers")}>
-              Careers
+              About
             </Link>
             <Link href="/contact" className={navLinkClass("/contact")}>
-              Contact Us
+              Contact
             </Link>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 pl-1 md:pl-2 lg:pl-4">
+          <div className="flex shrink-0 items-center gap-2">
             <motion.button
               type="button"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setOpenModal(true)}
-              className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg sm:inline-flex sm:px-4 sm:py-1.5 sm:text-xs md:px-5 md:text-sm"
+              className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg lg:inline-flex xl:px-5 xl:text-sm"
             >
               <span
                 className="absolute inset-0 bg-[#3b31a1]/5 opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
@@ -882,7 +795,8 @@ export default function Navbar() {
                 aria-hidden
               />
               <span className="relative z-10 flex items-center gap-1">
-                Get a free consultation
+                <span className="xl:hidden">Consult</span>
+                <span className="hidden xl:inline">Get a free consultation</span>
                 <span
                   aria-hidden
                   className="text-base leading-none transition-transform duration-200 group-hover/navcta:translate-x-0.5"
@@ -894,7 +808,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white shadow-sm transition hover:border-white/40 hover:bg-white/15 md:hidden"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white shadow-sm transition hover:border-white/40 hover:bg-white/15 lg:hidden"
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
@@ -927,6 +841,81 @@ export default function Navbar() {
         </div>
 
         <AnimatePresence>
+          {openMenu === "solutions" && (
+            <motion.div
+              key="solutions-mega"
+              role="menu"
+              aria-label="Our Solutions"
+              variants={megaContainerVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="absolute inset-x-4 top-full z-[220] pt-1.5 lg:inset-x-8 xl:inset-x-10"
+              onMouseEnter={() => openDropdown("solutions")}
+              onMouseLeave={scheduleClose}
+            >
+              <div className="mx-auto max-w-[1080px]">
+                <MenuPanel variant="mega" className="px-4 py-3.5 sm:px-5 sm:py-4">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-4 xl:grid-cols-4 xl:gap-x-5">
+                    {solutionsSections.map((section) => (
+                      <motion.div
+                        key={section.title}
+                        variants={megaSectionVariants}
+                      >
+                        <h3 className="nav-dropdown-section-title">
+                          {section.title}
+                        </h3>
+                        <ul className="grid gap-px">
+                          {section.links.map(({ label, href, Icon }) => (
+                            <li key={label}>
+                              <Link
+                                href={href}
+                                role="menuitem"
+                                className="nav-link-card group"
+                              >
+                                <span className="nav-link-icon">
+                                  <Icon className="h-3.5 w-3.5" />
+                                </span>
+                                <span className="min-w-0 flex-1 text-[12.5px] font-medium leading-snug text-slate-700 group-hover:text-[#3b31a1]">
+                                  {label}
+                                </span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <div className="nav-dropdown-foot">
+                    <div>
+                      <p className="text-[13px] font-semibold text-slate-800">
+                        Need a custom growth stack?
+                      </p>
+                      <p className="mt-0.5 text-[12px] text-slate-500">
+                        Call {PHONE_DISPLAY}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <a href={PHONE_TEL} className="nav-dropdown-cta">
+                        Call
+                      </a>
+                      <a
+                        href={WHATSAPP_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-dropdown-cta nav-dropdown-cta-wa"
+                      >
+                        WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </MenuPanel>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
           {mobileOpen && (
             <>
               <motion.button
@@ -935,7 +924,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-x-0 bottom-0 top-[var(--site-header-height)] z-40 bg-slate-900/25 backdrop-blur-sm md:hidden"
+                className="fixed inset-x-0 bottom-0 top-[var(--site-header-height)] z-40 bg-slate-900/25 backdrop-blur-sm lg:hidden"
                 onClick={() => setMobileOpen(false)}
               />
               <motion.div
@@ -943,7 +932,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed inset-x-0 top-[var(--site-header-height)] z-50 mx-5 max-h-[min(82vh,calc(100dvh-var(--site-header-height)-0.75rem))] overflow-y-auto rounded-2xl border border-slate-200/90 bg-white/98 p-4 shadow-[0_24px_48px_-12px_rgba(59,49,161,0.18)] ring-1 ring-slate-200/50 backdrop-blur-xl sm:mx-6 md:hidden"
+                className="fixed inset-x-0 top-[var(--site-header-height)] z-50 mx-5 max-h-[min(82vh,calc(100dvh-var(--site-header-height)-0.75rem))] overflow-y-auto rounded-2xl border border-slate-200/90 bg-white/98 p-4 shadow-[0_24px_48px_-12px_rgba(59,49,161,0.18)] ring-1 ring-slate-200/50 backdrop-blur-xl sm:mx-6 lg:hidden"
               >
                 <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                   <Link
@@ -1099,13 +1088,6 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     About Us
-                  </Link>
-                  <Link
-                    href="/careers"
-                    className="rounded-xl px-4 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Careers
                   </Link>
                   <Link
                     href="/contact"

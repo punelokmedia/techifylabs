@@ -316,7 +316,7 @@ export default function CareersPage() {
           aria-hidden
         />
 
-        <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-14 lg:px-10">
+        <div className="relative mx-auto w-full max-w-[1440px] px-6 pb-12 pt-8 sm:px-8 sm:pb-14 sm:pt-10 lg:px-10">
           <nav
             className="mb-10 flex items-center gap-3 text-[13px] text-white/45"
             aria-label="Breadcrumb"
@@ -341,16 +341,16 @@ export default function CareersPage() {
                   <span className="h-1.5 w-1.5 rounded-full bg-[#ea580c]" />
                   Open roles · Pune studio
                 </div>
-                <h1 className="mt-7 text-[2.2rem] font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.35rem]">
-                  Build growth work
+                <h1 className="mt-6 text-[2rem] font-semibold leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.85rem]">
+                  Work on live brands.
                   <span className="block bg-gradient-to-r from-white via-violet-200 to-orange-200 bg-clip-text text-transparent">
-                    people can measure.
+                    Own the outcome.
                   </span>
                 </h1>
-                <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-white/65 sm:text-[17px]">
-                  Techify Labs hires operators - marketers, designers, and
-                  engineers who like live accounts, honest reporting, and
-                  shipping every week from Pune.
+                <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-white/65">
+                  Techify Labs is hiring marketers, designers, and engineers in
+                  Pune. You will ship weekly, talk to clients, and see the
+                  numbers behind the work.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
@@ -376,7 +376,7 @@ export default function CareersPage() {
                   alt="Techify Labs team collaborating in studio"
                   width={1200}
                   height={800}
-                  className="h-[280px] w-full object-cover sm:h-[340px] lg:h-[380px]"
+                  className="h-[220px] w-full object-cover sm:h-[280px] lg:h-[320px]"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/80 via-transparent to-transparent" />
@@ -472,66 +472,66 @@ export default function CareersPage() {
             </div>
           </div>
 
-          <div className="mt-10 space-y-4">
+          <div className="mt-8 space-y-2.5">
             {visibleRoles.map((role) => {
               const open = openId === role.id;
               return (
                 <article key={role.id} className="career-role">
                   <button
                     type="button"
-                    className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-7 sm:py-6"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6"
                     onClick={() => setOpenId(open ? null : role.id)}
                     aria-expanded={open}
                   >
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-[17px] font-semibold text-slate-900 sm:text-lg">
+                        <h3 className="text-[16px] font-semibold text-slate-900">
                           {role.title}
                         </h3>
-                        <span className="rounded-full bg-violet-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[#3b31a1]">
+                        <span className="rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#3b31a1]">
                           {role.type}
                         </span>
                       </div>
-                      <p className="mt-2 text-[13.5px] text-slate-500">
+                      <p className="mt-1 text-[13px] text-slate-500">
                         {role.department} · {role.location} · {role.experience}
-                      </p>
-                      <p className="mt-3 max-w-3xl text-[14.5px] leading-relaxed text-slate-600">
-                        {role.summary}
                       </p>
                     </div>
                     <span
-                      className={`mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition ${open ? "rotate-180 bg-[#3b31a1] text-white border-transparent" : ""}`}
+                      className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition ${open ? "rotate-180 border-transparent bg-[#3b31a1] text-white" : ""}`}
                       aria-hidden
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                         <path d="M6 9l6 6 6-6" />
                       </svg>
                     </span>
                   </button>
                   {open ? (
-                    <div className="border-t border-slate-100 px-5 pb-6 pt-5 sm:px-7">
-                      <div className="grid gap-8 md:grid-cols-2">
+                    <div className="border-t border-slate-100 px-5 pb-5 pt-4 sm:px-6">
+                      <p className="max-w-3xl text-[14px] leading-relaxed text-slate-600">
+                        {role.summary}
+                      </p>
+                      <div className="mt-5 grid gap-6 md:grid-cols-2">
                         <div>
-                          <h4 className="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          <h4 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                             You will
                           </h4>
-                          <ul className="mt-3 space-y-2 text-[14.5px] leading-relaxed text-slate-600">
+                          <ul className="mt-2.5 space-y-1.5 text-[14px] leading-relaxed text-slate-600">
                             {role.responsibilities.map((item) => (
                               <li key={item} className="flex gap-2">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]" />
+                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ea580c]" />
                                 {item}
                               </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <h4 className="text-[12px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          <h4 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                             You bring
                           </h4>
-                          <ul className="mt-3 space-y-2 text-[14.5px] leading-relaxed text-slate-600">
+                          <ul className="mt-2.5 space-y-1.5 text-[14px] leading-relaxed text-slate-600">
                             {role.requirements.map((item) => (
                               <li key={item} className="flex gap-2">
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b31a1]" />
+                                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b31a1]" />
                                 {item}
                               </li>
                             ))}
@@ -541,7 +541,7 @@ export default function CareersPage() {
                       <button
                         type="button"
                         onClick={() => applyTo(role.id)}
-                        className="mt-6 inline-flex h-11 items-center rounded-full bg-[#3b31a1] px-6 text-[14px] font-semibold text-white transition hover:bg-[#32297f]"
+                        className="mt-5 inline-flex h-10 items-center rounded-full bg-[#3b31a1] px-5 text-[13px] font-semibold text-white transition hover:bg-[#32297f]"
                       >
                         Apply for this role
                       </button>
@@ -565,17 +565,17 @@ export default function CareersPage() {
               Four steps. No maze.
             </h2>
           </FadeIn>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => (
               <FadeIn key={step.n} delay={i * 0.05}>
-                <article className="rounded-2xl border border-slate-200/80 bg-[#f8f7ff] p-6">
-                  <p className="text-[13px] font-semibold tracking-[0.16em] text-[#3b31a1]/70">
+                <article className="rounded-xl border border-slate-200/80 bg-white p-5">
+                  <p className="text-[12px] font-semibold tracking-[0.16em] text-[#3b31a1]/70">
                     {step.n}
                   </p>
-                  <h3 className="mt-3 text-[17px] font-semibold text-slate-900">
+                  <h3 className="mt-2 text-[16px] font-semibold text-slate-900">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-500">
+                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">
                     {step.body}
                   </p>
                 </article>

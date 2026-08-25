@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   BadgeCheck,
@@ -410,7 +411,11 @@ function ProcessLane({
 }: {
   tone: "violet" | "orange";
   title: string;
-  steps: typeof ivfSteps;
+  steps: readonly {
+    title: string;
+    label: string;
+    icon: LucideIcon;
+  }[];
   message: string;
   pageHref: string;
   waHref: string;
