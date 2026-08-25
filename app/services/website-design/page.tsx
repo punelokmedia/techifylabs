@@ -57,7 +57,7 @@ const features = [
     icon: "♿",
     title: "Accessibility (WCAG)",
     description:
-      "Inclusive designs that meet WCAG standards — ensuring every visitor can use your site.",
+      "Inclusive designs that meet WCAG standards - ensuring every visitor can use your site.",
   },
   {
     icon: "🔄",
@@ -86,7 +86,7 @@ const process = [
   {
     step: "04",
     title: "Handoff / Build",
-    desc: "Design files delivered — or we build it for you end-to-end.",
+    desc: "Design files delivered - or we build it for you end-to-end.",
   },
 ];
 
@@ -128,7 +128,7 @@ const plans = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-// Dark badge — used in hero (unchanged)
+// Dark badge - used in hero (unchanged)
 function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -140,7 +140,7 @@ function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Light badge — used below hero
+// Light badge - used below hero
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -152,7 +152,7 @@ function SectionBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-// FeatureCard — light theme
+// FeatureCard - light theme
 function FeatureCard({
   icon,
   title,
@@ -191,7 +191,7 @@ export default function WebsiteDesignPage() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
       {/* ══════════════════════════════════════════
-          HERO SECTION — UNCHANGED
+          HERO SECTION - UNCHANGED
       ══════════════════════════════════════════ */}
       <section
         className="relative overflow-hidden rounded-b-[1.75rem] border-b border-white/[0.08]
@@ -239,7 +239,7 @@ export default function WebsiteDesignPage() {
               className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             >
               We design stunning, user-friendly websites that make your brand
-              unforgettable and turn visitors into loyal customers — from
+              unforgettable and turn visitors into loyal customers - from
               wireframe to pixel-perfect Figma.
             </motion.p>
 
@@ -297,7 +297,7 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          FEATURES GRID — WHITE THEME
+          FEATURES GRID - WHITE THEME
       ══════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
@@ -325,7 +325,7 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PROCESS SECTION — WHITE THEME
+          PROCESS SECTION - WHITE THEME
       ══════════════════════════════════════════ */}
       <section id="process" className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
@@ -349,7 +349,7 @@ export default function WebsiteDesignPage() {
                 variants={cardVariant}
                 className="relative rounded-2xl border border-gray-200 bg-white p-7 shadow-sm"
               >
-                {/* Step number — large faded as bg decoration */}
+                {/* Step number - large faded as bg decoration */}
                 <span
                   className="pointer-events-none absolute right-5 top-4 select-none
                                  text-6xl font-black text-gray-100"
@@ -386,7 +386,7 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PRICING SECTION — WHITE THEME
+          PRICING SECTION - WHITE THEME
       ══════════════════════════════════════════ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
@@ -467,7 +467,7 @@ export default function WebsiteDesignPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          BOTTOM CTA BANNER — WHITE THEME
+          BOTTOM CTA BANNER - WHITE THEME
       ══════════════════════════════════════════ */}
       <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">

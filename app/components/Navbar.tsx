@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TopBar from "./TopBar";
 import ConsultationModal from "./ConsultationModel";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 type MenuKey = "solutions" | "leadGeneration" | "knowledge" | null;
 
 const solutionsSections = [
@@ -91,7 +92,7 @@ const solutionsSections = [
 
 const knowledgeLinks = [
   { label: "Our Team", href: "/about#team", Icon: IconUsers },
-  { label: " Our Blogs", href: "/services/blogs", Icon: IconBook },
+  { label: "Our Blogs", href: "/services/blogs", Icon: IconBook },
 ];
 
 const leadGenerationLinks = [
@@ -379,24 +380,15 @@ function MenuPanel({
 }: {
   children: ReactNode;
   className?: string;
-  /** mega: large flyout | compact: hub menu — light surface (matches indigo bar, not harsh black) */
   variant?: "mega" | "compact";
 }) {
   const base =
     variant === "mega"
-      ? "relative overflow-hidden rounded-3xl border border-slate-200/95 bg-white/98 shadow-[0_28px_56px_-16px_rgba(59,49,161,0.24),0_0_0_1px_rgba(15,23,42,0.04)_inset] backdrop-blur-xl"
-      : "relative overflow-hidden rounded-3xl border border-slate-200/95 bg-white/98 shadow-[0_20px_44px_-14px_rgba(59,49,161,0.22)] backdrop-blur-xl";
+      ? "nav-dropdown relative"
+      : "nav-dropdown nav-dropdown-compact relative";
 
   return (
     <div className={[base, className].join(" ")}>
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#ea580c] via-[#3b31a1]/35 to-violet-500/30"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-[3px] h-px bg-gradient-to-r from-transparent via-slate-200/60 to-transparent"
-        aria-hidden
-      />
       <div className="relative z-10">{children}</div>
     </div>
   );
@@ -412,18 +404,16 @@ const dropdownEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const dropdownEaseOut: [number, number, number, number] = [0.4, 0, 1, 1];
 
 const megaContainerVariants = {
-  hidden: { opacity: 0, y: -10, scale: 0.985 },
+  hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: { duration: 0.34, ease: dropdownEase },
+    transition: { duration: 0.2, ease: dropdownEase },
   },
   exit: {
     opacity: 0,
-    y: -6,
-    scale: 0.99,
-    transition: { duration: 0.22, ease: dropdownEaseOut },
+    y: 6,
+    transition: { duration: 0.14, ease: dropdownEaseOut },
   },
 };
 
@@ -483,34 +473,38 @@ export default function Navbar() {
 
   const triggerClass = (active: boolean) =>
     [
-      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-2 md:px-3.5 md:py-2 md:text-[15px]",
+      "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-1.5 md:px-3 md:py-1.5 md:text-[15px]",
       active
         ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
         : "text-white/90 hover:bg-white/10 hover:text-white",
     ].join(" ");
 
   return (
-    <header ref={navRef} className="sticky top-0 z-50">
+    <>
+    <header
+      ref={navRef}
+      className="fixed inset-x-0 top-0 z-[200] w-full"
+    >
       <TopBar />
       <div className="relative border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
           aria-hidden
         />
-        <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 sm:py-2 md:gap-5 md:px-6 md:py-2.5 lg:gap-6 lg:px-8 lg:py-3 xl:px-10">
+        <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-2 px-4 sm:h-16 sm:gap-3 sm:px-5 md:h-[4.25rem] md:gap-5 md:px-6 lg:h-[4.5rem] lg:gap-6 lg:px-8 xl:px-10">
           <Link
             href="/"
-            className="group relative flex shrink-0 items-center overflow-visible py-0 transition-opacity hover:opacity-95"
+            className="group relative flex shrink-0 items-center overflow-visible transition-opacity hover:opacity-95"
           >
             <Image
               src="/techify-labs-logo.png"
               alt="Techify Labs"
-              width={800}
-              height={500}
-              className="block h-auto w-auto max-w-[min(750px,95vw)] max-h-[8rem] origin-left object-contain object-left shadow-none [box-shadow:none] sm:max-h-[6.25rem] md:max-h-[6.75rem] lg:max-h-[7.28rem]"
+              width={435}
+              height={188}
+              className="block h-[3.35rem] w-auto origin-left object-contain object-left sm:h-[3.6rem] md:h-[3.9rem] lg:h-[4.2rem]"
               style={{ filter: "none" }}
               priority
-              sizes="(max-width: 768px) 92vw, 520px"
+              sizes="(max-width: 768px) 180px, 260px"
             />
           </Link>
           <nav
@@ -519,7 +513,7 @@ export default function Navbar() {
           >
             <Link
               href="/"
-              className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
+              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
             >
               Home
             </Link>
@@ -554,19 +548,15 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    style={{ transformOrigin: "top center" }}
-                    className="fixed left-1/2 top-[6.15rem] z-50 w-[min(94vw,880px)] -translate-x-1/2 pt-3.5 md:top-[6.6rem] lg:top-[7rem]"
+                    className="fixed left-1/2 top-[var(--site-header-height)] z-[210] w-[min(94vw,920px)] -translate-x-1/2 pt-2"
                     onMouseEnter={() => setOpenMenu("solutions")}
                   >
-                    <MenuPanel
-                      variant="mega"
-                      className="px-8 py-9 sm:px-10 sm:py-10"
-                    >
-                      <div className="grid grid-cols-1 gap-x-14 gap-y-10 sm:grid-cols-2">
+                    <MenuPanel variant="mega" className="px-5 py-5 sm:px-6 sm:py-6">
+                      <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         {solutionsColumns.map((column, colIdx) => (
                           <motion.div
                             key={colIdx}
-                            className="space-y-10"
+                            className="space-y-6"
                             variants={megaColumnVariants}
                             initial="hidden"
                             animate="visible"
@@ -576,29 +566,27 @@ export default function Navbar() {
                                 key={section.title}
                                 variants={megaSectionVariants}
                               >
-                                <div className="mb-4 flex items-center gap-2.5">
-                                  <span
-                                    className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_12px_rgba(234,88,12,0.4)]"
-                                    aria-hidden
-                                  />
-                                  <h3 className="text-[11px] font-bold uppercase leading-tight tracking-[0.14em] text-slate-800">
-                                    {section.title}
-                                  </h3>
-                                </div>
-                                <ul className="space-y-0.5 border-l border-slate-200 pl-4">
-                                  {section.links.map(({ label, href }) => (
+                                <h3 className="nav-dropdown-section-title">
+                                  {section.title}
+                                </h3>
+                                <ul className="grid gap-0.5">
+                                  {section.links.map(({ label, href, Icon }) => (
                                     <li key={label}>
-                                      <a
+                                      <Link
                                         href={href}
                                         role="menuitem"
-                                        className="group relative block rounded-lg px-2 py-2.5 text-[15px] font-medium leading-snug text-slate-600 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:bg-violet-50 focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                                        className="nav-link-card group"
                                       >
-                                        <span
-                                          className="absolute -left-[17px] top-1/2 hidden h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#3b31a1] opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:block"
-                                          aria-hidden
-                                        />
-                                        {label}
-                                      </a>
+                                        <span className="nav-link-icon">
+                                          <Icon className="h-4 w-4" />
+                                        </span>
+                                        <span className="min-w-0 flex-1 text-[13.5px] font-medium leading-snug text-slate-700 group-hover:text-[#3b31a1]">
+                                          {label}
+                                        </span>
+                                        <span className="nav-link-arrow" aria-hidden>
+                                          →
+                                        </span>
+                                      </Link>
                                     </li>
                                   ))}
                                 </ul>
@@ -606,6 +594,29 @@ export default function Navbar() {
                             ))}
                           </motion.div>
                         ))}
+                      </div>
+                      <div className="nav-dropdown-foot">
+                        <div>
+                          <p className="text-[13px] font-semibold text-slate-800">
+                            Need a custom growth stack?
+                          </p>
+                          <p className="mt-0.5 text-[12px] text-slate-500">
+                            Call or WhatsApp {PHONE_DISPLAY}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          <a href={PHONE_TEL} className="nav-dropdown-cta">
+                            Call
+                          </a>
+                          <a
+                            href={WHATSAPP_LINK}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-dropdown-cta nav-dropdown-cta-wa"
+                          >
+                            WhatsApp
+                          </a>
+                        </div>
                       </div>
                     </MenuPanel>
                   </motion.div>
@@ -644,34 +655,25 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    style={{ transformOrigin: "top left" }}
-                    className="absolute left-0 top-full z-50 min-w-[min(92vw,420px)] pt-3.5"
+                    className="absolute left-0 top-full z-[210] min-w-[min(92vw,400px)] pt-2"
                     onMouseEnter={() => setOpenMenu("leadGeneration")}
                   >
-                    <MenuPanel variant="compact" className="p-4">
-                      <div className="border-b border-slate-200 pb-3 pl-1">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.35)]"
-                            aria-hidden
-                          />
-                          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-800">
-                            Lead Generation
-                          </p>
-                        </div>
-                        <p className="mt-1.5 pl-4 text-xs text-slate-500">
-                          IVF and hair transplant focused campaigns
-                        </p>
-                      </div>
+                    <MenuPanel variant="compact" className="p-3.5">
+                      <p className="nav-dropdown-section-title px-1">
+                        Lead Generation
+                      </p>
+                      <p className="mb-2.5 px-1 text-xs text-slate-500">
+                        IVF and hair transplant focused campaigns
+                      </p>
                       <motion.ul
-                        className="mt-3 space-y-0.5"
+                        className="grid gap-1"
                         initial="hidden"
                         animate="visible"
                         variants={{
                           visible: {
                             transition: {
-                              staggerChildren: 0.06,
-                              delayChildren: 0.1,
+                              staggerChildren: 0.05,
+                              delayChildren: 0.06,
                             },
                           },
                           hidden: {},
@@ -686,28 +688,27 @@ export default function Navbar() {
                                 opacity: 1,
                                 x: 0,
                                 transition: {
-                                  duration: 0.26,
+                                  duration: 0.24,
                                   ease: dropdownEase,
                                 },
                               },
                             }}
                           >
-                            <a
+                            <Link
                               href={href}
                               role="menuitem"
-                              className="group flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-slate-700 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                              className="nav-link-card group"
                             >
-                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#3b31a1] ring-1 ring-slate-200/80 transition duration-200 group-hover:bg-violet-100 group-hover:text-[#3b31a1]">
-                                <Icon className="h-[17px] w-[17px]" />
+                              <span className="nav-link-icon">
+                                <Icon className="h-4 w-4" />
                               </span>
-                              <span className="flex-1">{label}</span>
-                              <span
-                                className="text-[#ea580c]/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#ea580c]"
-                                aria-hidden
-                              >
+                              <span className="flex-1 text-[13.5px] font-medium text-slate-700 group-hover:text-[#3b31a1]">
+                                {label}
+                              </span>
+                              <span className="nav-link-arrow" aria-hidden>
                                 →
                               </span>
-                            </a>
+                            </Link>
                           </motion.li>
                         ))}
                       </motion.ul>
@@ -746,34 +747,25 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    style={{ transformOrigin: "top left" }}
-                    className="absolute left-0 top-full z-50 min-w-[min(92vw,360px)] pt-3.5"
+                    className="absolute left-0 top-full z-[210] min-w-[min(92vw,340px)] pt-2"
                     onMouseEnter={() => setOpenMenu("knowledge")}
                   >
-                    <MenuPanel variant="compact" className="p-4">
-                      <div className="border-b border-slate-200 pb-3 pl-1">
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="h-2 w-2 shrink-0 rounded-[2px] bg-[#ea580c] shadow-[0_0_10px_rgba(234,88,12,0.35)]"
-                            aria-hidden
-                          />
-                          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-800">
-                            Knowledge Hub
-                          </p>
-                        </div>
-                        <p className="mt-1.5 pl-4 text-xs text-slate-500">
-                          Our Team, and Our Blogs
-                        </p>
-                      </div>
+                    <MenuPanel variant="compact" className="p-3.5">
+                      <p className="nav-dropdown-section-title px-1">
+                        Knowledge Hub
+                      </p>
+                      <p className="mb-2.5 px-1 text-xs text-slate-500">
+                        Team and blogs
+                      </p>
                       <motion.ul
-                        className="mt-3 space-y-0.5"
+                        className="grid gap-1"
                         initial="hidden"
                         animate="visible"
                         variants={{
                           visible: {
                             transition: {
-                              staggerChildren: 0.06,
-                              delayChildren: 0.1,
+                              staggerChildren: 0.05,
+                              delayChildren: 0.06,
                             },
                           },
                           hidden: {},
@@ -788,28 +780,27 @@ export default function Navbar() {
                                 opacity: 1,
                                 x: 0,
                                 transition: {
-                                  duration: 0.26,
+                                  duration: 0.24,
                                   ease: dropdownEase,
                                 },
                               },
                             }}
                           >
-                            <a
+                            <Link
                               href={href}
                               role="menuitem"
-                              className="group flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-slate-700 transition-colors duration-200 ease-out hover:bg-violet-50 hover:text-[#3b31a1] focus-visible:text-[#3b31a1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b31a1]/25 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                              className="nav-link-card group"
                             >
-                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#3b31a1] ring-1 ring-slate-200/80 transition duration-200 group-hover:bg-violet-100 group-hover:text-[#3b31a1]">
-                                <Icon className="h-[17px] w-[17px]" />
+                              <span className="nav-link-icon">
+                                <Icon className="h-4 w-4" />
                               </span>
-                              <span className="flex-1">{label}</span>
-                              <span
-                                className="text-[#ea580c]/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#ea580c]"
-                                aria-hidden
-                              >
+                              <span className="flex-1 text-[13.5px] font-medium text-slate-700 group-hover:text-[#3b31a1]">
+                                {label}
+                              </span>
+                              <span className="nav-link-arrow" aria-hidden>
                                 →
                               </span>
-                            </a>
+                            </Link>
                           </motion.li>
                         ))}
                       </motion.ul>
@@ -821,13 +812,13 @@ export default function Navbar() {
 
             <Link
               href="/about"
-              className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
+              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
             >
               About Us
             </Link>
             <Link
               href="/contact"
-              className="shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3.5 md:py-2 md:text-[15px]"
+              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
             >
               Contact Us
             </Link>
@@ -839,7 +830,7 @@ export default function Navbar() {
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setOpenModal(true)}
-              className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3 py-2 text-[11px] font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg sm:inline-flex sm:px-4 sm:py-2 sm:text-xs md:px-5 md:text-sm"
+              className="group/navcta relative hidden items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-[#3b31a1] shadow-md ring-1 ring-white/40 transition-shadow duration-300 hover:bg-violet-50 hover:shadow-lg sm:inline-flex sm:px-4 sm:py-1.5 sm:text-xs md:px-5 md:text-sm"
             >
               <span
                 className="absolute inset-0 bg-[#3b31a1]/5 opacity-0 transition-opacity duration-200 group-hover/navcta:opacity-100"
@@ -903,7 +894,7 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-40 bg-slate-900/25 backdrop-blur-sm md:hidden"
+                className="fixed inset-x-0 bottom-0 top-[var(--site-header-height)] z-40 bg-slate-900/25 backdrop-blur-sm md:hidden"
                 onClick={() => setMobileOpen(false)}
               />
               <motion.div
@@ -911,7 +902,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed inset-x-0 top-[9rem] z-50 mx-5 max-h-[min(82vh,calc(100dvh-10rem))] overflow-y-auto rounded-2xl border border-slate-200/90 bg-white/98 p-4 shadow-[0_24px_48px_-12px_rgba(59,49,161,0.18)] ring-1 ring-slate-200/50 backdrop-blur-xl sm:mx-6 md:hidden"
+                className="fixed inset-x-0 top-[var(--site-header-height)] z-50 mx-5 max-h-[min(82vh,calc(100dvh-var(--site-header-height)-0.75rem))] overflow-y-auto rounded-2xl border border-slate-200/90 bg-white/98 p-4 shadow-[0_24px_48px_-12px_rgba(59,49,161,0.18)] ring-1 ring-slate-200/50 backdrop-blur-xl sm:mx-6 md:hidden"
               >
                 <nav className="flex flex-col gap-0.5" aria-label="Mobile">
                   <Link
@@ -1075,11 +1066,30 @@ export default function Navbar() {
                   >
                     Contact Us
                   </Link>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <a
+                      href={PHONE_TEL}
+                      className="inline-flex items-center justify-center rounded-xl bg-[#3b31a1] py-3 text-sm font-semibold text-white"
+                    >
+                      Call
+                    </a>
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl bg-[#128c7e] py-3 text-sm font-semibold text-white"
+                    >
+                      WhatsApp
+                    </a>
+                  </div>
                   <motion.button
                     type="button"
                     whileTap={{ scale: 0.98 }}
-                    className="mt-3 rounded-full bg-[#3b31a1] py-3.5 text-sm font-bold text-white shadow-md ring-1 ring-slate-200/60 transition-colors hover:bg-[#32297f]"
-                    onClick={() => setMobileOpen(false)}
+                    className="mt-2 w-full rounded-full bg-[#3b31a1] py-3.5 text-sm font-bold text-white shadow-md transition-colors hover:bg-[#32297f]"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setOpenModal(true);
+                    }}
                   >
                     Get a free consultation →
                   </motion.button>
@@ -1089,10 +1099,15 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-      <ConsultationModal
-        isOpen={openModal}
-        onClose={() => setOpenModal(false)}
-      />
     </header>
+    <div
+      className="h-[var(--site-header-height)] shrink-0"
+      aria-hidden
+    />
+    <ConsultationModal
+      isOpen={openModal}
+      onClose={() => setOpenModal(false)}
+    />
+    </>
   );
 }

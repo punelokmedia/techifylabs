@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
 const springSoft = { type: "spring" as const, stiffness: 380, damping: 28 };
 const springTap = { type: "spring" as const, stiffness: 520, damping: 32 };
@@ -33,10 +34,6 @@ const bottomLinks = [
   { label: "Contact Us", href: "/contact" },
   { label: "Sitemap", href: "#" },
 ];
-
-const PHONE_E164 = "+918956776951";
-const PHONE_TEL = `tel:${PHONE_E164}`;
-const PHONE_DISPLAY = "+91 8956776951";
 
 function IconFacebook({ className }: { className?: string }) {
   return (
@@ -108,7 +105,7 @@ function IconPhone({ className }: { className?: string }) {
   );
 }
 
-/** Filled handset — strong silhouette for floating call button */
+/** Filled handset - strong silhouette for floating call button */
 function IconPhoneCall({ className }: { className?: string }) {
   return (
     <svg
@@ -258,13 +255,13 @@ export default function Footer() {
 
       <div className="relative mx-auto max-w-[1440px] px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-9">
         {/*
-          md:flex: har column apna stack — heading turant upar, list/card neeche (grid row height ≠ logo height).
+          md:flex: har column apna stack - heading turant upar, list/card neeche (grid row height ≠ logo height).
         */}
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-6 lg:gap-8 xl:gap-10">
-          {/* Column — brand */}
+          {/* Column - brand */}
           <div className="flex min-w-0 flex-col gap-7 md:max-w-[34%] md:flex-[1.02] md:basis-0">
             <motion.div
-              className="-translate-y-4 flex w-fit max-w-full flex-col md:-translate-y-5"
+              className="flex w-fit max-w-full flex-col"
               whileHover={reduceMotion ? undefined : { scale: 1.01 }}
               transition={springSoft}
             >
@@ -275,9 +272,9 @@ export default function Footer() {
                 <Image
                   src="/techify-labs-logo.png"
                   alt="Techify Labs"
-                  width={635}
-                  height={331}
-                  className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left object-top sm:max-w-[268px]"
+                  width={435}
+                  height={188}
+                  className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left sm:max-w-[268px]"
                   sizes="(max-width: 640px) 85vw, 268px"
                 />
               </Link>
@@ -290,7 +287,7 @@ export default function Footer() {
               Digital growth partner
             </p>
             <p className="max-w-md text-[15px] leading-[1.65] text-white/80">
-              Trusted marketing and development partner — practical strategies
+              Trusted marketing and development partner - practical strategies
               and execution that help your brand compete and scale online.
             </p>
             <div className="border-t border-white/[0.12] pt-7">
@@ -336,7 +333,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column — services (title + list tight stack) */}
+          {/* Column - services (title + list tight stack) */}
           <div className="flex min-w-0 flex-col gap-4 md:flex-[1.15] md:basis-0">
             <FooterSectionTitle>Our services</FooterSectionTitle>
             <ul className="grid w-full min-w-0 grid-cols-1 gap-x-5 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-5 md:gap-x-4 lg:gap-x-6 sm:gap-y-px">
@@ -362,7 +359,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column — contact */}
+          {/* Column - contact */}
           <div className="flex w-full min-w-0 flex-col gap-4 md:max-w-[min(100%,320px)] md:flex-[0.95] md:shrink-0">
             <FooterSectionTitle>Contact</FooterSectionTitle>
             <div className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-[2px]">
@@ -412,7 +409,7 @@ export default function Footer() {
                   <p className="mt-1.5">
                     UG Floor, Office No. 67-68, Clover Hills Plaza
                     <br />
-                    NIBM Road, Kondhwa, Pune — 411048
+                    NIBM Road, Kondhwa, Pune - 411048
                   </p>
                 </div>
               </div>
@@ -471,7 +468,7 @@ export default function Footer() {
 
       {!hideFloatingControls && (
         <>
-          {/* Side scroll: up / down — above Call + WhatsApp stack */}
+          {/* Side scroll: up / down - above Call + WhatsApp stack */}
           <motion.div
             className="fixed bottom-56 right-2 z-40 flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#3b31a1]/95 text-white shadow-lg shadow-black/25 backdrop-blur-md md:bottom-40 md:right-3 lg:right-2"
             role="group"
@@ -523,7 +520,7 @@ export default function Footer() {
               <IconPhoneCall className="h-7 w-7" />
             </motion.a>
             <motion.a
-              href={`https://wa.me/${PHONE_E164.replace(/\D/g, "")}`}
+              href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/35 ring-2 ring-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3b31a1] md:h-14 md:w-14"

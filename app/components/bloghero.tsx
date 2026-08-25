@@ -50,7 +50,7 @@ export default function BlogHero() {
           </h1>
 
           <p className="mt-6 text-lg text-white/70">
-            SEO, Ads, Social Media — practical tips that actually work.
+            SEO, Ads, Social Media - practical tips that actually work.
           </p>
 
           <div className="mt-8 flex gap-4">

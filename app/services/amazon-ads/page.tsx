@@ -95,7 +95,7 @@ const industries: IndustryCard[] = [
   {
     title: "D2C & emerging brands",
     tagline:
-      "Launch ladders for new ASINs — from discovery to disciplined scale.",
+      "Launch ladders for new ASINs - from discovery to disciplined scale.",
     icon: "rocket",
   },
 ];
@@ -435,7 +435,7 @@ export default function AmazonAdsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
+      <section className="sticky top-[var(--site-header-height)] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a
@@ -556,7 +556,7 @@ export default function AmazonAdsPage() {
         theme="amazon"
         items={industries}
         headline="Categories we grow on Amazon"
-        subhead="Share of voice, catalog complexity, and margin profiles differ by aisle — we tune structure and bids for your reality."
+        subhead="Share of voice, catalog complexity, and margin profiles differ by aisle - we tune structure and bids for your reality."
       />
 
       <section
@@ -673,7 +673,7 @@ export default function AmazonAdsPage() {
               Ready to scale on Amazon?
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we&apos;ll come back with a clear plan,
+              Book a free strategy call - we&apos;ll come back with a clear plan,
               realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">

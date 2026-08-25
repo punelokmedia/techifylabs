@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
 const linkBase =
   "inline-flex items-center gap-1.5 text-white/90 transition-colors duration-200 hover:text-white";
@@ -12,6 +13,15 @@ function IconMail({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
       <path d="M22 6l-10 7L2 6" />
+    </svg>
+  );
+}
+
+function IconWhatsApp({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path d="M12.051 2.002c-5.442 0-9.87 4.428-9.87 9.87 0 1.74.46 3.381 1.26 4.797L2 22.002l5.467-1.413a9.84 9.84 0 004.584 1.17h.004c5.442 0 9.87-4.428 9.87-9.87 0-2.637-1.027-5.117-2.893-6.983A9.825 9.825 0 0012.051 2.002zm0 18.04h-.003a8.17 8.17 0 01-4.162-1.14l-.298-.177-3.247.84.867-3.165-.194-.325a8.16 8.16 0 01-1.254-4.353c0-4.513 3.673-8.186 8.187-8.186 2.187 0 4.243.852 5.79 2.4a8.134 8.134 0 012.397 5.787c-.001 4.514-3.674 8.187-8.183 8.187z" />
     </svg>
   );
 }
@@ -51,7 +61,7 @@ function IconLinkedIn({ className }: { className?: string }) {
 export default function TopBar() {
   return (
     <div className="border-b border-orange-900/15 bg-[#ea580c] text-white">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-1.5 sm:px-5 md:px-6 lg:px-8 xl:px-10">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-x-3 gap-y-0.5 px-4 py-1 sm:px-5 md:px-6 lg:px-8 xl:px-10">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs sm:text-sm">
           <motion.a
             href="mailto:info@techifylabs.in"
@@ -63,9 +73,20 @@ export default function TopBar() {
             <span className="hidden sm:inline">info@techifylabs.in</span>
             <span className="sm:hidden">Email</span>
           </motion.a>
-          <motion.a href="tel:+918956776951" className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
+          <motion.a href={PHONE_TEL} className={linkBase} whileHover={socialHover} whileTap={{ scale: 0.98 }}>
             <IconPhone className="h-3.5 w-3.5 shrink-0 opacity-90" />
-            +91 8956776951
+            {PHONE_DISPLAY}
+          </motion.a>
+          <motion.a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkBase}
+            whileHover={socialHover}
+            whileTap={{ scale: 0.98 }}
+          >
+            <IconWhatsApp className="h-3.5 w-3.5 shrink-0 opacity-90" />
+            WhatsApp
           </motion.a>
         </div>
         <nav className="flex flex-wrap items-center gap-4 text-xs font-medium sm:gap-5 sm:text-sm" aria-label="Social">

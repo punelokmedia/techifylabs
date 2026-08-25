@@ -3,10 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ConsultationModal from "@/app/components/ConsultationModel";
-/**
- * Hero cycles these full-screen clips in order (no loop per clip — next plays when one ends).
- * Swap URLs for your own MP4s in /public or direct links.
- */
+
 const HERO_VIDEOS = [
   {
     src: "/videos/meta-ads.mp4",
@@ -25,47 +22,42 @@ const HERO_VIDEOS = [
   },
 ] as const;
 
-/**
- * Optional: set NEXT_PUBLIC_HERO_YOUTUBE_ID in .env.local to use a YouTube (Google) background instead of MP4.
- * Example: NEXT_PUBLIC_HERO_YOUTUBE_ID=LXb3EKWsInQ
- */
 const youtubeBackgroundId = process.env.NEXT_PUBLIC_HERO_YOUTUBE_ID?.trim();
 
 const springTap = { type: "spring" as const, stiffness: 520, damping: 34 };
-const springStack = {
-  type: "spring" as const,
-  stiffness: 380,
-  damping: 26,
-  mass: 0.9,
+
+const fade = {
+  hidden: { opacity: 0, y: 10 },
+  show: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] as const },
+  }),
 };
 
-const ctaStackRest = { scale: 1, y: 0 };
-const ctaStackHover = {
-  scale: 1.02,
-  y: -2,
-  transition: springStack,
-};
+const stats = [
+  { value: "3.5x", label: "Avg. ROAS" },
+  { value: "47+", label: "Active clients" },
+  { value: "10%", label: "Advantage+ CVR" },
+];
 
-const ctaBtnRest = { y: 0, scale: 1 };
-const ctaBtnHover = {
-  y: -5,
-  scale: 1.04,
-  boxShadow: "0 28px 56px -12px rgba(124, 58, 237, 0.5)",
-  transition: springStack,
-};
+const services = [
+  "Meta Ads",
+  "Google Ads",
+  "SEO",
+  "Web",
+  "Shopify",
+  "Branding",
+];
 
-function ArrowIcon({
-  className = "ml-2 inline-block h-4 w-4 shrink-0",
-}: {
-  className?: string;
-}) {
+function ArrowIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
       className={className}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="2.2"
       aria-hidden
     >
       <path
@@ -89,6 +81,7 @@ export default function Hero() {
 
   const useYoutubeBg = Boolean(youtubeEmbedSrc && !reduceMotion);
   const useMp4Bg = !youtubeBackgroundId && !reduceMotion;
+  const activeClip = HERO_VIDEOS[activeVideoIndex];
 
   const advanceVideo = useCallback(() => {
     setActiveVideoIndex((i) => (i + 1) % HERO_VIDEOS.length);
@@ -98,19 +91,18 @@ export default function Hero() {
     const el = videoRef.current;
     if (!el || !useMp4Bg) return;
     el.play().catch(() => {
-      /* autoplay may be blocked; overlay still shows */
+      /* autoplay may be blocked */
     });
   }, [useMp4Bg, activeVideoIndex]);
 
   return (
-    <section className="relative w-full min-h-[min(86vh,780px)] overflow-hidden border border-t-0 border-white/10 bg-[#2563eb] text-white shadow-[0_25px_80px_-20px_rgba(15,23,42,0.65)]">
-      {/* Background: YouTube (Google) or MP4 */}
+    <section className="hero-shell relative w-full overflow-hidden text-white">
       <div className="absolute inset-0">
         {useYoutubeBg ? (
           <iframe
             title="Hero background video"
             src={youtubeEmbedSrc!}
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.15] border-0 object-cover"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.12] border-0"
             allow="autoplay; encrypted-media; picture-in-picture"
           />
         ) : useMp4Bg ? (
@@ -121,162 +113,195 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <video
                 ref={videoRef}
-                className="absolute inset-0 h-full w-full scale-[1.02] object-cover"
+                className="absolute inset-0 h-full w-full scale-[1.04] object-cover"
                 autoPlay
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 aria-hidden
                 onEnded={advanceVideo}
               >
-                <source
-                  src={HERO_VIDEOS[activeVideoIndex].src}
-                  type="video/mp4"
-                />
+                <source src={activeClip.src} type="video/mp4" />
               </video>
             </motion.div>
           </AnimatePresence>
-        ) : null}
-
-        {/* Readability: gradient + vignette */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-black/72 via-slate-950/80 to-black/65"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_40%,rgba(15,23,42,0.24),transparent_58%)]"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 ring-1 ring-inset ring-white/[0.06]"
-          aria-hidden
-        />
+        ) : (
+          <div className="hero-fallback absolute inset-0" aria-hidden />
+        )}
+        <div className="hero-scrim" aria-hidden />
+        <div className="hero-mesh" aria-hidden />
+        <span className="hero-orb hero-orb-a" aria-hidden />
+        <span className="hero-orb hero-orb-b" aria-hidden />
+        <div className="hero-grain" aria-hidden />
       </div>
 
-      <div className="relative z-10 flex min-h-[min(86vh,780px)] flex-col justify-center px-6 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <div className="max-w-2xl">
+      <div className="hero-inner relative z-10 mx-auto grid w-full max-w-[1440px] items-center gap-6 px-5 py-8 sm:gap-8 sm:px-8 sm:py-9 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.82fr)] lg:gap-10 lg:px-10 lg:py-10 [perspective:1400px]">
+        <div className="min-w-0">
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55 sm:text-sm"
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            custom={0}
+            className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60 sm:text-xs"
           >
-            Facebook Ads · Google Ads · Branding · Social · SEO
+            Meta · Google · Amazon · SEO · Web
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.06,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-white shadow-sm backdrop-blur-md"
-          >
-            <span
-              className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-xs font-bold shadow-inner"
-              aria-hidden
-            >
-              360
-            </span>
-            Digital Marketing Agency
-          </motion.div>
-
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.55,
-              delay: 0.12,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            custom={0.06}
+            className="mt-2.5 max-w-[18ch] text-[1.85rem] font-bold leading-[1.12] tracking-tight sm:mt-3 sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]"
           >
             Your Revenue,{" "}
-            <span className="bg-gradient-to-r from-white via-violet-100 to-violet-200 bg-clip-text text-transparent">
-              Our Expertise
-            </span>
+            <span className="hero-title-accent">Our Expertise</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.55,
-              delay: 0.2,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg"
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            custom={0.12}
+            className="mt-3 max-w-lg text-[13.5px] leading-relaxed text-white/78 sm:mt-3.5 sm:text-[15px]"
           >
-            Propel your vision with data-driven marketing. Our team turns clicks
-            into sales—we deliver campaigns, growth, and profit. Let&apos;s make
-            your brand unforgettable on the global stage.
+            Data-driven campaigns that turn clicks into sales. We plan, launch,
+            and scale ads, SEO, and web so your brand grows with profit - not
+            just traffic.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.28,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mt-10 flex flex-wrap items-center gap-4 pb-2"
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            custom={0.18}
+            className="mt-5 flex flex-wrap items-center gap-2.5 sm:mt-6"
           >
-            <motion.div
-              className="relative flex w-full max-w-md flex-col items-stretch sm:w-auto sm:max-w-none"
-              initial="rest"
-              whileHover={reduceMotion ? undefined : "hover"}
-              animate="rest"
-              variants={{
-                rest: ctaStackRest,
-                hover: reduceMotion ? ctaStackRest : ctaStackHover,
-              }}
-            >
-             
-
-              <motion.button
-                onClick={() => setOpenModal(true)}
-                variants={{
-                  rest: ctaBtnRest,
-                  hover: reduceMotion ? ctaBtnRest : ctaBtnHover,
-                }}
-                whileTap={{ scale: 0.97, transition: springTap }}
-                className="group/cta order-1 relative z-[2] inline-flex w-full items-center justify-center self-center overflow-hidden rounded-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-fuchsia-600 px-8 py-4 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_-12px_rgba(109,40,217,0.65)] ring-2 ring-white/25 sm:w-auto sm:px-9 sm:text-[15px]"
-              >
-                <span
-                  className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 via-violet-500 to-indigo-600 opacity-0 transition-opacity duration-500 group-hover/cta:opacity-100"
-                  aria-hidden
-                />
-                <span
-                  className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-[100%]"
-                  aria-hidden
-                />
-                <span
-                  className="absolute -inset-1 rounded-full bg-gradient-to-r from-violet-400/0 via-white/15 to-fuchsia-400/0 opacity-0 blur-md transition-opacity duration-500 group-hover/cta:opacity-100"
-                  aria-hidden
-                />
-                <span className="relative z-10 flex items-center">
-                  Get Free Consultation
-                  <ArrowIcon className="ml-2 inline-block h-4 w-4 shrink-0 transition-transform duration-300 ease-out group-hover/cta:translate-x-1.5 sm:h-[1.05rem] sm:w-[1.05rem]" />
-                </span>
-              </motion.button>
-            </motion.div>
-            <motion.a
-              href="/services/lead-generation"
+            <motion.button
+              type="button"
+              onClick={() => setOpenModal(true)}
               whileTap={{ scale: 0.97, transition: springTap }}
-              className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/15 sm:text-[15px]"
+              className="hero-cta group inline-flex items-center justify-center rounded-full px-5 py-2.5 text-[13px] font-semibold text-white sm:px-6 sm:py-2.5 sm:text-sm"
             >
-              Open Lead Generation Page
-            </motion.a>
+              Get Free Consultation
+              <ArrowIcon className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 sm:h-4 sm:w-4" />
+            </motion.button>
+            <a
+              href="#services"
+              className="hero-cta-ghost inline-flex items-center justify-center rounded-full px-5 py-2.5 text-[13px] font-semibold sm:px-6 sm:text-sm"
+            >
+              View services
+            </a>
           </motion.div>
+
+          <motion.dl
+            variants={fade}
+            initial="hidden"
+            animate="show"
+            custom={0.24}
+            className="mt-6 grid max-w-lg grid-cols-3 gap-2 sm:mt-7 sm:gap-3"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="hero-stat">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="text-[1.05rem] font-bold tracking-tight sm:text-xl">
+                  {stat.value}
+                </dd>
+                <p className="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-white/55 sm:text-[11px]">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.dl>
+        </div>
+
+        <motion.aside
+          variants={fade}
+          initial="hidden"
+          animate="show"
+          custom={0.16}
+          className="hero-panel hidden w-full max-w-md justify-self-end lg:flex lg:flex-col"
+          aria-label="Campaign snapshot"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="hero-live-dot" aria-hidden />
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">
+                Live now
+              </p>
+            </div>
+            <p className="rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold text-white/80">
+              360 agency
+            </p>
+          </div>
+
+          <h2 className="mt-3 text-lg font-bold leading-snug tracking-tight">
+            {activeClip.label}
+          </h2>
+          <p className="mt-1 text-sm text-white/65">{activeClip.hint}</p>
+
+          <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Core services">
+            {services.map((item) => (
+              <li key={item} className="hero-chip">
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div
+            className="mt-4 grid gap-1.5"
+            role="tablist"
+            aria-label="Hero films"
+          >
+            {HERO_VIDEOS.map((clip, i) => {
+              const current = i === activeVideoIndex;
+              return (
+                <button
+                  key={clip.src}
+                  type="button"
+                  role="tab"
+                  aria-selected={current}
+                  className={`hero-video-tab ${current ? "is-active" : ""}`}
+                  onClick={() => setActiveVideoIndex(i)}
+                >
+                  <span className="hero-video-tab-index">{i + 1}</span>
+                  <span className="min-w-0">
+                    <span className="block truncate text-[13px] font-semibold">
+                      {clip.label}
+                    </span>
+                    <span className="block truncate text-[11px] text-white/55">
+                      {clip.hint}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </motion.aside>
+
+        <div
+          className="flex gap-1.5 lg:hidden"
+          role="tablist"
+          aria-label="Hero films"
+        >
+          {HERO_VIDEOS.map((clip, i) => (
+            <button
+              key={clip.src}
+              type="button"
+              role="tab"
+              aria-selected={i === activeVideoIndex}
+              aria-label={clip.label}
+              className={`hero-dot ${i === activeVideoIndex ? "is-active" : ""}`}
+              onClick={() => setActiveVideoIndex(i)}
+            />
+          ))}
         </div>
       </div>
+
       <ConsultationModal
         isOpen={openModal}
         onClose={() => setOpenModal(false)}

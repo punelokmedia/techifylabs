@@ -10,15 +10,13 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 380, damping: 28 };
 
-const PHONE_E164 = "+918956776951";
-const PHONE_DISPLAY = "+91 8956776951";
-const PHONE_TEL = `tel:${PHONE_E164}`;
 const EMAIL = "info@techifylabs.in";
-const WA_LINK = `https://wa.me/${PHONE_E164.replace(/\D/g, "")}`;
+const WA_LINK = WHATSAPP_LINK;
 const DEFAULT_PHONE_PREFIX = "+91 ";
 
 const topics = [
@@ -39,7 +37,7 @@ const processSteps = [
   },
   {
     title: "Discovery",
-    body: "Short call or async brief — goals, constraints, channels, and how you measure success.",
+    body: "Short call or async brief - goals, constraints, channels, and how you measure success.",
     day: "Day 1–3",
   },
   {
@@ -67,7 +65,7 @@ const engagementTypes = [
   },
   {
     title: "Audit & strategy",
-    desc: "Channel reviews, technical SEO, or funnel diagnostics — recommendations you can run with us or in-house.",
+    desc: "Channel reviews, technical SEO, or funnel diagnostics - recommendations you can run with us or in-house.",
     tag: "Advisory",
   },
 ] as const;
@@ -94,7 +92,7 @@ const faqs = [
   },
   {
     q: "What does the form do when I submit?",
-    a: "Your message is sent securely to our team through Web3Forms. We reply from the same channel you used — usually within one business day.",
+    a: "Your message is sent securely to our team through Web3Forms. We reply from the same channel you used - usually within one business day.",
   },
 ] as const;
 
@@ -162,12 +160,12 @@ export default function ContactPage() {
     try {
       const payload = {
         access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `Techify inquiry — ${topic} — ${company || name || "Website"}`,
+        subject: `Techify inquiry - ${topic} - ${company || name || "Website"}`,
         name: name.trim(),
         email: email.trim(),
         phone:
-          phone.trim() === DEFAULT_PHONE_PREFIX.trim() ? "—" : phone.trim(),
-        company: company.trim() || "—",
+          phone.trim() === DEFAULT_PHONE_PREFIX.trim() ? " - " : phone.trim(),
+        company: company.trim() || " - ",
         message: `Interest: ${topic}\n\n${message.trim()}`,
         from_name: name.trim(),
         replyto: email.trim(),
@@ -219,7 +217,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-full">
-      {/* Hero — aligned with About */}
+      {/* Hero - aligned with About */}
       <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem] border-b border-gray-200">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_-30%,rgba(99,102,241,0.4),transparent_55%)]"
@@ -283,7 +281,7 @@ export default function ContactPage() {
                   </span>
                 </h1>
                 <p className="mt-6 max-w-lg text-[15px] leading-[1.75] text-white/65 sm:mt-8 sm:text-[17px]">
-                  One message — we come back with fit, realistic scope, and how
+                  One message - we come back with fit, realistic scope, and how
                   we&apos;d measure progress. No auto-responder essays.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
@@ -383,7 +381,7 @@ export default function ContactPage() {
               Get started
             </p>
             <p className="mt-2 text-lg font-semibold text-slate-900">
-              Send an inquiry — or reach us directly below.
+              Send an inquiry - or reach us directly below.
             </p>
           </FadeIn>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -393,7 +391,7 @@ export default function ContactPage() {
                   Reach us directly
                 </h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-                  Pick the channel you prefer — same team, same standards.
+                  Pick the channel you prefer - same team, same standards.
                 </p>
               </FadeIn>
 
@@ -633,7 +631,7 @@ export default function ContactPage() {
                           Message sent
                         </h3>
                         <p className="mx-auto mt-3 max-w-md text-[15px] text-slate-600">
-                          Thanks — we have your details. A strategist will
+                          Thanks - we have your details. A strategist will
                           follow up at{" "}
                           <span className="font-medium text-slate-800">
                             {email}
@@ -911,7 +909,7 @@ export default function ContactPage() {
               What happens next
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              A predictable path from first message to a clear yes or no — no
+              A predictable path from first message to a clear yes or no - no
               chasing, no ghosting.
             </p>
           </FadeIn>
@@ -972,7 +970,7 @@ export default function ContactPage() {
               Ways we partner
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              Pick the shape that fits — we’ll still align on outcomes before
+              Pick the shape that fits - we’ll still align on outcomes before
               anything is signed.
             </p>
           </FadeIn>

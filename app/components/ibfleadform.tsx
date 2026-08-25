@@ -42,7 +42,7 @@ export default function IBFLeadForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState("loading");
-    // Simulate API call — replace with your actual endpoint
+    // Simulate API call - replace with your actual endpoint
     await new Promise((r) => setTimeout(r, 1800));
     setFormState("success");
   };
@@ -61,7 +61,7 @@ export default function IBFLeadForm() {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — copy */}
+          {/* Left - copy */}
           <div className="lg:sticky lg:top-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export default function IBFLeadForm() {
               className="text-slate-400 text-base leading-relaxed mb-8"
             >
               Fill in the form and our patient care team will get back to you
-              within 2 hours. No wait times, no confusion — just care.
+              within 2 hours. No wait times, no confusion - just care.
             </motion.p>
 
             <motion.div
@@ -128,7 +128,7 @@ export default function IBFLeadForm() {
             </motion.div>
           </div>
 
-          {/* Right — form */}
+          {/* Right - form */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}

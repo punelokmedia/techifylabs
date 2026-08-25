@@ -37,7 +37,7 @@ function FadeIn({
 const whyUs = [
   {
     title: "Certified Google Experts",
-    desc: "Hands-on experience with Search, Shopping, PMax, Display, and YouTube — across all campaign types.",
+    desc: "Hands-on experience with Search, Shopping, PMax, Display, and YouTube - across all campaign types.",
   },
   {
     title: "Proven Track Record",
@@ -53,7 +53,7 @@ const whyUs = [
   },
   {
     title: "Support for All Sizes",
-    desc: "From startups to enterprises — we scale strategy and spend to match where you are.",
+    desc: "From startups to enterprises - we scale strategy and spend to match where you are.",
   },
   {
     title: "Fast Response Time",
@@ -75,7 +75,7 @@ const processSteps = [
   {
     step: "03",
     title: "Campaign Structure",
-    desc: "Clean account architecture — search, shopping, PMax, and display separated with purpose.",
+    desc: "Clean account architecture - search, shopping, PMax, and display separated with purpose.",
   },
   {
     step: "04",
@@ -85,19 +85,19 @@ const processSteps = [
   {
     step: "05",
     title: "Optimisation & Testing",
-    desc: "Bid strategy, ad copy testing, and Quality Score improvements — weekly, not monthly.",
+    desc: "Bid strategy, ad copy testing, and Quality Score improvements - weekly, not monthly.",
   },
   {
     step: "06",
     title: "Reporting & Next Steps",
-    desc: "Impression share, ROAS, CPA, and CPC — reported simply with clear actions for the next period.",
+    desc: "Impression share, ROAS, CPA, and CPC - reported simply with clear actions for the next period.",
   },
 ];
 
 const adServices = [
   {
     title: "Search Campaigns",
-    desc: "Keyword research, match types, and negative lists built to capture high-intent buyers — not just traffic.",
+    desc: "Keyword research, match types, and negative lists built to capture high-intent buyers - not just traffic.",
     tags: ["Exact Match", "Phrase Match", "Negative Keywords"],
   },
   {
@@ -112,7 +112,7 @@ const adServices = [
   },
   {
     title: "Display & Retargeting",
-    desc: "Retargeting and awareness campaigns across Google's network — reaching warm audiences where they spend time.",
+    desc: "Retargeting and awareness campaigns across Google's network - reaching warm audiences where they spend time.",
     tags: ["Website Visitors", "Custom Intent", "Remarketing Lists"],
   },
   {
@@ -122,7 +122,7 @@ const adServices = [
   },
   {
     title: "Conversion Tracking Setup",
-    desc: "GA4, Google Tag Manager, and enhanced conversions set up properly — no more flying blind on bidding.",
+    desc: "GA4, Google Tag Manager, and enhanced conversions set up properly - no more flying blind on bidding.",
     tags: ["GA4 Setup", "GTM", "Enhanced Conversions"],
   },
 ];
@@ -155,7 +155,7 @@ const industries: IndustryCard[] = [
   {
     title: "Education & admissions",
     tagline:
-      "Search queries that signal enrolment intent — not tyre-kicker traffic.",
+      "Search queries that signal enrolment intent - not tyre-kicker traffic.",
     icon: "education",
   },
   {
@@ -186,7 +186,7 @@ const caseStudies = [
   {
     brand: "B2B SaaS Platform",
     tag: "Search + RLSA",
-    desc: "Rebuilt keyword structure, cut wasted spend by 38%, and launched RLSA campaigns targeting previous visitors — achieving ₹210 CPL.",
+    desc: "Rebuilt keyword structure, cut wasted spend by 38%, and launched RLSA campaigns targeting previous visitors - achieving ₹210 CPL.",
   },
   {
     brand: "Home Décor Brand",
@@ -241,7 +241,7 @@ const quickNav = [
 const faqs = [
   {
     q: "How is Google Ads different from Meta Ads?",
-    a: "Google captures intent — people actively searching for what you sell. Meta creates demand by interrupting people in their feed. Both work best together, but Google often delivers faster results for high-intent buyers.",
+    a: "Google captures intent - people actively searching for what you sell. Meta creates demand by interrupting people in their feed. Both work best together, but Google often delivers faster results for high-intent buyers.",
   },
   {
     q: "How much should I spend on Google Ads?",
@@ -249,7 +249,7 @@ const faqs = [
   },
   {
     q: "Do you handle Google Shopping and Merchant Centre?",
-    a: "Yes — feed optimisation, Merchant Centre setup, and Shopping campaign management are all included in our e-commerce packages.",
+    a: "Yes - feed optimisation, Merchant Centre setup, and Shopping campaign management are all included in our e-commerce packages.",
   },
   {
     q: "How soon will I see results from Google Ads?",
@@ -257,7 +257,7 @@ const faqs = [
   },
   {
     q: "Do you set up GA4 and conversion tracking?",
-    a: "Always. We set up GA4, Google Tag Manager, and enhanced conversions before spending a single rupee — clean data is non-negotiable.",
+    a: "Always. We set up GA4, Google Tag Manager, and enhanced conversions before spending a single rupee - clean data is non-negotiable.",
   },
 ];
 
@@ -313,7 +313,7 @@ export default function GoogleAdsPage() {
 
               {/* desc */}
               <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
-                Search, Shopping, PMax, Display, and YouTube — managed end to
+                Search, Shopping, PMax, Display, and YouTube - managed end to
                 end. Every rupee of ad spend working harder for your business.
               </p>
 
@@ -449,14 +449,14 @@ export default function GoogleAdsPage() {
               <ServiceAdsInsights
                 theme="google"
                 title="Performance snapshots we actually use"
-                subtitle="Conversion trend with spend context and ROAS guardrails — mirrored in live Looker Studio / Sheets dashboards for your team."
+                subtitle="Conversion trend with spend context and ROAS guardrails - mirrored in live Looker Studio / Sheets dashboards for your team."
               />
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
+      <section className="sticky top-[var(--site-header-height)] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a
@@ -547,7 +547,7 @@ export default function GoogleAdsPage() {
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
               Certified experts, transparent reporting, and campaigns built
-              around your goals — not generic templates.
+              around your goals - not generic templates.
             </p>
           </FadeIn>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -598,7 +598,7 @@ export default function GoogleAdsPage() {
               Our Google Ads Process
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              Simple and repeatable — so you always know what is happening and
+              Simple and repeatable - so you always know what is happening and
               why.
             </p>
           </FadeIn>
@@ -636,7 +636,7 @@ export default function GoogleAdsPage() {
               Google Ads Services We Offer
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              The full Google Ads stack — from setup to ongoing optimisation.
+              The full Google Ads stack - from setup to ongoing optimisation.
             </p>
           </FadeIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -670,7 +670,7 @@ export default function GoogleAdsPage() {
         theme="google"
         items={industries}
         headline="Industries we win on Google"
-        subhead="Intent changes by category — we map queries, assets, and bidding to how your customers actually buy."
+        subhead="Intent changes by category - we map queries, assets, and bidding to how your customers actually buy."
       />
 
       {/* Case Studies */}
@@ -793,7 +793,7 @@ export default function GoogleAdsPage() {
               Ready to Capture More Intent?
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we&apos;ll come back with a clear plan,
+              Book a free strategy call - we&apos;ll come back with a clear plan,
               realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">

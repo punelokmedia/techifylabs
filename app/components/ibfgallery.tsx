@@ -97,7 +97,7 @@ export default function IBFGallery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-slate-400 text-lg max-w-xl mx-auto"
           >
-            Modern infrastructure built to heal — from quiet private wards to high-tech
+            Modern infrastructure built to heal - from quiet private wards to high-tech
             operation theatres.
           </motion.p>
         </div>

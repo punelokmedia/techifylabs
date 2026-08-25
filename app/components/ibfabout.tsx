@@ -38,7 +38,7 @@ export default function IBFAbout() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
+          {/* Left - text */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -86,11 +86,11 @@ export default function IBFAbout() {
                 We combine the warmth of community care with the rigor of
                 evidence-based medicine. Our team of 120+ specialists, nurses, and
                 support staff works tirelessly to ensure every patient receives not
-                just treatment — but a healing experience.
+                just treatment - but a healing experience.
               </p>
               <p>
                 IBF stands for <strong className="text-white">Integrity, Beyond-expectations care,</strong>{" "}
-                and <strong className="text-white">Family-centred healing</strong> — values
+                and <strong className="text-white">Family-centred healing</strong> - values
                 embedded in everything we do, from your first consultation to
                 full recovery.
               </p>
@@ -111,7 +111,7 @@ export default function IBFAbout() {
             </motion.a>
           </div>
 
-          {/* Right — pillars */}
+          {/* Right - pillars */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillars.map((p, i) => (
               <motion.div

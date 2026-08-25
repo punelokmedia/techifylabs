@@ -62,11 +62,11 @@ const brandingPageData: ServicePageData = {
     { value: "50+", label: "Brands built and refreshed across India" },
     { value: "4.9★", label: "Average client satisfaction rating" },
     { value: "14", label: "Day avg. turnaround for brand identity" },
-    { value: "100%", label: "Custom design — no templates" },
+    { value: "100%", label: "Custom design - no templates" },
   ],
   problemTitle: "Why weak branding costs you customers",
   problems: [
-    "No visual consistency across website, social, and ads — looks unprofessional.",
+    "No visual consistency across website, social, and ads - looks unprofessional.",
     "Brand messaging is unclear, so customers don't understand what you offer.",
     "Logo and colours don't reflect your price point or audience.",
     "No brand guidelines, so every designer creates something different.",
@@ -74,8 +74,8 @@ const brandingPageData: ServicePageData = {
   ],
   whyTitle: "Why Choose Techeasify as Your Branding Agency?",
   whyPoints: [
-    "We start with strategy — understanding your audience, competitors, and positioning.",
-    "100% custom design — no stock logos, no recycled templates.",
+    "We start with strategy - understanding your audience, competitors, and positioning.",
+    "100% custom design - no stock logos, no recycled templates.",
     "Full brand guidelines delivered so every touchpoint stays consistent.",
     "We support startups and established businesses with equal care.",
   ],
@@ -102,7 +102,7 @@ const brandingPageData: ServicePageData = {
     {
       title: "Tone of Voice & Messaging",
       description:
-        "Brand copy framework — tagline, value proposition, and messaging pillars for all channels.",
+        "Brand copy framework - tagline, value proposition, and messaging pillars for all channels.",
       icon: <TypographyIcon />,
     },
     {
@@ -136,7 +136,7 @@ const brandingPageData: ServicePageData = {
       step: "03",
       title: "Visual Identity Design",
       description:
-        "Logo concepts, colour palette, and typography exploration — presented with rationale, not just options.",
+        "Logo concepts, colour palette, and typography exploration - presented with rationale, not just options.",
     },
     {
       step: "04",

@@ -1,16 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const springSoft = {
-  type: "spring" as const,
-  stiffness: 400,
-  damping: 30,
-  mass: 0.8,
-};
-const springTap = { type: "spring" as const, stiffness: 520, damping: 35 };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -37,6 +31,12 @@ const stats = [
     caption: "Conversion rate through Advantage+ campaigns",
     Icon: IconTarget,
   },
+];
+
+const highlights = [
+  "Conversion-focused design",
+  "Data-backed marketing strategy",
+  "Scalable growth systems",
 ];
 
 function IconChart({ className }: { className?: string }) {
@@ -86,52 +86,12 @@ function IconTarget({ className }: { className?: string }) {
 export default function AboutSection() {
   return (
     <section
-      className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24"
+      id="about"
+      className="home-section"
       aria-labelledby="about-heading"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
-         
-          <motion.div
-            variants={fadeUp}
-            custom={1}
-            whileHover={{ y: -4 }}
-            transition={springSoft}
-            className="group relative mt-8 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm hover:shadow-lg transition-all duration-300 sm:p-8"
-          >
-            {/* LEFT BAR ACCENT */}
-            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-600 to-violet-600 rounded-l-2xl opacity-70" />
-
-            {/* CONTENT */}
-            <div className="ml-3">
-              <h3 className="text-2xl font-bold text-slate-900">
-                Performance-first approach
-              </h3>
-
-              <p className="mt-2 text-xl text-slate-600 leading-relaxed">
-                Every campaign, funnel, and landing experience is designed to
-                drive measurable results — not just impressions.
-              </p>
-
-              {/* FEATURES */}
-              <div className="mt-5 space-y-3">
-                {[
-                  "Conversion-focused design",
-                  "Data-backed marketing strategy",
-                  "Scalable growth systems",
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 text-lg text-slate-700"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-indigo-600" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
+      <div className="home-section-inner">
+        <div className="about-split">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -141,25 +101,73 @@ export default function AboutSection() {
               hidden: {},
             }}
           >
+            <motion.span variants={fadeUp} custom={0} className="section-kicker">
+              <span className="section-kicker-dot" aria-hidden />
+              About Techify
+            </motion.span>
             <motion.h2
               id="about-heading"
               variants={fadeUp}
-              custom={0}
-              className="text-3xl font-bold leading-[1.15] tracking-tight text-[#0c2d52] sm:text-4xl lg:text-[2.35rem] lg:leading-tight"
+              custom={1}
+              className="section-title mt-4 text-3xl sm:text-4xl lg:text-[2.35rem]"
             >
               Result-driven digital marketing &amp; web development agency in
               India
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              custom={1}
-              className="mt-6 text-base leading-relaxed text-slate-600 sm:text-lg"
+              custom={2}
+              className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
             >
               We combine strategy, creative, and performance media to help
               brands scale with clarity. Our team blends technical depth with
-              marketing instincts—so every launch, funnel, and campaign is built
-              to convert, not just look good.
+              marketing instincts - so every launch, funnel, and campaign is
+              built to convert, not just look good.
             </motion.p>
+
+            <motion.div variants={fadeUp} custom={3} className="about-panel">
+              <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">
+                Performance-first approach
+              </h3>
+              <p className="mt-2 text-base leading-relaxed text-slate-600">
+                Every campaign, funnel, and landing experience is designed to
+                drive measurable results - not just impressions.
+              </p>
+              <ul className="mt-5 space-y-3">
+                {highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 text-base text-slate-700"
+                  >
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-indigo-600" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeUp} custom={4} className="mt-7">
+              <Link href="/about" className="home-cta">
+                More about us
+                <span aria-hidden>→</span>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, ease: sectionEase }}
+            className="about-visual"
+          >
+            <Image
+              src="/images/marketing.png"
+              alt="Team building digital products and marketing systems"
+              fill
+              className="object-contain p-6 sm:p-8"
+              sizes="(max-width: 1024px) 100vw, 44vw"
+            />
           </motion.div>
         </div>
 
@@ -169,11 +177,11 @@ export default function AboutSection() {
           viewport={{ once: true, margin: "-40px" }}
           variants={{
             visible: {
-              transition: { staggerChildren: 0.1, delayChildren: 0.12 },
+              transition: { staggerChildren: 0.1, delayChildren: 0.08 },
             },
             hidden: {},
           }}
-          className="mt-14 grid gap-5 sm:grid-cols-3 lg:mt-16"
+          className="home-stat-grid"
         >
           {stats.map((s) => (
             <motion.div
@@ -186,27 +194,14 @@ export default function AboutSection() {
                   transition: { duration: 0.45, ease: sectionEase },
                 },
               }}
-              whileHover={{ y: -8, scale: 1.02, transition: springSoft }}
-              whileTap={{ scale: 0.99, transition: springTap }}
-              className="group/stat relative cursor-default overflow-hidden rounded-2xl border border-slate-200/95 bg-white p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-transparent hover:shadow-xl hover:shadow-violet-500/20 sm:p-7"
+              className="home-stat-card group/stat"
             >
-              {/* Default: white card. Hover: purple → violet → blue gradient (matches reference). */}
               <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-fuchsia-900 to-violet-900 opacity-0 transition-opacity duration-500 ease-out group-hover/stat:opacity-100"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover/stat:opacity-100"
+                className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3b31a1] to-[#1d4ed8] opacity-0 transition-opacity duration-300 group-hover/stat:opacity-100"
                 aria-hidden
               />
               <div className="relative z-10">
-                <motion.div
-                  whileHover={{ scale: 1.06, rotate: -4 }}
-                  transition={springTap}
-                  className="inline-block"
-                >
-                  <s.Icon className="h-10 w-10 text-[#1e4976] transition-colors duration-300 group-hover/stat:text-white" />
-                </motion.div>
+                <s.Icon className="h-10 w-10 text-[#1e4976] transition-colors duration-300 group-hover/stat:text-white" />
                 <p className="mt-5 text-3xl font-bold tracking-tight text-[#0c2d52] transition-colors duration-300 group-hover/stat:text-white sm:text-4xl">
                   {s.metric}
                 </p>
@@ -216,44 +211,6 @@ export default function AboutSection() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: sectionEase, delay: 0.15 }}
-          className="mt-12 lg:mt-14"
-        >
-          <motion.a
-            href="#"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2d4987] px-6 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
-            whileHover={{
-              scale: 1.03,
-              y: -2,
-              boxShadow: "0 20px 40px -12px rgba(30, 58, 95, 0.45)",
-              transition: springSoft,
-            }}
-            whileTap={{ scale: 0.98, transition: springTap }}
-          >
-            <span
-              className="absolute inset-0 bg-[#1d4ed8] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              aria-hidden
-            />
-            <span
-              className="absolute inset-0 bg-gradient-to-r from-violet-600/25 via-fuchsia-500/20 to-violet-600/25 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              aria-hidden
-            />
-            <span className="relative z-10 flex items-center gap-2">
-              More about us
-              <span
-                aria-hidden
-                className="text-lg leading-none transition-transform duration-300 ease-out group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </span>
-          </motion.a>
         </motion.div>
       </div>
     </section>

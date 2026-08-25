@@ -4,7 +4,7 @@ import AboutPage from "../components/AboutPage";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "About | Techify — Digital growth studio",
+  title: "About | Techify - Digital growth studio",
   description:
     "Techifylavs Pvt. Ltd., UG Floor, Office No. 67-68 Clover Hills Plaza, NIBM Road, Kondhwa, Pune - 411048. Performance-led studio for paid media, creative, SEO, and commerce.",
 };

@@ -177,7 +177,7 @@ export default function ServiceIndustriesSection({
   theme,
   items,
   headline = "Industries we serve",
-  subhead = "Every vertical gets its own targeting logic, creative language, and measurement — not a recycled template.",
+  subhead = "Every vertical gets its own targeting logic, creative language, and measurement - not a recycled template.",
 }: {
   theme: ServiceIndustriesTheme;
   items: IndustryCard[];

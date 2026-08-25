@@ -3,6 +3,7 @@
 import type { ComponentType } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -24,6 +25,8 @@ function serviceCardVariants(featured: boolean, delay: number) {
     },
     hover: {
       y: -10,
+      rotateX: 7,
+      rotateY: -5,
       scale: featured ? 1.015 : 1.02,
       transition: {
         ...springSoft,
@@ -81,6 +84,7 @@ const featuredRow = [
   {
     featured: true,
     title: "Facebook Ads",
+    href: "/services/meta-ads",
     description:
       "Full-funnel Meta campaigns with creative testing and scaling playbooks.",
     bullets: ["Smart targeting", "High-intent clicks"],
@@ -89,8 +93,8 @@ const featuredRow = [
   {
     featured: false,
     title: "Google Ads",
+    href: "/services/google-ads",
     image: "/images/arrow-upmarketing.png",
-
     description:
       "Search, Performance Max, and intent-led structures that protect margin.",
     bullets: ["Search & PMax", "Clear attribution"],
@@ -99,8 +103,8 @@ const featuredRow = [
   {
     featured: false,
     title: "Amazon Ads",
+    href: "/services/amazon-ads",
     image: "/images/lamp-digital.png",
-
     description:
       "Sponsored products and brand placements tuned for ACOS and rank.",
     bullets: ["Retail readiness", "Catalog scale"],
@@ -111,6 +115,7 @@ const featuredRow = [
 const gridRow = [
   {
     title: "Search engine optimization",
+    href: "/services/organic-growth-seo",
     image: "/images/phone-mirror.png",
     description:
       "Technical SEO, content, and authority building for sustainable organic demand.",
@@ -119,8 +124,8 @@ const gridRow = [
   },
   {
     title: "Website development",
+    href: "/services/website-development",
     image: "/images/laptop-marketing.png",
-
     description:
       "Fast, accessible sites and landing experiences engineered for conversion.",
     bullets: ["Zero friction", "Mobile first"],
@@ -128,6 +133,7 @@ const gridRow = [
   },
   {
     title: "Email marketing",
+    href: "/services/retention-marketing",
     image: "/images/seo-email.png",
     description:
       "Lifecycle flows and campaigns that turn subscribers into repeat buyers.",
@@ -136,6 +142,7 @@ const gridRow = [
   },
   {
     title: "Shopify development",
+    href: "/services/shopify-development",
     image: "/images/social-media.png",
     description:
       "Store builds, CRO, and checkout optimization on Shopify and headless stacks.",
@@ -274,6 +281,7 @@ function ServiceCard({
   featured,
   delay,
   image,
+  href,
 }: {
   title: string;
   description: string;
@@ -282,10 +290,12 @@ function ServiceCard({
   featured?: boolean;
   delay: number;
   image?: string;
+  href: string;
 }) {
   const v = serviceCardVariants(Boolean(featured), delay);
 
   return (
+    <Link href={href} className="block h-full focus-visible:outline-none">
     <motion.article
       variants={v}
       initial="initial"
@@ -294,7 +304,7 @@ function ServiceCard({
       viewport={{ once: true, margin: "-50px" }}
       whileTap={{ scale: 0.985, transition: springTap }}
       className={[
-        "group/card relative flex h-full cursor-default flex-col rounded-2xl p-6 sm:p-7",
+        "group/card card-3d relative flex h-full cursor-default flex-col rounded-2xl p-6 sm:p-7",
         featured
           ? "overflow-hidden border border-white/15 bg-slate-900 text-white shadow-xl shadow-slate-900/25 hover:border-violet-400/40 hover:shadow-violet-900/35"
           : [
@@ -423,6 +433,7 @@ function ServiceCard({
         </div>
       </div>
     </motion.article>
+    </Link>
   );
 }
 
@@ -430,10 +441,10 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-[#f4f6f9] py-16 sm:py-20 lg:py-24"
+      className="scroll-mt-[var(--site-header-height)] home-section"
       aria-labelledby="services-heading"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
+      <div className="home-section-inner">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -441,27 +452,13 @@ export default function ServicesSection() {
           transition={{ duration: 0.5, ease: sectionEase }}
           className="text-center"
         >
-          <motion.span
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={springSoft}
-            className="inline-flex cursor-default items-center gap-2 rounded-full border border-slate-200/90 bg-white px-3.5 py-1.5 text-sm font-semibold text-[#1e4976] shadow-sm transition-colors duration-300 hover:border-violet-300 hover:text-violet-800 hover:shadow-md hover:shadow-violet-500/10"
-          >
-            <motion.span
-              className="h-2 w-2 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500"
-              aria-hidden
-              animate={{ scale: [1, 1.15, 1] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+          <span className="section-kicker">
+            <span className="section-kicker-dot" aria-hidden />
             Our services
-          </motion.span>
+          </span>
           <h2
             id="services-heading"
-            className="mx-auto mt-5 max-w-3xl text-3xl font-bold tracking-tight text-[#0c2d52] sm:text-4xl"
+            className="section-title mx-auto mt-5 max-w-3xl text-3xl sm:text-4xl"
           >
             Our 360° digital marketing &amp; development services
           </h2>
@@ -497,46 +494,21 @@ export default function ServicesSection() {
           transition={{ duration: 0.45, ease: sectionEase }}
           className="mt-14 flex flex-col items-center gap-5 lg:mt-16"
         >
-          <motion.a
-            href="#"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-[#2563eb] px-7 py-3.5 text-sm font-semibold text-white shadow-md ring-1 ring-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
-            whileHover={{
-              scale: 1.03,
-              y: -2,
-              boxShadow: "0 20px 40px -12px rgba(30, 58, 95, 0.45)",
-              transition: springSoft,
-            }}
-            whileTap={{ scale: 0.98, transition: springTap }}
-          >
-            <span
-              className="absolute inset-0 bg-[#1d4ed8] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              aria-hidden
-            />
-            <span
-              className="absolute inset-0 bg-gradient-to-r from-violet-600/30 via-fuchsia-500/25 to-violet-600/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              aria-hidden
-            />
-            <span className="relative z-10 flex items-center gap-2">
-              View all services
-              <span
-                aria-hidden
-                className="text-lg leading-none transition-transform duration-300 ease-out group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </span>
-          </motion.a>
+          <Link href="/#services" className="home-cta">
+            View all services
+            <span aria-hidden>→</span>
+          </Link>
           <p className="max-w-xl text-center text-sm text-slate-600 sm:text-base">
-            <span className="mr-2 inline-flex items-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm transition-shadow duration-300 hover:shadow-md hover:shadow-violet-500/40">
+            <span className="mr-2 inline-flex items-center rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm">
               Free
             </span>
-            From setup to scaling —{" "}
-            <a
-              href="#"
+            From setup to scaling -{" "}
+            <Link
+              href="/contact"
               className="font-semibold text-violet-700 underline-offset-4 transition-colors duration-300 hover:text-fuchsia-600 hover:underline"
             >
               book free consultation now.
-            </a>
+            </Link>
           </p>
         </motion.div>
       </div>

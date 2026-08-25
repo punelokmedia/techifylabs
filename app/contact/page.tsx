@@ -4,9 +4,9 @@ import ContactPage from "../components/ContactPage";
 import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Contact | Techify — Digital growth studio",
+  title: "Contact | Techify - Digital growth studio",
   description:
-    "Reach Techify by phone, WhatsApp, or email. Send a structured project inquiry — we respond within one business day.",
+    "Reach Techify by phone, WhatsApp, or email. Send a structured project inquiry - we respond within one business day.",
 };
 
 export default function Contact() {

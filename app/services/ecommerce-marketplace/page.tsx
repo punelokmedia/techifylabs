@@ -60,7 +60,7 @@ const services = [
   {
     icon: "🔶",
     title: "Flipkart Seller Growth",
-    desc: "Complete Flipkart seller account management — from catalogue structuring to performance ads — driving consistent sales and brand visibility.",
+    desc: "Complete Flipkart seller account management - from catalogue structuring to performance ads - driving consistent sales and brand visibility.",
   },
   {
     icon: "🏪",
@@ -164,7 +164,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function EcommerceMarketplace() {
   return (
     <div className="bg-white min-h-screen text-white font-sans">
-      {/* Hero — unchanged */}
+      {/* Hero - unchanged */}
       <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b sm:rounded-b-[1.75rem] border-white/[0.08] bg-gradient-to-br from-[#0a0f2c] via-[#110f32] to-[#070612]">
         {/* BG glow */}
         <div className="absolute inset-0 pointer-events-none">
@@ -199,7 +199,7 @@ export default function EcommerceMarketplace() {
               variants={fadeUp}
               className="text-gray-400 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl"
             >
-              From Amazon to Flipkart to Meesho — we manage your entire
+              From Amazon to Flipkart to Meesho - we manage your entire
               marketplace presence end-to-end. More visibility, better
               conversion, and a ROAS that justifies every rupee spent.
             </motion.p>
@@ -252,7 +252,7 @@ export default function EcommerceMarketplace() {
           <SectionHeading
             tag="Platforms We Manage"
             title="Every Major Marketplace. One Partner."
-            sub="We cover the platforms that matter for Indian and global ecommerce — so you never miss a buyer wherever they shop."
+            sub="We cover the platforms that matter for Indian and global ecommerce - so you never miss a buyer wherever they shop."
           />
           <motion.div
             variants={stagger}
@@ -286,7 +286,7 @@ export default function EcommerceMarketplace() {
           <SectionHeading
             tag="What We Do"
             title="Full-Stack Marketplace Management"
-            sub="Not just ads. We handle everything from listing to logistics to reviews — so you can focus on building your brand."
+            sub="Not just ads. We handle everything from listing to logistics to reviews - so you can focus on building your brand."
           />
           <motion.div
             variants={stagger}
@@ -317,7 +317,7 @@ export default function EcommerceMarketplace() {
         <div className="max-w-6xl mx-auto">
           <SectionHeading
             tag="Our Process"
-            title="From Setup to Scaling — A Clear Roadmap"
+            title="From Setup to Scaling - A Clear Roadmap"
             sub="We follow a proven four-step framework that removes guesswork and delivers compounding results."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

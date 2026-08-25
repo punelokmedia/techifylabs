@@ -33,13 +33,13 @@ const services = [
     icon: "🌐",
     title: "Full-Stack Development",
     description:
-      "End-to-end web apps built with React, Next.js, and Node.js — from database schema to polished UI.",
+      "End-to-end web apps built with React, Next.js, and Node.js - from database schema to polished UI.",
   },
   {
     icon: "🛒",
     title: "E-Commerce Websites",
     description:
-      "WooCommerce, Magento, or custom-built stores — designed to maximise your online revenue.",
+      "WooCommerce, Magento, or custom-built stores - designed to maximise your online revenue.",
   },
   {
     icon: "⚙️",
@@ -105,7 +105,7 @@ const whyUs = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-// Dark badge — hero only (unchanged)
+// Dark badge - hero only (unchanged)
 function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -117,7 +117,7 @@ function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Light badge — below hero
+// Light badge - below hero
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -166,7 +166,7 @@ function ServiceCard({
 export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen bg-white text-gray-100">
-      {/* ══ HERO — UNCHANGED ══ */}
+      {/* ══ HERO - UNCHANGED ══ */}
       <section
         className="relative overflow-hidden rounded-b-[1.7rem] border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
@@ -213,7 +213,7 @@ export default function WebDevelopmentPage() {
               className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
             >
               We build fast, secure, and scalable websites and web applications
-              using modern technologies — engineered for performance and built
+              using modern technologies - engineered for performance and built
               to grow with your business.
             </motion.p>
 
@@ -270,7 +270,7 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ TECH STACK STRIP — WHITE THEME ══ */}
+      {/* ══ TECH STACK STRIP - WHITE THEME ══ */}
       <section className="border-b border-gray-100 bg-gray-50 py-8">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <p className="mb-5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
@@ -289,7 +289,7 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ SERVICES GRID — WHITE THEME ══ */}
+      {/* ══ SERVICES GRID - WHITE THEME ══ */}
       <section
         id="services"
         className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24"
@@ -300,7 +300,7 @@ export default function WebDevelopmentPage() {
             Development Services
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            From simple landing pages to complex web applications — we handle
+            From simple landing pages to complex web applications - we handle
             every layer of the stack.
           </p>
         </div>
@@ -318,7 +318,7 @@ export default function WebDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ WHY CHOOSE US — WHITE THEME ══ */}
+      {/* ══ WHY CHOOSE US - WHITE THEME ══ */}
       <section className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
@@ -335,7 +335,7 @@ export default function WebDevelopmentPage() {
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
                 Most agencies deliver a website and disappear. We stay invested
-                in your success — combining design thinking, engineering, and
+                in your success - combining design thinking, engineering, and
                 marketing to ensure your site works hard for your business.
               </p>
               <Link
@@ -386,7 +386,7 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ CTA BANNER — WHITE THEME ══ */}
+      {/* ══ CTA BANNER - WHITE THEME ══ */}
       <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div

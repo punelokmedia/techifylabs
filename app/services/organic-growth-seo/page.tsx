@@ -62,7 +62,7 @@ const seoPageData: ServicePageData = {
     { value: "3.5X", label: "Avg. organic traffic growth in 6 months" },
     { value: "47+", label: "Active SEO clients across India" },
     { value: "85%", label: "Clients ranking on Page 1 within 90 days" },
-    { value: "100%", label: "White-hat SEO — zero penalty risk" },
+    { value: "100%", label: "White-hat SEO - zero penalty risk" },
   ],
   problemTitle: "When SEO is not working, these are usually the reasons",
   problems: [
@@ -74,10 +74,10 @@ const seoPageData: ServicePageData = {
   ],
   whyTitle: "Why Choose Techeasify's SEO Services?",
   whyPoints: [
-    "Experience you can see in the work — clean structure, clear checklists, steady execution.",
-    "Expertise across SEO and content — we match search intent and improve page quality.",
-    "Transparent reporting — simple updates and next actions, not confusing dashboards.",
-    "Full ownership — your website, content, and accounts stay in your control.",
+    "Experience you can see in the work - clean structure, clear checklists, steady execution.",
+    "Expertise across SEO and content - we match search intent and improve page quality.",
+    "Transparent reporting - simple updates and next actions, not confusing dashboards.",
+    "Full ownership - your website, content, and accounts stay in your control.",
   ],
   servicesTitle: "Our Advanced SEO Services Include",
   services: [

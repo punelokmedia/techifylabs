@@ -49,7 +49,7 @@ const whyUs = [
   },
   {
     title: "Transparent Reporting",
-    desc: "Reports simple enough to read without a marketing degree — no jargon, just results.",
+    desc: "Reports simple enough to read without a marketing degree - no jargon, just results.",
   },
   {
     title: "ROI Focused",
@@ -85,7 +85,7 @@ const processSteps = [
   {
     step: "05",
     title: "Performance Optimisation",
-    desc: "We test, improve, and remove waste — consistent improvements, not sudden guesses.",
+    desc: "We test, improve, and remove waste - consistent improvements, not sudden guesses.",
   },
   {
     step: "06",
@@ -109,13 +109,13 @@ const adServices = [
   },
   {
     title: "Facebook Retargeting",
-    desc: "Smart creatives that bring back people who clicked, looked around, then left — at exactly the right moment.",
+    desc: "Smart creatives that bring back people who clicked, looked around, then left - at exactly the right moment.",
     tags: ["Website Visitors", "Lookalike Audiences", "Custom Audiences"],
     image: "/images/seo-email.png",
   },
   {
     title: "Instagram Advertising",
-    desc: "Ads that blend into feeds and stories but still nudge people to click — all managed from one Meta account.",
+    desc: "Ads that blend into feeds and stories but still nudge people to click - all managed from one Meta account.",
     tags: ["Story Ads", "Feed Posts", "Reels Advertising"],
     image: "/images/marketing.png",
   },
@@ -228,7 +228,7 @@ const whyClientsStay = [
   },
   {
     title: "Simple decision reporting",
-    desc: "No vanity dashboards — just what is working, what is not, and what ships next.",
+    desc: "No vanity dashboards - just what is working, what is not, and what ships next.",
   },
 ];
 
@@ -261,7 +261,7 @@ const faqs = [
   },
   {
     q: "Do you provide regular reports?",
-    a: "Always. Weekly performance updates and detailed monthly reports with clear next actions — simple enough to read without a marketing background.",
+    a: "Always. Weekly performance updates and detailed monthly reports with clear next actions - simple enough to read without a marketing background.",
   },
 ];
 
@@ -337,7 +337,7 @@ export default function MetaAdsPage() {
               className="mt-5 text-white text-[16px] leading-relaxed max-w-md"
             >
               We run high-performing Facebook & Instagram ads that actually
-              bring leads, conversions, and revenue — not just impressions.
+              bring leads, conversions, and revenue - not just impressions.
             </motion.p>
 
             {/* Buttons */}
@@ -384,7 +384,7 @@ export default function MetaAdsPage() {
         </div>
       </section>
 
-      {/* Stats — floating panel */}
+      {/* Stats - floating panel */}
       <div className="relative px-4 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-lg border border-gray-200 bg-white px-4 py-6 sm:px-8 sm:py-8">
@@ -417,7 +417,7 @@ export default function MetaAdsPage() {
               Data-led delivery
             </p>
             <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-              Reporting you can act on — not vanity screenshots
+              Reporting you can act on - not vanity screenshots
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
               Weekly readouts connect creative tests, audience shifts, and spend
@@ -452,7 +452,7 @@ export default function MetaAdsPage() {
         </div>
       </section>
 
-      <section className="sticky top-[9rem] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
+      <section className="sticky top-[var(--site-header-height)] z-30 border-y border-slate-200/70 bg-white/90 py-2.5 backdrop-blur">
         <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 sm:px-8 lg:px-10">
           {quickNav.map((item) => (
             <a
@@ -595,7 +595,7 @@ export default function MetaAdsPage() {
               Our Meta Ads Process
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              Simple and repeatable — so you always know what is happening and
+              Simple and repeatable - so you always know what is happening and
               why.
             </p>
           </FadeIn>
@@ -633,8 +633,7 @@ export default function MetaAdsPage() {
               Facebook Advertising Services We Offer
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
-              As a full-service Meta ads agency, we handle the full system —
-              from strategy to scaling.
+              As a full-service Meta ads agency, we handle the full system - from strategy to scaling.
             </p>
           </FadeIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -701,7 +700,7 @@ export default function MetaAdsPage() {
         theme="meta"
         items={industries}
         headline="Industries we scale on Meta"
-        subhead="Vertical-specific audiences, offer language, and measurement — engineered for your P&L, not a generic playbook."
+        subhead="Vertical-specific audiences, offer language, and measurement - engineered for your P&L, not a generic playbook."
       />
 
       {/* Case Studies */}
@@ -824,7 +823,7 @@ export default function MetaAdsPage() {
               Turn Scrolls Into Sales
             </h2>
             <p className="mt-4 text-[15px] text-black">
-              Book a free strategy call — we&apos;ll come back with a clear plan,
+              Book a free strategy call - we&apos;ll come back with a clear plan,
               realistic scope, and how we&apos;d measure success.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">

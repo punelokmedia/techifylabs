@@ -45,7 +45,7 @@ export default function BlogContentLayout() {
           {/* INTRO */}
           <p className="text-gray-600 mb-4 leading-relaxed">
             Scaling Meta ads isn&apos;t just about increasing budget. Most brands hit
-            a ceiling not because of budget constraints — but because their
+            a ceiling not because of budget constraints - but because their
             creative, audience segmentation, and campaign structure aren’t built
             for scale.
           </p>
@@ -66,7 +66,7 @@ export default function BlogContentLayout() {
           </h2>
 
           <p className="text-gray-600 mb-4">
-            At this stage, your job is to find what works — not scale
+            At this stage, your job is to find what works - not scale
             prematurely.
           </p>
 
@@ -97,7 +97,7 @@ export default function BlogContentLayout() {
 
           {/* PHASE 3 */}
           <h2 className="text-xl font-semibold mb-3">
-            Phase 3: ₹20,000–₹50,000/day — creative engine
+            Phase 3: ₹20,000–₹50,000/day - creative engine
           </h2>
 
           <p className="text-gray-600 mb-4">
@@ -138,7 +138,7 @@ export default function BlogContentLayout() {
               </li>
 
               <li className="hover:text-black cursor-pointer transition">
-                Phase 3: ₹20,000–₹50,000/day — the creative factory mindset
+                Phase 3: ₹20,000–₹50,000/day - the creative factory mindset
               </li>
 
               <li className="hover:text-black cursor-pointer transition">

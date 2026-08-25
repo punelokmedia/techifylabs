@@ -34,7 +34,7 @@ const services = [
     icon: "🍎",
     title: "iOS App Development",
     description:
-      "Native Swift/SwiftUI apps for iPhone and iPad — fast, polished, and App Store ready.",
+      "Native Swift/SwiftUI apps for iPhone and iPad - fast, polished, and App Store ready.",
   },
   {
     icon: "🤖",
@@ -52,7 +52,7 @@ const services = [
     icon: "🌐",
     title: "Progressive Web Apps",
     description:
-      "App-like experiences in the browser — installable, offline-capable, and blazing fast.",
+      "App-like experiences in the browser - installable, offline-capable, and blazing fast.",
   },
   {
     icon: "🔔",
@@ -64,7 +64,7 @@ const services = [
     icon: "🔄",
     title: "App Maintenance & Updates",
     description:
-      "OS compatibility updates, bug fixes, and new feature releases — we keep your app running smoothly.",
+      "OS compatibility updates, bug fixes, and new feature releases - we keep your app running smoothly.",
   },
 ];
 
@@ -128,7 +128,7 @@ const techStack = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-// Hero badge — keeps dark styling (used only in hero)
+// Hero badge - keeps dark styling (used only in hero)
 function HeroBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -140,7 +140,7 @@ function HeroBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Section badge — light styling for below-hero sections
+// Section badge - light styling for below-hero sections
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -189,7 +189,7 @@ function ServiceCard({
 export default function AppDevelopmentPage() {
   return (
     <main className="min-h-screen text-white">
-      {/* ══ HERO — UNCHANGED ══ */}
+      {/* ══ HERO - UNCHANGED ══ */}
       <section
         className="relative overflow-hidden border-b border-white/[0.08] rounded-b-[1.75rem]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
@@ -339,7 +339,7 @@ export default function AppDevelopmentPage() {
             App Development Services
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            Native, cross-platform, or web — we build the right app for your
+            Native, cross-platform, or web - we build the right app for your
             audience and budget.
           </p>
         </div>
@@ -457,7 +457,7 @@ export default function AppDevelopmentPage() {
             </h2>
             <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-gray-500">
               Let&apos;s turn it into a product your users will love. Book a free
-              strategy call — no obligation.
+              strategy call - no obligation.
             </p>
             <Link
               href="/contact"

@@ -139,7 +139,7 @@ export default function ServicePageLayout({ data }: { data: ServicePageData }) {
   return (
     <div className="bg-white min-h-screen text-gray-900">
 
-      {/* ── Hero — UNCHANGED ──────────────────────────────────────────────── */}
+      {/* ── Hero - UNCHANGED ──────────────────────────────────────────────── */}
       <section className="relative  bg-gradient-to-br from-black via-[#310f39] to-[#1a0b2e] border-b border-white/[0.06] overflow-hidden sm:rounded-b-[1.75rem]">
       
         <div
@@ -241,7 +241,7 @@ hover:gap-3"
         </div>
       </section>
 
-      {/* ── Body — white bg, dark text ────────────────────────────────────── */}
+      {/* ── Body - white bg, dark text ────────────────────────────────────── */}
       <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
 
@@ -392,15 +392,15 @@ hover:gap-3"
                   Contact Information
                 </h3>
                 <p className="text-gray-500 text-xs leading-relaxed mb-4">
-                  Reach out to our team for fast support or any inquiries — we&apos;re just a call away.
+                  Reach out to our team for fast support or any inquiries - we&apos;re just a call away.
                 </p>
                 <div className="space-y-3">
                   <a
-                    href="tel:+919313961011"
+                    href="tel:+919067777034"
                     className={`flex items-center gap-2.5 text-sm ${ac.text} hover:opacity-80 transition-opacity`}
                   >
                     <PhoneIcon />
-                    +91 9313961011
+                    +91 9067777034
                   </a>
                   <a
                     href="mailto:info@techeasify.com"

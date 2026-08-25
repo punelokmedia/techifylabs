@@ -55,29 +55,29 @@ const retentionPageData: ServicePageData = {
   heroTitle: "Turn Customers into",
   heroHighlight: "Loyal Repeat Buyers",
   heroSubtitle:
-    "Techeasify helps businesses retain customers and increase lifetime value through strategic email, WhatsApp, and SMS campaigns — fully automated, personally relevant, and measurable.",
+    "Techeasify helps businesses retain customers and increase lifetime value through strategic email, WhatsApp, and SMS campaigns - fully automated, personally relevant, and measurable.",
   heroCta: "Get Free Consultation",
   accentColor: "violet",
   stats: [
     { value: "40%", label: "Avg. increase in repeat purchase rate" },
     { value: "6X", label: "ROI vs new customer acquisition" },
     { value: "35%", label: "Avg. email open rate for our clients" },
-    { value: "100%", label: "Owned audience — no algorithm dependency" },
+    { value: "100%", label: "Owned audience - no algorithm dependency" },
   ],
   problemTitle: "Why most retention marketing fails",
   problems: [
-    "Lists are unclean — bad emails and low-intent leads drag down delivery.",
+    "Lists are unclean - bad emails and low-intent leads drag down delivery.",
     "No automation, so follow-up is manual and inconsistent.",
     "Messages sound generic and get ignored or marked as spam.",
-    "Poor deliverability — emails land in promotions or junk.",
-    "No tracking — teams don't know which campaigns are driving revenue.",
+    "Poor deliverability - emails land in promotions or junk.",
+    "No tracking - teams don't know which campaigns are driving revenue.",
   ],
   whyTitle: "Why Choose Techeasify for Retention Marketing?",
   whyPoints: [
     "We plan your full email strategy, not just one-off sends.",
     "We set up automations that run 24/7 without your team's effort.",
-    "Every campaign is tested — subject lines, CTAs, and timing.",
-    "Clear revenue attribution — you see exactly what each campaign earns.",
+    "Every campaign is tested - subject lines, CTAs, and timing.",
+    "Clear revenue attribution - you see exactly what each campaign earns.",
   ],
   servicesTitle: "Our Retention Marketing Services",
   services: [
@@ -90,7 +90,7 @@ const retentionPageData: ServicePageData = {
     {
       title: "Marketing Automation & Flows",
       description:
-        "Welcome series, abandoned cart, post-purchase, win-back — automated sequences that drive revenue 24/7.",
+        "Welcome series, abandoned cart, post-purchase, win-back - automated sequences that drive revenue 24/7.",
       icon: <AutomationIcon />,
     },
     {
@@ -114,7 +114,7 @@ const retentionPageData: ServicePageData = {
     {
       title: "Performance Reporting",
       description:
-        "Open rates, click rates, revenue per email — plain English reporting with clear next steps.",
+        "Open rates, click rates, revenue per email - plain English reporting with clear next steps.",
       icon: <ReportIcon />,
     },
   ],
@@ -142,7 +142,7 @@ const retentionPageData: ServicePageData = {
       step: "04",
       title: "Campaign Launch",
       description:
-        "Go live with designed, written, and scheduled campaigns — tested before every send.",
+        "Go live with designed, written, and scheduled campaigns - tested before every send.",
     },
     {
       step: "05",

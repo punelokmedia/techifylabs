@@ -142,7 +142,7 @@ export default function ServiceAdsInsights({
             ))}
           </svg>
           <p className="mt-2 text-[10px] leading-snug text-slate-400">
-            Illustrative trend for layout only — your reports pull live data from ad accounts.
+            Illustrative trend for layout only - your reports pull live data from ad accounts.
           </p>
         </div>
 

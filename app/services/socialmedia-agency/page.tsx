@@ -65,7 +65,7 @@ const socialPageData: ServicePageData = {
   ],
   problemTitle: "Why most brands struggle with social media",
   problems: [
-    "Posting without a strategy — random content that doesn't build an audience.",
+    "Posting without a strategy - random content that doesn't build an audience.",
     "Inconsistent visual identity that confuses potential customers.",
     "No content calendar, leading to gaps and last-minute posts.",
     "Ignoring comments and DMs, which kills community trust.",
@@ -73,7 +73,7 @@ const socialPageData: ServicePageData = {
   ],
   whyTitle: "Why Choose Techeasify as Your Social Media Agency?",
   whyPoints: [
-    "Platform-specific strategy — what works on Instagram differs from LinkedIn.",
+    "Platform-specific strategy - what works on Instagram differs from LinkedIn.",
     "End-to-end execution: strategy, design, captions, posting, and reporting.",
     "In-house creative team for Reels, carousels, Stories, and static posts.",
     "Transparent monthly reports with reach, engagement, and growth metrics.",
@@ -129,13 +129,13 @@ const socialPageData: ServicePageData = {
       step: "02",
       title: "Content Calendar Planning",
       description:
-        "A monthly calendar with content types, themes, and posting frequency — approved before execution.",
+        "A monthly calendar with content types, themes, and posting frequency - approved before execution.",
     },
     {
       step: "03",
       title: "Design & Copy Production",
       description:
-        "Our in-house team creates all visuals and captions — Reels, carousels, Stories, and static posts.",
+        "Our in-house team creates all visuals and captions - Reels, carousels, Stories, and static posts.",
     },
     {
       step: "04",

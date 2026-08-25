@@ -45,7 +45,7 @@ const services = [
     icon: "🔬",
     title: "Diagnostics & Lab",
     description:
-      "State-of-the-art diagnostic imaging — MRI, CT Scan, X-Ray, Ultrasound — plus a full-service NABL-accredited laboratory.",
+      "State-of-the-art diagnostic imaging - MRI, CT Scan, X-Ray, Ultrasound - plus a full-service NABL-accredited laboratory.",
     tags: ["MRI", "CT Scan", "Pathology"],
     color: "from-emerald-500/20 to-emerald-500/5",
     accent: "#10b981",

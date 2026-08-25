@@ -29,7 +29,7 @@ const services = [
     icon: "🏪",
     title: "Store Setup & Configuration",
     description:
-      "Full Shopify store setup — domain, payment gateway, taxes, shipping zones, and collections.",
+      "Full Shopify store setup - domain, payment gateway, taxes, shipping zones, and collections.",
   },
   {
     icon: "🎨",
@@ -47,7 +47,7 @@ const services = [
     icon: "🔗",
     title: "App Integration",
     description:
-      "Reviews, loyalty programs, upsells, email marketing — we integrate the right Shopify apps.",
+      "Reviews, loyalty programs, upsells, email marketing - we integrate the right Shopify apps.",
   },
   {
     icon: "📦",
@@ -64,7 +64,7 @@ const services = [
 ];
 
 const whyShopify = [
-  "Hosted & maintained by Shopify — zero server headache",
+  "Hosted & maintained by Shopify - zero server headache",
   "Built-in payment processing with Shopify Payments",
   "100+ payment gateways supported globally",
   "Abandoned cart recovery to win back lost sales",
@@ -113,7 +113,7 @@ const plans = [
 
 // ── SMALL REUSABLE COMPONENTS ────────────────────────────────
 
-// Dark badge — hero only (unchanged)
+// Dark badge - hero only (unchanged)
 function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -125,7 +125,7 @@ function SectionBadgeDark({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Light badge — below hero
+// Light badge - below hero
 function SectionBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 inline-flex items-center gap-2">
@@ -174,7 +174,7 @@ function ServiceCard({
 export default function ShopifyDevelopmentPage() {
   return (
     <main className="min-h-screen bg-white text-gray-100">
-      {/* ══ HERO — UNCHANGED ══ */}
+      {/* ══ HERO - UNCHANGED ══ */}
       <section
         className="relative overflow-hidden rounded-b-[1.7rem] border-b border-white/[0.08]
                           bg-gradient-to-br from-[#0a0f2c] via-[#1e1b4b] to-[#0d0b1f]"
@@ -221,7 +221,7 @@ export default function ShopifyDevelopmentPage() {
             >
               As official Shopify Partners, we build custom B2B and B2C stores
               that drive sales, delight shoppers, and scale effortlessly with
-              your business — from setup to Shopify Plus.
+              your business - from setup to Shopify Plus.
             </motion.p>
 
             <motion.div
@@ -276,7 +276,7 @@ export default function ShopifyDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ OFFICIAL PARTNER BADGE — WHITE THEME ══ */}
+      {/* ══ OFFICIAL PARTNER BADGE - WHITE THEME ══ */}
       <section className="border-b border-gray-100 bg-gray-50 py-8">
         <div className="mx-auto max-w-7xl px-5 text-center sm:px-8 lg:px-10">
           <div
@@ -291,7 +291,7 @@ export default function ShopifyDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ SERVICES GRID — WHITE THEME ══ */}
+      {/* ══ SERVICES GRID - WHITE THEME ══ */}
       <section
         id="services"
         className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24"
@@ -302,7 +302,7 @@ export default function ShopifyDevelopmentPage() {
             Everything for Your Store
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-gray-500">
-            From initial setup to ongoing growth — we cover every aspect of your
+            From initial setup to ongoing growth - we cover every aspect of your
             Shopify journey.
           </p>
         </div>
@@ -320,7 +320,7 @@ export default function ShopifyDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ WHY SHOPIFY — WHITE THEME ══ */}
+      {/* ══ WHY SHOPIFY - WHITE THEME ══ */}
       <section className="border-y border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
@@ -337,7 +337,7 @@ export default function ShopifyDevelopmentPage() {
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-gray-500">
                 Shopify powers over 4 million businesses worldwide. It&apos;s secure,
-                fast, and comes with everything you need to sell — online,
+                fast, and comes with everything you need to sell - online,
                 in-person, and everywhere in between.
               </p>
               <Link
@@ -383,7 +383,7 @@ export default function ShopifyDevelopmentPage() {
         </div>
       </section>
 
-      {/* ══ PRICING — WHITE THEME ══ */}
+      {/* ══ PRICING - WHITE THEME ══ */}
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
         <div className="mb-12 text-center">
           <SectionBadge>Pricing</SectionBadge>
@@ -457,7 +457,7 @@ export default function ShopifyDevelopmentPage() {
         </motion.div>
       </section>
 
-      {/* ══ CTA BANNER — WHITE THEME ══ */}
+      {/* ══ CTA BANNER - WHITE THEME ══ */}
       <section className="border-t border-gray-100 bg-gray-50">
         <div className="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8">
           <motion.div

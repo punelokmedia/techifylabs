@@ -4,7 +4,6 @@ import type { ComponentType } from "react";
 import { motion } from "framer-motion";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const spring = { type: "spring" as const, stiffness: 400, damping: 30 };
 
 const phases: {
   phase: string;
@@ -99,17 +98,21 @@ function IconFlask({ className }: { className?: string }) {
 
 export default function HowItWorksSection() {
   return (
-    <section className="border-t border-slate-200/60 bg-[#f4f6f9] py-16 sm:py-20 lg:py-24" aria-labelledby="how-heading">
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
-        <div className="mb-12 text-center lg:mb-14">
+    <section
+      id="how-it-works"
+      className="home-section border-t border-slate-200/60"
+      aria-labelledby="how-heading"
+    >
+      <div className="home-section-inner">
+        <div className="mb-8 text-center lg:mb-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, ease }}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-sm font-semibold text-[#1a2b56] shadow-sm"
+            className="section-kicker"
           >
-            <span className="h-2 w-2 rounded-full bg-indigo-500" aria-hidden />
+            <span className="section-kicker-dot" aria-hidden />
             How it works
           </motion.span>
           <motion.h2
@@ -118,13 +121,14 @@ export default function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.06, ease }}
-            className="mx-auto mt-5 max-w-4xl text-2xl font-bold leading-snug tracking-tight text-[#1a2b56] sm:text-3xl lg:text-[2rem] lg:leading-tight"
+            className="section-title mx-auto mt-5 max-w-4xl text-2xl sm:text-3xl lg:text-[2rem]"
           >
-            Clear steps that ensure scalable, secure, and hassle-free campaign management
+            Clear steps that ensure scalable, secure, and hassle-free campaign
+            management
           </motion.h2>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="phase-grid">
           {phases.map((p, i) => {
             const CardIcon = p.Icon;
             return (
@@ -134,18 +138,22 @@ export default function HowItWorksSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.45, delay: i * 0.05, ease }}
-                whileHover={{ y: -6, transition: spring }}
-                whileTap={{ scale: 0.99 }}
-                className="group/card flex flex-col rounded-2xl border border-slate-200/90 bg-white p-6 shadow-sm ring-1 ring-transparent transition-[border-color,box-shadow,background-color] duration-300 hover:border-indigo-200/80 hover:bg-sky-50/40 hover:shadow-lg hover:shadow-indigo-500/10"
+                className="phase-card group/card"
               >
                 <div className="flex items-center justify-between gap-3">
-                  <CardIcon className="h-8 w-8 text-indigo-600 transition-colors duration-300 group-hover/card:text-violet-600" />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">{p.phase}</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <CardIcon className="h-6 w-6" />
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    {p.phase}
+                  </span>
                 </div>
                 <h3 className="mt-4 text-lg font-bold text-[#1a2b56] transition-colors duration-300 group-hover/card:text-indigo-800">
                   {p.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{p.description}</p>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                  {p.description}
+                </p>
               </motion.article>
             );
           })}

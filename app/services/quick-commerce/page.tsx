@@ -69,7 +69,7 @@ const services = [
   {
     icon: "📍",
     title: "Dark Store & Listing Setup",
-    desc: "We set up your brand across all quick commerce dark stores — product catalogues, images, pricing tiers, and availability zones configured for maximum reach.",
+    desc: "We set up your brand across all quick commerce dark stores - product catalogues, images, pricing tiers, and availability zones configured for maximum reach.",
   },
   {
     icon: "🎯",
@@ -112,15 +112,15 @@ const differentiators = [
   },
   {
     title: "Hyperlocal expertise",
-    desc: "We run campaigns at the pincode and dark-store level — not just nationally. That's where quick commerce is actually won.",
+    desc: "We run campaigns at the pincode and dark-store level - not just nationally. That's where quick commerce is actually won.",
   },
   {
     title: "Cross-platform consistency",
-    desc: "Same pricing, same availability, same brand experience across Blinkit, Zepto, and Instamart — managed from one place.",
+    desc: "Same pricing, same availability, same brand experience across Blinkit, Zepto, and Instamart - managed from one place.",
   },
   {
     title: "Data-first decisions",
-    desc: "Every bid, every keyword, every pincode is chosen based on conversion data — not gut feel.",
+    desc: "Every bid, every keyword, every pincode is chosen based on conversion data - not gut feel.",
   },
 ];
 
@@ -186,7 +186,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function QuickCommerce() {
   return (
     <div className="bg-white min-h-screen text-black font-sans">
-      {/* Hero — unchanged */}
+      {/* Hero - unchanged */}
       <section className="relative overflow-hidden pt-32 pb-24 px-6 border-b border-white/[0.08] rounded-b-[1.75rem] bg-gradient-to-br from-[#0a0f2c] via-[#110f32] to-[#070612]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/3 w-[600px] h-[500px] rounded-full blur-[140px]" />
@@ -227,7 +227,7 @@ export default function QuickCommerce() {
             >
               Blinkit. Zepto. Instamart. Your buyers decide in seconds and
               checkout in minutes. We make sure your brand is visible, in stock,
-              and converting — every time they open the app.
+              and converting - every time they open the app.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
@@ -281,7 +281,7 @@ export default function QuickCommerce() {
           <SectionHeading
             tag="Platforms We Manage"
             title="All the Apps Your Buyers Use"
-            sub="We manage your presence across every major quick commerce platform in India — one partner, full coverage."
+            sub="We manage your presence across every major quick commerce platform in India - one partner, full coverage."
             accent={ACCENT}
           />
           <motion.div
@@ -317,7 +317,7 @@ export default function QuickCommerce() {
           <SectionHeading
             tag="What We Do"
             title="End-to-End Quick Commerce Management"
-            sub="From listing to ads to inventory — we handle everything so your brand wins on speed, visibility, and conversion."
+            sub="From listing to ads to inventory - we handle everything so your brand wins on speed, visibility, and conversion."
             accent={ACCENT}
           />
           <motion.div
@@ -387,7 +387,7 @@ export default function QuickCommerce() {
           <SectionHeading
             tag="Our Process"
             title="Launch in 2 Weeks or Less"
-            sub="A tight, proven process that gets your brand live on quick commerce platforms fast — and optimised even faster."
+            sub="A tight, proven process that gets your brand live on quick commerce platforms fast - and optimised even faster."
             accent={ACCENT}
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

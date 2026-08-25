@@ -9,27 +9,33 @@ export default function BlogSection() {
   const router = useRouter();
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-10 text-center">
-          Our Latest Insights and Blogs
-        </h2>
+    <section id="insights" className="home-section">
+      <div className="home-section-inner">
+        <div className="mb-10 text-center">
+          <span className="section-kicker">
+            <span className="section-kicker-dot" aria-hidden />
+            Insights
+          </span>
+          <h2 className="section-title mt-4 text-3xl sm:text-4xl">
+            Our Latest Insights and Blogs
+          </h2>
+        </div>
 
-        {/* BLOG GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="blog-grid">
           {blogPosts.slice(0, 6).map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>
 
-        {/* 🔥 BUTTON (AFTER CARDS - CENTERED) */}
-        <div className="flex justify-center mt-12">
+        <div className="mt-12 flex justify-center">
           <motion.button
-            whileTap={{ scale: 0.95 }}
+            type="button"
+            whileTap={{ scale: 0.97 }}
             onClick={() => router.push("/services/blogs")}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold shadow-md transition flex items-center gap-2"
+            className="home-cta"
           >
-            Load More Articles ↓
+            Load More Articles
+            <span aria-hidden>↓</span>
           </motion.button>
         </div>
       </div>

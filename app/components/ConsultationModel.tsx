@@ -40,7 +40,7 @@ export default function ConsultationModal({
           Get Consultation For Free
         </h2>
         <p className="text-gray-500 mt-1 mb-5 text-sm">
-          Tell us about your business — we’ll get back quickly.
+          Tell us about your business - we’ll get back quickly.
         </p>
 
         {/* Form */}

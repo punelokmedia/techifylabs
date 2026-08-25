@@ -14,7 +14,7 @@ const milestones = [
     year: "2019",
     title: "Paid media practice",
     detail:
-      "Meta and Google Ads retainers with reporting built for founders and finance — not vanity dashboards.",
+      "Meta and Google Ads retainers with reporting built for founders and finance - not vanity dashboards.",
   },
   {
     year: "2021",
@@ -26,13 +26,13 @@ const milestones = [
     year: "2023",
     title: "National footprint",
     detail:
-      "Retainers across categories — same leads on your account, shared standards across the studio.",
+      "Retainers across categories - same leads on your account, shared standards across the studio.",
   },
   {
     year: "Now",
     title: "Full growth stack",
     detail:
-      "SEO, lifecycle, and commerce builds run beside paid — one roadmap, one weekly review.",
+      "SEO, lifecycle, and commerce builds run beside paid - one roadmap, one weekly review.",
   },
 ];
 
@@ -47,7 +47,7 @@ const principles = [
   },
   {
     title: "Commercial honesty",
-    body: "We align on guardrails and incrementality before budgets move — so scaling is a decision, not a surprise.",
+    body: "We align on guardrails and incrementality before budgets move - so scaling is a decision, not a surprise.",
   },
   {
     title: "Operational pace",
@@ -65,7 +65,7 @@ const practiceAreas = [
   {
     title: "Creative & experience",
     channels: "Brand · UGC · landing",
-    text: "Copy and layouts grounded in query and placement intent — built to learn, not to decorate slides.",
+    text: "Copy and layouts grounded in query and placement intent - built to learn, not to decorate slides.",
     Icon: IconPalette,
   },
   {
@@ -219,7 +219,7 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Hero — immersive */}
+      {/* Hero - immersive */}
       <section className="relative overflow-hidden bg-[#050816] text-white rounded-b-[1.75rem]">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(99,102,241,0.45),transparent_55%)]"
@@ -352,8 +352,7 @@ export default function AboutPage() {
           <FadeIn>
             <p className="text-lg font-light leading-relaxed text-slate-700 sm:text-xl sm:leading-relaxed lg:text-[1.35rem] lg:leading-relaxed">
               We exist so marketing and finance read the{" "}
-              <span className="font-medium text-slate-900">same numbers</span> —
-              and every experiment ties back to a commercial decision, not a
+              <span className="font-medium text-slate-900">same numbers</span> - and every experiment ties back to a commercial decision, not a
               slide title.
             </p>
             <div
@@ -403,8 +402,7 @@ export default function AboutPage() {
                     <p>
                       Today that includes organic search, lifecycle where it
                       matters, and Shopify or custom builds when the storefront
-                      limits growth. One weekly cadence keeps priorities aligned
-                      — nothing competes in silence.
+                      limits growth. One weekly cadence keeps priorities aligned - nothing competes in silence.
                     </p>
                   </div>
                 </div>
@@ -415,7 +413,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Practice — bento cards */}
+      {/* Practice - bento cards */}
       <section
         id="team"
         className="border-b border-slate-200/80 bg-slate-50 py-20 sm:py-28"
@@ -435,7 +433,7 @@ export default function AboutPage() {
               </h2>
               <p className="mt-5 text-[17px] leading-relaxed text-slate-600">
                 Discipline leads own their craft and sit in the same client
-                forum — no layers that reset context every week.
+                forum - no layers that reset context every week.
               </p>
             </FadeIn>
           </div>
@@ -490,8 +488,7 @@ export default function AboutPage() {
                   Collaboration
                 </p>
                 <p className="mt-3 text-xl font-semibold leading-snug text-white sm:text-2xl">
-                  Strategy, creative, and analytics stay in one conversation —
-                  briefs do not drift from your P&amp;L.
+                  Strategy, creative, and analytics stay in one conversation - briefs do not drift from your P&amp;L.
                 </p>
               </div>
             </div>
@@ -550,7 +547,7 @@ export default function AboutPage() {
             </p>
             <p className="mx-auto mt-4 max-w-lg text-2xl font-semibold text-black">
               Platforms we configure daily for measurement, governance, and
-              scale — not shelf-ware.
+              scale - not shelf-ware.
             </p>
           </FadeIn>
           <FadeIn delay={0.08}>
@@ -717,7 +714,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-5 text-[17px] leading-relaxed text-black">
               Share your category, channels, and targets. We will reply with a
-              clear view of priorities — whether or not we are the right partner
+              clear view of priorities - whether or not we are the right partner
               for the next phase.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
