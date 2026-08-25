@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import TopBar from "./TopBar";
 import ConsultationModal from "./ConsultationModel";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
@@ -93,6 +94,7 @@ const solutionsSections = [
 const knowledgeLinks = [
   { label: "Our Team", href: "/about#team", Icon: IconUsers },
   { label: "Our Blogs", href: "/services/blogs", Icon: IconBook },
+  { label: "Careers", href: "/careers", Icon: IconBriefcase },
 ];
 
 const leadGenerationLinks = [
@@ -373,6 +375,22 @@ function IconBook({ className }: { className?: string }) {
   );
 }
 
+function IconBriefcase({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      aria-hidden
+    >
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M2 13h20" />
+    </svg>
+  );
+}
+
 function MenuPanel({
   children,
   className = "",
@@ -434,6 +452,7 @@ const megaSectionVariants = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<MenuKey>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<MenuKey>(null);
@@ -494,6 +513,19 @@ export default function Navbar() {
         : "text-white/90 hover:bg-white/10 hover:text-white",
     ].join(" ");
 
+  const navLinkClass = (href: string) => {
+    const active =
+      href === "/"
+        ? pathname === "/"
+        : pathname === href || pathname.startsWith(`${href}/`);
+    return [
+      "shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold transition-all duration-200 md:px-3 md:py-1.5 md:text-[15px]",
+      active
+        ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
+        : "text-white/90 hover:bg-white/10 hover:text-white",
+    ].join(" ");
+  };
+
   return (
     <>
     <header
@@ -526,10 +558,7 @@ export default function Navbar() {
             className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-2 md:flex md:gap-3 lg:gap-4 xl:gap-5"
             aria-label="Main"
           >
-            <Link
-              href="/"
-              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition-all duration-200 hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
-            >
+            <Link href="/" className={navLinkClass("/")}>
               Home
             </Link>
 
@@ -825,16 +854,13 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <Link
-              href="/about"
-              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
-            >
+            <Link href="/about" className={navLinkClass("/about")}>
               About Us
             </Link>
-            <Link
-              href="/contact"
-              className="shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white md:px-3 md:py-1.5 md:text-[15px]"
-            >
+            <Link href="/careers" className={navLinkClass("/careers")}>
+              Careers
+            </Link>
+            <Link href="/contact" className={navLinkClass("/contact")}>
               Contact Us
             </Link>
           </nav>
@@ -1073,6 +1099,13 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                   >
                     About Us
+                  </Link>
+                  <Link
+                    href="/careers"
+                    className="rounded-xl px-4 py-3.5 text-sm font-bold text-slate-800 transition hover:bg-slate-50"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Careers
                   </Link>
                   <Link
                     href="/contact"

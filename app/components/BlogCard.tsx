@@ -16,14 +16,13 @@ export default function BlogCard({ post }: { post: Blog }) {
       viewport={{ once: true }}
       className="blog-card group"
     >
-      <Link href={postHref} className="blog-card-media block">
+      <Link href={postHref} className="blog-card-media relative block">
         <Image
           src={post.coverImage}
           alt={post.title}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 360px"
         />
       </Link>
 
