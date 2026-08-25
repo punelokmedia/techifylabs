@@ -21,7 +21,7 @@ export default function BlogCard({ post }: { post: Blog }) {
           src={post.coverImage}
           alt={post.title}
           fill
-          className="object-contain p-6 transition duration-500 group-hover:scale-105"
+          className="object-cover transition duration-500 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           loading="lazy"
         />

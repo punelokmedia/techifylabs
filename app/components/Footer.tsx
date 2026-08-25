@@ -26,14 +26,25 @@ const serviceLinks: { label: string; href: string }[] = [
   { label: "Social Media Marketing", href: "/services/socialmedia-agency" },
 ];
 
-const bottomLinks = [
+const companyLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/#services" },
-  { label: "Blogs", href: "#" },
+  { label: "Blogs", href: "/services/blogs" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Sitemap", href: "#" },
 ];
+
+const EMAIL = "info@techifylabs.in";
+
+const SCROLL_EDGE_PX = 80;
+
+function FooterHeading({ children }: { children: ReactNode }) {
+  return (
+    <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/50">
+      {children}
+    </h3>
+  );
+}
 
 function IconFacebook({ className }: { className?: string }) {
   return (
@@ -178,19 +189,6 @@ function IconWhatsApp({ className }: { className?: string }) {
   );
 }
 
-const SCROLL_EDGE_PX = 80;
-
-function FooterSectionTitle({ children }: { children: ReactNode }) {
-  return (
-    <div className="mb-0">
-      <h3 className="m-0 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/45 leading-tight">
-        {children}
-      </h3>
-      <div className="mt-1 h-px w-10 bg-[#ea580c]" aria-hidden />
-    </div>
-  );
-}
-
 export default function Footer() {
   const reduceMotion = useReducedMotion();
   const pathname = usePathname();
@@ -231,238 +229,131 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative z-0 mt-auto overflow-hidden bg-[#3b31a1] text-white">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-18%,rgba(255,255,255,0.07),transparent_58%)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.028)_1px,transparent_1px)] [background-size:48px_48px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/[0.06] via-transparent to-black/[0.18]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-[#ea580c]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-[3px] h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto max-w-[1440px] px-5 pb-14 pt-8 sm:px-8 lg:px-10 lg:pb-16 lg:pt-9">
-        {/*
-          md:flex: har column apna stack - heading turant upar, list/card neeche (grid row height ≠ logo height).
-        */}
-        <div className="flex flex-col gap-12 md:flex-row md:items-start md:gap-6 lg:gap-8 xl:gap-10">
-          {/* Column - brand */}
-          <div className="flex min-w-0 flex-col gap-7 md:max-w-[34%] md:flex-[1.02] md:basis-0">
-            <motion.div
-              className="flex w-fit max-w-full flex-col"
-              whileHover={reduceMotion ? undefined : { scale: 1.01 }}
-              transition={springSoft}
+    <footer className="site-footer relative z-0 mt-auto text-white">
+      <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-10">
+          <div className="flex min-w-0 flex-col lg:col-span-3">
+            <Link
+              href="/"
+              className="block w-fit max-w-full leading-none opacity-95 transition hover:opacity-100"
             >
-              <Link
-                href="/"
-                className="block w-fit max-w-full leading-none transition hover:opacity-95"
-              >
-                <Image
-                  src="/techify-labs-logo.png"
-                  alt="Techify Labs"
-                  width={435}
-                  height={188}
-                  className="block h-auto w-full max-w-[min(248px,85vw)] origin-left object-contain object-left sm:max-w-[268px]"
-                  sizes="(max-width: 640px) 85vw, 268px"
-                />
-              </Link>
-              <div
-                className="mt-1 h-px w-10 shrink-0 self-center bg-[#ea580c]"
-                aria-hidden
+              <Image
+                src="/techify-labs-logo.png"
+                alt="Techify Labs"
+                width={435}
+                height={188}
+                className="block h-auto w-full max-w-[min(200px,80vw)] object-contain object-left"
+                sizes="200px"
               />
-            </motion.div>
-            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/40">
-              Digital growth partner
+            </Link>
+            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/70">
+              Performance marketing and product engineering for brands that want
+              clear growth - ads, websites, and always-on support from Pune.
             </p>
-            <p className="max-w-md text-[15px] leading-[1.65] text-white/80">
-              Trusted marketing and development partner - practical strategies
-              and execution that help your brand compete and scale online.
-            </p>
-            <div className="border-t border-white/[0.12] pt-7">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40">
-                Connect
-              </p>
-              <div className="flex flex-wrap gap-2.5">
-                {[
-                  {
-                    Icon: IconFacebook,
-                    label: "Facebook",
-                    hover: "hover:bg-[#1877f2]/20 hover:border-[#1877f2]/35",
-                  },
-                  {
-                    Icon: IconInstagram,
-                    label: "Instagram",
-                    hover:
-                      "hover:bg-fuchsia-500/15 hover:border-fuchsia-400/30",
-                  },
-                  {
-                    Icon: IconLinkedIn,
-                    label: "LinkedIn",
-                    hover: "hover:bg-[#0a66c2]/20 hover:border-[#0a66c2]/35",
-                  },
-                ].map(({ Icon, label, hover }) => (
-                  <motion.a
-                    key={label}
-                    href="#"
-                    aria-label={label}
-                    className={`flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.14] bg-white/[0.05] text-white/95 transition-colors ${hover}`}
-                    whileHover={reduceMotion ? undefined : { y: -2 }}
-                    whileTap={
-                      reduceMotion
-                        ? undefined
-                        : { scale: 0.96, transition: springTap }
-                    }
-                    transition={springSoft}
-                  >
-                    <Icon className="h-[17px] w-[17px]" />
-                  </motion.a>
-                ))}
-              </div>
+            <div className="mt-6 flex items-center gap-2">
+              {[
+                { Icon: IconFacebook, label: "Facebook" },
+                { Icon: IconInstagram, label: "Instagram" },
+                { Icon: IconLinkedIn, label: "LinkedIn" },
+              ].map(({ Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/80 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column - services (title + list tight stack) */}
-          <div className="flex min-w-0 flex-col gap-4 md:flex-[1.15] md:basis-0">
-            <FooterSectionTitle>Our services</FooterSectionTitle>
-            <ul className="grid w-full min-w-0 grid-cols-1 gap-x-5 gap-y-0 text-[14px] leading-snug sm:grid-cols-2 sm:gap-x-5 md:gap-x-4 lg:gap-x-6 sm:gap-y-px">
+          <nav className="min-w-0 lg:col-span-4" aria-label="Services">
+            <FooterHeading>Services</FooterHeading>
+            <ul className="mt-5 grid grid-cols-1 gap-x-5 gap-y-2.5 text-[13.5px] leading-snug sm:grid-cols-2">
               {serviceLinks.map((item) => (
-                <li
-                  key={item.href}
-                  className="border-b border-white/[0.06] sm:border-0"
-                >
+                <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="group/footer-link flex items-baseline gap-2 py-2.5 text-white/75 transition-colors duration-200 hover:text-white sm:py-2"
+                    className="text-white/68 transition-colors hover:text-white"
                   >
-                    <span
-                      className="mt-[0.35em] h-1 w-1 shrink-0 rounded-full bg-[#ea580c]/80 opacity-60 transition-opacity group-hover/footer-link:opacity-100"
-                      aria-hidden
-                    />
-                    <span className="min-w-0 flex-1 group-hover/footer-link:underline group-hover/footer-link:decoration-white/30 group-hover/footer-link:underline-offset-4">
-                      {item.label}
-                    </span>
+                    {item.label.replace(" Agency in India", "")}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Column - contact */}
-          <div className="flex w-full min-w-0 flex-col gap-4 md:max-w-[min(100%,320px)] md:flex-[0.95] md:shrink-0">
-            <FooterSectionTitle>Contact</FooterSectionTitle>
-            <div className="overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.04] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.35)] backdrop-blur-[2px]">
-              <a
-                href="mailto:info@techifylabs.in"
-                className="group flex gap-4 border-b border-white/[0.08] px-5 py-4 transition-colors hover:bg-white/[0.05]"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
-                  <IconMail className="h-[18px] w-[18px]" />
+          <nav className="min-w-0 lg:col-span-2" aria-label="Company">
+            <FooterHeading>Company</FooterHeading>
+            <ul className="mt-5 space-y-2.5 text-[13.5px]">
+              {companyLinks.map((item) => (
+                <li key={item.href + item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-white/68 transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="min-w-0 lg:col-span-3">
+            <FooterHeading>Get in touch</FooterHeading>
+            <ul className="mt-5 space-y-4 text-[13.5px]">
+              <li>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                >
+                  <IconMail className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <span className="break-all">{EMAIL}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={PHONE_TEL}
+                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                >
+                  <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <span className="tabular-nums">{PHONE_DISPLAY}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                >
+                  <IconWhatsApp className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <span>WhatsApp</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-white/65">
+                <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                <span className="leading-relaxed">
+                  UG 67-68, Clover Hills Plaza
+                  <br />
+                  NIBM Road, Kondhwa, Pune 411048
                 </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
-                    Email
-                  </p>
-                  <p className="mt-1 break-all text-[14px] font-medium text-white/95 transition group-hover:underline group-hover:underline-offset-4">
-                    info@techifylabs.in
-                  </p>
-                </div>
-              </a>
-              <a
-                href={PHONE_TEL}
-                className="group flex gap-4 border-b border-white/[0.08] px-5 py-4 transition-colors hover:bg-white/[0.05]"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
-                  <IconPhone className="h-[18px] w-[18px]" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
-                    Phone
-                  </p>
-                  <p className="mt-1 text-[14px] font-medium tabular-nums text-white/95">
-                    {PHONE_DISPLAY}
-                  </p>
-                </div>
-              </a>
-              <div className="flex gap-4 px-5 py-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center self-start rounded-lg bg-[#ea580c]/15 text-white ring-1 ring-white/10">
-                  <IconMapPin className="h-[18px] w-[18px]" />
-                </span>
-                <div className="min-w-0 flex-1 text-[13px] leading-relaxed text-white/78">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
-                    Office
-                  </p>
-                  <p className="mt-1.5 font-semibold text-white">
-                    Techify Labs Pvt. Ltd.
-                  </p>
-                  <p className="mt-1.5">
-                    UG Floor, Office No. 67-68, Clover Hills Plaza
-                    <br />
-                    NIBM Road, Kondhwa, Pune - 411048
-                  </p>
-                </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div className="relative border-t border-white/[0.1] bg-black/20">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 py-10 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10 lg:py-8">
-          <p className="text-center text-[13px] leading-relaxed text-white/55 sm:text-left">
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+          <p className="text-center text-[12px] text-white/45 sm:text-left">
             © {new Date().getFullYear()} Techify Labs Pvt. Ltd. All rights
             reserved.
           </p>
-          <nav
-            className="flex flex-wrap items-center justify-center gap-x-0 gap-y-2 text-[13px] sm:justify-end"
-            aria-label="Footer legal"
-          >
-            {bottomLinks.map((link, i) => (
-              <span key={link.label} className="inline-flex items-center">
-                {i > 0 ? (
-                  <span
-                    className="mx-2 hidden h-3 w-px bg-white/25 sm:inline"
-                    aria-hidden
-                  />
-                ) : null}
-                {link.href === "#" ? (
-                  <motion.a
-                    href={link.href}
-                    className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
-                    whileHover={reduceMotion ? undefined : { y: -0.5 }}
-                    whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                    transition={springSoft}
-                  >
-                    {link.label}
-                  </motion.a>
-                ) : (
-                  <motion.div
-                    whileHover={reduceMotion ? undefined : { y: -0.5 }}
-                    whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-                    transition={springSoft}
-                  >
-                    <Link
-                      href={link.href}
-                      className="rounded px-1.5 py-0.5 text-white/65 transition-colors hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                )}
-              </span>
-            ))}
-          </nav>
+          <p className="text-center text-[12px] text-white/40 sm:text-right">
+            Pune, India
+          </p>
         </div>
       </div>
 

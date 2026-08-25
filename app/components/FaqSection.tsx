@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
+import { photos } from "@/app/lib/images";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -146,8 +147,8 @@ export default function FaqSection() {
           >
             <div className="absolute inset-0">
               <Image
-                src="/images/facebook-adss.jpg"
-                alt="Digital marketing team planning campaigns and social engagement"
+                src={photos.teamMeeting}
+                alt="Digital marketing team planning campaigns"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 42vw"

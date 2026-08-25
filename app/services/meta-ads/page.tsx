@@ -8,6 +8,7 @@ import ServiceAdsInsights from "../../components/ServiceAdsInsights";
 import ServiceIndustriesSection, {
   type IndustryCard,
 } from "../../components/ServiceIndustriesSection";
+import { photos } from "@/app/lib/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -372,12 +373,12 @@ export default function MetaAdsPage() {
 
             <div className="relative shadow-lg p-3 ">
               <Image
-                src="/images/screen-copy.png"
-                alt="marketing"
+                src={photos.metaAds}
+                alt="Social media advertising on a smartphone"
                 width={600}
                 height={320}
                 priority
-                className="h-80 w-[600px] rounded-xl object-contain"
+                className="h-80 w-[600px] rounded-xl object-cover"
               />
             </div>
           </div>
@@ -429,10 +430,10 @@ export default function MetaAdsPage() {
             <FadeIn delay={0.05}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
                 <Image
-                  src="/images/seo-email.png"
+                  src={photos.analytics}
                   alt="Team reviewing performance marketing analytics"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="(max-width: 1000px) 100vw, 50vw"
                 />
                 <div

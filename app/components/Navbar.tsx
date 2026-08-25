@@ -471,6 +471,21 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const syncHeight = () => {
+      document.documentElement.style.setProperty(
+        "--site-header-height",
+        `${el.offsetHeight}px`,
+      );
+    };
+    syncHeight();
+    const ro = new ResizeObserver(syncHeight);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   const triggerClass = (active: boolean) =>
     [
       "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1 text-sm font-semibold tracking-tight transition-all duration-200 md:gap-1.5 md:px-3 md:py-1.5 md:text-[15px]",
@@ -548,7 +563,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="fixed left-1/2 top-[var(--site-header-height)] z-[210] w-[min(94vw,920px)] -translate-x-1/2 pt-2"
+                    className="nav-flyout fixed left-1/2 top-[var(--site-header-height)] z-[210] w-[min(94vw,920px)] -translate-x-1/2"
                     onMouseEnter={() => setOpenMenu("solutions")}
                   >
                     <MenuPanel variant="mega" className="px-5 py-5 sm:px-6 sm:py-6">
@@ -655,7 +670,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute left-0 top-full z-[210] min-w-[min(92vw,400px)] pt-2"
+                    className="nav-flyout absolute left-0 top-full z-[210] min-w-[min(92vw,400px)]"
                     onMouseEnter={() => setOpenMenu("leadGeneration")}
                   >
                     <MenuPanel variant="compact" className="p-3.5">
@@ -747,7 +762,7 @@ export default function Navbar() {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute left-0 top-full z-[210] min-w-[min(92vw,340px)] pt-2"
+                    className="nav-flyout absolute left-0 top-full z-[210] min-w-[min(92vw,340px)]"
                     onMouseEnter={() => setOpenMenu("knowledge")}
                   >
                     <MenuPanel variant="compact" className="p-3.5">

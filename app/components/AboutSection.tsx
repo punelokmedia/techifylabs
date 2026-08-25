@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { photos } from "@/app/lib/images";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -162,10 +163,10 @@ export default function AboutSection() {
             className="about-visual"
           >
             <Image
-              src="/images/marketing.png"
-              alt="Team building digital products and marketing systems"
+              src={photos.agencyWork}
+              alt="Marketing team collaborating on campaign strategy"
               fill
-              className="object-contain p-6 sm:p-8"
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 44vw"
             />
           </motion.div>

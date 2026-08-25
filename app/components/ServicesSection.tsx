@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { photos } from "@/app/lib/images";
 
 const sectionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -94,7 +95,7 @@ const featuredRow = [
     featured: false,
     title: "Google Ads",
     href: "/services/google-ads",
-    image: "/images/arrow-upmarketing.png",
+    image: photos.googleAds,
     description:
       "Search, Performance Max, and intent-led structures that protect margin.",
     bullets: ["Search & PMax", "Clear attribution"],
@@ -104,7 +105,7 @@ const featuredRow = [
     featured: false,
     title: "Amazon Ads",
     href: "/services/amazon-ads",
-    image: "/images/lamp-digital.png",
+    image: photos.amazonAds,
     description:
       "Sponsored products and brand placements tuned for ACOS and rank.",
     bullets: ["Retail readiness", "Catalog scale"],
@@ -116,7 +117,7 @@ const gridRow = [
   {
     title: "Search engine optimization",
     href: "/services/organic-growth-seo",
-    image: "/images/phone-mirror.png",
+    image: photos.seo,
     description:
       "Technical SEO, content, and authority building for sustainable organic demand.",
     bullets: ["Organic growth", "Quality traffic"],
@@ -125,7 +126,7 @@ const gridRow = [
   {
     title: "Website development",
     href: "/services/website-development",
-    image: "/images/laptop-marketing.png",
+    image: photos.webDev,
     description:
       "Fast, accessible sites and landing experiences engineered for conversion.",
     bullets: ["Zero friction", "Mobile first"],
@@ -134,7 +135,7 @@ const gridRow = [
   {
     title: "Email marketing",
     href: "/services/retention-marketing",
-    image: "/images/seo-email.png",
+    image: photos.email,
     description:
       "Lifecycle flows and campaigns that turn subscribers into repeat buyers.",
     bullets: ["Automated flows", "Repeat revenue"],
@@ -143,7 +144,7 @@ const gridRow = [
   {
     title: "Shopify development",
     href: "/services/shopify-development",
-    image: "/images/social-media.png",
+    image: photos.shopify,
     description:
       "Store builds, CRO, and checkout optimization on Shopify and headless stacks.",
     bullets: ["Easy checkout", "Conversion ready"],
@@ -347,11 +348,15 @@ function ServiceCard({
           >
             {/* Background Image */}
             <Image
-              src="/images/facebook-ads.png"
+              src={photos.metaAds}
               alt="Meta ads marketing"
               fill
-              className="object-cover transition-transform duration-700"
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 42vw"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/45 to-slate-950/15"
+              aria-hidden
             />
 
           </motion.div>
@@ -364,12 +369,12 @@ function ServiceCard({
       )}
       {/* Top Image for non-featured cards */}
       {image && (
-        <div className="relative -m-6 mb-5 h-40 overflow-hidden rounded-t-2xl">
+        <div className="relative -m-6 mb-5 h-44 overflow-hidden rounded-t-2xl">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-contain transition-transform duration-500 group-hover/card:scale-105"
+            className="object-cover transition-transform duration-500 group-hover/card:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />

@@ -431,6 +431,19 @@
   background: #e4e1f8;
 }
 
+.nav-flyout {
+  position: relative;
+}
+
+.nav-flyout::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -14px;
+  height: 14px;
+}
+
 /* Homepage 3D look */
 .home-3d {
   perspective: 1600px;
@@ -827,6 +840,10 @@
   height: 11.5rem;
   overflow: hidden;
   background: linear-gradient(180deg, #eef2ff, #f8fafc);
+}
+
+.site-footer {
+  background: #3b31a1;
 }
 
 @media (prefers-reduced-motion: reduce) {

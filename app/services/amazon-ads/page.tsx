@@ -8,6 +8,7 @@ import ServiceAdsInsights from "../../components/ServiceAdsInsights";
 import ServiceIndustriesSection, {
   type IndustryCard,
 } from "../../components/ServiceIndustriesSection";
+import { photos } from "@/app/lib/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -344,10 +345,10 @@ export default function AmazonAdsPage() {
               <div className="relative rounded-2xl bg-white/5 shadow-xl">
                 <div className="relative overflow-hidden rounded-xl aspect-[16/9]">
                   <Image
-                    src="/images/tweeter-facebook.png"
-                    alt="dashboard"
+                    src={photos.amazonAds}
+                    alt="Ecommerce packaging ready for shipping"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
                   {/* <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/70 to-transparent" /> */}
                 </div>
@@ -407,10 +408,10 @@ export default function AmazonAdsPage() {
             <FadeIn delay={0.05}>
               <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-slate-200/90 bg-slate-100 shadow-lg ring-1 ring-slate-200/60">
                 <Image
-                  src="/images/phone-mirror.png"
+                  src={photos.shopify}
                   alt="Retail and marketplace operations"
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div

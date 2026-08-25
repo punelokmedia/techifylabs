@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
+import { photos } from "@/app/lib/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 380, damping: 28 };
@@ -320,8 +321,8 @@ export default function ContactPage() {
                 />
                 <div className="relative aspect-[16/11] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40 ring-1 ring-white/10 sm:aspect-[16/10]">
                   <Image
-                    src="/images/phone-using.png"
-                    alt="Communication and workspace"
+                    src={photos.collaboration}
+                    alt="Team collaborating in a modern workspace"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"

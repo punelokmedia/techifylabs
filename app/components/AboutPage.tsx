@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import ServicesSection from "./ServicesSection";
+import { photos } from "@/app/lib/images";
 const ease = [0.22, 1, 0.36, 1] as const;
 const spring = { type: "spring" as const, stiffness: 360, damping: 28 };
 
@@ -314,8 +315,8 @@ export default function AboutPage() {
                 />
                 <div className="relative w-[700px] h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50 ring-1 ring-white/10">
                   <Image
-                    src="/images/person-laptop.png"
-                    alt="Modern workspace with natural light"
+                    src={photos.collaboration}
+                    alt="Team working together in a bright office"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -473,10 +474,10 @@ export default function AboutPage() {
           >
             <div className="aspect-[21/9] min-h-[220px] sm:min-h-[280px]">
               <Image
-                src="/images/pngtree-digital-marketing.png"
+                src={photos.meeting}
                 alt="Team collaborating in a meeting"
                 fill
-                className="object-contain"
+                className="object-cover"
                 sizes="100vw"
               />
               <div
