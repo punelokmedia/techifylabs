@@ -554,9 +554,9 @@ export default function Navbar() {
               alt="Techify Labs"
               width={435}
               height={188}
-              className="block h-8 w-auto max-w-[140px] object-contain object-left sm:h-9 sm:max-w-[158px] lg:h-10 lg:max-w-[172px] xl:h-11 xl:max-w-[196px]"
+              className="block h-11 w-auto max-w-[176px] object-contain object-left sm:h-12 sm:max-w-[196px] lg:h-[3.35rem] lg:max-w-[220px] xl:h-14 xl:max-w-[240px]"
               priority
-              sizes="196px"
+              sizes="240px"
             />
           </Link>
           <nav

@@ -236,15 +236,15 @@ export default function Footer() {
           <div className="flex min-w-0 flex-col lg:col-span-3">
             <Link
               href="/"
-              className="block w-fit max-w-full leading-none opacity-95 transition hover:opacity-100"
+              className="relative -mt-1 block w-fit max-w-full leading-none opacity-95 transition hover:opacity-100 lg:-mt-2"
             >
               <Image
                 src="/techify-labs-logo.png"
                 alt="Techify Labs"
                 width={435}
                 height={188}
-                className="block h-auto w-full max-w-[min(200px,80vw)] object-contain object-left"
-                sizes="200px"
+                className="block h-auto w-full max-w-[min(220px,80vw)] -translate-y-1 object-contain object-left lg:-translate-y-2"
+                sizes="220px"
               />
             </Link>
             <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/70">
