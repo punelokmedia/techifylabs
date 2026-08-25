@@ -465,7 +465,7 @@ export default function ServicesSection() {
             id="services-heading"
             className="section-title mx-auto mt-5 max-w-3xl text-3xl sm:text-4xl"
           >
-            Our 360° digital marketing &amp; development services
+            Our 360° Digital Marketing &amp; Development Services
           </h2>
         </motion.div>
 

@@ -3,7 +3,7 @@ export const photos = {
   agencyWork: "/photos/agency-work.jpg",
   collaboration: "/photos/collaboration.jpg",
   workshop: "/photos/workshop.jpg",
-  metaAds: "/photos/meta-ads.jpg",
+  metaAds: "/photos/facebook-ads.png",
   googleAds: "/photos/google-ads.jpg",
   amazonAds: "/photos/amazon-ads.jpg",
   seo: "/photos/seo.jpg",

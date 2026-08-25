@@ -1,693 +1,762 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { Phone } from "lucide-react";
+import {
+  BriefingAgenda,
+  ComparisonTable,
+  CtaBand,
+  FadeIn,
+  FaqAccordion,
+  GuardrailList,
+  HeroStatRow,
+  InquiryPath,
+  NotAFit,
+  PracticeStrip,
+  ProgramNav,
+  QualifyFields,
+  RelatedProgram,
+  SectionIntro,
+  SplitRoles,
+  WeekPlan,
+} from "@/app/components/LeadGenBlocks";
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
+import { photos } from "@/app/lib/images";
+
+const WA = `${WHATSAPP_LINK}?text=${encodeURIComponent("Hi, I run an IVF clinic and want patient leads.")}`;
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const trust = [
+  "Meta Ads",
+  "Google Ads",
+  "WhatsApp routing",
+  "IST weekly review",
+];
 
 const highlights = [
-  "High-intent IVF leads from Meta, Google and local search campaigns",
-  "Clinic-level geo targeting with city and radius strategy",
-  "Lead quality filters before handoff to your counsellor team",
-  "Conversion-focused WhatsApp plus landing page journey",
+  "Meta and Google campaigns for fertility search intent",
+  "City and radius targeting around your clinic",
+  "Form and WhatsApp filters before counsellor handoff",
+  "Weekly review of CPL, consults, and source quality",
+];
+
+const audience = [
+  {
+    title: "Single-centre IVF clinics",
+    body: "One catchment, one counsellor team. Spend stays inside the radius your patients can actually travel.",
+  },
+  {
+    title: "Multi-city fertility groups",
+    body: "City-wise budgets and creatives so a strong centre is not starved by a weaker one.",
+  },
+  {
+    title: "Centres with defined qualification",
+    body: "Age band, city, treatment stage, and prior IVF history - we turn that into form fields and exclusions.",
+  },
 ];
 
 const deliverables = [
   {
-    title: "Funnel Strategy",
-    desc: "Custom lead journey for IVF audiences: awareness, trust, intent and booking.",
+    title: "Funnel and offer",
+    desc: "Awareness to booking mapped to how couples actually choose an IVF centre.",
   },
   {
-    title: "Creative and Ad Execution",
-    desc: "Medical-safe ad creatives with authority messaging and consultation CTA.",
+    title: "Creative and landing",
+    desc: "Policy-aware ads and pages with a clear consultation CTA - not generic medical stock copy.",
   },
   {
-    title: "Lead Qualification",
-    desc: "Intent filters and form logic to reduce low-quality or irrelevant inquiries.",
+    title: "Lead qualification",
+    desc: "Intent fields and exclusions so your team spends time on serious inquiries.",
   },
   {
-    title: "Weekly Growth Reviews",
-    desc: "Transparent reporting on CPL, consult booked rate and source-wise performance.",
+    title: "Reporting",
+    desc: "Source-wise performance, consult booked rate, and next tests - in writing every week.",
+  },
+];
+
+const channels = [
+  {
+    title: "Meta",
+    body: "Reach couples in your cities, retarget site visitors, and keep health-policy copy inside platform rules.",
+  },
+  {
+    title: "Google",
+    body: "Capture search for IVF, fertility consult, and clinic names in your catchment - not nationwide noise.",
+  },
+  {
+    title: "Landing page",
+    body: "One consult-focused page: offer, locations, form fields, and a WhatsApp path that matches the ad.",
+  },
+  {
+    title: "Handoff",
+    body: "Leads land where your counsellor already works - WhatsApp or CRM - with the fields they need to call.",
   },
 ];
 
 const steps = [
-  "Audience and competitor research by city and treatment segment",
-  "Campaign launch across Meta and Google with intent-focused ad sets",
-  "WhatsApp and CRM-ready lead routing for faster follow-up",
-  "Daily optimization for lead quality, not just lead volume",
+  "Brief: locations, capacity, and what a qualified inquiry looks like.",
+  "Build: campaigns, landing page, and WhatsApp routing.",
+  "Launch: city budgets with daily quality checks.",
+  "Optimize: scale the creatives and geos that book consults.",
 ];
 
-const testimonials = [
+const needs = [
   {
-    name: "Dr. Mehta, IVF Director",
-    quote:
-      "Lead quality improved significantly. Our counsellor team now spends time on serious consultation-ready inquiries.",
+    title: "Locations and radius",
+    body: "Centres you want inquiries for, and how far patients typically travel.",
   },
   {
-    name: "Clinic Growth Manager",
-    quote:
-      "Within 8 weeks, appointment bookings increased while CPL stabilized. Reporting and follow-up flow are very clear.",
+    title: "Counsellor hours",
+    body: "When the team can reply. We do not scale spend into a closed front desk.",
+  },
+  {
+    title: "Consult offer",
+    body: "Fee, complimentary first visit, or EMI - whatever is true and can sit on the page.",
+  },
+  {
+    title: "Quality examples",
+    body: "A few recent good and junk inquiries. That is the filter, not a generic healthcare form.",
+  },
+];
+
+const cadence = [
+  { day: "Mon", title: "Inquiry sample", body: "Your team marks useful vs junk. We pause waste the same week." },
+  { day: "Wed", title: "Creative and audience tests", body: "New hooks, cities, or landing copy - one change at a time." },
+  { day: "Fri", title: "Written recap", body: "CPL, consults booked, source mix, and the tests for next week." },
+];
+
+const reportFields = [
+  { label: "Source", value: "Meta or Google, campaign and city" },
+  { label: "Cost", value: "Spend and cost per inquiry" },
+  { label: "Quality", value: "Consult booked vs inquiry volume" },
+  { label: "Next", value: "What we will test, and what we paused" },
+];
+
+const comparisonRows = [
+  {
+    topic: "Audience",
+    left: "Broad health or ‘baby’ interest traffic",
+    right: "Fertility intent, city radius, and exclusions you define",
+  },
+  {
+    topic: "Claims",
+    left: "Guaranteed results language in ads",
+    right: "Policy-aware copy. No outcome promises from the agency",
+  },
+  {
+    topic: "Handoff",
+    left: "Email dump of form fills",
+    right: "WhatsApp or CRM with city, intent, and contact window",
+  },
+  {
+    topic: "Review",
+    left: "A monthly ads screenshot",
+    right: "Weekly note tied to consults, not vanity reach",
   },
 ];
 
 const faqs = [
   {
-    q: "How soon can we start seeing leads?",
-    a: "Most clinics start seeing initial lead flow within 7-10 days after launch, and stable optimization by week 3-4.",
+    q: "How soon do inquiries typically start?",
+    a: "Most clinics see the first inquiries within 7–10 days of launch. Stable quality usually takes three to four weeks of creative and audience testing.",
   },
   {
-    q: "Do you support CRM and WhatsApp follow-up setup?",
-    a: "Yes. We structure lead routing, response templates and handoff process so your team can reply faster.",
+    q: "Do you set up WhatsApp and CRM routing?",
+    a: "Yes. We define handoff, response templates, and fields so your counsellor team can reply quickly from the same number they already use.",
   },
   {
-    q: "What makes your lead generation approach different?",
-    a: "We focus on quality over quantity, ensuring that every lead is genuinely interested and ready for consultation.",
+    q: "How do you keep lead quality high?",
+    a: "We target fertility intent, filter junk form fills, and review sample inquiries with your team. Spend follows consults, not raw volume.",
   },
   {
-    q: "How do you ensure lead quality?",
-    a: "We use advanced filtering techniques and intent-based targeting to identify and prioritize leads that are most likely to convert.",
+    q: "What advertising rules do you follow?",
+    a: "Health ads on Meta and Google have strict claim limits. We do not run guaranteed pregnancy copy, and we do not present Techify Labs as a clinic.",
   },
   {
-    q: "What is your pricing model?",
-    a: "We offer flexible pricing options based on your clinic's needs and goals, with transparent reporting and performance metrics.",
+    q: "Do you provide medical treatment?",
+    a: "No. Techify Labs is a performance marketing studio. We generate inquiries for your clinic. Treatment stays entirely with your doctors.",
   },
   {
-    q: "How long does it take to see results?",
-    a: "Most clinics see initial lead flow within 7-10 days after launch, with stable optimization by week 3-4.",
-  },
-  {
-    q: "Do you offer a money-back guarantee?",
-    a: "Yes, we offer a satisfaction guarantee to ensure you're happy with the results and ROI.",
-  },
-  {
-    q: "What are your support hours?",
-    a: "Our support team is available Monday to Friday, 9 AM to 6 PM EST, to assist you with any questions or concerns.",
+    q: "Can you run this alongside a hair transplant program?",
+    a: "Yes, as a separate funnel. Fertility intent and hair intent do not share campaigns, landing pages, or weekly recaps.",
   },
 ];
 
-// const trustBadges = [
-//   "Google Reviews 4.8/5",
-//   "Healthcare Ads Policy Safe Creatives",
-//   "Fast WhatsApp Lead Routing",
-//   "Weekly ROI Review Calls",
-// ];
-const img = [
-  "/gallery/ivf1.jpg",
-  "/gallery/ivf2.png",
-  "/gallery/ivf3.png",
-  "/gallery/ivf4.png",
-  "/gallery/ivf5.jpg",
-  "/gallery/ivf6.jpg",
-];
+const heroStats = [
+  { value: "7–10 days", label: "Typical first inquiries" },
+  { value: "Weekly", label: "Written recap" },
+  { value: "City-level", label: "Budgets and creatives" },
+] as const;
 
-function IconCheck() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path d="M20 7L9 18l-5-5" />
-    </svg>
-  );
-}
+const inquirySteps = [
+  { title: "Couple searches or sees an ad", body: "Fertility intent inside the cities your centre can serve." },
+  { title: "Consult page, not a brochure", body: "Offer, locations, and fields for stage of treatment." },
+  { title: "Counsellor gets the inquiry", body: "WhatsApp or CRM with city, intent, and a contact window." },
+  { title: "You run the medical consult", body: "Diagnostics and treatment stay with your doctors." },
+] as const;
 
-function IconSpark() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path d="M12 3l2.2 4.8L19 10l-4.8 2.2L12 17l-2.2-4.8L5 10l4.8-2.2L12 3z" />
-    </svg>
-  );
-}
+const firstMonth = [
+  { title: "Brief the filter", body: "Radius, counsellor hours, offer, and examples of junk inquiries." },
+  { title: "Launch in-catchment", body: "Meta and Google go live. First inquiries typically in 7–10 days." },
+  { title: "Mark the sample", body: "Your team tags useful vs waste. We pause the waste the same week." },
+  { title: "Scale consults", body: "Budget follows the cities and creatives that book visits." },
+] as const;
 
-function FadeIn({
-  children,
-  className = "",
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const guardrails = [
+  "No guaranteed pregnancy or outcome language in ads.",
+  "No presenting Techify Labs as a fertility clinic.",
+  "No nationwide dump if you operate one catchment.",
+  "No spend increase when the counsellor desk cannot reply.",
+] as const;
+
+const practice = [
+  { src: photos.meeting, alt: "Planning an IVF clinic acquisition program", caption: "Brief: cities, offer, and what a good inquiry looks like" },
+  { src: photos.analytics, alt: "Reviewing IVF campaign quality", caption: "Weekly recap: CPL, consults, and what we pause" },
+  { src: photos.workshop, alt: "Creative review for fertility ads", caption: "Creative stays inside health-policy limits" },
+] as const;
+
+const qualifyFields = [
+  { label: "City / catchment", hint: "Where the couple can actually travel for a consult." },
+  { label: "Age band", hint: "Matches how your counsellors qualify, not a vanity field." },
+  { label: "Treatment stage", hint: "First consult, failed cycle, or second opinion." },
+  { label: "Contact window", hint: "When the counsellor should call, in IST." },
+] as const;
+
+const briefing = [
+  "Centres and the travel radius patients typically accept",
+  "Counsellor hours and daily consult capacity",
+  "The consult offer that can sit honestly on the page",
+  "Age, city, and stage fields you want on the form",
+  "Recent junk inquiries versus inquiries that booked",
+] as const;
+
+const notAFit = [
+  "Centres that cannot reply the same day",
+  "Operators who want guaranteed pregnancy language in ads",
+  "Nationwide spend for a single-city catchment",
+  "Teams that only measure cheap form fills",
+] as const;
+
+const included = [
+  "Meta and Google account structure",
+  "Consult-focused landing page",
+  "WhatsApp or CRM routing",
+  "City and radius controls",
+  "Weekly written recap",
+  "Policy-aware creative tests",
+] as const;
 
 export default function LeadGenerationIvfCenterPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const reduce = useReducedMotion();
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      {/* <section className="relative overflow-hidden bg-[radial-gradient(circle_at_15%_10%,rgba(139,92,246,0.35),transparent_35%),linear-gradient(120deg,#050a2a_0%,#0b1a52_45%,#1b1762_100%)] text-white">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-50 to-transparent" />
-        <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-10 lg:px-10 lg:py-20">
-          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
-            <p className="inline-flex items-center gap-2 rounded-full border border-violet-200/40 bg-violet-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-violet-100">
-              <IconSpark />
-              IVF Lead Generation
-            </p>
-            <h1 className="mt-4 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
-              Premium Lead Generation for
-              <span className="bg-gradient-to-r from-violet-300 to-fuchsia-200 bg-clip-text text-transparent"> IVF Centers</span>
-            </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/85 sm:text-base">
-              We build full-funnel performance systems that bring verified, consultation-ready IVF patient leads for your clinic. Built for scale, compliance and predictable growth.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contact" className="rounded-xl bg-violet-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-violet-400">
-                Book IVF Growth Plan
-              </Link>
-              <Link href="/services/lead-generation" className="rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">
-                Back to Lead Generation
-              </Link>
-            </div>
-            <div className="mt-6 grid gap-2 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <motion.div key={item} whileHover={{ y: -2 }} className="flex items-start gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/90">
-                  <span className="mt-0.5 text-violet-200">
-                    <IconCheck />
-                  </span>
-                  <span>{item}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+    <>
+      <section className="relative overflow-hidden rounded-b-[1.75rem] bg-[#050816] text-white">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(99,102,241,0.4),transparent_55%)]"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-[1440px] px-6 pb-14 pt-10 sm:px-8 lg:px-10">
+          <nav className="mb-6 flex items-center gap-3 text-[13px] text-white/45" aria-label="Breadcrumb">
+            <Link href="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <span>/</span>
+            <Link href="/services/lead-generation" className="transition hover:text-white">
+              Lead generation
+            </Link>
+            <span>/</span>
+            <span className="text-white">IVF clinics</span>
+          </nav>
+          <ProgramNav current="ivf" />
 
-          <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.12 }} className="overflow-hidden rounded-3xl bg-white/10 p-3 shadow-[0_30px_80px_-30px_rgba(15,23,42,0.8)] backdrop-blur">
-            <img
-              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80"
-              alt="Doctor consulting patient in IVF clinic"
-              className="h-[300px] w-full rounded-2xl object-cover sm:h-[360px] lg:h-[430px]"
-            />
-            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-xl bg-white/10 px-2 py-3">
-                <p className="text-xl font-black">220+</p>
-                <p className="text-[11px] text-white/80">Leads / Month</p>
-              </div>
-              <div className="rounded-xl bg-white/10 px-2 py-3">
-                <p className="text-xl font-black">31%</p>
-                <p className="text-[11px] text-white/80">Consult Booked</p>
-              </div>
-              <div className="rounded-xl bg-white/10 px-2 py-3">
-                <p className="text-xl font-black">4.3x</p>
-                <p className="text-[11px] text-white/80">Avg ROAS</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
-      <section className="relative overflow-hidden bg-[#050816] text-white">
-        {/* Background gradients (hair transplant style) */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_25%_-20%,rgba(139,92,246,0.28),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_100%_40%,rgba(236,72,153,0.12),transparent_50%)]" />
-
-        {/* divider */}
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-        <div className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-10 sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pt-20">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
-            {/* LEFT CONTENT */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[12px] text-violet-200 backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-40" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
-                </span>
-                IVF Lead Generation
-              </div>
-
-              {/* heading */}
-              <h1 className="mt-6 text-[1.9rem] font-semibold leading-[1.1] sm:text-5xl lg:text-[3.2rem]">
-                Premium Lead Generation for{" "}
-                <span className="bg-gradient-to-r from-violet-400 to-fuchsia-300 bg-clip-text text-transparent">
-                  IVF Centers
-                </span>
-              </h1>
-
-              {/* description */}
-              <p className="mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 sm:text-[17px]">
-                We build full-funnel performance systems that bring verified,
-                consultation-ready IVF patient leads for your clinic. Built for
-                scale, compliance and predictable growth.
-              </p>
-
-              {/* buttons */}
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 hover:opacity-90 transition"
-                >
-                  Book IVF Growth Plan
-                </Link>
-
-                <Link
-                  href="/services/lead-generation"
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 text-sm font-semibold text-white hover:bg-white/10 transition"
-                >
-                  Back to Lead Generation
-                </Link>
-              </div>
-
-              {/* highlights */}
-              <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:grid-cols-2">
-                {highlights.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-2 text-[12px] text-white/55"
-                  >
-                    <span className="mt-1 h-2 w-2 rounded-full bg-violet-400" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* RIGHT CARD */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              whileHover={{ scale: 1.02 }}
-              className="relative"
-            >
-              {/* glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-500/25 to-fuchsia-500/25 blur-2xl rounded-2xl"></div>
-
-              <div className="relative rounded-2xl bg-white/5 shadow-xl">
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src="/gallery/ivf-babyy.jpg"
-                    alt="Doctor consulting patient in IVF clinic"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-
-                {/* stats */}
-                {/* <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                  <div className="rounded-lg bg-white/10 px-2 py-3">
-                    <p className="text-lg font-bold">220+</p>
-                    <p className="text-[10px] text-white/70">Leads / Month</p>
-                  </div>
-                  <div className="rounded-lg bg-white/10 px-2 py-3">
-                    <p className="text-lg font-bold">31%</p>
-                    <p className="text-[10px] text-white/70">Consult Booked</p>
-                  </div>
-                  <div className="rounded-lg bg-white/10 px-2 py-3">
-                    <p className="text-lg font-bold">4.3x</p>
-                    <p className="text-[10px] text-white/70">Avg ROAS</p>
-                  </div>
-                </div> */}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      {/* <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-violet-100 bg-violet-100 sm:grid-cols-2 lg:grid-cols-4">
-          {trustBadges.map((badge) => (
-            <motion.div
-              key={badge}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white px-4 py-3 text-center text-xs font-bold text-slate-700"
-            >
-              {badge}
-            </motion.div>
-          ))}
-        </div>
-      </section> */}
-
-      <section className="mx-auto w-full max-w-7xl px-5 pb-4 sm:px-8 lg:px-10">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm lg:p-8">
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
-                Positioning Statement
-              </p>
-              <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
-                A Growth Partner Model, Not Just Ad Management
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                We align creative, targeting and follow-up workflows with your
-                clinic operations so consultations grow consistently without
-                compromising lead quality.
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-slate-100 px-3 py-4 text-center">
-                <p className="text-xl font-black text-slate-900">7d</p>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                  Avg Setup
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-100 px-3 py-4 text-center">
-                <p className="text-xl font-black text-slate-900">15+</p>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                  A/B Tests
-                </p>
-              </div>
-              <div className="rounded-xl bg-slate-100 px-3 py-4 text-center">
-                <p className="text-xl font-black text-slate-900">24/7</p>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                  Lead Capture
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
-              What You Get
-            </p>
-            <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
-              Detailed IVF Growth Deliverables
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              We structure your acquisition system like a growth program, not
-              just ad setup. Every block below maps to one performance outcome.
-            </p>
-          </div>
-          <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
-            {deliverables.map((item, index) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.45 }}
-                className="flex gap-4 px-5 py-5"
+          <div className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <motion.div
+                initial={reduce ? false : { opacity: 0, y: 18 }}
+                animate={reduce ? undefined : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, ease }}
               >
-                <span className="mt-0.5 text-sm font-black text-violet-600">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="text-base font-extrabold text-slate-900">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-600">
-                    {item.desc}
+                <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[12px] text-violet-200">
+                  IVF · Clinic acquisition
+                </p>
+                <h1 className="mt-5 text-[2rem] font-semibold leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.75rem]">
+                  Consultation-ready IVF inquiries for your centre
+                </h1>
+                <p className="mt-5 max-w-xl text-[15.5px] leading-relaxed text-white/65">
+                  Paid media, landing pages, and WhatsApp routing built for
+                  fertility clinics in India. Your doctors treat patients. We
+                  fill the consult calendar.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a
+                    href={WA}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-11 items-center rounded-full bg-white px-6 text-[14px] font-semibold text-slate-900"
+                  >
+                    Talk on WhatsApp
+                  </a>
+                  <a
+                    href={PHONE_TEL}
+                    className="inline-flex h-11 items-center gap-1.5 rounded-full border border-white/20 px-6 text-[14px] font-semibold text-white"
+                  >
+                    <Phone className="h-3.5 w-3.5" />
+                    {PHONE_DISPLAY}
+                  </a>
+                </div>
+                <ul className="mt-8 flex flex-wrap gap-2">
+                  {trust.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] tracking-wide text-white/70"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <HeroStatRow items={heroStats} />
+              </motion.div>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="lg-hero-media">
+                <Image
+                  src={photos.meeting}
+                  alt="Clinic growth planning session"
+                  width={1200}
+                  height={800}
+                  className="h-[240px] w-full object-cover sm:h-[300px] lg:h-[340px]"
+                  priority
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#050816]/80 to-transparent p-4">
+                  <p className="text-[12px] text-white/75">
+                    Pune studio · Weekly written recap · Not a clinic
                   </p>
                 </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="bg-gray-100 text-black py-14 pb-18">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <h2 className="text-2xl font-bold text-center">Why Choose Us</h2>
-
-          <div className="mt-10 grid gap-6 text-lg font-medium sm:grid-cols-2 text-black lg:grid-cols-4">
-            {[
-              "Healthcare-compliant ad creatives",
-              "Focus on consultation-ready leads",
-              "WhatsApp-first conversion system",
-              "Weekly performance optimization",
-            ].map((item) => (
-              <div className="rounded-xl bg-white p-5 border border-white/10">
-                <p className="text-sm text-black/80">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* <section className="mx-auto grid w-full max-w-7xl gap-6 px-5 pb-14 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
-        <div className="rounded-3xl bg-[#0d1332] p-6 text-white shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-violet-200">
-            How We Work
-          </p>
-          <h3 className="mt-2 text-2xl font-black">
-            Our 4-Step IVF Lead Engine
-          </h3>
-          <div className="mt-5 space-y-3 border-l border-white/15 pl-4">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: index * 0.05 }}
-                className="relative flex gap-3 rounded-xl border border-white/10 bg-white/5 px-3 py-3"
-              >
-                <span className="absolute -left-[1.45rem] top-4 h-2.5 w-2.5 rounded-full bg-violet-300" />
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-violet-500 text-xs font-black text-white">
-                  {index + 1}
-                </span>
-                <p className="text-sm font-medium text-white/90">{step}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-violet-200 bg-violet-50 p-6 shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
-            Ready To Scale
-          </p>
-          <h3 className="mt-2 text-2xl font-black text-slate-900">
-            Build A Strong IVF Appointment Pipeline
-          </h3>
-          <p className="mt-3 text-sm leading-6 text-slate-700">
-            Get a high-performing, conversion-ready patient acquisition funnel
-            with clear messaging, verified leads and fast-follow systems.
-          </p>
-          <div className="mt-6 space-y-2">
-            <Link
-              href="/contact"
-              className="block rounded-xl bg-violet-600 px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-violet-500"
-            >
-              Get Free IVF Strategy Call
-            </Link>
-            <Link
-              href="/services/lead-generation"
-              className="block rounded-xl border border-violet-300 bg-white px-5 py-3 text-center text-sm font-semibold text-violet-700 transition hover:bg-violet-100"
-            >
-              Explore Lead Generation Overview
-            </Link>
-          </div>
-        </div>
-      </section> */}
-
-      <section className="mx-auto w-full max-w-7xl px-5 pb-12 sm:px-8 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="rounded-3xl border border-slate-200 bg-gradient-to-r from-white to-violet-50 p-6 shadow-sm lg:p-8"
-        >
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
-            Mini Case Study
-          </p>
-          <h3 className="mt-2 text-2xl font-black text-slate-900">
-            IVF Clinic In Tier-1 City
-          </h3>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
-            Repositioned campaign messaging from generic fertility awareness to
-            consultation-focused intent buckets. Added WhatsApp speed-to-lead
-            workflow and city-wise budget split.
-          </p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            <div className="rounded-xl border border-violet-100 bg-white px-4 py-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                CPL Improvement
-              </p>
-              <p className="mt-1 text-xl font-black text-violet-700">-27%</p>
-            </div>
-            <div className="rounded-xl border border-violet-100 bg-white px-4 py-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                Consult Bookings
-              </p>
-              <p className="mt-1 text-xl font-black text-violet-700">+42%</p>
-            </div>
-            <div className="rounded-xl border border-violet-100 bg-white px-4 py-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                Follow-up Time
-              </p>
-              <p className="mt-1 text-xl font-black text-violet-700">
-                &lt; 5 min
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* <section className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-10">
-        <div className="grid gap-5 lg:grid-cols-2">
-          {testimonials.map((item) => (
-            <motion.article
-              key={item.name}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-            >
-              <p className="text-sm leading-7 text-slate-700">"{item.quote}"</p>
-              <p className="mt-3 text-sm font-extrabold text-violet-700">
-                {item.name}
-              </p>
-            </motion.article>
-          ))}
-        </div>
-        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h4 className="text-xl font-black text-slate-900">
-            Frequently Asked Questions
-          </h4>
-          <div className="mt-4 space-y-3">
-            {faqs.map((item) => (
-              <div
-                key={item.q}
-                className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-3"
-              >
-                <p className="text-sm font-bold text-slate-900">{item.q}</p>
-                <p className="mt-1 text-sm text-slate-600">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-      <section className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
-        <h4 className="text-2xl font-bold text-violet-700 items-center flex gap-2 mb-6 justify-center ">
-          Gallery
-        </h4>
-        <div className="text-center">
-          <h2 className="text-xl font-bold text-slate-900 sm:text-3xl">
-            Real Results From Hair Transplant Patients
-          </h2>
-          <p className="mt-3 text-sm text-slate-600">
-            See real transformation results achieved through advanced hair
-            transplant procedures.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {img.map((item, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-xl">
-              <img
-                src={item}
-                alt="Hair transplant result"
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-end p-3">
-                <p className="text-xs text-white font-medium">
-                  Before & After Result
-                </p>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
-      <section
-        id="faq"
-        className="border-t border-slate-200/60 bg-slate-50 py-12 sm:py-20"
-      >
-        <div className="mx-auto max-w-3xl px-4 sm:px-8 lg:px-10">
-          <FadeIn className="text-center">
-            <p className="text-[17px] font-bold uppercase tracking-[0.2em] text-violet-600/90">
-              FAQ
-            </p>
-            <h2 className="mt-3 text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-              Frequently Asked Questions
-            </h2>
-            <p className="mt-4 text-[14px] text-slate-600">
-              Everything you need to know about working with us.
-            </p>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn>
+            <SectionIntro
+              kicker="Built for IVF centres"
+              title="Acquisition that respects how couples choose a clinic"
+              body="The program is judged on consults your counsellors can take - not on cheap form fills from outside your cities."
+            />
           </FadeIn>
-          <div className="mt-8 space-y-3 sm:mt-10">
-            {faqs.map((item, i) => {
-              const open = openFaq === i;
-              return (
-                <FadeIn key={item.q} delay={0.04 * i}>
-                  <div className="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm sm:rounded-2xl">
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(open ? null : i)}
-                      className="flex min-h-[52px] w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-slate-50/80 sm:px-6 sm:py-5"
-                    >
-                      <span className="text-[14px] font-semibold text-slate-900 sm:text-[15px]">
-                        {item.q}
-                      </span>
-                      <span
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition ${open ? "rotate-180 border-violet-200 bg-violet-50 text-violet-700" : "border-slate-200 bg-slate-50 text-slate-500"}`}
-                      >
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path
-                            d="M19 9l-7 7-7-7"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {open && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.28, ease: "easeInOut" }}
-                          className="overflow-hidden"
-                        >
-                          <p className="border-t border-slate-100 px-4 pb-5 pt-4 text-sm leading-relaxed text-slate-600 sm:px-6">
-                            {item.a}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </FadeIn>
-              );
-            })}
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {highlights.map((item) => (
+              <div
+                key={item}
+                className="flex gap-3 rounded-xl border border-slate-200/80 bg-white px-4 py-3.5 text-[14px] text-slate-600 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.28)]"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b31a1]" />
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-violet-200 bg-white/95 p-3 backdrop-blur md:hidden">
-        <div className="mx-auto flex max-w-md gap-2">
-          <Link
-            href="/contact"
-            className="flex-1 rounded-lg bg-violet-600 px-3 py-2.5 text-center text-xs font-bold text-white"
-          >
-            Book Strategy Call
-          </Link>
-          <Link
-            href="/services/lead-generation"
-            className="flex-1 rounded-lg border border-violet-300 bg-white px-3 py-2.5 text-center text-xs font-bold text-violet-700"
-          >
-            View Overview
-          </Link>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn>
+            <SectionIntro
+              kicker="Who this is for"
+              title="Clinics that can counsel the inquiry"
+            />
+          </FadeIn>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {audience.map((item, i) => (
+              <FadeIn key={item.title} delay={i * 0.05}>
+                <article className="lg-card h-full p-6">
+                  <p className="text-[12px] font-semibold tracking-[0.14em] text-[#3b31a1]/70">
+                    0{i + 1}
+                  </p>
+                  <h3 className="mt-2 text-[16px] font-semibold text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-500">
+                    {item.body}
+                  </p>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <FadeIn className="lg:col-span-4">
+              <SectionIntro
+                kicker="What you get"
+                title="A weekly growth program"
+                body="Not a one-time ads setup. Creative, targeting, and follow-up stay aligned with your counsellor capacity."
+              />
+            </FadeIn>
+            <div className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+              {deliverables.map((item, i) => (
+                <FadeIn key={item.title} delay={i * 0.04}>
+                  <article className="lg-card h-full p-5">
+                    <p className="text-[12px] font-semibold text-[#3b31a1]/70">
+                      0{i + 1}
+                    </p>
+                    <h3 className="mt-2 text-[16px] font-semibold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">
+                      {item.desc}
+                    </p>
+                  </article>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn>
+            <SectionIntro
+              kicker="Stack"
+              title="Channels in one operating loop"
+              body="Media, page, and routing are reviewed together. Your doctors do not need a separate vendor for each layer."
+            />
+          </FadeIn>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {channels.map((item) => (
+              <article key={item.title} className="lg-card-tint p-5">
+                <h3 className="text-[15px] font-semibold text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-slate-500">
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Operating split"
+              title="We send the inquiry. You run the consult."
+            />
+          </FadeIn>
+          <SplitRoles
+            we={[
+              "Meta and Google campaigns, creative, and landing pages",
+              "City targeting, form filters, and junk exclusions",
+              "WhatsApp or CRM routing",
+              "Weekly written recap and the next tests",
+            ]}
+            you={[
+              "Medical counselling, diagnostics, and treatment",
+              "Same-day reply from your fertility counsellors",
+              "Honest offer, slots, and clinic availability",
+              "Marks on which inquiries were actually useful",
+            ]}
+          />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn className="text-center">
+            <SectionIntro
+              align="center"
+              kicker="How we work"
+              title="Four steps to first inquiries"
+            />
+          </FadeIn>
+          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <li key={step} className="lg-card-tint p-5 text-[14px] leading-relaxed text-slate-600">
+                <span className="text-[12px] font-semibold tracking-[0.14em] text-[#3b31a1]/70">
+                  0{i + 1}
+                </span>
+                <p className="mt-2">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Inquiry path"
+              title="From ad to counsellor desk"
+              body="Couples should never wonder what happens after they tap. Neither should your front desk."
+            />
+          </FadeIn>
+          <InquiryPath steps={inquirySteps} />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="First month"
+              title="Four weeks to a working quality loop"
+            />
+          </FadeIn>
+          <WeekPlan weeks={firstMonth} />
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Qualification"
+              title="Fields on every IVF inquiry"
+              body="Your counsellor should not open a chat that only says a name and a number."
+            />
+          </FadeIn>
+          <QualifyFields items={qualifyFields} />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <FadeIn className="lg:col-span-4">
+              <SectionIntro
+                kicker="To start"
+                title="What we need from the clinic"
+                body="A 30-minute briefing is enough if these four points are clear. We do not need EMR access."
+              />
+            </FadeIn>
+            <div className="grid gap-3 sm:grid-cols-2 lg:col-span-8">
+              {needs.map((item) => (
+                <article key={item.title} className="lg-card p-5">
+                  <h3 className="text-[15px] font-semibold text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-[13.5px] leading-relaxed text-slate-500">
+                    {item.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <FadeIn className="lg:col-span-4">
+              <SectionIntro
+                kicker="Cadence"
+                title="The same three checkpoints every week"
+              />
+            </FadeIn>
+            <div className="grid gap-3 lg:col-span-8">
+              {cadence.map((item) => (
+                <article key={item.day} className="lg-card flex gap-4 p-5">
+                  <span className="flex h-10 w-12 shrink-0 items-center justify-center rounded-lg bg-[#3b31a1] text-[12px] font-semibold text-white">
+                    {item.day}
+                  </span>
+                  <div>
+                    <h3 className="text-[15px] font-semibold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-[13.5px] leading-relaxed text-slate-500">
+                      {item.body}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Reporting"
+              title="What the weekly recap contains"
+              body="A written note, not a live fake dashboard. These are the fields your centre lead sees every Friday."
+            />
+          </FadeIn>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {reportFields.map((item) => (
+              <article key={item.label} className="lg-card p-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3b31a1]/70">
+                  {item.label}
+                </p>
+                <p className="mt-2 text-[14px] leading-relaxed text-slate-600">
+                  {item.value}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn>
+            <SectionIntro
+              kicker="Included"
+              title="What the IVF retainer covers"
+            />
+          </FadeIn>
+          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {included.map((item) => (
+              <li
+                key={item}
+                className="flex gap-3 rounded-xl border border-slate-200/80 bg-white px-4 py-3.5 text-[14px] text-slate-600 shadow-[0_12px_28px_-24px_rgba(15,23,42,0.3)]"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3b31a1]" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Compared"
+              title="Typical fertility ads versus this program"
+            />
+          </FadeIn>
+          <ComparisonTable
+            leftLabel="Typical ads"
+            rightLabel="This program"
+            rows={comparisonRows}
+          />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Not a fit"
+              title="When we will decline an IVF brief"
+              body="A mismatch wastes counsellor time and media budget. We say no early."
+            />
+          </FadeIn>
+          <NotAFit items={notAFit} />
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200/90 bg-[#f8f7ff] lg:grid-cols-2">
+            <div className="relative h-52 lg:h-full min-h-[220px]">
+              <Image
+                src={photos.workshop}
+                alt="Reviewing clinic campaign creative"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#3b31a1]/70">
+                Compliance
+              </p>
+              <h2 className="section-title mt-2 text-2xl">
+                Policy-aware fertility advertising
+              </h2>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-slate-600">
+                We do not run guaranteed outcome claims, and we do not present
+                Techify Labs as a medical provider. Ads and landing copy stay
+                inside Meta and Google health rules. Treatment outcomes belong
+                to your doctors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="How we work"
+              title="The operating loop in practice"
+              body="Brief, recap, and creative review - not a collage of dummy clinic stock."
+            />
+          </FadeIn>
+          <PracticeStrip items={practice} />
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="Guardrails"
+              title="What we will not do for IVF ads"
+            />
+          </FadeIn>
+          <GuardrailList items={guardrails} />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner">
+          <FadeIn className="mb-8">
+            <SectionIntro
+              kicker="First call"
+              title="What a 20-minute IVF briefing covers"
+              body="We do not need EMR access. These five points are enough to see if we can help."
+            />
+          </FadeIn>
+          <BriefingAgenda items={briefing} />
+        </div>
+      </section>
+
+      <section className="home-section home-section-white">
+        <div className="home-section-inner">
+          <RelatedProgram
+            href="/services/lead-generation-hair-transplant-clinic"
+            kicker="Also available"
+            title="Hair transplant clinic program"
+            body="If your group also runs a restoration theatre, we run a separate intent funnel so IVF and hair spend stay distinct."
+          />
+        </div>
+      </section>
+
+      <section className="home-section">
+        <div className="home-section-inner max-w-3xl">
+          <FadeIn className="mb-8 text-center">
+            <SectionIntro
+              align="center"
+              kicker="FAQ"
+              title="Questions IVF centres ask"
+            />
+          </FadeIn>
+          <FaqAccordion items={faqs} />
+        </div>
+      </section>
+
+      <CtaBand title="Start an IVF lead briefing" wa={WA} />
+    </>
   );
 }

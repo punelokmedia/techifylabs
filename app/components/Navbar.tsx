@@ -547,22 +547,25 @@ export default function Navbar() {
         <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-5 md:h-[4.25rem] md:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
           <Link
             href="/"
-            className="relative z-10 flex shrink-0 items-center"
+            className="relative z-10 flex h-full shrink-0 items-center overflow-visible"
           >
             <Image
               src="/techify-labs-logo.png"
               alt="Techify Labs"
               width={435}
               height={188}
-              className="block h-11 w-auto max-w-[176px] object-contain object-left sm:h-12 sm:max-w-[196px] lg:h-[3.35rem] lg:max-w-[220px] xl:h-14 xl:max-w-[240px]"
+              className="block h-full w-auto max-w-[min(280px,58vw)] object-contain object-left sm:max-w-[320px] lg:max-w-[360px] xl:max-w-[400px]"
               priority
-              sizes="240px"
+              sizes="400px"
             />
           </Link>
           <nav
             className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-1.5"
             aria-label="Main"
           >
+            <Link href="/" className={navLinkClass("/")}>
+              Home
+            </Link>
             <div
               className="relative shrink-0"
               onMouseEnter={() => openDropdown("solutions")}
