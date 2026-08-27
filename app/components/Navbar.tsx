@@ -91,7 +91,6 @@ const solutionsSections = [
 ];
 
 const knowledgeLinks = [
-  { label: "Our Team", href: "/about#team", Icon: IconUsers },
   { label: "Our Blogs", href: "/services/blogs", Icon: IconBook },
   { label: "Careers", href: "/careers", Icon: IconBriefcase },
 ];
@@ -339,21 +338,6 @@ function IconSparkle({ className }: { className?: string }) {
       aria-hidden
     >
       <path d="M12 3l1.09 3.26L16 7l-2.91 1.74L12 12l-1.09-3.26L8 7l2.91-1.74L12 3zM19 15l.66 2h2.09l-1.73 1.26.66 2-1.68-1.22L19 21l-.66-2-1.68 1.22.66-2-1.73-1.26h2.09L19 15zM5 15l.66 2h2.09l-1.73 1.26.66 2L5 19.78 3.32 21l.66-2L2.25 17.74h2.09L5 15z" />
-    </svg>
-  );
-}
-
-function IconUsers({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      aria-hidden
-    >
-      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
     </svg>
   );
 }
@@ -711,7 +695,7 @@ export default function Navbar() {
                         Knowledge Hub
                       </p>
                       <p className="mb-2.5 px-1 text-xs text-slate-500">
-                        Team, blogs, and careers
+                        Blogs and careers
                       </p>
                       <motion.ul
                         className="grid gap-1"
