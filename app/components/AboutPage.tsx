@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import ServicesSection from "./ServicesSection";
 import { photos } from "@/app/lib/images";
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -92,39 +91,6 @@ const stackLabels = [
   "Tag Manager",
 ];
 
-
-const teamMembers = [
-  {
-    name: "Thomas Stevens",
-    role: "Manager",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-  },
-  {
-    name: "Sarah Johnson",
-    role: "Sales Director",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-  },
-  {
-    name: "Michael Chen",
-    role: "Marketing Lead",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-  },
-  {
-    name: "David Miller",
-    role: "Operations Head",
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-  },
-  {
-    name: "Emily Davis",
-    role: "HR Manager",
-    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-  },
-  {
-    name: "Alex Carter",
-    role: "Tech Lead",
-    img: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
-  },
-];
 
 function IconChart({ className }: { className?: string }) {
   return (
@@ -572,64 +538,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-b border-slate-200/80 bg-gradient-to-t from-gray-100 to-white py-16 text-black sm:py-20">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-          {/* HEADER */}
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-violet-600">
-              Our Team
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
-              Meet Our Experts
-            </h2>
-          </FadeIn>
-
-          {/* TEAM GRID */}
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, i) => (
-              <FadeIn key={member.name} delay={0.05 * i}>
-                <motion.div
-                  className="group relative overflow-hidden rounded-2xl shadow-lg"
-                  whileHover={{ y: -6 }}
-                >
-                  {/* IMAGE */}
-                  <div className="relative h-[420px] w-full">
-                    <Image
-                    src={member.img}
-                    alt={member.name}
-                      fill
-                      className="object-cover grayscale transition duration-500 group-hover:grayscale-0"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500" />
-
-                  {/* CONTENT */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 text-white translate-y-10 group-hover:translate-y-0 transition duration-500">
-                    <h3 className="text-xl font-semibold">{member.name}</h3>
-                    <p className="text-sm text-gray-300 mb-4">{member.role}</p>
-
-                    {/* SOCIAL */}
-                    <div className="flex gap-3 opacity-0 group-hover:opacity-100 transition delay-200">
-                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
-                        <FaInstagram />
-                      </div>
-                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
-                        <FaLinkedin />
-                      </div>
-                      <div className="p-2 rounded-full bg-white/20 hover:bg-white/30">
-                        <FaFacebook />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
       {/* Services Section */}
       <ServicesSection />
       {/* Timeline */}
