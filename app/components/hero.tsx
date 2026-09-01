@@ -96,7 +96,7 @@ export default function Hero() {
   }, [useMp4Bg, activeVideoIndex]);
 
   return (
-    <section className="hero-shell relative w-full overflow-hidden text-white">
+    <section id="hero" className="hero-shell relative w-full overflow-hidden text-white">
       <div className="absolute inset-0">
         {useYoutubeBg ? (
           <iframe

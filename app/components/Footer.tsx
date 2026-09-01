@@ -253,13 +253,23 @@ export default function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-2">
               {[
-                { Icon: IconFacebook, label: "Facebook" },
-                { Icon: IconInstagram, label: "Instagram" },
-                { Icon: IconLinkedIn, label: "LinkedIn" },
-              ].map(({ Icon, label }) => (
+                {
+                  Icon: IconFacebook,
+                  label: "Facebook",
+                  href: "https://www.facebook.com/Techifylabs.in",
+                },
+                {
+                  Icon: IconInstagram,
+                  label: "Instagram",
+                  href: "https://www.instagram.com/techifylabs.in/",
+                },
+                { Icon: IconLinkedIn, label: "LinkedIn", href: "#" },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/80 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
                 >
