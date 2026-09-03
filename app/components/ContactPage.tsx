@@ -460,7 +460,7 @@ export default function ContactPage() {
                       Location
                     </p>
                     <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">
-                      Techifylabs Pvt. Ltd.
+                      Techifylabs
                     </p>
                     <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
                       UG Floor, Office No. 67-68 Clover Hills Plaza
