@@ -1,0 +1,72 @@
+.section { padding: 110px 3.7% 36px; background: radial-gradient(ellipse at 50% 35%, #fff, #f6f9fc 80%); color: #090e2d; }
+.inner { max-width: 1800px; margin: 0 auto; }
+.heading { text-align: center; margin-bottom: 29px; }
+.eyebrow { display: flex; justify-content: center; align-items: center; gap: 17px; color: #ff6509; font-size: 12px; font-weight: 800; letter-spacing: .18em; }
+.eyebrow::before, .eyebrow::after { content: ""; width: 65px; height: 1px; background: linear-gradient(90deg, transparent, #ff6509); }
+.eyebrow::after { transform: rotate(180deg); }
+.heading h2 { margin: 17px 0 7px; font-size: clamp(28px, 2.65vw, 46px); font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
+.subtitle { color: #65708a; font-size: clamp(14px, 1.25vw, 21px); line-height: 1.5; }
+.steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(16px, 2.8vw, 54px); list-style: none; padding: 0; margin: 0; }
+.step { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 18px clamp(13px, 1.25vw, 24px) 16px; background: #fff; border: 1px solid #edf1f7; border-radius: 18px; box-shadow: 0 6px 19px #23385e06; }
+.step:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 44%; width: clamp(16px, 2.8vw, 54px); height: 2px; background: color-mix(in srgb, var(--tone) 30%, white); }
+.step:not(:last-child)::before { content: ""; position: absolute; z-index: 1; left: calc(100% + clamp(8px, 1.4vw, 27px)); top: calc(44% - 5px); transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--tone); background: #fff; }
+.stepIcon { display: grid; place-items: center; align-self: center; width: 70px; height: 70px; border-radius: 50%; color: var(--tone); background: color-mix(in srgb, var(--tone) 7%, white); margin-bottom: 15px; }
+.stepIcon svg { width: 33px; height: 33px; stroke-width: 2.1; }
+.step h3 { display: flex; gap: 11px; align-items: center; margin: 0 0 10px; font-size: clamp(14px, 1.13vw, 20px); font-weight: 750; letter-spacing: -.025em; }
+.step h3 > span { color: var(--tone); font-weight: 800; }
+.step > p { margin: 0 0 16px; color: #55617a; font-size: clamp(12px, .96vw, 17px); line-height: 1.4; }
+.result { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 5px; border-radius: 18px; color: var(--tone); background: color-mix(in srgb, var(--tone) 7%, white); font-size: clamp(9px, .77vw, 14px); font-weight: 650; white-space: nowrap; }
+.result svg { flex-shrink: 0; }
+.dashboard { position: relative; isolation: isolate; overflow: hidden; margin-top: 23px; padding: 25px 5.9% 23px; border-radius: 19px; background: linear-gradient(115deg, #11253f, #122944 65%, #10223b); color: #fff; box-shadow: 0 8px 20px #18365412; border: 1px solid #d6dfeb; }
+.dashboard::before, .dashboard::after { content: ""; position: absolute; z-index: -1; width: 235px; height: 235px; border-radius: 45%; background: linear-gradient(145deg, #455fb74d, #3d5e9e08); transform: rotate(30deg); }
+.dashboard::before { left: -170px; top: -40px; box-shadow: 70px 160px 0 #344a862e; }
+.dashboard::after { right: -155px; top: -85px; box-shadow: -30px 180px 0 #344a8630; }
+.dashboardContent > h3 { margin-bottom: 15px; color: #d7dfed; font-size: 11px; font-weight: 750; letter-spacing: .16em; }
+.dashboardRow { display: flex; gap: 28px; align-items: stretch; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; flex: 1; min-width: 0; }
+.metric { display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #ffffff15; border-radius: 15px; background: linear-gradient(110deg, #ffffff0c, #ffffff08); box-shadow: inset 0 1px 2px #ffffff05; min-width: 0; }
+.metricIcon { display: grid; place-items: center; width: 59px; height: 59px; flex-shrink: 0; border-radius: 50%; background: color-mix(in srgb, var(--tone) 48%, transparent); box-shadow: inset 0 0 16px color-mix(in srgb, var(--tone) 23%, transparent); }
+.metricIcon svg { width: 29px; height: 29px; stroke-width: 2.5; }
+.metricText p { color: #e2e8f4; font-size: clamp(11px, .9vw, 16px); white-space: nowrap; margin-bottom: 3px; }
+.metricText strong { font-size: clamp(22px, 1.65vw, 30px); line-height: 1.2; font-weight: 750; }
+.sparkline { margin-left: auto; width: 79px; flex-shrink: 0; }
+.sparkline > span { display: flex; align-items: center; justify-content: flex-end; gap: 4px; color: #27d1a2; font-size: 12px; font-weight: 650; }
+.bars { height: 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 4px; margin-top: 7px; }
+.bars i { width: 5px; border-radius: 2px; background: linear-gradient(var(--tone), color-mix(in srgb, var(--tone) 55%, transparent)); }
+.cta { display: flex; flex-direction: column; justify-content: center; align-items: center; border-left: 1px solid #8896af; padding-left: 30px; }
+.cta button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; color: #fff; background: #ff6500; padding: 17px 28px; border-radius: 15px; font-size: clamp(12px, 1vw, 17px); font-weight: 750; white-space: nowrap; transition: background .2s; }
+.cta button:hover { background: #e95600; }
+.cta button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.cta p { margin-top: 11px; font-size: 13px; color: #d5deee; }
+.note { margin-top: 7px; text-align: right; color: #737e92; font-size: 10px; }
+@media (max-width: 1500px) { .dashboard { padding: 25px 30px; } .metric { gap: 10px; padding: 12px; } .metricIcon { width: 44px; height: 44px; } .sparkline { width: 55px; } .dashboardRow { gap: 20px; } .cta { padding-left: 20px; } .cta button { padding: 16px 20px; } }
+@media (max-width: 1150px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } .step:nth-child(3)::before, .step:nth-child(3)::after { display: none; } .step:not(:last-child)::after { width: 24px; } .step:not(:last-child)::before { left: calc(100% + 12px); } .step h3 { font-size: 20px; } .step > p { font-size: 15px; } .result { font-size: 12px; } .dashboardRow { flex-direction: column; } .cta { border-left: 0; padding: 16px 0 0; border-top: 1px solid #ffffff25; } .metricText p { font-size: 13px; } }
+@media (max-width: 650px) { .section { padding: 125px 20px 30px; } .heading { margin-bottom: 25px; } .heading h2 { font-size: 30px; } .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } .step { padding: 16px 12px; } .step::before, .step::after { display: none; } .step h3 { font-size: 17px; gap: 7px; } .step > p { font-size: 13px; } .stepIcon { width: 58px; height: 58px; } .result { font-size: 10px; gap: 5px; white-space: normal; text-align: center; min-height: 42px; } .result svg { width: 16px; } .dashboard { padding: 24px 18px; } .metrics { grid-template-columns: 1fr; gap: 10px; } .metric { padding: 14px; } .metricIcon { width: 50px; height: 50px; } .metricText strong { font-size: 26px; } .sparkline { width: 80px; } .cta button { width: 100%; font-size: 15px; } }
+.metric { transition: transform .25s, border-color .25s, box-shadow .25s; }
+.metric:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--tone) 60%, transparent); box-shadow: 0 8px 22px #0002; }
+.metricIcon { transition: transform .25s; }
+.metric:hover .metricIcon { transform: scale(1.08) rotate(-5deg); }
+.bars i { transform-origin: bottom; animation: barsReveal .8s ease-out both; }
+.metric:hover .bars i { animation: barsPulse .7s ease-in-out; }
+.cta button { transition: background .2s, transform .2s, box-shadow .2s; }
+.cta button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px #ff650033; }
+.cta button:active { transform: scale(.96); }
+.cta button svg { transition: transform .2s; }
+.cta button:hover svg { transform: translateX(4px); }
+@keyframes barsReveal { from { transform: scaleY(.1); opacity: .3; } to { transform: scaleY(1); opacity: 1; } }
+@keyframes barsPulse { 50% { transform: scaleY(.65); } }
+@media (max-width: 1350px) { .dashboardRow { flex-direction: column; } .cta { border-left: 0; padding: 16px 0 0; border-top: 1px solid #ffffff25; } }
+@media (max-width: 1000px) { .section { padding-top: 145px; } }
+@media (max-width: 850px) { .metrics { grid-template-columns: minmax(0, 1fr); } .sparkline { width: 80px; } .metricText p { white-space: normal; } }
+@media (max-width: 380px) { .metric { flex-wrap: wrap; } .sparkline { flex: 1; min-width: 60px; max-width: 90px; } .cta button { white-space: normal; } }
+@media (prefers-reduced-motion: reduce) { .metric, .metricIcon, .cta button svg { transition: none; } .bars i, .metric:hover .bars i { animation: none; } .metric:hover, .metric:hover .metricIcon, .cta button:hover, .cta button:active, .cta button:hover svg { transform: none; } }
+.step { transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease; }
+.stepButton { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; border: 0; border-radius: inherit; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.stepButton:focus-visible { outline: 3px solid var(--tone); outline-offset: 4px; }
+.stepIcon { transition: transform .25s ease, background .25s ease, color .25s ease; }
+@media (hover: hover) { .step:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--tone) 35%, white); box-shadow: 0 12px 26px color-mix(in srgb, var(--tone) 12%, transparent); } }
+.step.selected { border-color: var(--tone); background: color-mix(in srgb, var(--tone) 3%, white); box-shadow: 0 10px 28px color-mix(in srgb, var(--tone) 18%, transparent), 0 0 0 1px var(--tone); transform: translateY(-5px); }
+.selected .stepIcon { color: white; background: var(--tone); animation: stepPop .4s ease; }
+.step:has(.stepButton:active) { transform: translateY(-1px) scale(.97); }
+@keyframes stepPop { 0% { transform: scale(1); } 50% { transform: scale(1.13) rotate(-7deg); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .cta button, .step, .stepIcon { transition: none; } .selected .stepIcon { animation: none; } .step:hover, .step.selected, .step:has(.stepButton:active) { transform: none; } }
