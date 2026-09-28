@@ -109,7 +109,9 @@ export default function TopBar() {
             <span className="hidden sm:inline">Facebook</span>
           </motion.a>
           <motion.a
-            href="#"
+            href="https://www.linkedin.com/company/techify-labs/"
+            target="_blank"
+            rel="noopener noreferrer"
             className={linkBase}
             whileHover={socialHover}
             whileTap={{ scale: 0.98 }}

@@ -263,7 +263,7 @@ export default function Footer() {
                   label: "Instagram",
                   href: "https://www.instagram.com/techifylabs.in/",
                 },
-                { Icon: IconLinkedIn, label: "LinkedIn", href: "#" },
+                { Icon: IconLinkedIn, label: "LinkedIn", href: "https://www.linkedin.com/company/techify-labs/" },
               ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
