@@ -71,3 +71,9 @@
 @media(max-width:760px){
   .schedule .formRow{grid-template-columns:minmax(0,1fr)}
 }
+
+/* Patient acquisition content from the clinic brief. */
+.resultsNote{text-align:center;font-size:13px;color:#526984;margin-top:22px!important}
+.practiceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ctaInner>div:first-child{max-width:720px}
+@media(max-width:760px){.practiceGrid{grid-template-columns:1fr}}
