@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
-import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
+import { GOOGLE_MAPS_LOCATION_LINK, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
 const springSoft = { type: "spring" as const, stiffness: 380, damping: 28 };
 const springTap = { type: "spring" as const, stiffness: 520, damping: 32 };
@@ -345,11 +345,17 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-white/65">
                 <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
-                <span className="leading-relaxed">
+                <a
+                  href={GOOGLE_MAPS_LOCATION_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed underline-offset-4 transition hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  aria-label="View Techifylabs office address on Google Maps (opens in a new tab)"
+                >
                   UG 67-68, Clover Hills Plaza
                   <br />
                   NIBM Road, Kondhwa, Pune 411048
-                </span>
+                </a>
               </li>
             </ul>
           </div>

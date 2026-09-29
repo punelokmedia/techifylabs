@@ -91,7 +91,10 @@ export default function TopBar() {
         </div>
         <nav className="flex flex-wrap items-center gap-4 text-xs font-medium sm:gap-5 sm:text-sm" aria-label="Social">
           <motion.a
-            href="#"
+            href="https://www.instagram.com/techifylabs.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Techifylabs on Instagram (opens in a new tab)"
             className={linkBase}
             whileHover={socialHover}
             whileTap={{ scale: 0.98 }}
@@ -100,7 +103,10 @@ export default function TopBar() {
             <span className="hidden sm:inline">Instagram</span>
           </motion.a>
           <motion.a
-            href="#"
+            href="https://www.facebook.com/Techifylabs.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Techifylabs on Facebook (opens in a new tab)"
             className={linkBase}
             whileHover={socialHover}
             whileTap={{ scale: 0.98 }}
@@ -110,6 +116,7 @@ export default function TopBar() {
           </motion.a>
           <motion.a
             href="https://www.linkedin.com/company/techify-labs/"
+            aria-label="Techifylabs on LinkedIn (opens in a new tab)"
             target="_blank"
             rel="noopener noreferrer"
             className={linkBase}

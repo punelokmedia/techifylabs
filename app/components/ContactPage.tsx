@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import CompanyLocationMap from "./CompanyLocationMap";
 import {
   useCallback,
   useId,
@@ -10,7 +11,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
-import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
+import { GOOGLE_MAPS_LOCATION_LINK, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 import { photos } from "@/app/lib/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -462,11 +463,17 @@ export default function ContactPage() {
                     <p className="mt-1 text-base font-semibold text-slate-900 sm:text-lg">
                       Techifylabs
                     </p>
-                    <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
+                    <a
+                      href={GOOGLE_MAPS_LOCATION_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block text-[13px] leading-relaxed text-slate-500 underline-offset-4 transition hover:text-blue-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                      aria-label="View Techifylabs office address on Google Maps (opens in a new tab)"
+                    >
                       UG Floor, Office No. 67-68 Clover Hills Plaza
                       <br />
                       NIBM Road, Kondhwa, Pune - 411048
-                    </p>
+                    </a>
                     <p className="mt-2 text-xs font-medium text-violet-600 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
                       In-person by appointment →
                     </p>
@@ -1088,11 +1095,17 @@ export default function ContactPage() {
               <p className="mt-2 text-lg font-semibold sm:text-xl">
                 Techifylabs Pvt. Ltd.
               </p>
-              <p className="mt-2 max-w-md text-[13px] leading-relaxed text-black sm:text-sm">
+              <a
+                href={GOOGLE_MAPS_LOCATION_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block max-w-md text-[13px] leading-relaxed text-black underline-offset-4 transition hover:text-blue-800 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 sm:text-sm"
+                aria-label="View Techifylabs office address on Google Maps (opens in a new tab)"
+              >
                 UG Floor, Office No. 67-68 Clover Hills Plaza
                 <br />
                 NIBM Road, Kondhwa, Pune - 411048
-              </p>
+              </a>
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3 ">
               <Link
@@ -1109,6 +1122,7 @@ export default function ContactPage() {
               </Link>
             </div>
           </FadeIn>
+          <CompanyLocationMap />
         </div>
       </section>
     </div>
