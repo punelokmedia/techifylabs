@@ -36,6 +36,7 @@
 .schedulerHeader p{font-size:13px;margin-top:5px;color:#526984}
 .schedulerHeader button{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid #dbe4ed;border-radius:50%;background:white;cursor:pointer}
 .schedulerFrame{display:block;width:100%;flex:1;min-height:0;border:0;background:white}
+.schedulerLoading{padding:14px 22px;background:#f1f7fc;color:#526984;font-size:14px}
 .heroGrid>*{min-width:0}
 @media(max-width:760px){
   .page input,.page select{font-size:16px;min-height:44px}
@@ -77,3 +78,104 @@
 .practiceGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .ctaInner>div:first-child{max-width:720px}
 @media(max-width:760px){.practiceGrid{grid-template-columns:1fr}}
+
+/* Expanded clinic brief: generous sections and a readable mobile flow. */
+.heroCopy{padding:36px 0 0}
+.heroGrid{padding-top:36px;padding-bottom:44px;align-items:start}
+.hero h1{font-size:clamp(38px,4vw,57px);line-height:1.08;letter-spacing:-2px}
+.hero .eyebrow{max-width:480px;line-height:1.7;letter-spacing:1.8px}
+.intro{font-size:17px;line-height:1.7}
+.heroActions{display:flex;align-items:flex-start;flex-direction:column;gap:16px;margin:26px 0 16px}
+.textLink{display:inline-flex;align-items:center;gap:10px;color:#bc440d;font-size:14px;font-weight:650}
+.textLink:hover{text-decoration:underline}
+.heroCaption{font-size:13px;color:#526984;max-width:400px}
+.clinicPhoto{position:relative;height:265px;border-radius:16px;overflow:hidden;margin-top:30px}
+.clinicPhoto img{object-fit:cover;object-position:center 42%}
+.clinicPhoto::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 25%,#082b58df)}
+.clinicPhoto>span{position:absolute;z-index:1;left:24px;bottom:23px;color:white;font-size:17px;line-height:1.6}
+.benefits{padding:28px 0;border-bottom:1px solid #e1e8ef;background:#fff}
+.benefits .eyebrow{text-align:center;color:#526984}
+.benefits ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px 25px;list-style:none;padding:0;margin:20px 0 0}
+.benefits li{display:flex;align-items:center;gap:10px;font-size:13px}
+.benefits svg{color:#db5315;flex-shrink:0}
+.section{padding:68px 0}
+.sectionHeading{max-width:780px;margin:0 auto 32px}
+.sectionHeading>p:last-child{line-height:1.7;margin-top:16px}
+.specialty{border:1px solid #e1e8ef;background:white;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.specialtyPhoto{position:relative;height:230px}
+.specialtyPhoto img{object-fit:cover;object-position:center 35%}
+.specialtyBody{padding:26px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.specialtyBody h3{font-size:23px;margin-top:15px}
+.specialtyBody>p{color:#526984;font-size:15px;margin-top:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 25px}
+.tags li{background:#f1f5fa;border:1px solid #e4ebf3;border-radius:6px;padding:6px 10px;font-size:12px}
+.specialtyBody>.textLink{margin-top:auto}
+.service>div:last-child{padding:28px}
+.service h3{font-size:23px;margin-top:8px}
+.service p{line-height:1.7}
+.processSteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.processSteps li{border-top:2px solid #d9e4f0;padding-top:20px}
+.processSteps h3{margin:18px 0 10px;font-size:17px}
+.processSteps p,.practice p{color:#526984;font-size:14px;line-height:1.7}
+.journey{margin-top:40px;background:#082b58;color:white;border-radius:14px;padding:25px}
+.journey h3{font-size:20px;margin-bottom:22px}
+.journey ol{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+.journey li{display:flex;align-items:center;justify-content:space-between;gap:16px;flex:1;font-size:12px}
+.journey svg{flex-shrink:0;color:#ffae86}
+.journey li:last-child svg{display:none}
+.practice{padding:28px;border:1px solid #e1e8ef;border-radius:14px}
+.practice>span{font-size:13px;letter-spacing:2px;color:#bc440d;font-weight:700}
+.practice h3{font-size:20px;margin:18px 0 12px}
+.discussion{list-style:none;padding:0;margin:24px 0;display:grid;grid-template-columns:1fr 1fr;gap:13px 16px}
+.discussion li{display:flex;align-items:center;gap:8px;font-size:13px}
+.discussion svg{flex-shrink:0;color:#bc440d}
+.workflowExample{border:1px solid #dce7f3;border-radius:18px;padding:28px;background:white;box-shadow:0 12px 36px #082b5808}
+.workflowExample>.eyebrow{letter-spacing:1.5px;font-size:10px}
+.workflowStage{display:flex;align-items:flex-start;gap:15px;padding:22px 0;border-bottom:1px solid #e8eef5}
+.workflowStage>span{color:#bc440d;font-weight:700;font-size:12px;background:#fff2e9;border-radius:50%;padding:9px}
+.workflowStage>div{flex:1;min-width:0}
+.workflowStage p{font-size:13px;color:#526984;margin-top:10px}
+.enquiryExamples{display:grid;gap:8px;margin-top:14px}
+.enquiryExamples p{display:grid;grid-template-columns:20px 1fr;gap:4px 8px;background:#f3f7fc;padding:12px;border-radius:8px;margin:0}
+.enquiryExamples svg{grid-row:span 2;color:#1872c8}
+.enquiryExamples small{grid-column:2;font-size:10px;color:#60718b}
+.exampleNote{font-size:11px;color:#60718b;margin-top:18px!important;line-height:1.6}
+.cta{padding:52px 0}
+.cta h2{font-size:32px;line-height:1.2}
+.ctaInner{gap:35px}
+.ctaInner>div:first-child{max-width:680px}
+.ctaInner>div:last-child{margin-right:0}
+.ctaInner>div:last-child p{font-size:11px;text-align:center}
+@media(max-width:1000px){
+  .processSteps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero h1{font-size:43px}
+  .heroActions .button{font-size:13px;padding:14px}
+  .discussion{grid-template-columns:1fr}
+  .ctaInner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:760px){
+  .heroGrid{padding-top:0}
+  .heroCopy{padding:32px 0 0}
+  .hero h1{font-size:clamp(36px,7.5vw,54px)}
+  .hero .eyebrow{font-size:10px}
+  .clinicPhoto{height:230px}
+  .benefits ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .section{padding:44px 0}
+  .specialtyPhoto{height:215px}
+  .specialtyBody{padding:22px}
+  .processSteps{grid-template-columns:1fr 1fr}
+  .journey ol{flex-direction:column;gap:18px}
+  .journey li{font-size:14px}
+  .journey svg{transform:rotate(90deg)}
+  .discussion{grid-template-columns:1fr 1fr}
+  .workflowExample{padding:22px}
+  .cta h2{font-size:28px}
+}
+@media(max-width:420px){
+  .benefits ul,.processSteps,.discussion{grid-template-columns:1fr}
+  .heroActions .button{font-size:12px;width:100%;gap:6px}
+  .processSteps li{display:grid;grid-template-columns:46px 1fr;gap:0 15px}
+  .processSteps .stepNumber{grid-row:span 2}
+  .processSteps h3{margin:0 0 8px}
+  .processSteps p{grid-column:2}
+}

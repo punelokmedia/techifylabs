@@ -15,12 +15,23 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
     }
   } catch { /* Scheduling stays unavailable until a public booking URL is configured. */ }
   const [schedulerOpened, setSchedulerOpened] = useState(false);
+  const [schedulerLoaded, setSchedulerLoaded] = useState(false);
   const [time, setTime] = useState("11:30 AM");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
   const pending = useRef(false);
   const submissionId = useRef<string | null>(null);
   const lastPayload = useRef<string | null>(null);
+  // Keep only confirmed saves in memory for this mounted form; never cache failures.
+  const savedPayload = useRef<string | null>(null);
+  function prepareScheduler() {
+    if (embedUrl) setSchedulerOpened(true);
+  }
+  function openScheduler() {
+    if (!embedUrl) return;
+    prepareScheduler();
+    scheduler.current?.showModal();
+  }
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (pending.current) return;
@@ -32,6 +43,13 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
     const shouldSchedule = (event.nativeEvent as SubmitEvent).submitter?.getAttribute("value") === "schedule";
     const data = { ...Object.fromEntries(form), "Preferred time": time };
     const fingerprint = JSON.stringify(data);
+    prepareScheduler();
+    if (savedPayload.current === fingerprint) {
+      setStatus("success");
+      pending.current = false;
+      if (shouldSchedule) openScheduler();
+      return;
+    }
     if (lastPayload.current !== fingerprint) submissionId.current = null;
     lastPayload.current = fingerprint;
     submissionId.current ??= crypto.randomUUID();
@@ -43,11 +61,9 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
       });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(result.error || "Could not save your request. Please try again.");
+      savedPayload.current = fingerprint;
       setStatus("success");
-      if (shouldSchedule && embedUrl) {
-        setSchedulerOpened(true);
-        scheduler.current?.showModal();
-      }
+      if (shouldSchedule) openScheduler();
     } catch (cause) {
       setStatus("error");
       setError(cause instanceof Error ? cause.message : "Could not save your request. Please try again.");
@@ -56,12 +72,19 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
     }
   }
   return <aside id="book" className={s.booking}><div className={s.bookingHeader}><CalendarDays /><div><h2>Tell Us About Your Clinic</h2><p>Share your details to request a no-obligation call.</p></div></div>
-    <form onSubmit={submit} className={s.form}>
+    <form onSubmit={submit} onFocus={prepareScheduler} onChange={() => {
+      if (!pending.current) {
+        setStatus("idle");
+        setError("");
+      }
+    }} className={s.form}>
       <div className={s.formRow}><label>Your name <em>*</em><input name="Name" autoComplete="name" placeholder="John Smith" required maxLength={100} /></label><label>Work email <em>*</em><input name="Email" type="email" autoComplete="email" placeholder="you@clinic.com" required /></label></div>
+      <label>Phone number<input name="Phone" type="tel" autoComplete="tel" placeholder="+1 (555) 000-0000" maxLength={50} /></label>
       <label>Clinic / practice name <em>*</em><input name="Clinic" autoComplete="organization" placeholder="Your clinic name" required maxLength={150} /></label>
       <label>Website<input name="Website" type="url" placeholder="https://www.yourclinic.com" /></label>
       <label>Clinic type <em>*</em><select name="Clinic type" required><option>IVF & Fertility</option><option>Hair Transplant</option><option>IVF & Hair Transplant</option></select></label>
       <label>State(s) / service areas <em>*</em><input name="States" placeholder="Your states, cities, or service areas" required maxLength={200} /></label>
+      <label>Solution you’re interested in<select name="Solution"><option>Patient Leads</option><option>Booked Appointment Solution</option><option>Patient Leads & Booked Appointments</option></select></label>
       <label>Monthly enquiries needed <em>*</em><select name="Monthly leads" required defaultValue=""><option value="" disabled>Select an option</option><option>Under 50</option><option>50–100</option><option>100–250</option><option>250+</option><option>Let’s discuss</option></select></label>
       <fieldset className={s.schedule}><legend>Preferred meeting time</legend><div className={s.formRow}><label>Date <em>*</em><input type="date" name="Preferred date" required onFocus={event => { const now = new Date(); event.currentTarget.min = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`; }} /></label><label>Time zone<select name="Time zone"><option>Eastern Time (ET)</option><option>Central Time (CT)</option><option>Mountain Time (MT)</option><option>Pacific Time (PT)</option><option>India Standard Time (IST)</option></select></label></div><div className={s.times} role="group" aria-label="Preferred meeting time">{["10:00 AM", "11:30 AM", "2:00 PM", "3:30 PM", "5:00 PM"].map(slot => <button key={slot} type="button" aria-pressed={time === slot} onClick={() => setTime(slot)}>{slot}</button>)}</div></fieldset>
       <button className={s.button} type="submit" name="action" value="schedule" disabled={!embedUrl || status === "sending"} title={embedUrl ? "Save your enquiry, then choose a meeting time" : "Online scheduling will be available soon"}><Video size={19} />{status === "sending" ? "Saving your enquiry…" : "Schedule a Google Meet"}<ArrowRight size={18} /></button>
@@ -73,7 +96,10 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
     </form>
     <dialog ref={scheduler} className={s.schedulerDialog} aria-labelledby="scheduler-title">
       <div className={s.schedulerHeader}><div><h2 id="scheduler-title">Schedule a Google Meet</h2><p>Choose an available time with the Techify Labs team.</p></div><button type="button" aria-label="Close meeting scheduler" onClick={() => scheduler.current?.close()}><X size={22} /></button></div>
-      {embedUrl && schedulerOpened && <iframe src={embedUrl} title="Techify Labs meeting availability and booking" className={s.schedulerFrame} />}
+      {embedUrl && schedulerOpened && <>
+        {!schedulerLoaded && <p className={s.schedulerLoading} role="status">Loading available meeting times…</p>}
+        <iframe src={embedUrl} title="Techify Labs meeting availability and booking" className={s.schedulerFrame} loading="eager" onLoad={() => setSchedulerLoaded(true)} />
+      </>}
     </dialog>
   </aside>;
 }

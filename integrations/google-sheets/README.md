@@ -15,3 +15,7 @@ The integration creates a **Website Leads** tab on the first successful submissi
 The server endpoint validates the fields and forwards them to Apps Script. Repeated attempts with the same submission ID do not create duplicate rows. If you edit the script later, deploy a new version under **Deploy > Manage deployments**.
 
 Google’s deployment reference: https://developers.google.com/apps-script/guides/web
+
+## Updated landing-page fields
+
+The form now sends optional `Phone` and `Solution` fields. Update `Code.gs` and deploy a new version under **Deploy > Manage deployments** to capture them. The script appends these two columns after the existing `Status` column automatically on the next valid submission, preserving existing rows and column positions. Older form submissions remain compatible. Until the script is redeployed, the existing deployment saves the original fields only.

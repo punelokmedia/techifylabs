@@ -36,6 +36,16 @@ export async function POST(request: Request) {
       !Number.isFinite(Date.parse(data["Preferred date"]))) {
     return Response.json({ error: "Please check your email and meeting preferences." }, { status: 400 });
   }
+  for (const field of ["Phone", "Solution"] as const) {
+    const value = input[field] ?? "";
+    if (typeof value !== "string" || value.length > 150) {
+      return Response.json({ error: `Please check ${field.toLowerCase()}.` }, { status: 400 });
+    }
+    data[field] = value.trim();
+  }
+  if (data.Solution && !["Patient Leads", "Booked Appointment Solution", "Patient Leads & Booked Appointments"].includes(data.Solution)) {
+    return Response.json({ error: "Please choose a valid solution." }, { status: 400 });
+  }
   if (data.Website) {
     try {
       if (!["https:", "http:"].includes(new URL(data.Website).protocol)) throw new Error("Invalid URL");
