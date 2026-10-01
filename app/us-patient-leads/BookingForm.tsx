@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { ArrowRight, CalendarDays, Video, X } from "lucide-react";
+import { X } from "lucide-react";
 import s from "./landing.module.css";
 
 export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
@@ -16,7 +16,7 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
   } catch { /* Scheduling stays unavailable until a public booking URL is configured. */ }
   const [schedulerOpened, setSchedulerOpened] = useState(false);
   const [schedulerLoaded, setSchedulerLoaded] = useState(false);
-  const [time, setTime] = useState("11:30 AM");
+  const [time, setTime] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [error, setError] = useState("");
   const pending = useRef(false);
@@ -71,28 +71,24 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
       pending.current = false;
     }
   }
-  return <aside id="book" className={s.booking}><div className={s.bookingHeader}><CalendarDays /><div><h2>Tell Us About Your Clinic</h2><p>Share your details to request a no-obligation call.</p></div></div>
+  return <aside id="book" className={s.booking}>
     <form onSubmit={submit} onFocus={prepareScheduler} onChange={() => {
       if (!pending.current) {
         setStatus("idle");
         setError("");
       }
     }} className={s.form}>
-      <div className={s.formRow}><label>Your name <em>*</em><input name="Name" autoComplete="name" placeholder="John Smith" required maxLength={100} /></label><label>Work email <em>*</em><input name="Email" type="email" autoComplete="email" placeholder="you@clinic.com" required /></label></div>
-      <label>Phone number<input name="Phone" type="tel" autoComplete="tel" placeholder="+1 (555) 000-0000" maxLength={50} /></label>
-      <label>Clinic / practice name <em>*</em><input name="Clinic" autoComplete="organization" placeholder="Your clinic name" required maxLength={150} /></label>
-      <label>Website<input name="Website" type="url" placeholder="https://www.yourclinic.com" /></label>
-      <label>Clinic type <em>*</em><select name="Clinic type" required><option>IVF & Fertility</option><option>Hair Transplant</option><option>IVF & Hair Transplant</option></select></label>
-      <label>State(s) / service areas <em>*</em><input name="States" placeholder="Your states, cities, or service areas" required maxLength={200} /></label>
-      <label>Solution you’re interested in<select name="Solution"><option>Patient Leads</option><option>Booked Appointment Solution</option><option>Patient Leads & Booked Appointments</option></select></label>
-      <label>Monthly enquiries needed <em>*</em><select name="Monthly leads" required defaultValue=""><option value="" disabled>Select an option</option><option>Under 50</option><option>50–100</option><option>100–250</option><option>250+</option><option>Let’s discuss</option></select></label>
-      <fieldset className={s.schedule}><legend>Preferred meeting time</legend><div className={s.formRow}><label>Date <em>*</em><input type="date" name="Preferred date" required onFocus={event => { const now = new Date(); event.currentTarget.min = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`; }} /></label><label>Time zone<select name="Time zone"><option>Eastern Time (ET)</option><option>Central Time (CT)</option><option>Mountain Time (MT)</option><option>Pacific Time (PT)</option><option>India Standard Time (IST)</option></select></label></div><div className={s.times} role="group" aria-label="Preferred meeting time">{["10:00 AM", "11:30 AM", "2:00 PM", "3:30 PM", "5:00 PM"].map(slot => <button key={slot} type="button" aria-pressed={time === slot} onClick={() => setTime(slot)}>{slot}</button>)}</div></fieldset>
-      <button className={s.button} type="submit" name="action" value="schedule" disabled={!embedUrl || status === "sending"} title={embedUrl ? "Save your enquiry, then choose a meeting time" : "Online scheduling will be available soon"}><Video size={19} />{status === "sending" ? "Saving your enquiry…" : "Schedule a Google Meet"}<ArrowRight size={18} /></button>
-      <button className={`${s.button} ${s.submitButton}`} type="submit" disabled={status === "sending"} aria-busy={status === "sending"}>{status === "sending" ? "Submitting…" : "Submit Form"}<ArrowRight size={18} /></button>
-      <p className={s.formNote}>{embedUrl ? "Both buttons save your enquiry. Schedule a Google Meet also opens booking; choose a slot to confirm your meeting." : "Submit your enquiry and we’ll confirm a meeting time by email. Online booking is currently unavailable."}</p>
+      <div className={s.formRow}><label>Your Name <em>*</em><input name="Name" autoComplete="name"  required maxLength={100} /></label><label>Work Email <em>*</em><input name="Email" type="email" autoComplete="email"  required /></label></div>
+      <div className={s.formRow}><label>Phone Number<input name="Phone" type="tel" autoComplete="tel"  maxLength={50} /></label><label>Clinic / Practice Name <em>*</em><input name="Clinic" autoComplete="organization"  required maxLength={150} /></label></div>
+      <label>Website<input name="Website" type="url" placeholder="https://" /></label>
+      <div className={s.formRow}><label>Clinic Type <em>*</em><select name="Clinic type" required><option>IVF & Fertility</option><option>Hair Transplant</option><option>IVF & Hair Transplant</option></select></label><label>State(s) / Service Areas <em>*</em><input name="States"  required maxLength={200} /></label></div>
+      <label>Solution You&apos;re Interested In<select name="Solution"><option>Patient Leads</option><option>Booked Appointment Solution</option><option>Patient Leads & Booked Appointments</option></select></label>
+      <label>Monthly Patient Enquiry Requirement <em>*</em><select name="Monthly leads" required defaultValue="Under 50"><option>Under 50</option><option>50–100</option><option>100–250</option><option>250+</option><option>Let’s discuss</option></select></label>
+      <fieldset className={s.schedule}><div className={s.formRow}><label>Preferred Meeting Date <em>*</em><input type="date" name="Preferred date" required onFocus={event => { const now = new Date(); event.currentTarget.min = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`; }} /></label><label>Time Zone<select name="Time zone"><option>Eastern Time (ET)</option><option>Central Time (CT)</option><option>Mountain Time (MT)</option><option>Pacific Time (PT)</option><option>India Standard Time (IST)</option></select></label></div><label>Preferred Meeting Time<input type="time" value={time} onChange={event => setTime(event.target.value)} required /></label></fieldset>
+      <button className={s.button} type="submit" name="action" value="schedule" disabled={status === "sending"} title={embedUrl ? "Save your enquiry, then choose a meeting time" : "Save your enquiry to request a meeting"}>{status === "sending" ? "Saving your enquiry…" : "Schedule a Google Meet"}</button>
+      <p className={s.formNote}>No obligation. We&apos;ll use the meeting to understand your clinic&apos;s requirements and discuss available patient acquisition options.{!embedUrl && ' We will confirm your meeting time by email.'}</p>
       {status === "success" && <p className={s.status} role="status">Enquiry received. A meeting requires separate confirmation.</p>}
       {status === "error" && <p className={s.error} role="alert">{error}</p>}
-      <p className={s.meetNote}><Video size={25} />Google Meet invitation shared after confirmation.</p>
     </form>
     <dialog ref={scheduler} className={s.schedulerDialog} aria-labelledby="scheduler-title">
       <div className={s.schedulerHeader}><div><h2 id="scheduler-title">Schedule a Google Meet</h2><p>Choose an available time with the Techify Labs team.</p></div><button type="button" aria-label="Close meeting scheduler" onClick={() => scheduler.current?.close()}><X size={22} /></button></div>

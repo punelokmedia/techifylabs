@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       !["IVF & Fertility", "Hair Transplant", "IVF & Hair Transplant"].includes(data["Clinic type"]) ||
       !["Under 50", "50–100", "100–250", "250+", "Let’s discuss"].includes(data["Monthly leads"]) ||
       !["Eastern Time (ET)", "Central Time (CT)", "Mountain Time (MT)", "Pacific Time (PT)", "India Standard Time (IST)"].includes(data["Time zone"]) ||
-      !["10:00 AM", "11:30 AM", "2:00 PM", "3:30 PM", "5:00 PM"].includes(data["Preferred time"]) ||
+      (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(data["Preferred time"]) && !["10:00 AM", "11:30 AM", "2:00 PM", "3:30 PM", "5:00 PM"].includes(data["Preferred time"])) ||
       !/^\d{4}-\d{2}-\d{2}$/.test(data["Preferred date"]) ||
       !Number.isFinite(Date.parse(data["Preferred date"]))) {
     return Response.json({ error: "Please check your email and meeting preferences." }, { status: 400 });
