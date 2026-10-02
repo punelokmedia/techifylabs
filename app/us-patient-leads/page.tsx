@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CalendarDays, Check, HeartPulse, Scissors, UserRound } from "lucide-react";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/app/lib/contact";
 import BookingForm from "./BookingForm";
+import BookLink from "./BookButton";
 import s from "./landing.module.css";
 
 export const metadata: Metadata = {
@@ -40,9 +41,6 @@ const specialties = [
 
 function Brand() {
   return <Link href="/" className={s.brand} aria-label="Techify Labs home"><Image src="/techify-labs-logo.png" alt="Techify Labs" width={428} height={180} className={s.brandImage} /></Link>;
-}
-function BookLink({ children = "Book a Google Meet", secondary = false }: { children?: React.ReactNode; secondary?: boolean }) {
-  return <a className={secondary ? s.secondaryButton : s.button} href="#book">{children}</a>;
 }
 
 export default function PatientLeadsPage() {
