@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const GTM_ID = "GTM-5XXP9PQ5";
-const META_PIXEL_ID = "2088379125382678";
+const GTM_IDS = ["GTM-5XXP9PQ5", "GTM-KK6SSDTS"];
+const META_PIXEL_IDS = ["2088379125382678", "2055207088462442"];
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,23 +38,29 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col overflow-x-clip bg-[#f4f6f9] text-slate-900">
         <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-            title="Google Tag Manager"
-          />
+          {GTM_IDS.map((gtmId) => (
+            <iframe
+              key={gtmId}
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title={`Google Tag Manager ${gtmId}`}
+            />
+          ))}
         </noscript>
         <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
+          {META_PIXEL_IDS.map((pixelId) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={pixelId}
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+              alt=""
+            />
+          ))}
         </noscript>
         {children}
         <Script id="meta-pixel" strategy="afterInteractive">
@@ -66,16 +72,18 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${META_PIXEL_ID}');
+${META_PIXEL_IDS.map((pixelId) => `fbq('init', '${pixelId}');`).join("\n")}
 fbq('track', 'PageView');`}
         </Script>
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        {GTM_IDS.map((gtmId) => (
+        <Script key={gtmId} id={`google-tag-manager-${gtmId}`} strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
+})(window,document,'script','dataLayer','${gtmId}');`}
         </Script>
+        ))}
       </body>
     </html>
   );
