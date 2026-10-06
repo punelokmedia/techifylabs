@@ -21,6 +21,10 @@ export async function POST(request: Request) {
   }
   const data: Record<string, string> = {};
   for (const field of fields) {
+    if (field === "Website" && input[field] == null) {
+      data[field] = "";
+      continue;
+    }
     if (typeof input[field] !== "string" || (input[field] as string).length > 500) {
       return Response.json({ error: `Please check ${field.toLowerCase()}.` }, { status: 400 });
     }
