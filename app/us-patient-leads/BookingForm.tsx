@@ -128,7 +128,7 @@ export default function BookingForm({ bookingUrl }: { bookingUrl?: string }) {
     }} className={s.form}>
       <div className={s.formRow}><label>Your Name <em>*</em><input name="Name" autoComplete="name"  required maxLength={100} /></label><label>Work Email <em>*</em><input name="Email" type="email" autoComplete="email"  required /></label></div>
       <div className={s.formRow}><label>Phone Number<input name="Phone" type="tel" autoComplete="tel"  maxLength={50} /></label><label>Clinic / Practice Name <em>*</em><input name="Clinic" autoComplete="organization"  required maxLength={150} /></label></div>
-      <label>Website (optional)<input name="Website" type="url" placeholder="https://" /></label>
+      <label>Website (optional)<input name="Website" type="text" inputMode="url" autoComplete="url" placeholder="example.com or example.in" maxLength={500} /></label>
       <div className={s.formRow}><label>Clinic Type <em>*</em><select name="Clinic type" required><option>IVF & Fertility</option><option>Hair Transplant</option><option>IVF & Hair Transplant</option></select></label><label>State(s) / Service Areas <em>*</em><input name="States"  required maxLength={200} /></label></div>
       <label>Solution You&apos;re Interested In<select name="Solution"><option>Patient Leads</option><option>Booked Appointment Solution</option><option>Patient Leads & Booked Appointments</option></select></label>
       <label>Monthly Patient Enquiry Requirement <em>*</em><select name="Monthly leads" required defaultValue="Under 50"><option>Under 50</option><option>50–100</option><option>100–250</option><option>250+</option><option>Let’s discuss</option></select></label>

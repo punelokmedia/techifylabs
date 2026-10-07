@@ -51,6 +51,9 @@ export async function POST(request: Request) {
   }
   if (data.Website) {
     try {
+      if (!/^[a-z][a-z\d+.-]*:/i.test(data.Website)) {
+        data.Website = `https://${data.Website}`;
+      }
       if (!["https:", "http:"].includes(new URL(data.Website).protocol)) throw new Error("Invalid URL");
     } catch {
       return Response.json({ error: "Please enter a valid website URL." }, { status: 400 });
