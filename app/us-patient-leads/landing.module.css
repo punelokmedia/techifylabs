@@ -52,3 +52,10 @@
 .form textarea{width:100%;min-width:0;max-width:100%;padding:12px 13px;border:1px solid #cfdef0;border-radius:6px;font:14px Arial,sans-serif;color:var(--navy);background:white;resize:vertical;min-height:110px}
 .form textarea:focus{outline:2px solid var(--blue)}
 @media(max-width:760px){.hero{padding:38px 0 45px}.heroGrid{grid-template-columns:1fr;gap:32px}.heroPhoto{inset:0;height:100%}.form textarea{font-size:16px}}
+
+/* Blend the original form into the hero photograph. */
+.heroPhoto::after{background:linear-gradient(90deg,rgba(245,249,253,.96) 0%,rgba(245,249,253,.88) 38%,rgba(245,249,253,.24) 65%,rgba(245,249,253,.08) 100%)}
+.hero .booking{background:rgba(245,249,253,.32);border:1px solid rgba(255,255,255,.65);border-radius:16px;box-shadow:0 12px 32px #102b4b12;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.hero .form input,.hero .form textarea{background:rgba(255,255,255,.58);border-color:rgba(111,145,186,.55)}
+.hero .form label,.hero .form h2{color:#102b4b}
+@media(max-width:760px){.heroPhoto::after{background:linear-gradient(180deg,rgba(245,249,253,.94),rgba(245,249,253,.78) 45%,rgba(245,249,253,.2) 100%)}}
