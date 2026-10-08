@@ -3,8 +3,8 @@
 // Run verifyLeadSetup, then deploy a Web app as Me with access Anyone.
 const SPREADSHEET_ID = "1oCC5cvPwlQg861S4XONpVZjhbhcSaHWCVO6QpizLh7Q";
 const TAB_NAME = "Website Leads";
-const FIELDS = ["Name", "Email", "Clinic", "Website", "Clinic type", "States", "Monthly leads", "Preferred date", "Time zone", "Preferred time"];
-const OPTIONAL_FIELDS = ["Phone", "Solution"];
+const FIELDS = ["Name", "Email", "Phone", "Message"];
+const CONTACT_FIELDS = { Name: 100, Email: 254, Phone: 50, Message: 2000 };
 
 function verifyLeadSetup() {
   const secret = PropertiesService.getScriptProperties().getProperty("LEADS_SECRET");
@@ -29,12 +29,13 @@ function doPost(e) {
     const secret = PropertiesService.getScriptProperties().getProperty("LEADS_SECRET");
     if (!secret) return jsonReply({ ok: false, code: "SECRET_NOT_CONFIGURED" });
     if (payload.secret !== secret) return jsonReply({ ok: false, code: "SECRET_MISMATCH" });
+    // Legacy booking-status support retained; the website scheduler is disabled.
     if (payload.action === "booking-status") return jsonReply(checkBookingStatus(payload.submissionId));
     if (typeof payload.submissionId !== "string" || !/^[a-f0-9-]{36}$/i.test(payload.submissionId)) return jsonReply({ ok: false, code: stage });
     const data = payload.data;
     if (!data || typeof data !== "object" || Array.isArray(data)) return jsonReply({ ok: false, code: stage });
-    if (FIELDS.some(field => typeof data[field] !== "string" || data[field].length > 500 || (field !== "Website" && !data[field].trim()))) return jsonReply({ ok: false, code: "INVALID_FIELDS" });
-    if (OPTIONAL_FIELDS.some(field => data[field] != null && (typeof data[field] !== "string" || data[field].length > 150))) return jsonReply({ ok: false, code: "INVALID_FIELDS" });
+    if (Object.keys(CONTACT_FIELDS).some(field => typeof data[field] !== "string" || data[field].length > CONTACT_FIELDS[field] || !data[field].trim())) return jsonReply({ ok: false, code: "INVALID_FIELDS" });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.Email.trim())) return jsonReply({ ok: false, code: "INVALID_FIELDS" });
 
     stage = "SHEET_BUSY";
     lock.waitLock(10000);
@@ -43,25 +44,32 @@ function doPost(e) {
     stage = "SHEET_WRITE_FAILED";
     let sheet = spreadsheet.getSheetByName(TAB_NAME);
     if (!sheet) sheet = spreadsheet.insertSheet(TAB_NAME);
-    const legacyHeaders = ["Submission ID", "Submitted at (UTC)", ...FIELDS, "Source", "Status"];
-    const headers = [...legacyHeaders, ...OPTIONAL_FIELDS];
+    // The visible sheet contains only the four contact fields.
+    let headers = FIELDS;
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(headers);
+      sheet.appendRow(FIELDS);
       sheet.setFrozenRows(1);
-      sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+      sheet.getRange(1, 1, 1, FIELDS.length).setFontWeight("bold");
     } else {
-      const existing = sheet.getRange(1, 1, 1, headers.length).getValues()[0];
-      if (existing.slice(0, legacyHeaders.length).join("|") === legacyHeaders.join("|") && existing.slice(legacyHeaders.length).every(value => value === "")) {
-        sheet.getRange(1, legacyHeaders.length + 1, 1, OPTIONAL_FIELDS.length).setValues([OPTIONAL_FIELDS]).setFontWeight("bold");
-      } else if (existing.join("|") !== headers.join("|")) {
+      headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      // Match by header, so deleting old columns or changing their order is safe.
+      const normalized = headers.map(header => String(header).trim().toLowerCase());
+      if (normalized.length !== FIELDS.length || FIELDS.some(field => normalized.filter(header => header === field.toLowerCase()).length !== 1)) {
         return jsonReply({ ok: false, code: "HEADERS_MISMATCH" });
       }
     }
-    // A retry with the same submission ID must not save a duplicate lead.
-    if (sheet.getLastRow() > 1 && sheet.getRange(2, 1, sheet.getLastRow() - 1, 1).createTextFinder(payload.submissionId).matchEntireCell(true).findNext()) return jsonReply({ ok: true });
+    // Keep retry IDs outside the sheet so it needs only four columns.
+    const cache = CacheService.getScriptCache();
+    const retryKey = "lead:" + payload.submissionId;
+    if (cache.get(retryKey)) return jsonReply({ ok: true });
     const safeText = value => /^[=+@\-\t\r\n]/.test(value) ? "'" + value : value;
-    sheet.appendRow([payload.submissionId, new Date().toISOString(), ...FIELDS.map(field => safeText(data[field])), "/us-patient-leads", "New", ...OPTIONAL_FIELDS.map(field => safeText(data[field] || ""))]);
+    const row = headers.map(header => {
+      const field = FIELDS.find(field => field.toLowerCase() === String(header).trim().toLowerCase());
+      return safeText(data[field].trim());
+    });
+    sheet.appendRow(row);
     SpreadsheetApp.flush();
+    cache.put(retryKey, "saved", 21600);
     return jsonReply({ ok: true });
   } catch {
     console.error("Patient lead request failed: " + stage);
