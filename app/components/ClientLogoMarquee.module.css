@@ -1,0 +1,97 @@
+.section {
+  margin-top: auto;
+  padding-block: 2.5rem;
+  overflow: hidden;
+  border-top: 1px solid #e9e7f5;
+  background: #fff;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto 1.5rem;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.heading h2 {
+  color: #0c2d52;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.pause {
+  border: 1px solid #e9e7f5;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  color: #3b31a1;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.pause:focus-visible {
+  outline: 2px solid #3b31a1;
+  outline-offset: 4px;
+}
+
+.viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 55s linear infinite;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 132px;
+  padding: 1rem;
+  border: 1px solid #e9e7f5;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.logo {
+  width: 180px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.viewport:hover .track,
+.track[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 640px) {
+  .card { width: 172px; height: 112px; }
+  .logo { width: 140px; height: 80px; }
+  .group { gap: 1rem; padding-right: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; width: 100%; }
+  .group { flex-wrap: wrap; justify-content: center; width: 100%; padding-inline: 1rem; }
+  .group[aria-hidden="true"],
+  .card[aria-hidden="true"],
+  .pause { display: none; }
+  .viewport { mask-image: none; }
+}

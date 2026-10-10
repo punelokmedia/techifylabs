@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import ClientLogoMarquee from "./ClientLogoMarquee";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { GOOGLE_MAPS_LOCATION_LINK, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
@@ -230,7 +231,9 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="site-footer relative z-0 mt-auto text-white">
+    <>
+    <ClientLogoMarquee />
+    <footer className="site-footer relative z-0 text-white">
       <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-10">
           <div className="flex min-w-0 flex-col lg:col-span-3">
@@ -447,5 +450,6 @@ export default function Footer() {
         </>
       )}
     </footer>
+    </>
   );
 }
