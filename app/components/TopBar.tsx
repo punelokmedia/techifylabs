@@ -91,7 +91,7 @@ export default function TopBar() {
         </div>
         <nav className="flex flex-wrap items-center gap-4 text-xs font-medium sm:gap-5 sm:text-sm" aria-label="Social">
           <motion.a
-            href="https://www.instagram.com/techifylabs.in/"
+            href="https://www.instagram.com/techify_labs.in/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Techifylabs on Instagram (opens in a new tab)"
@@ -103,7 +103,7 @@ export default function TopBar() {
             <span className="hidden sm:inline">Instagram</span>
           </motion.a>
           <motion.a
-            href="https://www.facebook.com/Techifylabs.in"
+            href="https://www.facebook.com/profile.php?id=61594853173856"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Techifylabs on Facebook (opens in a new tab)"

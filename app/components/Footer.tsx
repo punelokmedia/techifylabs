@@ -261,12 +261,12 @@ export default function Footer() {
                 {
                   Icon: IconFacebook,
                   label: "Facebook",
-                  href: "https://www.facebook.com/Techifylabs.in",
+                  href: "https://www.facebook.com/profile.php?id=61594853173856",
                 },
                 {
                   Icon: IconInstagram,
                   label: "Instagram",
-                  href: "https://www.instagram.com/techifylabs.in/",
+                  href: "https://www.instagram.com/techify_labs.in/",
                 },
                 { Icon: IconLinkedIn, label: "LinkedIn", href: "https://www.linkedin.com/company/techify-labs/" },
               ].map(({ Icon, label, href }) => (
