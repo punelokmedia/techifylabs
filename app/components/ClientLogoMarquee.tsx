@@ -47,9 +47,9 @@ export default function ClientLogoMarquee() {
                     <Image
                       src={logo.src}
                       alt={group === 0 && repeat === 0 ? logo.alt : ""}
-                      width={260}
-                      height={144}
-                      sizes="(max-width: 640px) 200px, 260px"
+                      width={320}
+                      height={194}
+                      sizes="(max-width: 640px) 248px, 320px"
                       className={styles.logo}
                     />
                   </div>

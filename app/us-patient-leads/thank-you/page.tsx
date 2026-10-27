@@ -14,7 +14,7 @@ export default function ThankYouPage() {
   return (
     <div className={`${s.page} ${s.thankYouPage}`}>
       <header className={s.thankYouHeader}>
-        <Link href="/" className={s.brand} aria-label="Techify Labs home"><Image src="/LOGO-2.png" alt="Techify Labs" width={2057} height={764} className={s.brandImage} /></Link>
+        <Link href="/" className={s.brand} aria-label="Techify Labs home"><Image src="/techify-labs-logo-36e21942c0bb.png" alt="Techify Labs" width={866} height={288} className={s.brandImage} /></Link>
       </header>
       <main className={s.thankYouMain}>
         <div className={s.thankYouCard}>

@@ -43,7 +43,7 @@ const SCROLL_EDGE_PX = 80;
 
 function FooterHeading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/50">
+    <h3 className="text-[12px] font-semibold uppercase tracking-[0.16em] text-black">
       {children}
     </h3>
   );
@@ -234,7 +234,7 @@ export default function Footer() {
   return (
     <>
     <ClientLogoMarquee />
-    <footer className="site-footer relative z-0 text-white">
+    <footer className="site-footer relative z-0 text-black">
       <TopBar />
       <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-8 xl:gap-10">
@@ -244,15 +244,15 @@ export default function Footer() {
               className="relative -mt-1 block w-fit max-w-full leading-none opacity-95 transition hover:opacity-100 lg:-mt-2"
             >
               <Image
-                src="/techify-labs-logo.png"
+                src="/techify-labs-logo-36e21942c0bb.png"
                 alt="Techify Labs"
-                width={435}
-                height={188}
+                width={866}
+                height={288}
                 className="block h-auto w-full max-w-[min(220px,80vw)] -translate-y-1 object-contain object-left lg:-translate-y-2"
                 sizes="220px"
               />
             </Link>
-            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-black">
               Performance marketing and product engineering for brands that want
               clear growth - ads, websites, and always-on support from Pune.
             </p>
@@ -276,7 +276,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-white/80 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white text-black transition hover:border-black/30 hover:bg-black/5 hover:text-black"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -291,7 +291,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-white/68 transition-colors hover:text-white"
+                    className="text-black transition-colors hover:text-black"
                   >
                     {item.label.replace(" Agency in India", "")}
                   </Link>
@@ -307,7 +307,7 @@ export default function Footer() {
                 <li key={item.href + item.label}>
                   <Link
                     href={item.href}
-                    className="text-white/68 transition-colors hover:text-white"
+                    className="text-black transition-colors hover:text-black"
                   >
                     {item.label}
                   </Link>
@@ -322,18 +322,18 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                  className="flex items-start gap-3 text-black transition hover:text-black"
                 >
-                  <IconMail className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <IconMail className="mt-0.5 h-4 w-4 shrink-0 text-black" />
                   <span className="break-all">{EMAIL}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={PHONE_TEL}
-                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                  className="flex items-start gap-3 text-black transition hover:text-black"
                 >
-                  <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <IconPhone className="mt-0.5 h-4 w-4 shrink-0 text-black" />
                   <span className="tabular-nums">{PHONE_DISPLAY}</span>
                 </a>
               </li>
@@ -342,19 +342,19 @@ export default function Footer() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-white/75 transition hover:text-white"
+                  className="flex items-start gap-3 text-black transition hover:text-black"
                 >
-                  <IconWhatsApp className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                  <IconWhatsApp className="mt-0.5 h-4 w-4 shrink-0 text-black" />
                   <span>WhatsApp</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-white/65">
-                <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+              <li className="flex items-start gap-3 text-black">
+                <IconMapPin className="mt-0.5 h-4 w-4 shrink-0 text-black" />
                 <a
                   href={GOOGLE_MAPS_LOCATION_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="leading-relaxed underline-offset-4 transition hover:text-white hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+                  className="leading-relaxed underline-offset-4 transition hover:text-black hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
                   aria-label="View Techifylabs office address on Google Maps (opens in a new tab)"
                 >
                   UG 67-68, Clover Hills Plaza
@@ -367,13 +367,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-black/10">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-          <p className="text-center text-[12px] text-white/45 sm:text-left">
+          <p className="text-center text-[12px] text-black sm:text-left">
             © {new Date().getFullYear()} Techify Labs Pvt. Ltd. All rights
             reserved.
           </p>
-          <p className="text-center text-[12px] text-white/40 sm:text-right">
+          <p className="text-center text-[12px] text-black sm:text-right">
             Pune, India
           </p>
         </div>

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, Check, HeartPulse, Scissors, UserRound } from "lucide-react";
@@ -39,7 +39,7 @@ const specialties = [
 ];
 
 function Brand() {
-  return <Link href="/" className={s.brand} aria-label="Techify Labs home"><Image src="/techify-labs-logo.png" alt="Techify Labs" width={428} height={180} className={s.brandImage} /></Link>;
+  return <Link href="/" className={s.brand} aria-label="Techify Labs home"><Image src="/techify-labs-logo-36e21942c0bb.png" alt="Techify Labs" width={866} height={288} className={s.brandImage} /></Link>;
 }
 
 export default function PatientLeadsPage() {

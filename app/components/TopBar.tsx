@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 
 const linkBase =
-  "inline-flex items-center gap-1.5 text-white/90 transition-colors duration-200 hover:text-white";
+  "inline-flex items-center gap-1.5 text-black transition-colors duration-200 hover:text-black";
 
 const socialHover = { y: -1, transition: { type: "spring" as const, stiffness: 400, damping: 28 } };
 
@@ -60,7 +60,7 @@ function IconLinkedIn({ className }: { className?: string }) {
 
 export default function TopBar() {
   return (
-    <div className="border-b border-orange-900/15 bg-[#ea580c] text-white">
+    <div className="border-b border-black/10 bg-[#f4f6fd] text-black">
       <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-x-3 gap-y-0.5 px-4 py-1 sm:px-5 md:px-6 lg:px-8 xl:px-10">
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs sm:text-sm">
           <motion.a

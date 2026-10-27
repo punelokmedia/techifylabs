@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   description:
     "Performance marketing, web, and growth strategy - Meta, Google, Amazon, SEO, and more.",
   icons: {
-    icon: "/techify-favicon-icon.jpeg",
-    apple: "/icons/apple-icon.png",
+    icon: "/techify-t-icon-v2.png",
+    apple: "/techify-t-icon-v2.png",
   },
 };
 

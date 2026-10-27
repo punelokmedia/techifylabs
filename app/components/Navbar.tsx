@@ -497,8 +497,8 @@ export default function Navbar() {
     [
       "inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full px-2 py-1 text-[13px] font-semibold tracking-tight transition-all duration-200 xl:gap-1.5 xl:px-3 xl:py-1.5 xl:text-[14.5px]",
       active
-        ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
-        : "text-white/90 hover:bg-white/10 hover:text-white",
+        ? "bg-black/5 text-black shadow-sm ring-1 ring-black/10"
+        : "text-black hover:bg-black/5 hover:text-black",
     ].join(" ");
 
   const navLinkClass = (href: string) => {
@@ -509,8 +509,8 @@ export default function Navbar() {
     return [
       "shrink-0 whitespace-nowrap rounded-full px-2 py-1 text-[13px] font-semibold transition-all duration-200 xl:px-3 xl:py-1.5 xl:text-[14.5px]",
       active
-        ? "bg-white/20 text-white shadow-sm ring-1 ring-white/30"
-        : "text-white/90 hover:bg-white/10 hover:text-white",
+        ? "bg-black/5 text-black shadow-sm ring-1 ring-black/10"
+        : "text-black hover:bg-black/5 hover:text-black",
     ].join(" ");
   };
 
@@ -520,18 +520,18 @@ export default function Navbar() {
       ref={navRef}
       className="fixed inset-x-0 top-0 z-[200] w-full overflow-visible"
     >
-      <div className="relative overflow-visible border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
+      <div className="relative overflow-visible border-b border-black/10 bg-[#f4f6fd] text-black">
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent"
           aria-hidden
         />
         <div className="mx-auto flex h-[3.75rem] w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-5 md:h-[4.25rem] md:px-6 lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
           <Link href="/" className="nav-logo relative z-10">
             <img
-              src="/techify-labs-logo.png"
+              src="/techify-labs-logo-36e21942c0bb.png"
               alt="Techify Labs"
-              width={435}
-              height={188}
+              width={866}
+              height={288}
             />
           </Link>
           <nav
@@ -786,7 +786,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white shadow-sm transition hover:border-white/40 hover:bg-white/15 lg:hidden"
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-black/15 bg-transparent text-black shadow-sm transition hover:border-black/30 hover:bg-black/5 lg:hidden"
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
