@@ -5,25 +5,25 @@
   --brand-primary: #2563eb;
   --navbar-bg: #3b31a1;
   --page-bg: #f4f6f9;
-  /* TopBar + compact nav */
-  --site-header-height: 5.25rem;
+  /* Compact navigation height */
+  --site-header-height: 3.75rem;
 }
 
 @media (min-width: 640px) {
   :root {
-    --site-header-height: 5.6rem;
+    --site-header-height: 4rem;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --site-header-height: 6.05rem;
+    --site-header-height: 4.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --site-header-height: 6.3rem;
+    --site-header-height: 4.5rem;
   }
 }
 

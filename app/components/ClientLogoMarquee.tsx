@@ -11,6 +11,10 @@ const logos = [
   "client-4-logo.jpeg",
   "client-5-logo.jpeg",
   "client-logo-6.jpeg",
+  "client-logo-7.jpg",
+  "client-logo-8.jpg",
+  "client-logo-9.jpg",
+
 ].map((filename, index) => ({
   src: `/client-logo/${filename}`,
   alt: `Client ${index + 1} logo`,
@@ -43,9 +47,9 @@ export default function ClientLogoMarquee() {
                     <Image
                       src={logo.src}
                       alt={group === 0 && repeat === 0 ? logo.alt : ""}
-                      width={180}
-                      height={100}
-                      sizes="(max-width: 640px) 140px, 180px"
+                      width={260}
+                      height={144}
+                      sizes="(max-width: 640px) 200px, 260px"
                       className={styles.logo}
                     />
                   </div>

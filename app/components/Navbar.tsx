@@ -5,7 +5,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import TopBar from "./TopBar";
 import ConsultationModal from "./ConsultationModel";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_LINK } from "@/app/lib/contact";
 type MenuKey = "solutions" | "leadGeneration" | "knowledge" | null;
@@ -427,7 +426,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<MenuKey>(null);
   const [openModal, setOpenModal] = useState(false);
-  const [showTopBar, setShowTopBar] = useState(true);
   const navRef = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -481,32 +479,6 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   useEffect(() => {
-    let previousScrollY = window.scrollY;
-
-    const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      const hero = document.querySelector<HTMLElement>("main section");
-
-      if (hero) {
-        setShowTopBar(hero.getBoundingClientRect().bottom > 0);
-        previousScrollY = currentScrollY;
-        return;
-      }
-
-      if (currentScrollY < 24 || currentScrollY < previousScrollY) {
-        setShowTopBar(true);
-      } else if (currentScrollY > 80) {
-        setShowTopBar(false);
-      }
-
-      previousScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
-
-  useEffect(() => {
     const el = navRef.current;
     if (!el) return;
     const syncHeight = () => {
@@ -548,19 +520,6 @@ export default function Navbar() {
       ref={navRef}
       className="fixed inset-x-0 top-0 z-[200] w-full overflow-visible"
     >
-      <AnimatePresence initial={false}>
-        {showTopBar ? (
-          <motion.div
-            initial={{ opacity: 0, y: -16, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: "auto" }}
-            exit={{ opacity: 0, y: -16, height: 0 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <TopBar />
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
       <div className="relative overflow-visible border-b border-white/10 bg-[#3b31a1] shadow-[0_1px_3px_rgba(15,23,42,0.12)]">
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
