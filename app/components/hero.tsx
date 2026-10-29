@@ -117,6 +117,8 @@ export default function Hero() {
             >
               <video
                 ref={videoRef}
+                // Video extensions can inject classes before React hydrates this element.
+                suppressHydrationWarning
                 className="absolute inset-0 h-full w-full scale-[1.04] object-cover"
                 autoPlay
                 muted
