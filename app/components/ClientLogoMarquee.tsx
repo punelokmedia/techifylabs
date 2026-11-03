@@ -14,6 +14,9 @@ const logos = [
   "client-logo-7.jpg",
   "client-logo-8.jpg",
   "client-logo-9.jpg",
+  "client-logo-10.jpg",
+  "client-logo-11.jpg",
+  "client-logo-12.jpg",
 
 ].map((filename, index) => ({
   src: `/client-logo/${filename}`,
